@@ -1,6 +1,11 @@
 package com.teamremastered.endrem;
 
 import com.teamremastered.endrem.config.ERConfig;
+import com.teamremastered.endrem.registers.RegistryHandler;
+import net.minecraft.MethodsReturnNonnullByDefault;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import org.apache.logging.log4j.LogManager;
@@ -11,13 +16,12 @@ import org.apache.logging.log4j.Logger;
 public class EndRemastered {
     public static final Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "endrem";
-    public static final String MOD_NAME = "End Remastered";
     public static final String CONFIG_FILE = String.format("%s.toml", EndRemastered.MOD_ID);
 
     public EndRemastered() {
         MinecraftForge.EVENT_BUS.register(this);
         ERConfig.load();
-//        RegistryHandler.init();
+        RegistryHandler.init();
 //        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
 //        StructureGenerator.init();
     }
@@ -29,10 +33,12 @@ public class EndRemastered {
 //        event.enqueueWork(StructureGenerator::setup);
 //    }
 
-//    public static final CreativeModeTab TAB = new CreativeModeTab("endremTab") {
-//        @Override
-//        public ItemStack makeIcon() {
-//            return new ItemStack(RegistryHandler.ROGUE_EYE.get());
-//        }
-//    };
+    @MethodsReturnNonnullByDefault
+    public static final CreativeModeTab TAB = new CreativeModeTab("endremTab") {
+        @Override
+        public ItemStack makeIcon() {
+            // TODO: Change tab icon for ER item
+            return new ItemStack(Items.GRANITE);
+        }
+    };
 }
