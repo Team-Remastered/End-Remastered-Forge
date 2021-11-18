@@ -1,0 +1,32 @@
+modLoader="javafml"
+loaderVersion="[37,)"
+license="GNU LGPLv3"
+issueTrackerURL="http://gitlab.com/endrem/end-remastered/-/issues/"
+[[mods]]
+modId="endrem"
+version="${file.jarVersion}"
+displayName="End Remastered"
+logoFile="endremlogo.png"
+authors="Team Remastered"
+description='''
+End Remastered makes your Minecraft experience more challenging by emphasizing the adventurous side of the game.
+
+
+Exploration is the main focus of End Remastered, and to reach the End and beat the Ender Dragon, you will have to find the 12 custom eyes by exploring vanilla structures and fighting vanilla bosses.
+
+Once you have all the eyes, you have the choice to follow them until you reach an End Gate or to trade with a Cartographer to obtain a map to the End Castle.
+
+After reaching one of these structures, you will have to find the hidden portal room, and activate the portal by placing the 12 eyes inside the frames.
+'''
+[[dependencies.endrem]]
+    modId="forge"
+    mandatory=true
+    versionRange="[37,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.endrem]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.17.1,1.18)"
+    ordering="NONE"
+    side="BOTH"
