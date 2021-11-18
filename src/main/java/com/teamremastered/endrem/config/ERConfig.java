@@ -30,7 +30,7 @@ public class ERConfig {
             "Sets the quantity of mobs in End Remastered Structures: \"peaceful\", \"easy\", \"normal\" or \"hard\"",
             "normal");
 
-    public static ERConfigList WHITELISTED_DIMENSIONS = new ERConfigList(
+    public static ERConfigListEntry WHITELISTED_DIMENSIONS = new ERConfigListEntry(
             "whitelisted_dimensions",
             "Comma-separated list of whitelisted dimensions for End Remastered Structures",
             "[minecraft:overwold]");

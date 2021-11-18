@@ -5,12 +5,12 @@ import com.teamremastered.endrem.EndRemastered;
 
 import java.util.ArrayList;
 
-public class ERConfigList extends ERConfigGenericEntry<String> {
-    public ERConfigList(String id, String comment, ArrayList<String> default_value) {
+public class ERConfigListEntry extends ERConfigGenericEntry<String> {
+    public ERConfigListEntry(String id, String comment, ArrayList<String> default_value) {
         super(id, comment, getStringFromList(default_value));
     }
 
-    public ERConfigList(String id, String comment, String default_value) {
+    public ERConfigListEntry(String id, String comment, String default_value) {
         super(id, comment, default_value);
     }
 
