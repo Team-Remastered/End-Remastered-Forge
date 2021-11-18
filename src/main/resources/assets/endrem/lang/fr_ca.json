@@ -1,0 +1,141 @@
+{
+    "item.endrem.old_eye": "Œil Antique",
+    "item.endrem.old_eye.description": "Selon les légendes, cet œil serait celui d'une ancienne créature mythique",
+
+    "item.endrem.rogue_eye": "Œil Rebel",
+    "item.endrem.rogue_eye.description": "Plusieurs racontent que cet œil serait à l'origine de la maîtrise de la redstone",
+
+    "item.endrem.nether_eye": "Œil du Nether",
+    "item.endrem.nether_eye.description": "Cet œil aurait été perdu par un démon lors de la bataille entre l'Aether et le Nether",
+
+    "item.endrem.cold_eye": "Œil Nordique",
+    "item.endrem.cold_eye.description": "Datant d'avant leur disparition, il serait l'une des dernières traces des Iceologers",
+
+    "item.endrem.magical_eye": "Œil Magique",
+    "item.endrem.magical_eye.description": "Les évocateurs n'ont aucuns pouvoirs sans cet œil",
+
+    "item.endrem.black_eye": "Œil Noir",
+    "item.endrem.black_eye.description": "Selon les contes de pirates, cet œil guiderait la légendaire Perle Noire à travers les 7 mers",
+
+    "item.endrem.lost_eye": "Œil Égaré",
+    "item.endrem.lost_eye.description": "Il est dit de cet œil qu'il aurait été créé par les forgerons du temps",
+
+    "item.endrem.wither_eye": "Œil du Wither",
+    "item.endrem.wither_eye.description": "A été témoin de la destruction des mondes",
+
+    "item.endrem.guardian_eye": "Œil du Gardien",
+    "item.endrem.guardian_eye.description": "Dans le reflet de cet œil, il est possible d'apercevoir les âmes des guerriers ayant péris dans les profondeurs des océans",
+
+    "item.endrem.witch_eye": "Œil de Sorcière",
+    "item.endrem.witch_eye.description": "Il est dit que cet œil a vu la conception de potions anciennes perdu dans le temps",
+
+    "item.endrem.end_crystal_eye": "Œil du Cristal de l'End",
+    "item.endrem.end_crystal_eye.description": "Selon les rumeurs, l'âme du Ender Dragon serait contenu dans cet œil",
+
+    "item.endrem.corrupted_eye": "Œil Corrompu",
+    "item.endrem.corrupted_eye.description": "Provenant d'un Roi avare ayant vécu dans la solitude, il est dit que son propriétaire connaîtra la richesse éternelle",
+
+    "item.endrem.end_crystal_fragment": "Framgment de Cristal de l'End",
+
+    "item.endrem.end_crystal_ingot": "Lingot de Cristal de l'End",
+
+    "item.endrem.witch_pupil": "Pupille de Sorcière",
+
+
+    "item.endrem.end_castle_disc": "Disque du Château de l'End",
+    "item.endrem.end_castle_disc.desc.sub": "Disque du Château de l'End",
+
+    "item.endrem.end_crystal_helmet": "Casque en Cristal de l'End",
+    "item.endrem.end_crystal_chestplate": "Plastron en Cristal de l'End",
+    "item.endrem.end_crystal_leggings": "Jambières en Cristal de l'End",
+    "item.endrem.end_crystal_boots": "Bottes en Cristal de l'End",
+    "item.endrem.armor.description.main": "Lorsque vous faites une attaque critique, vous obtenez 1 seconde de Régénération II",
+    "item.endrem.armor.description.shift": "Avec une armure complète en Cristal de l'End, l'effet est d'une de durée de 4 secondes",
+    "item.endrem.press_shift": "Appuyez sur MAJ pour plus de détails",
+
+    "item.endrem.end_crystal_hoe": "Houe en Cristal de l'End",
+    "item.endrem.end_crystal_axe": "Hache en Cristal de l'End",
+    "item.endrem.end_crystal_pickaxe": "Pioche en Cristal de l'End",
+    "item.endrem.end_crystal_shovel": "Pelle en Cristal de l'End",
+    "item.endrem.end_crystal_sword": "Épée en Cristal de l'End",
+
+    "item.endrem.end_castle_map": "Carte du Château de l'End",
+    "item.endrem.end_gate_map": "Carte de la Barrière de l'End",
+
+    "block.endrem.end_creator": "Créateur de l'End",
+    "block.endrem.end_creator_activated": "Créateur de l'End Alimenté",
+
+    "block.endrem.ancient_portal_frame": "Cadre de Portail Antique",
+    "block.endrem.end_crystal_ore": "Minerai de Cristal de l'End",
+    "block.endrem.end_crystal_block": "Bloc de Cristal de l'End",
+
+    "itemGroup.endremTab": "End Remasterisé",
+
+    "block.portal_open_sound": "Portail qui Ouvre",
+    "block.portal_open_sound.sub": "Portail qui Ouvre",
+
+    "item.endrem.end_castle_disc.desc": "Daserta - l'Ombre de la Fin",
+
+    "advancements.main.root.title": "Le Début d'une Aventure",
+    "advancements.main.root.description": "Obtenez votre premier œil",
+
+    "advancements.main.root.end_crystal_armor.title": "Couvrez-moi de Cristal de l'End",
+    "advancements.main.root.end_crystal_armor.description": "Obtenez une armure complète en Cristal de l'End",
+
+    "advancements.main.old_eye.title": "Chercheur de Trésors",
+    "advancements.main.old_eye.description": "Obtenez votre premier Œil Antique",
+
+    "advancements.main.rogue_eye.title": "Bienvenue dans la Jungle",
+    "advancements.main.rogue_eye.description": "Obtenez votre premier Œil Rebel",
+
+    "advancements.main.nether_eye.title": "Regard de Flamme",
+    "advancements.main.nether_eye.description": "Obtenez votre premier Œil du Nether",
+
+    "advancements.main.cold_eye.title": "Regard Glacial",
+    "advancements.main.cold_eye.description": "Obtenez votre premier Œil Nordique",
+
+    "advancements.main.corrupted_eye.title": "Couvrez-moi d'Émeraudes",
+    "advancements.main.corrupted_eye.description": "Obtenez votre premier Œil Corrompu",
+
+    "advancements.main.magical_eye.title": "Abracadabra",
+    "advancements.main.magical_eye.description": "Obtenez votre premier Œil Magique",
+
+    "advancements.main.black_eye.title": "Jack Sparrow",
+    "advancements.main.black_eye.description": "Obtenez votre premier Œil Noir",
+
+    "advancements.main.lost_eye.title": "Besoin d'une carte?",
+    "advancements.main.lost_eye.description": "Obtenez votre premier Œil Égaré",
+
+    "advancements.main.wither_eye.title": "Sombrez en Enfer",
+    "advancements.main.wither_eye.description": "Obtenez votre premier Œil du Wither",
+
+    "advancements.main.end_crystal_eye.title": "Limpide comme du cristal",
+    "advancements.main.end_crystal_eye.description": "Obtenez votre premier Œil du Cristal de l'End",
+
+    "advancements.main.guardian_eye.title": "Qui garde le temple à présent?",
+    "advancements.main.guardian_eye.description": "Obtenez votre premier Œil du Gardien",
+
+    "advancements.main.witch_eye.title": "Des bonbons ou un sort?",
+    "advancements.main.witch_eye.description": "Obtenez votre premier Œil de Sorcière",
+
+    "advancements.main.find_end_castle.title": "Une Aventure Périeuse",
+    "advancements.main.find_end_castle.description": "Trouvez le Château de l'End",
+
+    "endrem.config.enable_ender_eyes": "Œil de l'Ender par Défaut",
+    "endrem.config.enable_strongholds": "Stronghold par Défaut",
+    "endrem.config.enable_end_castle": "Château de l'End",
+    "endrem.config.end_castle_distance": "Distance du Château: %s",
+    "endrem.config.enable_end_gate": "Barrière de l'End",
+    "endrem.config.end_gate_distance": "Distance de la Barrière de l'End: %s",
+    "endrem.config.end_gate_size": "Taille de la Barrière de l'End: %s",
+    "endrem.config.structure_difficulty": "Difficulté des Monstres dans les Structures: ",
+    "endrem.config.structure_difficulty.no_mobs": "Passif",
+    "endrem.config.structure_difficulty.easy": "Facile",
+    "endrem.config.structure_difficulty.normal": "Normal",
+    "endrem.config.structure_difficulty.hard": "Difficile",
+    "endrem.config.structure_difficulty.nightmare": "Cauchemard",
+    "endrem.config.title": "Configuration de End Remasterisé",
+    "endrem.config.restart_message": "Vous devez redémarrer Minecraft après avoir modifier les distances",
+    "endrem.config.done_button": "Terminé",
+    "endrem.config.reset_button": "Réinitialiser la Configuration"
+}
