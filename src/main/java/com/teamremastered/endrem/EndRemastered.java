@@ -1,13 +1,20 @@
 package com.teamremastered.endrem;
 
 import com.teamremastered.endrem.config.ERConfig;
-import com.teamremastered.endrem.registers.RegistryHandler;
+import com.teamremastered.endrem.registers.ERBlocks;
+import com.teamremastered.endrem.registers.RegisterHandler;
+import com.teamremastered.endrem.world.gen.OreGenHandler;
 import net.minecraft.MethodsReturnNonnullByDefault;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.Tag;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -21,24 +28,24 @@ public class EndRemastered {
     public EndRemastered() {
         MinecraftForge.EVENT_BUS.register(this);
         ERConfig.load();
-        RegistryHandler.init();
-//        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+        RegisterHandler.init();
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
 //        StructureGenerator.init();
     }
 
-//    public static Tag<Block> END_CRYSTAL_GEN;
-//    private void setup(final FMLCommonSetupEvent event) {
-//        END_CRYSTAL_GEN = BlockTags.bind("endrem:end_crystal_gen");
-//        OreSpawnHandler.registerOres();
+    public static Tag<Block> END_CRYSTAL_GEN;
+    private void setup(final FMLCommonSetupEvent event) {
+        END_CRYSTAL_GEN = BlockTags.bind("endrem:end_crystal_gen");
+        OreGenHandler.initRegister();
 //        event.enqueueWork(StructureGenerator::setup);
-//    }
+    }
 
     @MethodsReturnNonnullByDefault
     public static final CreativeModeTab TAB = new CreativeModeTab("endremTab") {
         @Override
         public ItemStack makeIcon() {
             // TODO: Change tab icon for ER item
-            return new ItemStack(Items.GRANITE);
+            return new ItemStack(ERBlocks.ANCIENT_PORTAL_FRAME_ITEM.get());
         }
     };
 }
