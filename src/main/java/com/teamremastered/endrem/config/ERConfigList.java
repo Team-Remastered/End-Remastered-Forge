@@ -15,7 +15,15 @@ public class ERConfigList extends ERConfigGenericEntry<String> {
     }
 
     public ArrayList<String> getList() {
-        return getListFromString(this.get());
+        // Gets the raw string value
+        String str = this.get();
+
+        // If the string is too small or isn't formatted properly, return a default value and send an error message
+        if (str.length() < 2 || str.charAt(0) != '[' || str.charAt(str.length() - 1) != ']') {
+            EndRemastered.LOGGER.error(String.format("Invalid value for list: %s", str));
+            str = this.DEFAULT_VALUE;
+        }
+        return Lists.newArrayList(str.substring(1, str.length() - 1).split(",\\s*"));
     }
 
     public void set(ArrayList<String> value) {
@@ -24,13 +32,6 @@ public class ERConfigList extends ERConfigGenericEntry<String> {
 
     private static String getStringFromList(ArrayList<String> lst) {
         return "[" + String.join(", ", lst) + "]";
-    }
-
-    private static ArrayList<String> getListFromString(String str) {
-        if (str.length() < 2 || str.charAt(0) != '[' || str.charAt(str.length() - 1) != ']') {
-            EndRemastered.LOGGER.error(String.format("Invalid value for list: %s", str));
-        }
-        return Lists.newArrayList(str.substring(1, str.length() - 1).split(",\\s*"));
     }
 }
 
