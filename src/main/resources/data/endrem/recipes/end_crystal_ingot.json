@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "endrem:end_crystal_fragment"
+    },
+    {
+      "item": "endrem:end_crystal_fragment"
+    },
+    {
+      "item": "endrem:end_crystal_fragment"
+    },
+    {
+      "item": "endrem:end_crystal_fragment"
+    },
+    {
+      "item": "minecraft:ghast_tear"
+    },
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "minecraft:iron_ingot"
+    }
+
+  ],
+  "result": {
+    "item": "endrem:end_crystal_ingot"
+  }
+}

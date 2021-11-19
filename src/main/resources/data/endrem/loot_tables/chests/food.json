@@ -1,0 +1,36 @@
+{
+  "pools": [{
+    "name": "main",
+    "rolls": 10,
+    "entries": [
+      {
+        "type": "minecraft:item",
+        "weight": 5,
+        "functions": [{"function": "minecraft:set_count", "count": {"min": 1.0, "max": 3.0, "type": "minecraft:uniform"}}], "name": "minecraft:bread"
+      },
+      {
+        "type": "minecraft:item",
+        "weight": 10,
+        "functions": [{"function": "minecraft:set_count", "count": {"min": 1.0, "max": 3.0, "type": "minecraft:uniform"}}], "name": "minecraft:wheat"
+      },
+      {
+        "type": "minecraft:item",
+        "weight": 5,
+        "functions": [{"function": "minecraft:set_count", "count": {"min": 1.0, "max": 3.0, "type": "minecraft:uniform"}}], "name": "minecraft:potato"
+      },
+      {
+        "type": "minecraft:item",
+        "weight": 2,
+        "functions": [{"function": "minecraft:set_count", "count": {"min": 1.0, "max": 3.0, "type": "minecraft:uniform"}}], "name": "minecraft:poisonous_potato"
+      },
+      {
+        "type": "minecraft:item",
+        "weight": 2,
+        "functions": [{"function": "minecraft:set_count", "count": {"min": 1.0, "max": 3.0, "type": "minecraft:uniform"}}], "name": "minecraft:rabbit_stew"
+      },
+      {
+        "type": "empty", "weight": 10
+      }
+    ]
+  }]
+}

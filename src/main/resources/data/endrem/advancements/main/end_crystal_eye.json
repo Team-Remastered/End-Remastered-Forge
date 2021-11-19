@@ -1,0 +1,37 @@
+{
+  "parent": "endrem:main/root",
+  "display": {
+    "icon": {
+      "item": "endrem:end_crystal_eye"
+    },
+    "title": {
+      "translate": "advancements.main.end_crystal_eye.title"
+    },
+    "description": {
+      "translate": "advancements.main.end_crystal_eye.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "end_crystal_eye": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "endrem:end_crystal_eye"
+              ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "end_crystal_eye"
+    ]
+  ]
+}

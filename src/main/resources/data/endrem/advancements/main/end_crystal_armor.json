@@ -1,0 +1,48 @@
+{
+  "parent": "endrem:main/end_crystal_eye",
+  "display": {
+    "icon": {
+      "item": "endrem:end_crystal_chestplate",
+      "nbt": "{Damage:0}"
+    },
+    "title": {
+      "translate": "advancements.main.root.end_crystal_armor.title"
+    },
+    "description": {
+      "translate": "advancements.main.root.end_crystal_armor.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "rewards": {
+    "experience": 150
+  },
+  "criteria": {
+    "end_crystal_armor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [ "endrem:end_crystal_helmet" ]
+          },
+          {
+            "items": [ "endrem:end_crystal_chestplate" ]
+          },
+          {
+            "items": [ "endrem:end_crystal_leggings" ]
+          },
+          {
+            "items": [ "endrem:end_crystal_boots" ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "end_crystal_armor"
+    ]
+  ]
+}

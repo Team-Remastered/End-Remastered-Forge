@@ -1,0 +1,36 @@
+{
+  "pools": [{
+    "name": "main",
+    "rolls": 10,
+    "entries": [
+      {
+        "type": "minecraft:item",
+        "weight": 5,
+        "functions": [{"function": "minecraft:set_count", "count": {"min": 1.0, "max": 3.0, "type": "minecraft:uniform"}}], "name": "minecraft:bread"
+      },
+      {
+        "type": "minecraft:item",
+        "weight": 13,
+        "functions": [{"function": "minecraft:set_count", "count": {"min": 1.0, "max": 3.0, "type": "minecraft:uniform"}}], "name": "minecraft:charcoal"
+      },
+      {
+        "type": "minecraft:item",
+        "weight": 1,
+        "functions": [{"function": "minecraft:set_count", "count": {"min": 1.0, "max": 3.0, "type": "minecraft:uniform"}}], "name": "minecraft:iron_pickaxe"
+      },
+      {
+        "type": "minecraft:item",
+        "weight": 2,
+        "functions": [{"function": "minecraft:set_count", "count": {"min": 1.0, "max": 3.0, "type": "minecraft:uniform"}}], "name": "minecraft:leather"
+      },
+      {
+        "type": "minecraft:item",
+        "weight": 2,
+        "functions": [{"function": "minecraft:set_count", "count": {"min": 1.0, "max": 3.0, "type": "minecraft:uniform"}}], "name": "minecraft:name_tag"
+      },
+      {
+        "type": "empty", "weight": 8
+      }
+    ]
+  }]
+}

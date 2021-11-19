@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "witch_pupil": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "endrem:witch_pupil"
+              ]
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "endrem:witch_eye"
+    ]
+  },
+  "requirements": [
+    [
+      "witch_pupil"
+    ]
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "endrem:end_crystal_eye"
+    ]
+  },
+  "criteria": {
+    "has_end_crystal_fragment": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "endrem:end_crystal_fragment"
+              ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_end_crystal_fragment"
+    ]
+  ]
+}

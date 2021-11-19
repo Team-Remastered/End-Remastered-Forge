@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "endrem:end_crystal_block",
+    "endrem:end_crystal_ore"
+  ]
+}

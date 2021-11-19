@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "minecraft:diamond_axe"
+  },
+  "addition": {
+    "item": "endrem:end_crystal_ingot"
+  },
+  "result": {
+    "item": "endrem:end_crystal_axe"
+  }
+}

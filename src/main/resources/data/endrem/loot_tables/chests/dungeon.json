@@ -1,0 +1,46 @@
+{
+  "pools": [{
+    "name": "main",
+    "rolls": 4,
+    "entries": [
+      {
+        "type": "minecraft:item",
+        "weight": 5,
+        "functions": [{"function": "minecraft:set_count", "count": {"min": 1.0, "max": 3.0, "type": "minecraft:uniform"}}], "name": "minecraft:book"
+      },
+      {
+        "type": "minecraft:item",
+        "weight": 1,
+        "functions": [{"function": "minecraft:set_count", "count": {"min": 1.0, "max": 3.0, "type": "minecraft:uniform"}}], "name": "minecraft:enchanted_golden_apple"
+      },
+      {
+        "type": "minecraft:item",
+        "weight": 8,
+        "functions": [{"function": "minecraft:set_count", "count": {"min": 1.0, "max": 3.0, "type": "minecraft:uniform"}}], "name": "minecraft:diamond_horse_armor"
+      },
+      {
+        "type": "minecraft:item",
+        "weight": 8,
+        "functions": [{"function": "minecraft:set_count", "count": {"min": 1.0, "max": 3.0, "type": "minecraft:uniform"}}], "name": "minecraft:slime_ball"
+      },
+      {
+        "type": "minecraft:item",
+        "weight": 9,
+        "functions": [{"function": "minecraft:set_count", "count": {"min": 1.0, "max": 3.0, "type": "minecraft:uniform"}}], "name": "minecraft:saddle"
+      },
+      {
+        "type": "minecraft:item",
+        "weight": 10,
+        "functions": [{"function": "minecraft:set_count", "count": {"min": 1.0, "max": 3.0, "type": "minecraft:uniform"}}], "name": "minecraft:ender_eye"
+      },
+      {
+        "type": "minecraft:item",
+        "weight": 3,
+        "functions": [{"function": "minecraft:set_count", "count": {"min": 1.0, "max": 3.0, "type": "minecraft:uniform"}}], "name": "endrem:lost_eye"
+      },
+      {
+        "type": "empty", "weight": 10
+      }
+    ]
+  }]
+}

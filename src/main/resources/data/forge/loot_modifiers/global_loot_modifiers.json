@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "entries": [
+    "endrem:minecraft/inject/chests/abandoned_mineshaft",
+    "endrem:minecraft/inject/chests/buried_treasure",
+    "endrem:minecraft/inject/chests/desert_pyramid",
+    "endrem:minecraft/inject/chests/igloo_chest",
+    "endrem:minecraft/inject/chests/jungle_temple",
+    "endrem:minecraft/inject/chests/nether_bridge",
+    "endrem:minecraft/inject/chests/pillager_outpost",
+    "endrem:minecraft/inject/chests/shipwreck_treasure",
+    "endrem:minecraft/inject/chests/simple_dungeon",
+
+    "endrem:minecraft/inject/entities/evoker",
+    "endrem:minecraft/inject/entities/witch",
+    "endrem:minecraft/inject/entities/wither",
+    "endrem:minecraft/inject/entities/elder_guardian"
+  ]
+}

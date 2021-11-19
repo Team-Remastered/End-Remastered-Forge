@@ -1,0 +1,86 @@
+{
+  "pools": [{
+    "name": "main",
+    "rolls": 4,
+    "entries": [
+      {
+        "type": "minecraft:item",
+        "weight": 5,
+        "functions": [{"function": "minecraft:set_count", "count": {"min": 1.0, "max": 5.0, "type": "minecraft:uniform"}}], "name": "minecraft:experience_bottle"
+      },
+      {
+        "type": "minecraft:item",
+        "weight": 5,
+        "functions": [{"function": "minecraft:set_count", "count": {"min": 1.0, "max": 3.0, "type": "minecraft:uniform"}}], "name": "minecraft:diamond"
+      },
+      {
+        "type": "minecraft:item",
+        "weight": 6,
+        "functions": [{"function": "minecraft:set_count", "count": {"min": 1.0, "max": 4.0, "type": "minecraft:uniform"}}], "name": "minecraft:iron_ingot"
+      },
+      {
+        "type": "minecraft:item",
+        "weight": 9,
+        "functions": [{"function": "minecraft:set_count", "count": {"min": 2.0, "max": 5.0, "type": "minecraft:uniform"}}], "name": "minecraft:iron_nugget"
+      },
+      {
+        "type": "minecraft:item",
+        "weight": 5,
+        "functions": [{"function": "minecraft:enchant_with_levels", "levels": {"min": 15.0, "max": 20.0, "type": "minecraft:uniform"}, "treasure": true}], "name": "minecraft:iron_sword"
+      },
+      {
+        "type": "minecraft:item",
+        "weight": 2,
+        "functions": [{"function": "minecraft:enchant_with_levels", "levels": {"min": 15.0, "max": 20.0, "type": "minecraft:uniform"}, "treasure": true}], "name": "minecraft:diamond_axe"
+      },
+      {
+        "type": "minecraft:item",
+        "weight": 2,
+        "functions": [{"function": "minecraft:enchant_with_levels", "levels": {"min": 15.0, "max": 20.0, "type": "minecraft:uniform"}, "treasure": true}], "name": "minecraft:diamond_sword"
+      },
+      {
+        "type": "minecraft:item",
+        "weight": 5,
+        "functions": [{"function": "minecraft:enchant_with_levels", "levels": {"min": 15.0, "max": 20.0, "type": "minecraft:uniform"}, "treasure": true}], "name": "minecraft:iron_pickaxe"
+      },
+      {
+        "type": "minecraft:item",
+        "weight": 2,
+        "functions": [{"function": "minecraft:enchant_with_levels", "levels": {"min": 15.0, "max": 20.0, "type": "minecraft:uniform"}, "treasure": true}], "name": "minecraft:chainmail_leggings"
+      },
+      {
+        "type": "minecraft:item",
+        "weight": 5,
+        "functions": [{"function": "minecraft:enchant_with_levels", "levels": {"min": 15.0, "max": 20.0, "type": "minecraft:uniform"}, "treasure": true}], "name": "minecraft:iron_chestplate"
+      },
+      {
+        "type": "minecraft:item",
+        "weight": 2,
+        "functions": [{"function": "minecraft:enchant_with_levels", "levels": {"min": 15.0, "max": 20.0, "type": "minecraft:uniform"}, "treasure": true}], "name": "minecraft:diamond_chestplate"
+      },
+      {
+        "type": "minecraft:item",
+        "weight": 2,
+        "functions": [{"function": "minecraft:enchant_with_levels", "levels": {"min": 15.0, "max": 20.0, "type": "minecraft:uniform"}, "treasure": true}], "name": "minecraft:diamond_boots"
+      },
+      {
+        "type": "minecraft:item",
+        "weight": 5,
+        "functions": [{"function": "minecraft:enchant_with_levels", "levels": {"min": 15.0, "max": 20.0, "type": "minecraft:uniform"}, "treasure": true}], "name": "minecraft:chainmail_helmet"
+      },
+      {
+        "type": "minecraft:item",
+        "weight": 5,
+        "functions": [{"function": "minecraft:enchant_with_levels", "levels": {"min": 15.0, "max": 20.0, "type": "minecraft:uniform"}, "treasure": true}], "name": "minecraft:iron_helmet"
+      },
+      {
+        "type": "minecraft:item",
+        "weight": 2,
+        "functions": [{"function": "minecraft:enchant_with_levels", "levels": {"min": 15.0, "max": 20.0, "type": "minecraft:uniform"}, "treasure": true}], "name": "minecraft:diamond_helmet"
+      },
+      {
+        "type": "empty", "weight": 15
+      }
+    ]
+  }]
+}

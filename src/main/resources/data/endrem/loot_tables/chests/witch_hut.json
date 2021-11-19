@@ -1,0 +1,37 @@
+{
+  "pools": [{
+    "name": "main",
+    "rolls": 4,
+    "entries": [
+      {
+        "type": "minecraft:item",
+        "weight": 10,
+        "functions": [{"function": "minecraft:set_count", "count": {"min": 1.0, "max": 3.0, "type": "minecraft:uniform"}}], "name": "minecraft:apple"
+      },
+      {
+        "type": "minecraft:item",
+        "weight": 22,
+        "functions": [{"function": "minecraft:set_count", "count": {"min": 1.0, "max": 2.0, "type": "minecraft:uniform"}}], "name": "minecraft:redstone"
+      },
+      {
+        "type": "minecraft:item",
+        "weight": 22,
+        "functions": [{"function": "minecraft:set_count", "count": {"min": 1.0, "max": 7.0, "type": "minecraft:uniform"}}], "name": "minecraft:glowstone_dust"
+      },
+      {
+        "type": "minecraft:item",
+        "weight": 15,
+        "functions": [{"function": "minecraft:set_count", "count": {"min": 1.0, "max": 3.0, "type": "minecraft:uniform"}}], "name": "minecraft:glass_bottle"
+      },
+      {
+        "type": "minecraft:item",
+        "weight": 10,
+        "functions": [{"function": "minecraft:set_count", "count": {"min": 1.0, "max": 3.0, "type": "minecraft:uniform"}}], "name": "endrem:witch_pupil"
+      },
+      {
+        "type": "empty",
+        "weight": 20
+      }
+    ]
+  }]
+}

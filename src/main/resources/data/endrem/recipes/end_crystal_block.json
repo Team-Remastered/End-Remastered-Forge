@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "endrem:end_crystal_fragment"
+    }
+  },
+  "result": {
+    "item": "endrem:end_crystal_block"
+  }
+}
