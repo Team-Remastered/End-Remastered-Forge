@@ -126,7 +126,7 @@ public class EREnderEye extends Item {
                     EyeOfEnder eyeofenderentity = new EyeOfEnder(levelIn, playerIn.getX(), playerIn.getY(0.5D), playerIn.getZ());
                     eyeofenderentity.setItem(itemstack);
                     eyeofenderentity.signalTo(blockpos);
-//                    eyeofenderentity.surviveAfterDeath = true;
+                    eyeofenderentity.surviveAfterDeath = true;
 
                     levelIn.addFreshEntity(eyeofenderentity);
                     if (playerIn instanceof ServerPlayer) {
@@ -136,9 +136,9 @@ public class EREnderEye extends Item {
                     levelIn.playSound(null, playerIn.blockPosition(), SoundEvents.ENDER_EYE_LAUNCH, SoundSource.NEUTRAL, 0.5F, 0.4F / (levelIn.getRandom().nextFloat() * 0.4F + 0.8F));
                     levelIn.levelEvent(null, 1003, playerIn.blockPosition(), 0);
 
-//                    if (!playerIn.abilities.instabuild) {
-//                        itemstack.shrink(1);
-//                    }
+                    if (!playerIn.isCreative()) {
+                        itemstack.shrink(1);
+                    }
 
                     playerIn.awardStat(Stats.ITEM_USED.get(this));
                     playerIn.swing(handIn, true);
