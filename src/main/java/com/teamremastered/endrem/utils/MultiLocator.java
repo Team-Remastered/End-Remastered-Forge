@@ -1,6 +1,5 @@
 package com.teamremastered.endrem.utils;
 
-import com.teamremastered.endrem.EndRemastered;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -43,7 +42,7 @@ public class MultiLocator {
 
                     // Compare distance to previous minimum
                     if (structurePos != null) {
-                        int structureDistance = ERUtils.getDistance(structurePos, playerPos);
+                        int structureDistance = ERUtils.getBlockDistance(structurePos, playerPos);
                         // if distance is smaller or default value is unchanged, set as new minimum
                         if (shortestStructureDistance > structureDistance || shortestStructureDistance == -1) {
                             shortestStructureDistance = structureDistance;
