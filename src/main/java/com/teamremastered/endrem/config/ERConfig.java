@@ -35,6 +35,16 @@ public class ERConfig {
             "Comma-separated list of whitelisted dimensions for End Remastered Structures",
             "[minecraft:overwold]");
 
+    public static ERConfigListEntry EYE_STRUCTURE_LIST = new ERConfigListEntry(
+            "eye_structure_list",
+            "Comma-separated list of structures to locate with End Remastered eyes",
+            "[endrem:end_gate]");
+
+    public static ERConfigListEntry MAP_STRUCTURE_LIST = new ERConfigListEntry(
+            "map_structure_list",
+            "Comma-separated list of structures to locate with the End Remastered map",
+            "[endrem:end_castle]");
+
     static {
         init();
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, COMMON_CONFIG, EndRemastered.CONFIG_FILE);

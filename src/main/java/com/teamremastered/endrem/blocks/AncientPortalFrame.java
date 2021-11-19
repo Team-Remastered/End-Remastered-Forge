@@ -7,6 +7,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -44,19 +45,22 @@ public class AncientPortalFrame extends Block {
     private static BlockPattern PORTAL_SHAPE;
 
     public static BlockPattern getOrCreatePortalShape() {
-        // Filled Frame BlockState Predicate
-        BlockStatePredicate FILLED_FRAME = BlockStatePredicate
-                .forBlock(ERBlocks.ANCIENT_PORTAL_FRAME.get())
-                .where(EYE, Predicates.not(Predicates.equalTo(ERFrameProperties.EMPTY)));
-
         if (PORTAL_SHAPE == null) {
             PORTAL_SHAPE = BlockPatternBuilder.start()
                     .aisle("?vvv?", ">???<", ">???<", ">???<", "?^^^?")
                     .where('?', BlockInWorld.hasState(BlockStatePredicate.ANY))
-                    .where('^', BlockInWorld.hasState(FILLED_FRAME.where(FACING, Predicates.equalTo(Direction.SOUTH))))
-                    .where('>', BlockInWorld.hasState(FILLED_FRAME.where(FACING, Predicates.equalTo(Direction.WEST))))
-                    .where('v', BlockInWorld.hasState(FILLED_FRAME.where(FACING, Predicates.equalTo(Direction.NORTH))))
-                    .where('<', BlockInWorld.hasState(FILLED_FRAME.where(FACING, Predicates.equalTo(Direction.EAST))))
+                    .where('^', BlockInWorld.hasState(BlockStatePredicate.forBlock(ERBlocks.ANCIENT_PORTAL_FRAME.get())
+                            .where(EYE, Predicates.not(Predicates.equalTo(ERFrameProperties.EMPTY)))
+                            .where(FACING, Predicates.equalTo(Direction.SOUTH))))
+                    .where('>', BlockInWorld.hasState(BlockStatePredicate.forBlock(ERBlocks.ANCIENT_PORTAL_FRAME.get())
+                            .where(EYE, Predicates.not(Predicates.equalTo(ERFrameProperties.EMPTY)))
+                            .where(FACING, Predicates.equalTo(Direction.WEST))))
+                    .where('v', BlockInWorld.hasState(BlockStatePredicate.forBlock(ERBlocks.ANCIENT_PORTAL_FRAME.get())
+                            .where(EYE, Predicates.not(Predicates.equalTo(ERFrameProperties.EMPTY)))
+                            .where(FACING, Predicates.equalTo(Direction.NORTH))))
+                    .where('<', BlockInWorld.hasState(BlockStatePredicate.forBlock(ERBlocks.ANCIENT_PORTAL_FRAME.get())
+                            .where(EYE, Predicates.not(Predicates.equalTo(ERFrameProperties.EMPTY)))
+                            .where(FACING, Predicates.equalTo(Direction.EAST))))
                     .build();
         }
 
@@ -87,5 +91,20 @@ public class AncientPortalFrame extends Block {
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> stateBuilder) {
         stateBuilder.add(FACING, EYE);
+    }
+
+    // Verify if a given frame is already present in a certain range
+    public static boolean IsFrameAlreadyPresent(Level levelIn, BlockState frameState, BlockPos pos) {
+        for (BlockPos blockPosMutable :
+                BlockPos.betweenClosed(pos.offset(4, 0, 4), pos.offset(-4, 0, -4))) {
+
+            levelIn.getBlockState(blockPosMutable);
+            if(levelIn.getBlockState(blockPosMutable).getBlock() == ERBlocks.ANCIENT_PORTAL_FRAME.get()) {
+                if (levelIn.getBlockState(blockPosMutable).getValue(AncientPortalFrame.EYE) == frameState.getValue(AncientPortalFrame.EYE)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
