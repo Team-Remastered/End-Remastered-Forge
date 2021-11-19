@@ -1,5 +1,6 @@
 package com.teamremastered.endrem.utils;
 
+import com.teamremastered.endrem.EndRemastered;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;

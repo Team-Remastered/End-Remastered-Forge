@@ -45,6 +45,12 @@ public class ERConfig {
             "Comma-separated list of structures to locate with the End Remastered map",
             "[endrem:end_castle]");
 
+    public static ERConfigListEntry MAP_TRADE_VALUES = new ERConfigListEntry(
+            "map_trade_values",
+            "Values for the End Remastered map trade: [minPrice, maxPrice, expGiven]",
+            "[15, 30, 10]"
+    );
+
     static {
         init();
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, COMMON_CONFIG, EndRemastered.CONFIG_FILE);
