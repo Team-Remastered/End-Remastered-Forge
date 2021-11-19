@@ -44,15 +44,6 @@ public class EndCrystalArmor extends ArmorItem {
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag flagIn) {
         tooltip.add(new TranslatableComponent("item.endrem.armor.description.main"));
-        tooltip.add(Component.nullToEmpty(" "));
-
-        if (Screen.hasShiftDown()) {
-            tooltip.add(new TranslatableComponent("item.endrem.armor.description.shift"));
-        } else {
-            TranslatableComponent shiftMessage = new TranslatableComponent("item.endrem.press_shift");
-            shiftMessage.setStyle(Style.EMPTY.withColor(TextColor.parseColor("#5454fc")));
-            tooltip.add(shiftMessage);
-        }
     }
 
     @Override
