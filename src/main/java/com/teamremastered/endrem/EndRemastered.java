@@ -3,8 +3,7 @@ package com.teamremastered.endrem;
 import com.teamremastered.endrem.config.ERConfig;
 import com.teamremastered.endrem.registers.ERBlocks;
 import com.teamremastered.endrem.registers.RegisterHandler;
-import com.teamremastered.endrem.gen.OreGenHandler;
-import net.minecraft.MethodsReturnNonnullByDefault;
+import com.teamremastered.endrem.world.gen.OreGenHandler;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.Tag;
 import net.minecraft.world.item.CreativeModeTab;
@@ -17,6 +16,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.annotation.Nonnull;
 
 @Mod(EndRemastered.MOD_ID)
 public class EndRemastered {
@@ -33,17 +33,17 @@ public class EndRemastered {
     }
 
     public static Tag<Block> END_CRYSTAL_GEN;
+
     private void setup(final FMLCommonSetupEvent event) {
         END_CRYSTAL_GEN = BlockTags.bind("endrem:end_crystal_gen");
         OreGenHandler.initRegister();
 //        event.enqueueWork(StructureGenerator::setup);
     }
 
-    @MethodsReturnNonnullByDefault
     public static final CreativeModeTab TAB = new CreativeModeTab("endremTab") {
         @Override
+        @Nonnull
         public ItemStack makeIcon() {
-            // TODO: Change tab icon for ER item
             return new ItemStack(ERBlocks.ANCIENT_PORTAL_FRAME_ITEM.get());
         }
     };

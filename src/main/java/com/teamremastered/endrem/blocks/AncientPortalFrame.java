@@ -2,7 +2,6 @@ package com.teamremastered.endrem.blocks;
 
 import com.google.common.base.Predicates;
 import com.teamremastered.endrem.registers.ERBlocks;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -24,9 +23,9 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
+import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
-@MethodsReturnNonnullByDefault
 public class AncientPortalFrame extends Block {
     public static final EnumProperty<ERFrameProperties> EYE = EnumProperty.create("eye", ERFrameProperties.class);
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
@@ -81,6 +80,7 @@ public class AncientPortalFrame extends Block {
     }
 
     @ParametersAreNonnullByDefault
+    @Nonnull
     public VoxelShape getShape(BlockState state, BlockGetter blockReader, BlockPos pos, CollisionContext context) {
         return state.getValue(EYE) == ERFrameProperties.EMPTY ? BASE_SHAPE : FULL_SHAPE;
     }
@@ -99,7 +99,7 @@ public class AncientPortalFrame extends Block {
                 BlockPos.betweenClosed(pos.offset(4, 0, 4), pos.offset(-4, 0, -4))) {
 
             levelIn.getBlockState(blockPosMutable);
-            if(levelIn.getBlockState(blockPosMutable).getBlock() == ERBlocks.ANCIENT_PORTAL_FRAME.get()) {
+            if (levelIn.getBlockState(blockPosMutable).getBlock() == ERBlocks.ANCIENT_PORTAL_FRAME.get()) {
                 if (levelIn.getBlockState(blockPosMutable).getValue(AncientPortalFrame.EYE) == frameState.getValue(AncientPortalFrame.EYE)) {
                     return true;
                 }

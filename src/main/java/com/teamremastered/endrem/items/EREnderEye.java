@@ -52,7 +52,7 @@ public class EREnderEye extends Item {
         BlockPos blockpos = itemUse.getClickedPos();
         BlockState blockstate = level.getBlockState(blockpos);
 
-        boolean frameHasEye = false;
+        boolean frameHasEye;
 
         if (blockstate.is(ERBlocks.ANCIENT_PORTAL_FRAME.get())) {
             frameHasEye = blockstate.getValue(AncientPortalFrame.EYE) != ERFrameProperties.EMPTY;
