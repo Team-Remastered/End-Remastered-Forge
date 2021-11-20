@@ -1,4 +1,4 @@
-package com.teamremastered.endrem.gen;
+package com.teamremastered.endrem.world.gen;
 
 import com.teamremastered.endrem.EndRemastered;
 import com.teamremastered.endrem.registers.ERBlocks;
