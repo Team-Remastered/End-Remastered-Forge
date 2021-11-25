@@ -60,6 +60,31 @@ public class ERConfig {
             "Stats for End Remastered's End Crystal tools: [durability, speed, damage bonus]",
             "[1325, 10, 3]");
 
+    public static ERConfigGenericEntry<Integer> END_GATE_DISTANCE = new ERConfigGenericEntry<>(
+            "end_gate_distance",
+            "Average distance in chunks between End Gates (Set to 0 to disable)",
+            70
+    );
+
+    public static ERConfigGenericEntry<Integer> END_GATE_SIZE = new ERConfigGenericEntry<>(
+            "end_gate_size",
+            "Number of pieces generated in End Gates (Set to 0 to disable)",
+            20
+    );
+
+
+    public static ERConfigGenericEntry<Integer> END_CASTLE_DISTANCE = new ERConfigGenericEntry<>(
+            "end_castle_distance",
+            "Average distance in chunks between End Castles (Set to 0 to disable)",
+            70
+    );
+
+    public static ERConfigGenericEntry<Integer> ANCIENT_WITCH_HUT_DISTANCE = new ERConfigGenericEntry<>(
+            "ancient_witch_hut_distance",
+            "Average distance in chunks between Ancient Witch Huts (Set to 0 to disable)",
+            25
+    );
+
     static {
         init();
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, COMMON_CONFIG, EndRemastered.CONFIG_FILE);
