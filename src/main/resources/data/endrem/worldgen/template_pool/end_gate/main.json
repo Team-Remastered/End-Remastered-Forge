@@ -6,7 +6,7 @@
       "weight": 3,
       "element": {
         "location": "endrem:end_gate/main/chest_room",
-        "processors": "minecraft:empty",
+        "processors": "endrem:main",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -15,7 +15,7 @@
       "weight": 20,
       "element": {
         "location": "endrem:end_gate/main/corner_corridor_left",
-        "processors": "minecraft:empty",
+        "processors": "endrem:main",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -24,7 +24,7 @@
       "weight": 5,
       "element": {
         "location": "endrem:end_gate/main/corner_corridor_quad",
-        "processors": "minecraft:empty",
+        "processors": "endrem:main",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -33,7 +33,7 @@
       "weight": 5,
       "element": {
         "location": "endrem:end_gate/main/corridor_iron_door",
-        "processors": "minecraft:empty",
+        "processors": "endrem:main",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -42,7 +42,7 @@
       "weight": 3,
       "element": {
         "location": "endrem:end_gate/main/corridor_trapped",
-        "processors": "minecraft:empty",
+        "processors": "endrem:main",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -51,7 +51,7 @@
       "weight": 5,
       "element": {
         "location": "endrem:end_gate/main/corridor_wooden_door",
-        "processors": "minecraft:empty",
+        "processors": "endrem:main",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -60,7 +60,7 @@
       "weight": 3,
       "element": {
         "location": "endrem:end_gate/main/cult_room",
-        "processors": "minecraft:empty",
+        "processors": "endrem:main",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -69,7 +69,7 @@
       "weight": 4,
       "element": {
         "location": "endrem:end_gate/main/enchanting_room",
-        "processors": "minecraft:empty",
+        "processors": "endrem:main",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -78,7 +78,7 @@
       "weight": 1,
       "element": {
         "location": "endrem:end_gate/main/fountain",
-        "processors": "minecraft:empty",
+        "processors": "endrem:main",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -87,7 +87,7 @@
       "weight": 3,
       "element": {
         "location": "endrem:end_gate/main/large_quad",
-        "processors": "minecraft:empty",
+        "processors": "endrem:main",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -96,7 +96,7 @@
       "weight": 4,
       "element": {
         "location": "endrem:end_gate/main/library",
-        "processors": "minecraft:empty",
+        "processors": "endrem:main",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -105,7 +105,7 @@
       "weight": 3,
       "element": {
         "location": "endrem:end_gate/main/old_church",
-        "processors": "minecraft:empty",
+        "processors": "endrem:main",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -114,7 +114,7 @@
       "weight": 3,
       "element": {
         "location": "endrem:end_gate/main/prison",
-        "processors": "minecraft:empty",
+        "processors": "endrem:main",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -123,7 +123,7 @@
       "weight": 2,
       "element": {
         "location": "endrem:end_gate/main/stairs_up",
-        "processors": "minecraft:empty",
+        "processors": "endrem:main",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -132,7 +132,7 @@
       "weight": 9,
       "element": {
         "location": "endrem:end_gate/main/straight_corridor",
-        "processors": "minecraft:empty",
+        "processors": "endrem:main",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -141,7 +141,7 @@
       "weight": 9,
       "element": {
         "location": "endrem:end_gate/main/straight_corridor2",
-        "processors": "minecraft:empty",
+        "processors": "endrem:main",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -150,7 +150,7 @@
       "weight": 3,
       "element": {
         "location": "endrem:end_gate/main/straight_stairs",
-        "processors": "minecraft:empty",
+        "processors": "endrem:main",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }

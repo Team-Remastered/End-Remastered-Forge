@@ -5,6 +5,7 @@ import com.teamremastered.endrem.registers.ERBlocks;
 import com.teamremastered.endrem.registers.RegisterHandler;
 import com.teamremastered.endrem.world.gen.OreGenHandler;
 import com.teamremastered.endrem.world.structures.config.StructureGenerator;
+import com.teamremastered.endrem.world.structures.processors.ERProcessors;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.Tag;
 import net.minecraft.world.item.CreativeModeTab;
@@ -29,6 +30,7 @@ public class EndRemastered {
         MinecraftForge.EVENT_BUS.register(this);
         ERConfig.load();
         RegisterHandler.init();
+        ERProcessors.init();
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         StructureGenerator.init();
     }

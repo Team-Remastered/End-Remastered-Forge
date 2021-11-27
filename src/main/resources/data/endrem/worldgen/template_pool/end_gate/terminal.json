@@ -6,7 +6,7 @@
       "weight": 1,
       "element": {
         "location": "endrem:end_gate/terminal/terminal",
-        "processors": "minecraft:empty",
+        "processors": "endrem:main",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }

@@ -6,7 +6,7 @@
       "weight": 20,
       "element": {
         "location": "endrem:end_gate/corridors/straight_corridor",
-        "processors": "minecraft:empty",
+        "processors": "endrem:main",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -15,7 +15,7 @@
       "weight": 20,
       "element": {
         "location": "endrem:end_gate/corridors/straight_corridor2",
-        "processors": "minecraft:empty",
+        "processors": "endrem:main",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -24,7 +24,7 @@
       "weight": 30,
       "element": {
         "location": "endrem:end_gate/corridors/corner_corridor_left",
-        "processors": "minecraft:empty",
+        "processors": "endrem:main",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }

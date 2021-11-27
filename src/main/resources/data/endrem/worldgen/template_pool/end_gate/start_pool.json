@@ -6,7 +6,7 @@
       "weight": 1,
       "element": {
         "location": "endrem:end_gate/puzzles/end_gate",
-        "processors": "minecraft:empty",
+        "processors": "endrem:main",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
