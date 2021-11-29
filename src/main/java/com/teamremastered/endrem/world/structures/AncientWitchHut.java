@@ -20,6 +20,7 @@ import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.JigsawConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.structures.JigsawPlacement;
+import net.minecraft.world.level.levelgen.structure.NoiseAffectingStructureStart;
 import net.minecraft.world.level.levelgen.structure.PoolElementStructurePiece;
 import net.minecraft.world.level.levelgen.structure.StructureStart;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureManager;
@@ -47,7 +48,7 @@ public class AncientWitchHut extends StructureBase {
                 GenerationStep.Decoration.SURFACE_STRUCTURES
         );
         this.START_POOL = new ResourceLocation(EndRemastered.MOD_ID, "ancient_witch_hut/start_pool");
-        this.HEIGHT = -3;
+        this.HEIGHT = 0;
     }
 
     public static List<Biome.BiomeCategory> getValidBiomeCategories() {
@@ -66,7 +67,7 @@ public class AncientWitchHut extends StructureBase {
         return GenerationStep.Decoration.SURFACE_STRUCTURES;
     }
 
-    public class Start extends StructureStart<NoneFeatureConfiguration> {
+    public class Start extends NoiseAffectingStructureStart<NoneFeatureConfiguration> {
         public Start(StructureFeature<NoneFeatureConfiguration> structureIn, ChunkPos chunkPos, int referenceIn, long seedIn) {
             super(structureIn, chunkPos, referenceIn, seedIn);
         }
@@ -90,8 +91,7 @@ public class AncientWitchHut extends StructureBase {
                     true,
                     levelHeightAccessor
             );
-
-//            this.calculateBoundingBox();
+            this.getBoundingBox();
         }
     }
 }

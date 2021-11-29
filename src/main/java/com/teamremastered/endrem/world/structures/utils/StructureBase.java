@@ -31,7 +31,7 @@ public abstract class StructureBase extends StructureFeature<NoneFeatureConfigur
     }
 
     protected StructureBase(Codec<NoneFeatureConfiguration> codec, ERConfigGenericEntry<Integer> minSpawnDistanceIn, List<CustomMonsterSpawn> customMonsterSpawnListIn, GenerationStep.Decoration generationStageIn) {
-        this(codec, minSpawnDistanceIn.get() / 2, customMonsterSpawnListIn, generationStageIn);
+        this(codec, minSpawnDistanceIn.get(), customMonsterSpawnListIn, generationStageIn);
     }
 
     @Override

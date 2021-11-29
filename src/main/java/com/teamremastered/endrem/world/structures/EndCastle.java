@@ -17,6 +17,7 @@ import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+import net.minecraft.world.level.levelgen.structure.NoiseAffectingStructureStart;
 import net.minecraft.world.level.levelgen.structure.StructureStart;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureManager;
 
@@ -26,7 +27,7 @@ public class EndCastle extends StructureBase {
     public EndCastle(Codec<NoneFeatureConfiguration> codec) {
         super(codec,
                 // To Set Minimum Distance
-                ERConfig.END_CASTLE_DISTANCE,
+                ERConfig.END_CASTLE_SPAWN_DISTANCE,
                 // List Of Monster Spawns
                 ImmutableList.of(
                         new CustomMonsterSpawn(EntityType.PILLAGER, 30, 30, 35),
@@ -51,7 +52,7 @@ public class EndCastle extends StructureBase {
         return Start::new;
     }
 
-    public static class Start extends StructureStart<NoneFeatureConfiguration> {
+    public static class Start extends NoiseAffectingStructureStart<NoneFeatureConfiguration> {
         public Start(StructureFeature<NoneFeatureConfiguration> structureIn, ChunkPos chunkPos, int referenceIn, long seedIn) {
             super(structureIn, chunkPos, referenceIn, seedIn);
         }
@@ -69,7 +70,7 @@ public class EndCastle extends StructureBase {
             int surfaceY = chunkGenerator.getBaseHeight(x, z, Heightmap.Types.WORLD_SURFACE_WG, levelHeightAccessor);
             BlockPos genPosition = new BlockPos(x, surfaceY, z);
             EndCastlePieces.start(manager, genPosition, rotation,this.pieces);
-//            this.calculateBoundingBox();
+            this.getBoundingBox();
         }
     }
 }

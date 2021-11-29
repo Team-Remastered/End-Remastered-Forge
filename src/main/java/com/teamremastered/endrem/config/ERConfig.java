@@ -35,6 +35,16 @@ public class ERConfig {
             "Comma-separated list of whitelisted dimensions for End Remastered Structures",
             "[minecraft:overwold]");
 
+    public static ERConfigListEntry BLACKLISTED_END_GATE_BIOMES = new ERConfigListEntry(
+            "blacklisted_end_castle_biome",
+            "Comma-separated list of blacklisted biomes for the End Gate",
+            "[minecraft:ocean, minecraft:deep_ocean]");
+
+    public static ERConfigListEntry BLACKLISTED_END_CASTLE_BIOMES = new ERConfigListEntry(
+            "blacklisted_end_gate_biome",
+            "Comma-separated list of blacklisted biomes for the End Castle",
+            "[minecraft:ocean, minecraft:deep_ocean]");
+
     public static ERConfigListEntry EYE_STRUCTURE_LIST = new ERConfigListEntry(
             "eye_structure_list",
             "Comma-separated list of structures to locate with End Remastered eyes",
@@ -63,7 +73,13 @@ public class ERConfig {
     public static ERConfigGenericEntry<Integer> END_GATE_DISTANCE = new ERConfigGenericEntry<>(
             "end_gate_distance",
             "Average distance in chunks between End Gates (Set to 0 to disable)",
-            70
+            85
+    );
+
+    public static ERConfigGenericEntry<Integer> END_GATE_SPAWN_DISTANCE = new ERConfigGenericEntry<>(
+            "end_gate_spawn_distance",
+            "Minimum distance in chunks between End Gates and the spawn",
+            130
     );
 
     public static ERConfigGenericEntry<Integer> END_GATE_SIZE = new ERConfigGenericEntry<>(
@@ -76,7 +92,13 @@ public class ERConfig {
     public static ERConfigGenericEntry<Integer> END_CASTLE_DISTANCE = new ERConfigGenericEntry<>(
             "end_castle_distance",
             "Average distance in chunks between End Castles (Set to 0 to disable)",
-            70
+            100
+    );
+
+    public static ERConfigGenericEntry<Integer> END_CASTLE_SPAWN_DISTANCE = new ERConfigGenericEntry<>(
+            "end_castle_spawn_distance",
+            "Minimum distance in chunks between End Castles and the spawn",
+            312
     );
 
     public static ERConfigGenericEntry<Integer> ANCIENT_WITCH_HUT_DISTANCE = new ERConfigGenericEntry<>(

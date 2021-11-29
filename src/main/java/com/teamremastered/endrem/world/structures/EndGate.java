@@ -27,6 +27,7 @@ import net.minecraft.world.level.levelgen.feature.configurations.JigsawConfigura
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.StructureFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.structures.JigsawPlacement;
+import net.minecraft.world.level.levelgen.structure.NoiseAffectingStructureStart;
 import net.minecraft.world.level.levelgen.structure.PoolElementStructurePiece;
 import net.minecraft.world.level.levelgen.structure.StructureStart;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureManager;
@@ -42,7 +43,7 @@ public class EndGate extends StructureBase {
     public EndGate(Codec<NoneFeatureConfiguration> codec) {
         super(codec,
                 // To Set Minimum Distance
-                ERConfig.END_GATE_DISTANCE,
+                ERConfig.END_GATE_SPAWN_DISTANCE,
 
                 // List Of Monster Spawns
                 ImmutableList.of(
@@ -141,7 +142,7 @@ public class EndGate extends StructureBase {
         return null;
     }
 
-    public class Start extends StructureStart<NoneFeatureConfiguration> {
+    public class Start extends NoiseAffectingStructureStart<NoneFeatureConfiguration> {
         public Start(StructureFeature<NoneFeatureConfiguration> structureIn, ChunkPos chunkPos, int referenceIn, long seedIn) {
             super(structureIn, chunkPos, referenceIn, seedIn);
         }
@@ -165,8 +166,7 @@ public class EndGate extends StructureBase {
                     false,
                     levelHeightAccessor
             );
-
-//            this.calculateBoundingBox();
+            this.getBoundingBox();
         }
 
         public int getLocatedRoom() {
