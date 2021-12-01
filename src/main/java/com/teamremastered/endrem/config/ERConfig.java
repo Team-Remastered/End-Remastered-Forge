@@ -35,13 +35,13 @@ public class ERConfig {
             "Comma-separated list of whitelisted dimensions for End Remastered Structures",
             "[minecraft:overwold]");
 
-    public static ERConfigListEntry BLACKLISTED_END_GATE_BIOMES = new ERConfigListEntry(
-            "blacklisted_end_castle_biome",
+    public static ERConfigListEntry END_GATE_BLACKLISTED_BIOMES = new ERConfigListEntry(
+            "end_castle_blacklisted_biome",
             "Comma-separated list of blacklisted biomes for the End Gate",
             "[minecraft:ocean, minecraft:deep_ocean]");
 
-    public static ERConfigListEntry BLACKLISTED_END_CASTLE_BIOMES = new ERConfigListEntry(
-            "blacklisted_end_gate_biome",
+    public static ERConfigListEntry END_CASTLE_BLACKLISTED_BIOMES = new ERConfigListEntry(
+            "end_gate_blacklisted_biome",
             "Comma-separated list of blacklisted biomes for the End Castle",
             "[minecraft:ocean, minecraft:deep_ocean]");
 
@@ -98,7 +98,7 @@ public class ERConfig {
     public static ERConfigGenericEntry<Integer> END_CASTLE_SPAWN_DISTANCE = new ERConfigGenericEntry<>(
             "end_castle_spawn_distance",
             "Minimum distance in chunks between End Castles and the spawn",
-            312
+            188
     );
 
     public static ERConfigGenericEntry<Integer> ANCIENT_WITCH_HUT_DISTANCE = new ERConfigGenericEntry<>(
