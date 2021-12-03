@@ -19,6 +19,7 @@ import net.minecraft.world.level.levelgen.structure.TemplateStructurePiece;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureManager;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -50,21 +51,20 @@ public class EndCastlePieces {
 
     public static void start(StructureManager manager, BlockPos pos, Rotation rotation, List<StructurePiece> pieceList) {
         for (Map.Entry<ResourceLocation, BlockPos> entry : OFFSET.entrySet()) {
-            pieceList.add(new Piece(manager, entry.getKey(), entry.getValue().rotate(rotation).offset(pos.getX(), pos.getY(), pos.getZ()), rotation, 0));
+            pieceList.add(new Piece(manager, entry.getKey(), entry.getValue().rotate(rotation).offset(pos.getX(), pos.getY(), pos.getZ()), rotation));
         }
     }
 
     public static class Piece extends TemplateStructurePiece {
-        public Piece(StructureManager manager, ResourceLocation resourceLocationIn, BlockPos pos, Rotation rotationIn, int p_71248_) {
-            super(ERStructures.EC, 0, manager, resourceLocationIn, resourceLocationIn.toString(),makeSettings(rotationIn, resourceLocationIn), pos);
+        public Piece(StructureManager manager, ResourceLocation resourceLocationIn, BlockPos pos, Rotation rotationIn) {
+            super(ERStructures.EC, 0, manager, resourceLocationIn, resourceLocationIn.toString(), makeSettings(rotationIn, resourceLocationIn), pos);
 
         }
 
         public Piece(ServerLevel serverLevel, CompoundTag tagCompound) {
-            super(ERStructures.EC, tagCompound, serverLevel, (p_162451_) -> {
-                return makeSettings(Rotation.valueOf(tagCompound.getString("Rot")), p_162451_);
-                    });
-
+            super(ERStructures.EC, tagCompound, serverLevel, (p_162451_) ->
+                    makeSettings(Rotation.valueOf(tagCompound.getString("Rot")), p_162451_)
+            );
         }
 
         private static StructurePlaceSettings makeSettings(Rotation rotation, ResourceLocation resourceLocation) {
@@ -72,12 +72,14 @@ public class EndCastlePieces {
         }
 
         @Override
+        @ParametersAreNonnullByDefault
         protected void addAdditionalSaveData(ServerLevel serverLevel, CompoundTag tagCompound) {
             super.addAdditionalSaveData(serverLevel, tagCompound);
             tagCompound.putString("Rot", this.placeSettings.getRotation().name());  // or make rotation public
         }
 
         @Override
+        @ParametersAreNonnullByDefault
         protected void handleDataMarker(String chest, BlockPos pos, ServerLevelAccessor worldIn, Random rand, BoundingBox sbb) {
             ResourceLocation lootTable = new ResourceLocation(EndRemastered.MOD_ID, String.format("chests/%s", chest));
             worldIn.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);

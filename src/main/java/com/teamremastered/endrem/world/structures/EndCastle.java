@@ -5,6 +5,7 @@ import com.mojang.serialization.Codec;
 import com.teamremastered.endrem.config.ERConfig;
 import com.teamremastered.endrem.world.structures.utils.CustomMonsterSpawn;
 import com.teamremastered.endrem.world.structures.utils.StructureBase;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.world.entity.EntityType;
@@ -18,9 +19,9 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.structure.NoiseAffectingStructureStart;
-import net.minecraft.world.level.levelgen.structure.StructureStart;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureManager;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class EndCastle extends StructureBase {
@@ -48,6 +49,7 @@ public class EndCastle extends StructureBase {
     }
 
     @Override
+    @MethodsReturnNonnullByDefault
     public StructureFeature.StructureStartFactory<NoneFeatureConfiguration> getStartFactory() {
         return Start::new;
     }
@@ -58,6 +60,7 @@ public class EndCastle extends StructureBase {
         }
 
         @Override
+        @ParametersAreNonnullByDefault
         public void generatePieces(RegistryAccess registryAccess, ChunkGenerator chunkGenerator, StructureManager manager, ChunkPos chunkPos, Biome biomeIn, NoneFeatureConfiguration config, LevelHeightAccessor levelHeightAccessor) {
 
             Rotation rotation = Rotation.values()[this.random.nextInt(Rotation.values().length)];

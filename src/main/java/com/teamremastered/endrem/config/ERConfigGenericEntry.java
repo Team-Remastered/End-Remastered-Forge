@@ -23,7 +23,7 @@ public class ERConfigGenericEntry<T> {
         this.CONFIG_VALUE = builder.comment(this.COMMENT).define(this.ID, this.DEFAULT_VALUE);
     }
 
-    public T get() {
+    public T getRaw() {
         return this.CONFIG_VALUE.get();
     }
 

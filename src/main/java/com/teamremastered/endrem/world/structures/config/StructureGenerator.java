@@ -1,7 +1,6 @@
 package com.teamremastered.endrem.world.structures.config;
 
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
 import com.teamremastered.endrem.config.ERConfig;
 import com.teamremastered.endrem.world.structures.AncientWitchHut;
 import com.teamremastered.endrem.world.structures.EndCastle;
@@ -21,7 +20,6 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class StructureGenerator {
@@ -33,8 +31,6 @@ public class StructureGenerator {
         // The comments for BiomeLoadingEvent and StructureSpawnListGatherEvent says to do HIGH for additions.
         MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGH, StructureGenerator::biomeModification);
     }
-    public static List<String> whitelistedDimensions = Lists.newArrayList("minecraft:overworld");
-
     public static void setup() {
         ERStructures.setupStructures();
         ERStructures.registerAllPieces();
@@ -65,20 +61,19 @@ public class StructureGenerator {
     public static void biomeModification(final BiomeLoadingEvent event) {
         BiomeGenerationSettingsBuilder generation = event.getGeneration();
 
-        if (ERConfig.END_CASTLE_DISTANCE.get() > 0 && EndCastle.getValidBiomeCategories().contains(event.getCategory())) {
+        if (ERConfig.END_CASTLE_DISTANCE.getRaw() > 0 && EndCastle.getValidBiomeCategories().contains(event.getCategory())) {
             generation.getStructures().add(() -> (ERConfiguredStructures.CONFIGURED_END_CASTLE));
         }
-        if (ERConfig.END_GATE_DISTANCE.get() > 0 && EndGate.getValidBiomeCategories().contains(event.getCategory())) {
+        if (ERConfig.END_GATE_DISTANCE.getRaw() > 0 && EndGate.getValidBiomeCategories().contains(event.getCategory())) {
             generation.getStructures().add(() -> (ERConfiguredStructures.CONFIGURED_END_GATE));
         }
-        if (ERConfig.ANCIENT_WITCH_HUT_DISTANCE.get() > 0 && AncientWitchHut.getValidBiomeCategories().contains(event.getCategory())) {
+        if (ERConfig.ANCIENT_WITCH_HUT_DISTANCE.getRaw() > 0 && AncientWitchHut.getValidBiomeCategories().contains(event.getCategory())) {
             generation.getStructures().add(() -> (ERConfiguredStructures.CONFIGURED_ANCIENT_WITCH_HUT));
         }
     }
 
     public static void addDimensionalSpacing(final WorldEvent.Load event) {
-        if (event.getWorld() instanceof ServerLevel) {
-            ServerLevel serverLevel = (ServerLevel) event.getWorld();
+        if (event.getWorld() instanceof ServerLevel serverLevel) {
             Map<StructureFeature<?>, StructureFeatureConfiguration> tempMap = new HashMap<>(serverLevel.getChunkSource().generator.getSettings().structureConfig());
 
             // Prevent spawning our structure in Vanilla's superflat world
@@ -87,7 +82,7 @@ public class StructureGenerator {
                 return;
             }
             // Only add whitelisted dimensions
-            else if (!StructureGenerator.whitelistedDimensions.contains(serverLevel.dimension().location().toString())) {
+            else if (!ERConfig.WHITELISTED_DIMENSIONS.getList().contains(serverLevel.dimension().location().toString())) {
                 tempMap.keySet().remove(ERStructures.END_CASTLE.get());
                 tempMap.keySet().remove(ERStructures.END_GATE.get());
                 tempMap.keySet().remove(ERStructures.ANCIENT_WITCH_HUT.get());

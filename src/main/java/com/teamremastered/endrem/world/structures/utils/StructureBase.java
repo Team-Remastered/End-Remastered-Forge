@@ -12,7 +12,6 @@ import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.WorldgenRandom;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraftforge.common.ForgeConfigSpec;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
@@ -31,7 +30,7 @@ public abstract class StructureBase extends StructureFeature<NoneFeatureConfigur
     }
 
     protected StructureBase(Codec<NoneFeatureConfiguration> codec, ERConfigGenericEntry<Integer> minSpawnDistanceIn, List<CustomMonsterSpawn> customMonsterSpawnListIn, GenerationStep.Decoration generationStageIn) {
-        this(codec, minSpawnDistanceIn.get(), customMonsterSpawnListIn, generationStageIn);
+        this(codec, minSpawnDistanceIn.getRaw(), customMonsterSpawnListIn, generationStageIn);
     }
 
     @Override

@@ -155,7 +155,7 @@ public class EndGate extends StructureBase {
             JigsawPlacement.addPieces(
                     registryAccess,
                     new JigsawConfiguration(() -> registryAccess.registryOrThrow(Registry.TEMPLATE_POOL_REGISTRY).get(START_POOL),
-                            ERConfig.END_GATE_SIZE.get()),
+                            ERConfig.END_GATE_SIZE.getRaw()),
                     PoolElementStructurePiece::new,
                     chunkGenerator,
                     manager,

@@ -9,6 +9,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
+@SuppressWarnings("unused")
 @Mod.EventBusSubscriber(value = Dist.CLIENT, modid = EndRemastered.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ClientModEvents {
     @SubscribeEvent

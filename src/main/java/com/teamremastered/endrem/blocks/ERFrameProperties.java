@@ -46,6 +46,7 @@ public enum ERFrameProperties implements StringRepresentable {
 
         for (ERFrameProperties property : ERFrameProperties.values()) {
             // match the serialized name of the property to the item name of the eye
+            assert eye.getRegistryName() != null;
             if (property.toString().equals(eye.getRegistryName().toString().split(":")[1])) {
                 return property;
             }

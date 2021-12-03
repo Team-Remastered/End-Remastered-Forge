@@ -4,10 +4,7 @@ import com.teamremastered.endrem.EndRemastered;
 import com.teamremastered.endrem.config.ERConfig;
 import com.teamremastered.endrem.registers.ERItems;
 import net.minecraft.MethodsReturnNonnullByDefault;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Style;
-import net.minecraft.network.chat.TextColor;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -43,6 +40,7 @@ public class EndCrystalArmor extends ArmorItem {
     @ParametersAreNullableByDefault
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag flagIn) {
+        assert tooltip != null;
         tooltip.add(new TranslatableComponent("item.endrem.armor.description.main"));
     }
 

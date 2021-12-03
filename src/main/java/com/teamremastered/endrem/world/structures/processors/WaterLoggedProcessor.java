@@ -17,6 +17,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProc
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
@@ -56,6 +57,8 @@ public class WaterLoggedProcessor extends StructureProcessor {
             }
             return blockInfoGlobal;
         }
+
+        @Nonnull
         protected StructureProcessorType<?> getType() {
             return ERProcessors.WATERLOGGED_PROCESSOR;
         }

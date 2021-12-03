@@ -41,8 +41,8 @@ public class ERStructures {
         setupMapSpacingAndLand(
                 END_CASTLE.get(),
                 new StructureFeatureConfiguration(
-                        (ERConfig.END_CASTLE_DISTANCE.get()),
-                        (ERConfig.END_CASTLE_DISTANCE.get() - 30),
+                        (ERConfig.END_CASTLE_DISTANCE.getRaw()),
+                        (ERConfig.END_CASTLE_DISTANCE.getRaw() - 30),
                         487192276),
                 true);
 
@@ -50,8 +50,8 @@ public class ERStructures {
         setupMapSpacingAndLand(
                 END_GATE.get(),
                 new StructureFeatureConfiguration(
-                        (ERConfig.END_GATE_DISTANCE.get()),
-                        (ERConfig.END_GATE_DISTANCE.get() - 30),
+                        (ERConfig.END_GATE_DISTANCE.getRaw()),
+                        (ERConfig.END_GATE_DISTANCE.getRaw() - 30),
                         959834864),
                 false);
 
@@ -59,8 +59,8 @@ public class ERStructures {
         setupMapSpacingAndLand(
                 ANCIENT_WITCH_HUT.get(),
                 new StructureFeatureConfiguration(
-                        (ERConfig.ANCIENT_WITCH_HUT_DISTANCE.get()),
-                        (ERConfig.ANCIENT_WITCH_HUT_DISTANCE.get() - 5),
+                        (ERConfig.ANCIENT_WITCH_HUT_DISTANCE.getRaw()),
+                        (ERConfig.ANCIENT_WITCH_HUT_DISTANCE.getRaw() - 5),
                         324897233),
                 false);
     }

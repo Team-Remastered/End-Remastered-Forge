@@ -10,7 +10,7 @@ import java.util.List;
 public class CustomMonsterSpawn {
     private final int min;
     private final int max;
-    private final double factor = switch (ERConfig.MONSTER_DIFFICULTY.get()) {
+    private final double factor = switch (ERConfig.MONSTER_DIFFICULTY.getRaw()) {
         case "peaceful" -> 0;
         case "easy" -> 0.5;
         case "hard" -> 2;

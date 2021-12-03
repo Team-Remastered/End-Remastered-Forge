@@ -33,7 +33,7 @@ public class ERConfig {
     public static ERConfigListEntry WHITELISTED_DIMENSIONS = new ERConfigListEntry(
             "whitelisted_dimensions",
             "Comma-separated list of whitelisted dimensions for End Remastered Structures",
-            "[minecraft:overwold]");
+            "[minecraft:overworld]");
 
     public static ERConfigListEntry END_GATE_BLACKLISTED_BIOMES = new ERConfigListEntry(
             "end_castle_blacklisted_biome",

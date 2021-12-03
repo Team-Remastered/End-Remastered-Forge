@@ -25,7 +25,6 @@ public class MultiLocator {
         // Temporary values
         int shortestStructureDistance = -1;
         BlockPos nearestStructurePos = null;
-        StructureFeature<?> nearestStructureFeature = null;
 
         for (String structureID : this.getStructureList()) {
             // Verify if structure mod is loaded
@@ -47,7 +46,6 @@ public class MultiLocator {
                         if (shortestStructureDistance > structureDistance || shortestStructureDistance == -1) {
                             shortestStructureDistance = structureDistance;
                             nearestStructurePos = structurePos;
-                            nearestStructureFeature = structureFeature;
                         }
                     }
 

@@ -45,6 +45,7 @@ public class AncientPortalFrame extends Block {
 
     public static BlockPattern getOrCreatePortalShape() {
         if (PORTAL_SHAPE == null) {
+            //noinspection Guava
             PORTAL_SHAPE = BlockPatternBuilder.start()
                     .aisle("?vvv?", ">???<", ">???<", ">???<", "?^^^?")
                     .where('?', BlockInWorld.hasState(BlockStatePredicate.ANY))

@@ -16,7 +16,7 @@ public class ERConfigListEntry extends ERConfigGenericEntry<String> {
 
     public ArrayList<String> getList() {
         // Gets the raw string value
-        String str = this.get();
+        String str = this.getRaw();
 
         // If the string is too small or isn't formatted properly, return a default value and send an error message
         if (str.length() < 2 || str.charAt(0) != '[' || str.charAt(str.length() - 1) != ']') {

@@ -21,12 +21,13 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.server.command.ConfigCommand;
 
+@SuppressWarnings("unused")
 @Mod.EventBusSubscriber
 public class ModEvents {
     // Enable/Disable placing of vanilla Ender Eyes depending on configuration
     @SubscribeEvent
     public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
-        if (event.isCancelable() && !ERConfig.USE_ENDER_EYES_ENABLED.get()) {
+        if (event.isCancelable() && !ERConfig.USE_ENDER_EYES_ENABLED.getRaw()) {
             if (event.getPlayer().getInventory().getSelected().getItem() instanceof EnderEyeItem) {
                 if (event.getWorld().getBlockState(event.getPos()).getBlock() == Blocks.END_PORTAL_FRAME) {
                     event.setCanceled(true);
@@ -38,7 +39,7 @@ public class ModEvents {
     // Enable/Disable throwing of vanilla Ender Eyes depending on configuration
     @SubscribeEvent
     public static void onRightClickItem(PlayerInteractEvent.RightClickItem event) {
-        if (event.isCancelable() && !ERConfig.USE_ENDER_EYES_ENABLED.get()) {
+        if (event.isCancelable() && !ERConfig.USE_ENDER_EYES_ENABLED.getRaw()) {
             if (event.getPlayer().getInventory().getSelected().getItem() instanceof EnderEyeItem) {
                 event.setCanceled(true);
             }
