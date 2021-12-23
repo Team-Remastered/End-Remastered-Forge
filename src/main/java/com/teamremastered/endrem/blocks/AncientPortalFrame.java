@@ -41,12 +41,12 @@ public class AncientPortalFrame extends Block {
     //   >            <
     //   >            <
     //     ^   ^   ^
-    private static BlockPattern PORTAL_SHAPE;
+    private static BlockPattern FILLED_PORTAL_SHAPE;
 
-    public static BlockPattern getOrCreatePortalShape() {
-        if (PORTAL_SHAPE == null) {
+    public static BlockPattern getOrCreateFilledPortalShape() {
+        if (FILLED_PORTAL_SHAPE == null) {
             //noinspection Guava
-            PORTAL_SHAPE = BlockPatternBuilder.start()
+            FILLED_PORTAL_SHAPE = BlockPatternBuilder.start()
                     .aisle("?vvv?", ">???<", ">???<", ">???<", "?^^^?")
                     .where('?', BlockInWorld.hasState(BlockStatePredicate.ANY))
                     .where('^', BlockInWorld.hasState(BlockStatePredicate.forBlock(ERBlocks.ANCIENT_PORTAL_FRAME.get())
@@ -64,7 +64,27 @@ public class AncientPortalFrame extends Block {
                     .build();
         }
 
-        return PORTAL_SHAPE;
+        return FILLED_PORTAL_SHAPE;
+    }
+
+    public static BlockPattern getOrCreateCustomPortalShape(ERFrameProperties eye) {
+        //noinspection Guava
+        return BlockPatternBuilder.start()
+                    .aisle("?vvv?", ">???<", ">???<", ">???<", "?^^^?")
+                    .where('?', BlockInWorld.hasState(BlockStatePredicate.ANY))
+                    .where('^', BlockInWorld.hasState(BlockStatePredicate.forBlock(ERBlocks.ANCIENT_PORTAL_FRAME.get())
+                            .where(EYE, Predicates.not(Predicates.equalTo(eye)))
+                            .where(FACING, Predicates.equalTo(Direction.SOUTH))))
+                    .where('>', BlockInWorld.hasState(BlockStatePredicate.forBlock(ERBlocks.ANCIENT_PORTAL_FRAME.get())
+                            .where(EYE, Predicates.not(Predicates.equalTo(eye)))
+                            .where(FACING, Predicates.equalTo(Direction.WEST))))
+                    .where('v', BlockInWorld.hasState(BlockStatePredicate.forBlock(ERBlocks.ANCIENT_PORTAL_FRAME.get())
+                            .where(EYE, Predicates.not(Predicates.equalTo(eye)))
+                            .where(FACING, Predicates.equalTo(Direction.NORTH))))
+                    .where('<', BlockInWorld.hasState(BlockStatePredicate.forBlock(ERBlocks.ANCIENT_PORTAL_FRAME.get())
+                            .where(EYE, Predicates.not(Predicates.equalTo(eye)))
+                            .where(FACING, Predicates.equalTo(Direction.EAST))))
+                    .build();
     }
 
     public AncientPortalFrame() {
@@ -86,6 +106,15 @@ public class AncientPortalFrame extends Block {
         return state.getValue(EYE) == ERFrameProperties.EMPTY ? BASE_SHAPE : FULL_SHAPE;
     }
 
+    public BlockState rotate(BlockState state, Rotation rot) {
+        return state.setValue(FACING, rot.rotate(state.getValue(FACING)));
+    }
+
+    public BlockState mirror(BlockState state, Mirror mirror) {
+        return state.rotate(mirror.getRotation(state.getValue(FACING)));
+    }
+
+
     public BlockState getStateForPlacement(BlockPlaceContext useContext) {
         return this.defaultBlockState().setValue(FACING, useContext.getHorizontalDirection().getOpposite());
     }
@@ -95,17 +124,8 @@ public class AncientPortalFrame extends Block {
     }
 
     // Verify if a given frame is already present in a certain range
-    public static boolean IsFrameAlreadyPresent(Level levelIn, BlockState frameState, BlockPos pos) {
-        for (BlockPos blockPosMutable :
-                BlockPos.betweenClosed(pos.offset(4, 0, 4), pos.offset(-4, 0, -4))) {
-
-            levelIn.getBlockState(blockPosMutable);
-            if (levelIn.getBlockState(blockPosMutable).getBlock() == ERBlocks.ANCIENT_PORTAL_FRAME.get()) {
-                if (levelIn.getBlockState(blockPosMutable).getValue(AncientPortalFrame.EYE) == frameState.getValue(AncientPortalFrame.EYE)) {
-                    return true;
-                }
-            }
-        }
-        return false;
+    public static boolean IsFrameAbsent(Level levelIn, BlockState frameState, BlockPos pos) {
+        BlockPattern.BlockPatternMatch blockpattern$patternhelper = getOrCreateCustomPortalShape(frameState.getValue(AncientPortalFrame.EYE)).find(levelIn, pos);
+        return blockpattern$patternhelper != null;
     }
 }

@@ -70,13 +70,13 @@ public class EREnderEye extends Item {
             newBlockState = newBlockState.setValue(HorizontalDirectionalBlock.FACING, blockstate.getValue(HorizontalDirectionalBlock.FACING));
             newBlockState = newBlockState.setValue(AncientPortalFrame.EYE, frameProperties);
 
-            if (!AncientPortalFrame.IsFrameAlreadyPresent(level, newBlockState, blockpos)) {
+            if (AncientPortalFrame.IsFrameAbsent(level, newBlockState, blockpos)) {
                 Block.pushEntitiesUp(blockstate, newBlockState, level, blockpos);
                 level.setBlock(blockpos, newBlockState, 2);
                 level.updateNeighbourForOutputSignal(blockpos, ERBlocks.ANCIENT_PORTAL_FRAME.get());
                 itemUse.getItemInHand().shrink(1);
                 level.levelEvent(1503, blockpos, 0);
-                BlockPattern.BlockPatternMatch blockpattern$patternhelper = AncientPortalFrame.getOrCreatePortalShape().find(level, blockpos);
+                BlockPattern.BlockPatternMatch blockpattern$patternhelper = AncientPortalFrame.getOrCreateFilledPortalShape().find(level, blockpos);
 
                 if (blockpattern$patternhelper != null) {
                     BlockPos blockpos1 = blockpattern$patternhelper.getFrontTopLeft().offset(-3, 0, -3);
