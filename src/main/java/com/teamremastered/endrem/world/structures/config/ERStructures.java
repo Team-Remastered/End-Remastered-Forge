@@ -46,7 +46,7 @@ public class ERStructures {
                         (ERConfig.END_CASTLE_DISTANCE.getRaw()),
                         (ERConfig.END_CASTLE_DISTANCE.getRaw() - 30),
                         487192276),
-                true);
+                false);
 
     /* End Gate */
         setupMapSpacingAndLand(

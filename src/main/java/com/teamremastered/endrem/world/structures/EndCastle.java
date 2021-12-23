@@ -11,18 +11,26 @@ import net.minecraft.core.RegistryAccess;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.LevelHeightAccessor;
+import net.minecraft.world.level.StructureFeatureManager;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
+import net.minecraft.world.level.levelgen.feature.WoodlandMansionFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.levelgen.structure.NoiseAffectingStructureStart;
+import net.minecraft.world.level.levelgen.structure.StructurePiece;
+import net.minecraft.world.level.levelgen.structure.StructureStart;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureManager;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
+import java.util.Random;
 
 public class EndCastle extends StructureBase {
     public EndCastle(Codec<NoneFeatureConfiguration> codec) {
@@ -54,7 +62,7 @@ public class EndCastle extends StructureBase {
         return Start::new;
     }
 
-    public static class Start extends NoiseAffectingStructureStart<NoneFeatureConfiguration> {
+    public static class Start extends StructureStart<NoneFeatureConfiguration> {
         public Start(StructureFeature<NoneFeatureConfiguration> structureIn, ChunkPos chunkPos, int referenceIn, long seedIn) {
             super(structureIn, chunkPos, referenceIn, seedIn);
         }
@@ -72,8 +80,36 @@ public class EndCastle extends StructureBase {
             // Finds the y value of the terrain at location.
             int surfaceY = chunkGenerator.getBaseHeight(x, z, Heightmap.Types.WORLD_SURFACE_WG, levelHeightAccessor);
             BlockPos genPosition = new BlockPos(x, surfaceY, z);
-            EndCastlePieces.start(manager, genPosition, rotation,this.pieces);
-            this.getBoundingBox();
+            EndCastlePieces.start(manager, genPosition, rotation, this.pieces);
+        }
+
+        public void placeInChunk(WorldGenLevel worldGenLevel, StructureFeatureManager featureManager, ChunkGenerator chunkGenerator, Random random, BoundingBox boundingBox, ChunkPos chunkPos) {
+            super.placeInChunk(worldGenLevel, featureManager, chunkGenerator, random, boundingBox, chunkPos);
+            BoundingBox boundingbox = this.getBoundingBox();
+            int i = boundingbox.minY();
+
+            for(int j = boundingBox.minX(); j <= boundingBox.maxX(); ++j) {
+                for(int k = boundingBox.minZ(); k <= boundingBox.maxZ(); ++k) {
+                    BlockPos blockpos = new BlockPos(j, i, k);
+                    if (!worldGenLevel.isEmptyBlock(blockpos) && boundingbox.isInside(blockpos) && this.isInsidePiece(blockpos)) {
+                        for(int l = i - 1; l > 1; --l) {
+                            int randomNum = (int) (Math.random() * 10);
+                            BlockPos blockpos1 = new BlockPos(j, l, k);
+                            if (!worldGenLevel.isEmptyBlock(blockpos1) && !worldGenLevel.getBlockState(blockpos1).getMaterial().isLiquid()) {
+                                break;
+                            }
+                            switch (randomNum) {
+                                case 0 -> worldGenLevel.setBlock(blockpos1, Blocks.COBBLESTONE.defaultBlockState(), 2);
+                                case 1 -> worldGenLevel.setBlock(blockpos1, Blocks.ANDESITE.defaultBlockState(), 2);
+                                case 2 -> worldGenLevel.setBlock(blockpos1, Blocks.GRAVEL.defaultBlockState(), 2);
+                                default -> worldGenLevel.setBlock(blockpos1, Blocks.POLISHED_ANDESITE.defaultBlockState(), 2);
+                            }
+                            System.out.println( "The random number is: " + randomNum);
+                        }
+                    }
+                }
+            }
+
         }
     }
 }
