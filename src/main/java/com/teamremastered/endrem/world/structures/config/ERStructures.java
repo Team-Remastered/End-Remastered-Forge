@@ -1,6 +1,8 @@
 package com.teamremastered.endrem.world.structures.config;
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import com.sun.jna.Structure;
 import com.teamremastered.endrem.EndRemastered;
 import com.teamremastered.endrem.config.ERConfig;
 import com.teamremastered.endrem.world.structures.AncientWitchHut;
@@ -70,6 +72,14 @@ public class ERStructures {
             boolean transformSurroundingLand)
     {
         StructureFeature.STRUCTURES_REGISTRY.put(structure.getRegistryName().toString(), structure);
+
+        if(transformSurroundingLand){
+            StructureFeature.NOISE_AFFECTING_FEATURES =
+                    ImmutableList.<StructureFeature<?>>builder()
+                            .addAll(StructureFeature.NOISE_AFFECTING_FEATURES)
+                            .add(structure)
+                            .build();
+        }
 
         StructureSettings.DEFAULTS =
                 ImmutableMap.<StructureFeature<?>, StructureFeatureConfiguration>builder()
