@@ -1,3 +1,12 @@
 {
-
+  "required": true,
+  "package": "com.teamremastered.endrem.mixin",
+  "compatibilityLevel": "JAVA_16",
+  "refmap": "endrem.refmap.json",
+  "mixins": [
+    "world.NoLakesInStructuresMixin",
+    "world.NoLavaInStructuresMixin",
+    "world.DisableStrongholdMixin"
+  ],
+  "minVersion": "0.8"
 }
