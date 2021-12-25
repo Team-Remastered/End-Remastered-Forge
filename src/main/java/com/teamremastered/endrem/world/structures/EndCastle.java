@@ -93,18 +93,18 @@ public class EndCastle extends StructureBase {
                     BlockPos blockpos = new BlockPos(j, i, k);
                     if (!worldGenLevel.isEmptyBlock(blockpos) && boundingbox.isInside(blockpos) && this.isInsidePiece(blockpos)) {
                         for(int l = i - 1; l > 1; --l) {
-                            int randomNum = (int) (Math.random() * 10);
                             BlockPos blockpos1 = new BlockPos(j, l, k);
                             if (!worldGenLevel.isEmptyBlock(blockpos1) && !worldGenLevel.getBlockState(blockpos1).getMaterial().isLiquid()) {
                                 break;
                             }
-                            switch (randomNum) {
-                                case 0 -> worldGenLevel.setBlock(blockpos1, Blocks.COBBLESTONE.defaultBlockState(), 2);
-                                case 1 -> worldGenLevel.setBlock(blockpos1, Blocks.ANDESITE.defaultBlockState(), 2);
-                                case 2 -> worldGenLevel.setBlock(blockpos1, Blocks.GRAVEL.defaultBlockState(), 2);
-                                default -> worldGenLevel.setBlock(blockpos1, Blocks.POLISHED_ANDESITE.defaultBlockState(), 2);
+                            double randomBlock = Math.random();
+                            if (randomBlock <= 0.1) {
+                                worldGenLevel.setBlock(blockpos1, Blocks.COBBLESTONE.defaultBlockState(), 2);
+                            } else if (randomBlock <= 0.2) {
+                                worldGenLevel.setBlock(blockpos1, Blocks.ANDESITE.defaultBlockState(), 2);
+                            } else if (randomBlock <= 0.3) {
+                                worldGenLevel.setBlock(blockpos1, Blocks.DEEPSLATE.defaultBlockState(), 2);
                             }
-                            System.out.println( "The random number is: " + randomNum);
                         }
                     }
                 }
