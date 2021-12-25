@@ -1,5 +1,6 @@
 package com.teamremastered.endrem.mixin.world;
 
+import com.teamremastered.endrem.config.ERConfig;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -11,6 +12,8 @@ public class DisableStrongholdMixin {
 
     @Inject(method = "generateStrongholds", at = @At(value = "HEAD"), cancellable = true)
     private void RemoveVanillaStronghold(CallbackInfo ci) {
-        ci.cancel();
+        if (!ERConfig.STRONGHOLDS_ENABLED.getRaw()) {
+            ci.cancel();
+        }
     }
 }
