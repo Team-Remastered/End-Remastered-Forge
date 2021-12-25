@@ -7,6 +7,8 @@ import com.teamremastered.endrem.registers.ERBlocks;
 import com.teamremastered.endrem.registers.RegisterHandler;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.client.particle.FireworkParticles;
+import net.minecraft.client.particle.Particle;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -76,7 +78,7 @@ public class EREnderEye extends Item {
                 level.updateNeighbourForOutputSignal(blockpos, ERBlocks.ANCIENT_PORTAL_FRAME.get());
                 itemUse.getItemInHand().shrink(1);
                 level.levelEvent(1503, blockpos, 0);
-                BlockPattern.BlockPatternMatch blockpattern$patternhelper = AncientPortalFrame.getOrCreateFilledPortalShape().find(level, blockpos);
+                BlockPattern.BlockPatternMatch blockpattern$patternhelper = AncientPortalFrame.getPortalShape(ERFrameProperties.EMPTY, true).find(level, blockpos);
 
                 if (blockpattern$patternhelper != null) {
                     BlockPos blockpos1 = blockpattern$patternhelper.getFrontTopLeft().offset(-3, 0, -3);
