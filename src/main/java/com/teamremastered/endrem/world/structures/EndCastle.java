@@ -20,11 +20,8 @@ import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
-import net.minecraft.world.level.levelgen.feature.WoodlandMansionFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.NoiseAffectingStructureStart;
-import net.minecraft.world.level.levelgen.structure.StructurePiece;
 import net.minecraft.world.level.levelgen.structure.StructureStart;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureManager;
 
@@ -88,11 +85,11 @@ public class EndCastle extends StructureBase {
             BoundingBox boundingbox = this.getBoundingBox();
             int i = boundingbox.minY();
 
-            for(int j = boundingBox.minX(); j <= boundingBox.maxX(); ++j) {
-                for(int k = boundingBox.minZ(); k <= boundingBox.maxZ(); ++k) {
+            for (int j = boundingBox.minX(); j <= boundingBox.maxX(); ++j) {
+                for (int k = boundingBox.minZ(); k <= boundingBox.maxZ(); ++k) {
                     BlockPos blockpos = new BlockPos(j, i, k);
                     if (!worldGenLevel.isEmptyBlock(blockpos) && boundingbox.isInside(blockpos) && this.isInsidePiece(blockpos)) {
-                        for(int l = i - 1; l > 1; --l) {
+                        for (int l = i - 1; l > 1; --l) {
                             BlockPos blockpos1 = new BlockPos(j, l, k);
                             if (!worldGenLevel.isEmptyBlock(blockpos1) && !worldGenLevel.getBlockState(blockpos1).getMaterial().isLiquid()) {
                                 break;
