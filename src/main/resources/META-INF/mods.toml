@@ -1,7 +1,7 @@
 modLoader="javafml"
 loaderVersion="[39,)"
 license="GNU LGPLv3"
-issueTrackerURL="http://gitlab.com/endrem/end-remastered/-/issues/"
+issueTrackerURL="https://github.com/Team-Remastered/End-Remastered-Forge/issues"
 [[mods]]
 modId="endrem"
 version="${file.jarVersion}"
