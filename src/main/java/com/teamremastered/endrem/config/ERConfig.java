@@ -36,24 +36,24 @@ public class ERConfig {
             "[minecraft:overworld]");
 
     public static ERConfigListEntry END_GATE_BLACKLISTED_BIOMES = new ERConfigListEntry(
-            "end_castle_blacklisted_biome",
+            "end_gate_blacklisted_biome",
             "Comma-separated list of blacklisted biomes for the End Gate",
             "[minecraft:ocean, minecraft:deep_ocean]");
 
     public static ERConfigListEntry END_GATE_WHITELISTED_BIOME_CATEGORIES = new ERConfigListEntry(
-            "end_castle_whitelisted_biome_categories",
+            "end_gate_whitelisted_biome_categories",
             "Comma-separated list of whitelisted biome categories for the End Gate",
-            "[]");
+            "[plains, jungle, taiga, forest, plains, extreme_hills, mesa, savanna, icy, desert, swamp, mushroom, none]");
 
     public static ERConfigListEntry END_CASTLE_BLACKLISTED_BIOMES = new ERConfigListEntry(
-            "end_gate_blacklisted_biome",
+            "end_castle_blacklisted_biome",
             "Comma-separated list of blacklisted biomes for the End Castle",
-            "[minecraft:ocean, minecraft:deep_ocean]");
+            "[minecraft:windswept_hills, minecraft:windswept_gravelly_hills, minecraft:windswept_forest, minecraft:windswept_savanna, minecraft:sparse_jungle, minecraft:grove, minecraft:snowy_slopes, minecraft:frozen_peaks, minecraft:jagged_peaks, minecraft:stony_peaks, minecraft:river, minecraft:frozen_river, minecraft:deep_ocean]");
 
     public static ERConfigListEntry END_CASTLE_WHITELISTED_BIOME_CATEGORIES = new ERConfigListEntry(
-            "end_gate_whitelisted_biome_categories",
+            "end_castle_whitelisted_biome_categories",
             "Comma-separated list of whitelisted biome categories for the End Castle",
-            "[]");
+            "[jungle, taiga, forest, none, plains, icy]");
 
     public static ERConfigListEntry EYE_STRUCTURE_LIST = new ERConfigListEntry(
             "eye_structure_list",
@@ -70,15 +70,15 @@ public class ERConfig {
             "Values for the End Remastered map trade: [minPrice, maxPrice, expGiven]",
             "[15, 30, 10]");
 
-    public static ERConfigGenericEntry<Boolean> ENABLE_CRYSTAL_ARMOR = new ERConfigGenericEntry<>(
-            "end_crystal_armor",
-            "Toggle End Remastered's End Crystal armor",
-            true);
-
-    public static ERConfigGenericEntry<Boolean> ENABLE_CRYSTAL_TOOLS = new ERConfigGenericEntry<>(
-            "end_crystal_tools",
-            "Toggle End Remastered's End Crystal tools",
-            true);
+//    public static ERConfigGenericEntry<Boolean> ENABLE_CRYSTAL_ARMOR = new ERConfigGenericEntry<>(
+//            "end_crystal_armor",
+//            "Toggle End Remastered's End Crystal armor",
+//            true);
+//
+//    public static ERConfigGenericEntry<Boolean> ENABLE_CRYSTAL_TOOLS = new ERConfigGenericEntry<>(
+//            "end_crystal_tools",
+//            "Toggle End Remastered's End Crystal tools",
+//            true);
 
     public static ERConfigListEntry END_CRYSTAL_ARMOR_STATS = new ERConfigListEntry(
             "end_crystal_armor_stats",

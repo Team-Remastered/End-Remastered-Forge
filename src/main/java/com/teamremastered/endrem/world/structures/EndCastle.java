@@ -26,6 +26,7 @@ import net.minecraft.world.level.levelgen.structure.StructureStart;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureManager;
 
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -47,10 +48,11 @@ public class EndCastle extends StructureBase {
     }
 
     public static List<Biome.BiomeCategory> getValidBiomeCategories() {
-        return ImmutableList.of(Biome.BiomeCategory.PLAINS,
-                Biome.BiomeCategory.JUNGLE,
-                Biome.BiomeCategory.TAIGA,
-                Biome.BiomeCategory.FOREST);
+        List<Biome.BiomeCategory> biomeCategories = new ArrayList<>();
+        for (String biomeName : ERConfig.END_CASTLE_WHITELISTED_BIOME_CATEGORIES.getList()) {
+            biomeCategories.add(Biome.BiomeCategory.byName(biomeName));
+        }
+        return biomeCategories;
     }
 
     @Override
