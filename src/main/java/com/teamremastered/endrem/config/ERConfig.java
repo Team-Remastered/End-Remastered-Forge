@@ -40,10 +40,20 @@ public class ERConfig {
             "Comma-separated list of blacklisted biomes for the End Gate",
             "[minecraft:ocean, minecraft:deep_ocean]");
 
+    public static ERConfigListEntry END_GATE_WHITELISTED_BIOME_CATEGORIES = new ERConfigListEntry(
+            "end_castle_whitelisted_biome_categories",
+            "Comma-separated list of whitelisted biome categories for the End Gate",
+            "[]");
+
     public static ERConfigListEntry END_CASTLE_BLACKLISTED_BIOMES = new ERConfigListEntry(
             "end_gate_blacklisted_biome",
             "Comma-separated list of blacklisted biomes for the End Castle",
             "[minecraft:ocean, minecraft:deep_ocean]");
+
+    public static ERConfigListEntry END_CASTLE_WHITELISTED_BIOME_CATEGORIES = new ERConfigListEntry(
+            "end_gate_whitelisted_biome_categories",
+            "Comma-separated list of whitelisted biome categories for the End Castle",
+            "[]");
 
     public static ERConfigListEntry EYE_STRUCTURE_LIST = new ERConfigListEntry(
             "eye_structure_list",
@@ -59,6 +69,16 @@ public class ERConfig {
             "map_trade_values",
             "Values for the End Remastered map trade: [minPrice, maxPrice, expGiven]",
             "[15, 30, 10]");
+
+    public static ERConfigGenericEntry<Boolean> ENABLE_CRYSTAL_ARMOR = new ERConfigGenericEntry<>(
+            "end_crystal_armor",
+            "Toggle End Remastered's End Crystal armor",
+            true);
+
+    public static ERConfigGenericEntry<Boolean> ENABLE_CRYSTAL_TOOLS = new ERConfigGenericEntry<>(
+            "end_crystal_tools",
+            "Toggle End Remastered's End Crystal tools",
+            true);
 
     public static ERConfigListEntry END_CRYSTAL_ARMOR_STATS = new ERConfigListEntry(
             "end_crystal_armor_stats",
@@ -100,6 +120,11 @@ public class ERConfig {
             "Minimum distance in chunks between End Castles and the spawn",
             188
     );
+
+    public static ERConfigGenericEntry<Boolean> END_CASTLE_TERRAFORMING = new ERConfigGenericEntry<>(
+            "end_castle_terraforming",
+            "Toggle Whether surrounding land will be modified to conform to the bottom of the structure. \n If set to false, the bottom of the structure will be modified to conform to the surrounding land",
+            true);
 
     public static ERConfigGenericEntry<Integer> ANCIENT_WITCH_HUT_DISTANCE = new ERConfigGenericEntry<>(
             "ancient_witch_hut_distance",
