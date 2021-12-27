@@ -39,12 +39,12 @@ public class EndCastlePieces {
 
     private static final Map<ResourceLocation, BlockPos> OFFSET = new ImmutableMap.Builder<ResourceLocation, BlockPos>()
             .put(BOTTOM_LEFT, new BlockPos(20, height, 24))
-            .put(MID_LEFT, new BlockPos(-25, height, 24))
             .put(TOP_LEFT, new BlockPos(-48, height, 24))
+            .put(MID_LEFT, new BlockPos(-25, height, 24))
             .put(BOTTOM_RIGHT, new BlockPos(20, height, -40))
-            .put(BOTTOM_MID, new BlockPos(41, height, 0))
-            .put(MID_RIGHT, new BlockPos(-24, height, -47))
             .put(TOP_RIGHT, new BlockPos(-48, height, -40))
+            .put(MID_RIGHT, new BlockPos(-24, height, -47))
+            .put(BOTTOM_MID, new BlockPos(41, height, 0))
             .put(TOP_MID, new BlockPos(-48, height, 0))
             .put(MID_MID, new BlockPos(0, height, 0))
             .build();
