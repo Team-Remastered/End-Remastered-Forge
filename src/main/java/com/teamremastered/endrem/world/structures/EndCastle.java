@@ -9,10 +9,7 @@ import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.LevelHeightAccessor;
-import net.minecraft.world.level.StructureFeatureManager;
-import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Rotation;
@@ -43,7 +40,7 @@ public class EndCastle extends StructureBase {
                         new CustomMonsterSpawn(EntityType.ILLUSIONER, 5, 5, 10)
                 ),
                 // Decoration Stage
-                GenerationStep.Decoration.SURFACE_STRUCTURES
+                GenerationStep.Decoration.UNDERGROUND_DECORATION //Underground decoration so ore and features don't spawn in the castle
         );
     }
 
@@ -69,12 +66,27 @@ public class EndCastle extends StructureBase {
         @Override
         @ParametersAreNonnullByDefault
         public void generatePieces(RegistryAccess registryAccess, ChunkGenerator chunkGenerator, StructureManager manager, ChunkPos chunkPos, Biome biomeIn, NoneFeatureConfiguration config, LevelHeightAccessor levelHeightAccessor) {
-
             Rotation rotation = Rotation.values()[this.random.nextInt(Rotation.values().length)];
-
             // Turns the chunk coordinates into actual coordinates we can use. (Gets center of that chunk)
-            int x = (chunkPos.x << 4) + 7;
-            int z = (chunkPos.z << 4) + 7;
+            int x = (chunkPos.x << 4);
+            int z = (chunkPos.z << 4);
+
+            if (rotation == Rotation.CLOCKWISE_90) {
+                x += 17;
+                z += 43;
+            }
+            else if (rotation == Rotation.CLOCKWISE_180) {
+                x -= 43;
+                z += 17;
+            }
+            else if (rotation == Rotation.COUNTERCLOCKWISE_90) {
+                x -= 17;
+                z -= 43;
+            }
+            else {
+                x += 43;
+                z -= 17;
+            }
 
             // Finds the y value of the terrain at location.
             int surfaceY = chunkGenerator.getBaseHeight(x, z, Heightmap.Types.WORLD_SURFACE_WG, levelHeightAccessor);
