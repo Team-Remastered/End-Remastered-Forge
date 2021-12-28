@@ -48,7 +48,7 @@ public class ERConfig {
     public static ERConfigListEntry END_CASTLE_BLACKLISTED_BIOMES = new ERConfigListEntry(
             "end_castle_blacklisted_biome",
             "Comma-separated list of blacklisted biomes for the End Castle",
-            "[minecraft:windswept_hills, minecraft:windswept_gravelly_hills, minecraft:windswept_forest, minecraft:windswept_savanna, minecraft:sparse_jungle, minecraft:grove, minecraft:snowy_slopes, minecraft:frozen_peaks, minecraft:jagged_peaks, minecraft:stony_peaks, minecraft:river, minecraft:frozen_river, minecraft:deep_ocean]");
+            "[minecraft:bamboo_jungle_hills, minecraft:birch_forest_hills, minecraft:dark_forest_hills, minecraft:giant_spruce_taiga_hills, minecraft:giant_tree_taiga_hills, minecraft:gravelly_mountains, minecraft:jungle_edge, minecraft:jungle_hills, minecraft:modified_gravelly_mountains, minecraft:modified_jungle_edge, minecraft:mountain_edge, minecraft:mountains, minecraft:snowy_mountains, minecraft:snowy_taiga_hills, minecraft:snowy_taiga_mountains, minecraft:taiga_hills, minecraft:taiga_mountains, minecraft:tall_birch_hills, minecraft:wooded_hills, minecraft:wooded_mountains, minecraft:savanna_plateau, minecraft:shattered_savanna_plateau]");
 
     public static ERConfigListEntry END_CASTLE_WHITELISTED_BIOME_CATEGORIES = new ERConfigListEntry(
             "end_castle_whitelisted_biome_categories",
