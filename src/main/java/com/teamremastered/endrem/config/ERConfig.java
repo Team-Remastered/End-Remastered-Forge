@@ -70,16 +70,6 @@ public class ERConfig {
             "Values for the End Remastered map trade: [minPrice, maxPrice, expGiven]",
             "[15, 30, 10]");
 
-//    public static ERConfigGenericEntry<Boolean> ENABLE_CRYSTAL_ARMOR = new ERConfigGenericEntry<>(
-//            "end_crystal_armor",
-//            "Toggle End Remastered's End Crystal armor",
-//            true);
-//
-//    public static ERConfigGenericEntry<Boolean> ENABLE_CRYSTAL_TOOLS = new ERConfigGenericEntry<>(
-//            "end_crystal_tools",
-//            "Toggle End Remastered's End Crystal tools",
-//            true);
-
     public static ERConfigListEntry END_CRYSTAL_ARMOR_STATS = new ERConfigListEntry(
             "end_crystal_armor_stats",
             "Stats for End Remastered's End Crystal armor: [durability factor, defense factor, toughness, knockback resistance, makes piglins neutrals, regen duration (in ticks)]",
