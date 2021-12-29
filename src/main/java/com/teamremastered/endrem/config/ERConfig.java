@@ -36,14 +36,24 @@ public class ERConfig {
             "[minecraft:overworld]");
 
     public static ERConfigListEntry END_GATE_BLACKLISTED_BIOMES = new ERConfigListEntry(
-            "end_castle_blacklisted_biome",
+            "end_gate_blacklisted_biome",
             "Comma-separated list of blacklisted biomes for the End Gate",
             "[minecraft:ocean, minecraft:deep_ocean]");
 
+    public static ERConfigListEntry END_GATE_WHITELISTED_BIOME_CATEGORIES = new ERConfigListEntry(
+            "end_gate_whitelisted_biome_categories",
+            "Comma-separated list of whitelisted biome categories for the End Gate",
+            "[plains, jungle, taiga, forest, plains, extreme_hills, mesa, savanna, icy, desert, swamp, mushroom, none]");
+
     public static ERConfigListEntry END_CASTLE_BLACKLISTED_BIOMES = new ERConfigListEntry(
-            "end_gate_blacklisted_biome",
+            "end_castle_blacklisted_biome",
             "Comma-separated list of blacklisted biomes for the End Castle",
-            "[minecraft:ocean, minecraft:deep_ocean]");
+            "[minecraft:bamboo_jungle_hills, minecraft:birch_forest_hills, minecraft:dark_forest_hills, minecraft:giant_spruce_taiga_hills, minecraft:giant_tree_taiga_hills, minecraft:gravelly_mountains, minecraft:jungle_edge, minecraft:jungle_hills, minecraft:modified_gravelly_mountains, minecraft:modified_jungle_edge, minecraft:mountain_edge, minecraft:mountains, minecraft:snowy_mountains, minecraft:snowy_taiga_hills, minecraft:snowy_taiga_mountains, minecraft:taiga_hills, minecraft:taiga_mountains, minecraft:tall_birch_hills, minecraft:wooded_hills, minecraft:wooded_mountains, minecraft:savanna_plateau, minecraft:shattered_savanna_plateau]");
+
+    public static ERConfigListEntry END_CASTLE_WHITELISTED_BIOME_CATEGORIES = new ERConfigListEntry(
+            "end_castle_whitelisted_biome_categories",
+            "Comma-separated list of whitelisted biome categories for the End Castle",
+            "[jungle, taiga, forest, none, plains, icy]");
 
     public static ERConfigListEntry EYE_STRUCTURE_LIST = new ERConfigListEntry(
             "eye_structure_list",
@@ -100,6 +110,11 @@ public class ERConfig {
             "Minimum distance in chunks between End Castles and the spawn",
             188
     );
+
+    public static ERConfigGenericEntry<Boolean> END_CASTLE_TERRAFORMING = new ERConfigGenericEntry<>(
+            "end_castle_terraforming",
+            "Toggle Whether surrounding land will be modified to conform to the bottom of the structure. \n If set to false, the bottom of the structure will be modified to conform to the surrounding land",
+            true);
 
     public static ERConfigGenericEntry<Integer> ANCIENT_WITCH_HUT_DISTANCE = new ERConfigGenericEntry<>(
             "ancient_witch_hut_distance",

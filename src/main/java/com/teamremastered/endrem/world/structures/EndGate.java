@@ -33,6 +33,7 @@ import net.minecraft.world.level.levelgen.structure.StructureStart;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureManager;
 
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -61,18 +62,11 @@ public class EndGate extends StructureBase {
     }
 
     public static List<Biome.BiomeCategory> getValidBiomeCategories() {
-        return ImmutableList.of(
-                Biome.BiomeCategory.PLAINS,
-                Biome.BiomeCategory.JUNGLE,
-                Biome.BiomeCategory.EXTREME_HILLS,
-                Biome.BiomeCategory.TAIGA,
-                Biome.BiomeCategory.MESA,
-                Biome.BiomeCategory.SAVANNA,
-                Biome.BiomeCategory.ICY,
-                Biome.BiomeCategory.DESERT,
-                Biome.BiomeCategory.SWAMP,
-                Biome.BiomeCategory.MUSHROOM,
-                Biome.BiomeCategory.FOREST);
+        List<Biome.BiomeCategory> biomeCategories = new ArrayList<>();
+        for (String biomeName : ERConfig.END_GATE_WHITELISTED_BIOME_CATEGORIES.getList()) {
+            biomeCategories.add(Biome.BiomeCategory.byName(biomeName));
+        }
+        return biomeCategories;
     }
 
     @Override

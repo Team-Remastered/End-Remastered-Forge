@@ -1,9 +1,9 @@
 package com.teamremastered.endrem.utils;
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.levelgen.feature.StructureFeature;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.gen.feature.structure.Structure;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -21,7 +21,7 @@ public class MultiLocator {
         return this.STRUCTURE_LIST_SUPPLIER.get();
     }
 
-    public BlockPos getNearestPosition(ServerLevel serverLevel, BlockPos playerPos) {
+    public BlockPos getNearestPosition(ServerWorld serverLevel, BlockPos playerPos) {
         // Temporary values
         int shortestStructureDistance = -1;
         BlockPos nearestStructurePos = null;
@@ -35,7 +35,7 @@ public class MultiLocator {
                 ResourceLocation structureResourceLocation = new ResourceLocation(structureID);
                 if (ForgeRegistries.STRUCTURE_FEATURES.containsKey(structureResourceLocation)) {
                     // Get distance from player
-                    StructureFeature<?> structureFeature = ForgeRegistries.STRUCTURE_FEATURES.getValue(structureResourceLocation);
+                    Structure<?> structureFeature = ForgeRegistries.STRUCTURE_FEATURES.getValue(structureResourceLocation);
                     assert structureFeature != null;
                     BlockPos structurePos = serverLevel.getChunkSource().getGenerator().findNearestMapFeature(serverLevel, structureFeature, playerPos, 100, false);
 

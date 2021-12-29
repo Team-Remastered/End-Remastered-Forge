@@ -1,13 +1,13 @@
 package com.teamremastered.endrem.utils;
 
 import com.google.gson.JsonObject;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.minecraft.item.ItemStack;
+import net.minecraft.loot.LootContext;
+import net.minecraft.loot.LootParameterSets;
+import net.minecraft.loot.LootTable;
+import net.minecraft.loot.conditions.ILootCondition;
+import net.minecraft.util.JSONUtils;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.common.loot.LootModifier;
 
@@ -18,7 +18,7 @@ public class LootInjector {
     public static class LootInjectionModifier extends LootModifier {
         private final ResourceLocation table;
 
-        protected LootInjectionModifier(LootItemCondition[] conditionsIn, ResourceLocation tableIn) {
+        protected LootInjectionModifier(ILootCondition[] conditionsIn, ResourceLocation tableIn) {
             super(conditionsIn);
             table = tableIn;
         }
@@ -28,15 +28,15 @@ public class LootInjector {
         protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
             LootContext.Builder builder = (new LootContext.Builder(context.getLevel()).withRandom(context.getRandom()));
             LootTable lootTable = context.getLevel().getServer().getLootTables().get(table);
-            generatedLoot.addAll(lootTable.getRandomItems(builder.create(LootContextParamSets.EMPTY)));
+            generatedLoot.addAll(lootTable.getRandomItems(builder.create(LootParameterSets.EMPTY)));
             return generatedLoot;
         }
     }
 
     public static class Serializer extends GlobalLootModifierSerializer<LootInjectionModifier> {
         @Override
-        public LootInjectionModifier read(ResourceLocation location, JsonObject object, LootItemCondition[] aiLootCondition) {
-            return new LootInjectionModifier(aiLootCondition, new ResourceLocation(GsonHelper.getAsString(object, "injection")));
+        public LootInjectionModifier read(ResourceLocation location, JsonObject object, ILootCondition[] aiLootCondition) {
+            return new LootInjectionModifier(aiLootCondition, new ResourceLocation(JSONUtils.getAsString(object, "injection")));
         }
         @Override
         public JsonObject write(LootInjectionModifier instance) {

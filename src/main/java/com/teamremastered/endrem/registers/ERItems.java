@@ -4,10 +4,9 @@ import com.teamremastered.endrem.EndRemastered;
 import com.teamremastered.endrem.items.EREnderEye;
 import com.teamremastered.endrem.items.EndCrystalArmor;
 import com.teamremastered.endrem.items.EndCrystalTools;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.Item;
+import net.minecraft.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fmllegacy.RegistryObject;
+import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 

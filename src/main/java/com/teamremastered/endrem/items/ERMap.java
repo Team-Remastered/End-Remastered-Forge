@@ -2,17 +2,17 @@ package com.teamremastered.endrem.items;
 
 import com.teamremastered.endrem.config.ERConfig;
 import com.teamremastered.endrem.registers.RegisterHandler;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.npc.VillagerTrades;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.MapItem;
-import net.minecraft.world.item.trading.MerchantOffer;
-import net.minecraft.world.level.saveddata.maps.MapDecoration;
-import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.merchant.villager.VillagerTrades;
+import net.minecraft.item.FilledMapItem;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.item.MerchantOffer;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.storage.MapData;
+import net.minecraft.world.storage.MapDecoration;
 
 import javax.annotation.Nonnull;
 import java.util.Random;
@@ -30,28 +30,28 @@ public class ERMap {
         return Integer.parseInt(ERConfig.MAP_TRADE_VALUES.getList().get(2));
     }
 
-    public static ItemStack createMap(ServerLevel serverLevel, BlockPos playerPosition) {
+    public static ItemStack createMap(ServerWorld serverLevel, BlockPos playerPosition) {
         // Get position of marker
         BlockPos structurePos = RegisterHandler.MAP_ML.getNearestPosition(serverLevel, playerPosition);
 
         // Create map
-        ItemStack stack = MapItem.create(serverLevel, structurePos.getX(), structurePos.getZ(), (byte) 2 , true, true);
-        MapItem.renderBiomePreviewMap(serverLevel, stack);
-        MapItemSavedData.addTargetDecoration(stack, structurePos, "+", MapDecoration.Type.TARGET_X);
+        ItemStack stack = FilledMapItem.create(serverLevel, structurePos.getX(), structurePos.getZ(), (byte) 2 , true, true);
+        FilledMapItem.renderBiomePreviewMap(serverLevel, stack);
+        MapData.addTargetDecoration(stack, structurePos, "+", MapDecoration.Type.TARGET_X);
 
         // Set the name of the map
-        stack.setHoverName(Component.nullToEmpty("End Remastered Map"));
+        stack.setHoverName(ITextComponent.nullToEmpty("End Remastered Map"));
 
         return stack;
     }
 
-    public static class ERMapTrade implements VillagerTrades.ItemListing {
+    public static class ERMapTrade implements VillagerTrades.ITrade {
 
         @Override
         public MerchantOffer getOffer(@Nonnull Entity entity, Random random){
             int priceEmeralds = random.nextInt(getMaxPrice() - getMinPrice() + 1) + getMinPrice();
             if (!entity.level.isClientSide()) {
-                ItemStack map = createMap((ServerLevel) entity.level, entity.blockPosition());
+                ItemStack map = createMap((ServerWorld) entity.level, entity.blockPosition());
                 return new MerchantOffer(new ItemStack(Items.EMERALD, priceEmeralds), new ItemStack(Items.COMPASS), map, 12, getEXP(), 0.2F);
             }
             return null;

@@ -2,15 +2,13 @@ package com.teamremastered.endrem.events;
 
 import com.teamremastered.endrem.commands.GetEndremMapCommand;
 import com.teamremastered.endrem.config.ERConfig;
-import com.teamremastered.endrem.items.ERMap;
-import com.teamremastered.endrem.items.EndCrystalArmor;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.entity.npc.VillagerProfession;
-import net.minecraft.world.item.EnderEyeItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.block.Blocks;
+import net.minecraft.entity.EntityClassification;
+import net.minecraft.entity.merchant.villager.VillagerProfession;
+import net.minecraft.item.EnderEyeItem;
+import net.minecraft.item.ItemStack;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.entity.player.CriticalHitEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -82,8 +80,8 @@ public class ModEvents {
 
             // Duration in ticks, 1 second = 20 ticks
             duration *= MULTIPLIER;
-            if (duration > 0 && event.getTarget().getType().getCategory() == MobCategory.MONSTER) {
-                event.getPlayer().addEffect(new MobEffectInstance(MobEffects.REGENERATION, duration, 1));
+            if (duration > 0 && event.getTarget().getType().getCategory() == EntityClassification.MONSTER) {
+                event.getPlayer().addEffect(new EffectInstance(Effects.REGENERATION, duration, 1));
             }
         }
     }

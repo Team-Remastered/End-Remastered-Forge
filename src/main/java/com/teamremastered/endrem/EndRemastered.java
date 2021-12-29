@@ -1,16 +1,12 @@
 package com.teamremastered.endrem;
 
 import com.teamremastered.endrem.config.ERConfig;
-import com.teamremastered.endrem.registers.ERBlocks;
-import com.teamremastered.endrem.registers.RegisterHandler;
-import com.teamremastered.endrem.world.gen.OreGenHandler;
 import com.teamremastered.endrem.world.structures.config.StructureGenerator;
-import com.teamremastered.endrem.world.structures.processors.ERProcessors;
+import net.minecraft.block.Block;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.Tag;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Block;
+import net.minecraft.tags.ITag;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -35,7 +31,7 @@ public class EndRemastered {
         StructureGenerator.init();
     }
 
-    public static Tag<Block> END_CRYSTAL_GEN;
+    public static ITag<Block> END_CRYSTAL_GEN;
 
     private void setup(final FMLCommonSetupEvent event) {
         END_CRYSTAL_GEN = BlockTags.bind("endrem:end_crystal_gen");
@@ -43,7 +39,7 @@ public class EndRemastered {
         event.enqueueWork(StructureGenerator::setup);
     }
 
-    public static final CreativeModeTab TAB = new CreativeModeTab("endremTab") {
+    public static final ItemGroup TAB = new ItemGroup("endremTab") {
         @Override
         @Nonnull
         public ItemStack makeIcon() {

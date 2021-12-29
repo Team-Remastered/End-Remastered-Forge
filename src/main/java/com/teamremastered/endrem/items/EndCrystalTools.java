@@ -3,12 +3,12 @@ package com.teamremastered.endrem.items;
 import com.teamremastered.endrem.EndRemastered;
 import com.teamremastered.endrem.config.ERConfig;
 import com.teamremastered.endrem.registers.ERItems;
-import net.minecraft.MethodsReturnNonnullByDefault;
-import net.minecraft.world.item.*;
-import net.minecraft.world.item.crafting.Ingredient;
+import mcp.MethodsReturnNonnullByDefault;
+import net.minecraft.item.*;
+import net.minecraft.item.crafting.Ingredient;
 
 public class EndCrystalTools {
-    private final static Tier END_CRYSTAL_MATERIAL = new EndCrystalMaterial();
+    private final static IItemTier END_CRYSTAL_MATERIAL = new EndCrystalMaterial();
     private final static Item.Properties BASE_ITEM_PROPERTIES = new Item.Properties().tab(EndRemastered.TAB);
 
     public static class Sword extends SwordItem {
@@ -48,7 +48,7 @@ public class EndCrystalTools {
     }
 
     @MethodsReturnNonnullByDefault
-    public static class EndCrystalMaterial implements Tier {
+    public static class EndCrystalMaterial implements IItemTier {
         public int getUses() {
             return (int) Float.parseFloat(ERConfig.END_CRYSTAL_TOOLS_STATS.getList().get(0));
         }

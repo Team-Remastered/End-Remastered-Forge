@@ -1,7 +1,7 @@
 package com.teamremastered.endrem.utils;
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.ChunkPos;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ChunkPos;
 
 public class ERUtils {
     public static int getBlockDistance(BlockPos pos1, BlockPos pos2) {

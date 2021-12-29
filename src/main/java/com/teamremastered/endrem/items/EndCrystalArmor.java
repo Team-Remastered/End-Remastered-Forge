@@ -2,18 +2,18 @@ package com.teamremastered.endrem.items;
 
 import com.teamremastered.endrem.EndRemastered;
 import com.teamremastered.endrem.config.ERConfig;
-import com.teamremastered.endrem.registers.ERItems;
-import net.minecraft.MethodsReturnNonnullByDefault;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.*;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.Level;
+import mcp.MethodsReturnNonnullByDefault;
+import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.*;
+import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.util.SoundEvent;
+import net.minecraft.util.SoundEvents;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -22,14 +22,14 @@ import javax.annotation.ParametersAreNullableByDefault;
 import java.util.List;
 
 public class EndCrystalArmor extends ArmorItem {
-    public EndCrystalArmor(EquipmentSlot slot) {
+    public EndCrystalArmor(EquipmentSlotType slot) {
         super(new EndCrystalArmorMaterial(), slot, new Item.Properties().tab(EndRemastered.TAB).rarity(Rarity.UNCOMMON));
     }
 
     @Nullable
     @Override
-    public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String type) {
-        int layer = slot == EquipmentSlot.LEGS ? 2 : 1;
+    public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlotType slot, String type) {
+        int layer = slot == EquipmentSlotType.LEGS ? 2 : 1;
 
         if ("overlay".equals(type))
             return EndRemastered.MOD_ID + ":textures/models/armor/all_layer_" + layer + "_overlay.png";
@@ -39,9 +39,9 @@ public class EndCrystalArmor extends ArmorItem {
 
     @ParametersAreNullableByDefault
     @OnlyIn(Dist.CLIENT)
-    public void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag flagIn) {
+    public void appendHoverText(ItemStack stack, World level, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         assert tooltip != null;
-        tooltip.add(new TranslatableComponent("item.endrem.armor.description.main"));
+        tooltip.add(new TranslationTextComponent("item.endrem.armor.description.main"));
     }
 
     @Override
@@ -50,14 +50,14 @@ public class EndCrystalArmor extends ArmorItem {
     }
 
     @MethodsReturnNonnullByDefault
-    private static class EndCrystalArmorMaterial implements ArmorMaterial {
+    private static class EndCrystalArmorMaterial implements IArmorMaterial {
 
-        public int getDurabilityForSlot(EquipmentSlot slotIn) {
+        public int getDurabilityForSlot(EquipmentSlotType slotIn) {
             double factor = Double.parseDouble(ERConfig.END_CRYSTAL_ARMOR_STATS.getList().get(0));
             return (int) (new int[]{13, 15, 16, 11}[slotIn.getIndex()] * factor);
         }
 
-        public int getDefenseForSlot(EquipmentSlot slotIn) {
+        public int getDefenseForSlot(EquipmentSlotType slotIn) {
             double factor = Double.parseDouble(ERConfig.END_CRYSTAL_ARMOR_STATS.getList().get(1));
             return (int) (new int[]{3, 6, 8, 3}[slotIn.getIndex()] * factor);
         }

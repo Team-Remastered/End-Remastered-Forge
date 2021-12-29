@@ -5,33 +5,29 @@ import com.teamremastered.endrem.blocks.AncientPortalFrame;
 import com.teamremastered.endrem.blocks.ERFrameProperties;
 import com.teamremastered.endrem.registers.ERBlocks;
 import com.teamremastered.endrem.registers.RegisterHandler;
-import net.minecraft.MethodsReturnNonnullByDefault;
+import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.HorizontalBlock;
+import net.minecraft.block.pattern.BlockPattern;
+import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.item.ItemEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.entity.projectile.EyeOfEnderEntity;
+import net.minecraft.item.*;
+import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.EyeOfEnder;
-import net.minecraft.world.item.*;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.ClipContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.HorizontalDirectionalBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.pattern.BlockPattern;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.util.*;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.util.math.RayTraceContext;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -47,10 +43,10 @@ public class EREnderEye extends Item {
 
     @Override
     @ParametersAreNonnullByDefault
-    public InteractionResult useOn(UseOnContext itemUse) {
-        Level level = itemUse.getLevel();
+    public ActionResultType useOn(ItemUseContext itemUse) {
+        World world = itemUse.getLevel();
         BlockPos blockpos = itemUse.getClickedPos();
-        BlockState blockstate = level.getBlockState(blockpos);
+        BlockState blockstate = world.getBlockState(blockpos);
 
         boolean frameHasEye;
 
@@ -59,82 +55,82 @@ public class EREnderEye extends Item {
         } else if (blockstate.is(Blocks.END_PORTAL_FRAME)) {
             frameHasEye = blockstate.getValue(BlockStateProperties.EYE);
         } else {
-            return InteractionResult.PASS;
+            return ActionResultType.PASS;
         }
 
-        if (level.isClientSide) {
-            return InteractionResult.SUCCESS;
+        if (world.isClientSide) {
+            return ActionResultType.SUCCESS;
         } else if (!frameHasEye) {
             ERFrameProperties frameProperties = ERFrameProperties.getFramePropertyFromEye(itemUse.getItemInHand().getItem());
             BlockState newBlockState = ERBlocks.ANCIENT_PORTAL_FRAME.get().defaultBlockState();
-            newBlockState = newBlockState.setValue(HorizontalDirectionalBlock.FACING, blockstate.getValue(HorizontalDirectionalBlock.FACING));
+            newBlockState = newBlockState.setValue(HorizontalBlock.FACING, blockstate.getValue(HorizontalBlock.FACING));
             newBlockState = newBlockState.setValue(AncientPortalFrame.EYE, frameProperties);
 
-            if (AncientPortalFrame.IsFrameAbsent(level, newBlockState, blockpos)) {
-                Block.pushEntitiesUp(blockstate, newBlockState, level, blockpos);
-                level.setBlock(blockpos, newBlockState, 2);
-                level.updateNeighbourForOutputSignal(blockpos, ERBlocks.ANCIENT_PORTAL_FRAME.get());
+            if (AncientPortalFrame.IsFrameAbsent(world, newBlockState, blockpos)) {
+                Block.pushEntitiesUp(blockstate, newBlockState, world, blockpos);
+                world.setBlock(blockpos, newBlockState, 2);
+                world.updateNeighbourForOutputSignal(blockpos, ERBlocks.ANCIENT_PORTAL_FRAME.get());
                 itemUse.getItemInHand().shrink(1);
-                level.levelEvent(1503, blockpos, 0);
-                BlockPattern.BlockPatternMatch blockpattern$patternhelper = AncientPortalFrame.getOrCreateFilledPortalShape().find(level, blockpos);
+                world.levelEvent(1503, blockpos, 0);
+                BlockPattern.PatternHelper blockpattern$patternhelper = AncientPortalFrame.getPortalShape(ERFrameProperties.EMPTY, true).find(world, blockpos);
 
                 if (blockpattern$patternhelper != null) {
                     BlockPos blockpos1 = blockpattern$patternhelper.getFrontTopLeft().offset(-3, 0, -3);
 
                     for (int i = 0; i < 3; ++i) {
                         for (int j = 0; j < 3; ++j) {
-                            level.setBlock(blockpos1.offset(i, 0, j), Blocks.END_PORTAL.defaultBlockState(), 2);
+                            world.setBlock(blockpos1.offset(i, 0, j), Blocks.END_PORTAL.defaultBlockState(), 2);
                         }
                     }
 
-                    level.globalLevelEvent(1038, blockpos1.offset(1, 0, 1), 0);
+                    world.globalLevelEvent(1038, blockpos1.offset(1, 0, 1), 0);
                 }
-                return InteractionResult.CONSUME;
+                return ActionResultType.CONSUME;
             }
-            return InteractionResult.PASS;
+            return ActionResultType.PASS;
         } else if (blockstate.is(Blocks.END_PORTAL_FRAME)) {
             BlockState newBlockState = blockstate.setValue(BlockStateProperties.EYE, false);
-            level.setBlock(blockpos, newBlockState, 2);
-            level.addFreshEntity(new ItemEntity(level, blockpos.getX(), blockpos.getY() + 1, blockpos.getZ(), new ItemStack(Items.ENDER_EYE)));
-            return InteractionResult.SUCCESS;
+            world.setBlock(blockpos, newBlockState, 2);
+            world.addFreshEntity(new ItemEntity(world, blockpos.getX(), blockpos.getY() + 1, blockpos.getZ(), new ItemStack(Items.ENDER_EYE)));
+            return ActionResultType.SUCCESS;
         } else {
-            return InteractionResult.PASS;
+            return ActionResultType.PASS;
         }
     }
 
     @Override
     @ParametersAreNonnullByDefault
-    public InteractionResultHolder<ItemStack> use(Level levelIn, Player playerIn, InteractionHand handIn) {
+    public ActionResult<ItemStack> use(World WorldIn, PlayerEntity playerIn, Hand handIn) {
         ItemStack itemstack = playerIn.getItemInHand(handIn);
-        BlockHitResult raytraceResult = getPlayerPOVHitResult(levelIn, playerIn, ClipContext.Fluid.NONE);
+        BlockRayTraceResult raytraceResult = getPlayerPOVHitResult(WorldIn, playerIn, RayTraceContext.FluidMode.NONE);
         boolean lookingAtFrame = false;
 
 
-        BlockState state = levelIn.getBlockState(raytraceResult.getBlockPos());
+        BlockState state = WorldIn.getBlockState(raytraceResult.getBlockPos());
         if (state.is(ERBlocks.ANCIENT_PORTAL_FRAME.get())) {
             lookingAtFrame = true;
         }
 
 
         if (lookingAtFrame) {
-            return InteractionResultHolder.pass(itemstack);
+            return ActionResult.pass(itemstack);
         } else {
             playerIn.startUsingItem(handIn);
-            if (levelIn instanceof ServerLevel) {
-                BlockPos blockpos = RegisterHandler.EYE_ML.getNearestPosition((ServerLevel) levelIn, playerIn.getOnPos());
+            if (WorldIn instanceof ServerWorld) {
+                BlockPos blockpos = RegisterHandler.EYE_ML.getNearestPosition((ServerWorld) WorldIn, playerIn.getOnPos());
                 if (blockpos != null) {
-                    EyeOfEnder eyeofenderentity = new EyeOfEnder(levelIn, playerIn.getX(), playerIn.getY(0.5D), playerIn.getZ());
+                    EyeOfEnderEntity eyeofenderentity = new EyeOfEnderEntity(WorldIn, playerIn.getX(), playerIn.getY(0.5D), playerIn.getZ());
                     eyeofenderentity.setItem(itemstack);
                     eyeofenderentity.signalTo(blockpos);
                     eyeofenderentity.surviveAfterDeath = true;
 
-                    levelIn.addFreshEntity(eyeofenderentity);
-                    if (playerIn instanceof ServerPlayer) {
-                        CriteriaTriggers.USED_ENDER_EYE.trigger((ServerPlayer) playerIn, blockpos);
+                    WorldIn.addFreshEntity(eyeofenderentity);
+                    if (playerIn instanceof ServerPlayerEntity) {
+                        CriteriaTriggers.USED_ENDER_EYE.trigger((ServerPlayerEntity) playerIn, blockpos);
                     }
 
-                    levelIn.playSound(null, playerIn.blockPosition(), SoundEvents.ENDER_EYE_LAUNCH, SoundSource.NEUTRAL, 0.5F, 0.4F / (levelIn.getRandom().nextFloat() * 0.4F + 0.8F));
-                    levelIn.levelEvent(null, 1003, playerIn.blockPosition(), 0);
+                    WorldIn.playSound(null, playerIn.blockPosition(), SoundEvents.ENDER_EYE_LAUNCH, SoundCategory.NEUTRAL, 0.5F, 0.4F / (WorldIn.getRandom().nextFloat() * 0.4F + 0.8F));
+                    WorldIn.levelEvent(null, 1003, playerIn.blockPosition(), 0);
 
                     if (!playerIn.isCreative()) {
                         itemstack.shrink(1);
@@ -142,10 +138,10 @@ public class EREnderEye extends Item {
 
                     playerIn.awardStat(Stats.ITEM_USED.get(this));
                     playerIn.swing(handIn, true);
-                    return InteractionResultHolder.success(itemstack);
+                    return ActionResult.success(itemstack);
                 }
             }
-            return InteractionResultHolder.consume(itemstack);
+            return ActionResult.consume(itemstack);
         }
     }
 
@@ -156,8 +152,8 @@ public class EREnderEye extends Item {
 
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
-    public void appendHoverText(ItemStack stack, @Nullable Level levelIn, List<Component> tooltip, TooltipFlag flagIn) {
+    public void appendHoverText(ItemStack stack, @Nullable World levelIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         String translationKey = String.format("item.%s.%s.description", EndRemastered.MOD_ID, this.asItem());
-        tooltip.add(new TranslatableComponent(translationKey));
+        tooltip.add(new TranslationTextComponent(translationKey));
     }
 }

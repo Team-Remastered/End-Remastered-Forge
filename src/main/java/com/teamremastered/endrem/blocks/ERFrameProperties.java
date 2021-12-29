@@ -1,11 +1,12 @@
 package com.teamremastered.endrem.blocks;
 
-import net.minecraft.MethodsReturnNonnullByDefault;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.item.Item;
+
+import mcp.MethodsReturnNonnullByDefault;
+import net.minecraft.item.Item;
+import net.minecraft.util.IStringSerializable;
 
 @MethodsReturnNonnullByDefault
-public enum ERFrameProperties implements StringRepresentable {
+public enum ERFrameProperties implements IStringSerializable {
     EMPTY,
     OLD_EYE,
     ROGUE_EYE,
@@ -25,21 +26,34 @@ public enum ERFrameProperties implements StringRepresentable {
     }
 
     public String getSerializedName() {
-        return switch (this) {
-            case EMPTY -> "empty";
-            case OLD_EYE -> "old_eye";
-            case ROGUE_EYE -> "rogue_eye";
-            case NETHER_EYE -> "nether_eye";
-            case COLD_EYE -> "cold_eye";
-            case CORRUPTED_EYE -> "corrupted_eye";
-            case MAGICAL_EYE -> "magical_eye";
-            case BLACK_EYE -> "black_eye";
-            case LOST_EYE -> "lost_eye";
-            case WITHER_EYE -> "wither_eye";
-            case END_CRYSTAL_EYE -> "end_crystal_eye";
-            case GUARDIAN_EYE -> "guardian_eye";
-            case WITCH_EYE -> "witch_eye";
-        };
+        switch (this) {
+            case EMPTY: default:
+                return "empty";
+            case OLD_EYE:
+                return "old_eye";
+            case ROGUE_EYE:
+                return "rogue_eye";
+            case NETHER_EYE:
+                return "nether_eye";
+            case COLD_EYE:
+                return "cold_eye";
+            case CORRUPTED_EYE:
+                return "corrupted_eye";
+            case MAGICAL_EYE:
+                return "magical_eye";
+            case BLACK_EYE:
+                return "black_eye";
+            case LOST_EYE:
+                return "lost_eye";
+            case WITHER_EYE:
+                return "wither_eye";
+            case END_CRYSTAL_EYE:
+                return "end_crystal_eye";
+            case GUARDIAN_EYE:
+                return "guardian_eye";
+            case WITCH_EYE:
+                return "witch_eye";
+        }
     }
 
     public static ERFrameProperties getFramePropertyFromEye(Item eye) {

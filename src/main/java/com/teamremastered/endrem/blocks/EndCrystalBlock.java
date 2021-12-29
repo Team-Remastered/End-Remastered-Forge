@@ -1,8 +1,8 @@
 package com.teamremastered.endrem.blocks;
 
-import net.minecraft.world.level.block.AbstractGlassBlock;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.block.AbstractGlassBlock;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
 
 public class EndCrystalBlock extends AbstractGlassBlock {
     public EndCrystalBlock() {
