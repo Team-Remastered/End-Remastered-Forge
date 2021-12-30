@@ -2,6 +2,7 @@ package com.teamremastered.endrem.items;
 
 import com.teamremastered.endrem.EndRemastered;
 import com.teamremastered.endrem.config.ERConfig;
+import com.teamremastered.endrem.registers.ERItems;
 import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;

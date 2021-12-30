@@ -1,6 +1,7 @@
 package com.teamremastered.endrem.client;
 
 import com.teamremastered.endrem.EndRemastered;
+import com.teamremastered.endrem.registers.ERBlocks;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraftforge.api.distmarker.Dist;

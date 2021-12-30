@@ -5,7 +5,7 @@ import net.minecraftforge.common.ForgeConfigSpec;
 import java.util.ArrayList;
 
 public class ERConfigGenericEntry<T> {
-    protected static ArrayList<ERConfigGenericEntry<?>> erConfigGenericEntries = new ArrayList<>();
+    public static ArrayList<ERConfigGenericEntry<?>> erConfigGenericEntries = new ArrayList<>();
     protected final String ID;
     protected final String COMMENT;
     protected final T DEFAULT_VALUE;

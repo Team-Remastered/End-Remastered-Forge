@@ -1,6 +1,8 @@
 package com.teamremastered.endrem;
 
 import com.teamremastered.endrem.config.ERConfig;
+import com.teamremastered.endrem.registers.ERBlocks;
+import com.teamremastered.endrem.registers.RegisterHandler;
 import com.teamremastered.endrem.world.structures.config.StructureGenerator;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemGroup;

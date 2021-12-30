@@ -4,6 +4,7 @@ import com.teamremastered.endrem.EndRemastered;
 import com.teamremastered.endrem.items.EREnderEye;
 import com.teamremastered.endrem.items.EndCrystalArmor;
 import com.teamremastered.endrem.items.EndCrystalTools;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.RegistryObject;
@@ -46,10 +47,10 @@ public class ERItems {
     public static final RegistryObject<Item> END_CRYSTAL_SHOVEL = ITEMS.register("end_crystal_shovel", EndCrystalTools.Shovel::new);
 
     // ==== Armor ====
-    public static final RegistryObject<Item> END_CRYSTAL_HELMET = ITEMS.register("end_crystal_helmet", () -> new EndCrystalArmor(EquipmentSlot.HEAD));
-    public static final RegistryObject<Item> END_CRYSTAL_CHESTPLATE = ITEMS.register("end_crystal_chestplate", () -> new EndCrystalArmor(EquipmentSlot.CHEST));
-    public static final RegistryObject<Item> END_CRYSTAL_LEGGINGS = ITEMS.register("end_crystal_leggings", () -> new EndCrystalArmor(EquipmentSlot.LEGS));
-    public static final RegistryObject<Item> END_CRYSTAL_BOOTS = ITEMS.register("end_crystal_boots", () -> new EndCrystalArmor(EquipmentSlot.FEET));
+    public static final RegistryObject<Item> END_CRYSTAL_HELMET = ITEMS.register("end_crystal_helmet", () -> new EndCrystalArmor(EquipmentSlotType.HEAD));
+    public static final RegistryObject<Item> END_CRYSTAL_CHESTPLATE = ITEMS.register("end_crystal_chestplate", () -> new EndCrystalArmor(EquipmentSlotType.CHEST));
+    public static final RegistryObject<Item> END_CRYSTAL_LEGGINGS = ITEMS.register("end_crystal_leggings", () -> new EndCrystalArmor(EquipmentSlotType.LEGS));
+    public static final RegistryObject<Item> END_CRYSTAL_BOOTS = ITEMS.register("end_crystal_boots", () -> new EndCrystalArmor(EquipmentSlotType.FEET));
 
     // ==== Other Items ====
     public static final RegistryObject<Item> WITCH_PUPIL = ITEMS.register("witch_pupil", () -> new Item(new Item.Properties().tab(EndRemastered.TAB)));

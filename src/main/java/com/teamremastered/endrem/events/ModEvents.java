@@ -2,6 +2,8 @@ package com.teamremastered.endrem.events;
 
 import com.teamremastered.endrem.commands.GetEndremMapCommand;
 import com.teamremastered.endrem.config.ERConfig;
+import com.teamremastered.endrem.items.ERMap;
+import com.teamremastered.endrem.items.EndCrystalArmor;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.merchant.villager.VillagerProfession;
@@ -26,7 +28,7 @@ public class ModEvents {
     @SubscribeEvent
     public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
         if (event.isCancelable() && !ERConfig.USE_ENDER_EYES_ENABLED.getRaw()) {
-            if (event.getPlayer().getInventory().getSelected().getItem() instanceof EnderEyeItem) {
+            if (event.getPlayer().inventory.getSelected().getItem() instanceof EnderEyeItem) {
                 if (event.getWorld().getBlockState(event.getPos()).getBlock() == Blocks.END_PORTAL_FRAME) {
                     event.setCanceled(true);
                 }
@@ -38,7 +40,7 @@ public class ModEvents {
     @SubscribeEvent
     public static void onRightClickItem(PlayerInteractEvent.RightClickItem event) {
         if (event.isCancelable() && !ERConfig.USE_ENDER_EYES_ENABLED.getRaw()) {
-            if (event.getPlayer().getInventory().getSelected().getItem() instanceof EnderEyeItem) {
+            if (event.getPlayer().inventory.getSelected().getItem() instanceof EnderEyeItem) {
                 event.setCanceled(true);
             }
         }

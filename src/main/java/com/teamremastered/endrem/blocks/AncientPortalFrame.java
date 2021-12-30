@@ -90,7 +90,7 @@ public class AncientPortalFrame extends Block {
     // Verify if a given frame is already present in a portal (only works if the portal is built correctly)
     public static boolean IsFrameAbsent(World WorldIn, BlockState frameState, BlockPos pos) {
         BlockPattern.PatternHelper blockpattern$patternhelper = getPortalShape(
-                frameState.getValue(AncientPortalFrame.EYE), false).find(levelIn, pos);
+                frameState.getValue(AncientPortalFrame.EYE), false).find(WorldIn, pos);
 
         return blockpattern$patternhelper != null;
     }

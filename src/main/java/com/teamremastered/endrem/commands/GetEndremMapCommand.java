@@ -6,11 +6,7 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.teamremastered.endrem.items.ERMap;
 import net.minecraft.command.CommandSource;
 import net.minecraft.command.Commands;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
 import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.text.TranslationTextComponent;
 
 public class GetEndremMapCommand {
