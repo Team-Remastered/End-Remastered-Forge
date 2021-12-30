@@ -46,7 +46,7 @@ public class AncientWitchHut extends StructureBase {
                 GenerationStage.Decoration.SURFACE_STRUCTURES
         );
         this.START_POOL = new ResourceLocation(EndRemastered.MOD_ID, "ancient_witch_hut/start_pool");
-        this.HEIGHT = 0;
+        this.HEIGHT = -3;
     }
 
     public static List<Biome.Category> getValidBiomeCategories() {
