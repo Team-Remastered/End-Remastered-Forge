@@ -87,7 +87,7 @@ public class AncientWitchHut extends StructureBase {
                     this.random,
                     false,
                     true);
-            this.getBoundingBox();
+            this.calculateBoundingBox();
         }
     }
 }

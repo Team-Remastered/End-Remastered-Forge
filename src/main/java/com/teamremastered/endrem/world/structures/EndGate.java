@@ -153,7 +153,7 @@ public class EndGate extends StructureBase {
                     this.random,
                     false,
                     false);
-            this.getBoundingBox();
+            this.calculateBoundingBox();
         }
 
         public int getLocatedRoom() {
