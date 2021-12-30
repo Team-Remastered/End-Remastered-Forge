@@ -1,9 +1,9 @@
 {
   "name": "endrem:end_gate/puzzle1",
-  "fallback": "endrem:main",
+  "fallback": "minecraft:empty",
   "elements": [
     {
-      "weight": 10,
+      "weight": 1,
       "element": {
         "location": "endrem:end_gate/puzzles/puzzle1_ice",
         "processors": "endrem:main",
@@ -12,7 +12,7 @@
       }
     },
     {
-      "weight": 10,
+      "weight": 1,
       "element": {
         "location": "endrem:end_gate/puzzles/puzzle1_desert",
         "processors": "endrem:main",
@@ -21,7 +21,7 @@
       }
     },
     {
-      "weight": 10,
+      "weight": 1,
       "element": {
         "location": "endrem:end_gate/puzzles/puzzle1_jungle",
         "processors": "endrem:main",
