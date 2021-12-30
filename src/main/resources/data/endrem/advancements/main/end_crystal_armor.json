@@ -25,16 +25,16 @@
       "conditions": {
         "items": [
           {
-            "items": [ "endrem:end_crystal_helmet" ]
+            "item": "endrem:end_crystal_helmet"
           },
           {
-            "items": [ "endrem:end_crystal_chestplate" ]
+            "item": "endrem:end_crystal_chestplate"
           },
           {
-            "items": [ "endrem:end_crystal_leggings" ]
+            "item": "endrem:end_crystal_leggings"
           },
           {
-            "items": [ "endrem:end_crystal_boots" ]
+            "item": "endrem:end_crystal_boots"
           }
         ]
       }

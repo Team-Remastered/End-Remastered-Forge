@@ -2,18 +2,20 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "endrem:end_crystal_eye"
+      "endrem:end_crystal_eye",
+      "endrem:end_crystal_chestplate",
+      "endrem:end_crystal_leggings",
+      "endrem:end_crystal_helmet",
+      "endrem:end_crystal_boots"
     ]
   },
   "criteria": {
-    "has_end_crystal_fragment": {
+    "has_blaze_rod": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "items": [
-              "endrem:end_crystal_fragment"
-              ]
+            "item": "endrem:end_crystal_fragment"
           }
         ]
       }
@@ -21,7 +23,7 @@
   },
   "requirements": [
     [
-      "has_end_crystal_fragment"
+      "has_blaze_rod"
     ]
   ]
 }

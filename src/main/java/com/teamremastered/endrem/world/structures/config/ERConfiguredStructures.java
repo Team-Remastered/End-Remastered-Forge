@@ -3,6 +3,7 @@ package com.teamremastered.endrem.world.structures.config;
 import com.teamremastered.endrem.EndRemastered;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.WorldGenRegistries;
 import net.minecraft.world.gen.FlatGenerationSettings;
 import net.minecraft.world.gen.feature.IFeatureConfig;
 import net.minecraft.world.gen.feature.StructureFeature;
@@ -18,7 +19,7 @@ public class ERConfiguredStructures {
     public static StructureFeature<?, ?> CONFIGURED_END_CASTLE = ERStructures.END_CASTLE.get().configured(IFeatureConfig.NONE);
 
     public static void registerConfiguredStructures() {
-        Registry<ConfiguredStructureFeature<?, ?>> registry = BuiltinRegistries.CONFIGURED_STRUCTURE_FEATURE;
+        Registry<StructureFeature<?, ?>> registry = WorldGenRegistries.CONFIGURED_STRUCTURE_FEATURE;
         /* End Gate */
         Registry.register(registry, new ResourceLocation(EndRemastered.MOD_ID, "configured_end_gate"), CONFIGURED_END_GATE);
         /* Witch Hut */

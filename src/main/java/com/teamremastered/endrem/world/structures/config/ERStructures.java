@@ -8,6 +8,14 @@ import com.teamremastered.endrem.world.structures.AncientWitchHut;
 import com.teamremastered.endrem.world.structures.EndCastle;
 import com.teamremastered.endrem.world.structures.EndCastlePieces;
 import com.teamremastered.endrem.world.structures.EndGate;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.world.gen.feature.NoFeatureConfig;
+import net.minecraft.world.gen.feature.structure.IStructurePieceType;
+import net.minecraft.world.gen.feature.structure.Structure;
+import net.minecraft.world.gen.settings.DimensionStructuresSettings;
+import net.minecraft.world.gen.settings.StructureSeparationSettings;
+import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -15,25 +23,25 @@ import java.util.function.Supplier;
 
 public class ERStructures {
 
-    public static final DeferredRegister<StructureFeature<?>> STRUCTURES = DeferredRegister.create(ForgeRegistries.STRUCTURE_FEATURES, EndRemastered.MOD_ID);
+    public static final DeferredRegister<Structure<?>> STRUCTURES = DeferredRegister.create(ForgeRegistries.STRUCTURE_FEATURES, EndRemastered.MOD_ID);
 
-    private static <T extends StructureFeature<?>> RegistryObject<T> registerStructure(String name, Supplier<T> structure) {
+    private static <T extends Structure<?>> RegistryObject<T> registerStructure(String name, Supplier<T> structure) {
         return STRUCTURES.register(name, structure);
     }
 
     /* End Gate */
-    public static final RegistryObject<StructureFeature<NoneFeatureConfiguration>> END_GATE = registerStructure("end_gate", () -> (new EndGate(NoneFeatureConfiguration.CODEC)));
+    public static final RegistryObject<Structure<NoFeatureConfig>> END_GATE = registerStructure("end_gate", () -> (new EndGate(NoFeatureConfig.CODEC)));
     /* Witch Hut */
-    public static final RegistryObject<StructureFeature<NoneFeatureConfiguration>> ANCIENT_WITCH_HUT = registerStructure("ancient_witch_hut", () -> (new AncientWitchHut(NoneFeatureConfiguration.CODEC)));
+    public static final RegistryObject<Structure<NoFeatureConfig>> ANCIENT_WITCH_HUT = registerStructure("ancient_witch_hut", () -> (new AncientWitchHut(NoFeatureConfig.CODEC)));
     /* End Castle */
-    public static final RegistryObject<StructureFeature<NoneFeatureConfiguration>> END_CASTLE = registerStructure("end_castle", () -> (new EndCastle(NoneFeatureConfiguration.CODEC)));
-    public static StructurePieceType EC = EndCastlePieces.Piece::new;
+    public static final RegistryObject<Structure<NoFeatureConfig>> END_CASTLE = registerStructure("end_castle", () -> (new EndCastle(NoFeatureConfig.CODEC)));
+    public static IStructurePieceType EC = EndCastlePieces.Piece::new;
 
     public static void setupStructures() {
         /*End Castle*/
         setupMapSpacingAndLand(
                 END_CASTLE.get(),
-                new StructureFeatureConfiguration(
+                new StructureSeparationSettings(
                         (ERConfig.END_CASTLE_DISTANCE.getRaw()),
                         (ERConfig.END_CASTLE_DISTANCE.getRaw() - 30),
                         487192276),
@@ -42,7 +50,7 @@ public class ERStructures {
         /* End Gate */
         setupMapSpacingAndLand(
                 END_GATE.get(),
-                new StructureFeatureConfiguration(
+                new StructureSeparationSettings(
                         (ERConfig.END_GATE_DISTANCE.getRaw()),
                         (ERConfig.END_GATE_DISTANCE.getRaw() - 30),
                         959834864),
@@ -51,35 +59,35 @@ public class ERStructures {
         /* Witch Hut */
         setupMapSpacingAndLand(
                 ANCIENT_WITCH_HUT.get(),
-                new StructureFeatureConfiguration(
+                new StructureSeparationSettings(
                         (ERConfig.ANCIENT_WITCH_HUT_DISTANCE.getRaw()),
                         (ERConfig.ANCIENT_WITCH_HUT_DISTANCE.getRaw() - 5),
                         324897233),
                 false);
     }
 
-    public static <F extends StructureFeature<?>> void setupMapSpacingAndLand(
+    public static <F extends Structure<?>> void setupMapSpacingAndLand(
             F structure,
-            StructureFeatureConfiguration structureFeatureConfiguration,
+            StructureSeparationSettings structureFeatureConfiguration,
             boolean transformSurroundingLand) {
-        StructureFeature.STRUCTURES_REGISTRY.put(structure.getRegistryName().toString(), structure);
+        Structure.STRUCTURES_REGISTRY.put(structure.getRegistryName().toString(), structure);
 
         if (transformSurroundingLand) {
-            StructureFeature.NOISE_AFFECTING_FEATURES =
-                    ImmutableList.<StructureFeature<?>>builder()
-                            .addAll(StructureFeature.NOISE_AFFECTING_FEATURES)
+            Structure.NOISE_AFFECTING_FEATURES =
+                    ImmutableList.<Structure<?>>builder()
+                            .addAll(Structure.NOISE_AFFECTING_FEATURES)
                             .add(structure)
                             .build();
         }
 
-        StructureSettings.DEFAULTS =
-                ImmutableMap.<StructureFeature<?>, StructureFeatureConfiguration>builder()
-                        .putAll(StructureSettings.DEFAULTS)
+        DimensionStructuresSettings.DEFAULTS =
+                ImmutableMap.<Structure<?>, StructureSeparationSettings>builder()
+                        .putAll(DimensionStructuresSettings.DEFAULTS)
                         .put(structure, structureFeatureConfiguration)
                         .build();
     }
 
-    static void registerStructurePiece(StructurePieceType structurePiece, ResourceLocation rl) {
+    static void registerStructurePiece(IStructurePieceType structurePiece, ResourceLocation rl) {
         Registry.register(Registry.STRUCTURE_PIECE, rl, structurePiece);
     }
 

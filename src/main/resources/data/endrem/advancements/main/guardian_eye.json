@@ -21,9 +21,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "endrem:guardian_eye"
-              ]
+            "item": "endrem:guardian_eye"
           }
         ]
       }

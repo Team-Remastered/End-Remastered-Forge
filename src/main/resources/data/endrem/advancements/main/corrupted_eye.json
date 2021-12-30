@@ -21,9 +21,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "endrem:corrupted_eye"
-              ]
+            "item": "endrem:corrupted_eye"
           }
         ]
       }

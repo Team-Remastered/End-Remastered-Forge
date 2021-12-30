@@ -21,9 +21,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "endrem:old_eye"
-              ]
+            "item": "endrem:old_eye"
           }
         ]
       }

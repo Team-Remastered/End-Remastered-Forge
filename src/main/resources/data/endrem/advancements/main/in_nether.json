@@ -1,0 +1,36 @@
+{
+"criteria": {
+"end_crystal_fragment": {
+"trigger": "minecraft:inventory_changed",
+"conditions": {
+"items": [
+{
+"item": "endrem:end_crystal_fragment"
+}
+]
+}
+}
+},
+  "rewards": {
+    "recipes": [
+      "endrem:end_crystal_eye",
+      "endrem:end_crystal_ingot",
+
+      "endrem:end_crystal_helmet",
+      "endrem:end_crystal_chestplate",
+      "endrem:end_crystal_leggings",
+      "endrem:end_crystal_boots",
+
+      "endrem:end_crystal_axe",
+      "endrem:end_crystal_hoe",
+      "endrem:end_crystal_pickaxe",
+      "endrem:end_crystal_shovel",
+      "endrem:end_crystal_sword"
+    ]
+  },
+  "requirements": [
+    [
+      "end_crystal_fragment"
+    ]
+  ]
+}

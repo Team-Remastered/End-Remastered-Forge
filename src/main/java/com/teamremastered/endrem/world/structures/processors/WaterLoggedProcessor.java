@@ -3,19 +3,19 @@ package com.teamremastered.endrem.world.structures.processors;
 //Workaround made by YungNickYoung for water sources in structures spreading into waterloggable blocks
 
 import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.IWaterLoggable;
+import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SimpleWaterloggedBlock;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
+import net.minecraft.util.Direction;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ChunkPos;
+import net.minecraft.world.IWorldReader;
+import net.minecraft.world.chunk.IChunk;
+import net.minecraft.world.gen.feature.template.IStructureProcessorType;
+import net.minecraft.world.gen.feature.template.PlacementSettings;
+import net.minecraft.world.gen.feature.template.StructureProcessor;
+import net.minecraft.world.gen.feature.template.Template;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -28,19 +28,19 @@ public class WaterLoggedProcessor extends StructureProcessor {
 
         @ParametersAreNonnullByDefault
         @Override
-        public StructureTemplate.StructureBlockInfo process(LevelReader worldReader, BlockPos jigsawPiecePos, BlockPos jigsawPieceBottomCenterPos, StructureTemplate.StructureBlockInfo blockInfoLocal, StructureTemplate.StructureBlockInfo blockInfoGlobal, StructurePlaceSettings structurePlacementData, @Nullable StructureTemplate template) {
+        public Template.BlockInfo process(IWorldReader worldReader, BlockPos jigsawPiecePos, BlockPos jigsawPieceBottomCenterPos, Template.BlockInfo blockInfoLocal, Template.BlockInfo blockInfoGlobal, PlacementSettings structurePlacementData, @Nullable Template template) {
 
             ChunkPos currentChunkPos = new ChunkPos(blockInfoGlobal.pos);
 
             // Check if block is waterloggable and not intended to be waterlogged
             if (blockInfoGlobal.state.hasProperty(BlockStateProperties.WATERLOGGED) && !blockInfoGlobal.state.getValue(BlockStateProperties.WATERLOGGED)) {
-                ChunkAccess currentChunk = worldReader.getChunk(currentChunkPos.x, currentChunkPos.z);
+                IChunk currentChunk = worldReader.getChunk(currentChunkPos.x, currentChunkPos.z);
                 if (worldReader.getFluidState(blockInfoGlobal.pos).is(FluidTags.WATER)) {
                     currentChunk.setBlockState(blockInfoGlobal.pos, Blocks.STONE_BRICKS.defaultBlockState(), false);
                 }
 
                 // Remove water in adjacent blocks
-                BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos();
+                BlockPos.Mutable mutable = new BlockPos.Mutable();
                 for (Direction direction : Direction.values()) {
                     mutable.set(blockInfoGlobal.pos).move(direction);
                     if (currentChunkPos.x != mutable.getX() >> 4 || currentChunkPos.z != mutable.getZ() >> 4) {
@@ -49,7 +49,7 @@ public class WaterLoggedProcessor extends StructureProcessor {
                     }
 
                     if (currentChunk.getFluidState(mutable).is(FluidTags.WATER)) {
-                        if (!(currentChunk.getBlockState(mutable).getBlock() instanceof SimpleWaterloggedBlock && currentChunk.getBlockState(mutable).getValue(BlockStateProperties.WATERLOGGED))) {
+                        if (!(currentChunk.getBlockState(mutable).getBlock() instanceof IWaterLoggable && currentChunk.getBlockState(mutable).getValue(BlockStateProperties.WATERLOGGED))) {
                             currentChunk.setBlockState(mutable, Blocks.STONE_BRICKS.defaultBlockState(), false);
                         }
                     }
@@ -59,7 +59,7 @@ public class WaterLoggedProcessor extends StructureProcessor {
         }
 
         @Nonnull
-        protected StructureProcessorType<?> getType() {
+        protected IStructureProcessorType<?> getType() {
             return ERProcessors.WATERLOGGED_PROCESSOR;
         }
     }

@@ -21,9 +21,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "endrem:cold_eye"
-            ]
+            "item": "endrem:cold_eye"
           }
         ]
       }

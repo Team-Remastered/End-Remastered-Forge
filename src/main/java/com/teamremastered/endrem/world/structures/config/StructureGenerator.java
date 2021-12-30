@@ -1,17 +1,31 @@
 package com.teamremastered.endrem.world.structures.config;
 
 import com.google.common.collect.ImmutableMap;
+import com.mojang.serialization.Codec;
+import com.teamremastered.endrem.EndRemastered;
 import com.teamremastered.endrem.config.ERConfig;
 import com.teamremastered.endrem.world.structures.AncientWitchHut;
 import com.teamremastered.endrem.world.structures.EndCastle;
 import com.teamremastered.endrem.world.structures.EndGate;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.WorldGenRegistries;
+import net.minecraft.world.World;
+import net.minecraft.world.gen.ChunkGenerator;
+import net.minecraft.world.gen.FlatChunkGenerator;
+import net.minecraft.world.gen.feature.structure.Structure;
+import net.minecraft.world.gen.settings.DimensionStructuresSettings;
+import net.minecraft.world.gen.settings.StructureSeparationSettings;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,21 +45,21 @@ public class StructureGenerator {
         ERStructures.setupStructures();
         ERConfiguredStructures.registerConfiguredStructures();
 
-        BuiltinRegistries.NOISE_GENERATOR_SETTINGS.entrySet().forEach(settings -> {
-            Map<StructureFeature<?>, StructureFeatureConfiguration> structureMap = settings.getValue().structureSettings().structureConfig();
+        WorldGenRegistries.NOISE_GENERATOR_SETTINGS.entrySet().forEach(settings -> {
+            Map<Structure<?>, StructureSeparationSettings> structureMap = settings.getValue().structureSettings().structureConfig();
 
             if(structureMap instanceof ImmutableMap){
-                Map<StructureFeature<?>, StructureFeatureConfiguration> tempMap = new HashMap<>(structureMap);
-                tempMap.put(ERStructures.END_CASTLE.get(), StructureSettings.DEFAULTS.get(ERStructures.END_CASTLE.get()));
-                tempMap.put(ERStructures.END_GATE.get(), StructureSettings.DEFAULTS.get(ERStructures.END_GATE.get()));
-                tempMap.put(ERStructures.ANCIENT_WITCH_HUT.get(), StructureSettings.DEFAULTS.get(ERStructures.ANCIENT_WITCH_HUT.get()));
+                Map<Structure<?>, StructureSeparationSettings> tempMap = new HashMap<>(structureMap);
+                tempMap.put(ERStructures.END_CASTLE.get(), DimensionStructuresSettings.DEFAULTS.get(ERStructures.END_CASTLE.get()));
+                tempMap.put(ERStructures.END_GATE.get(), DimensionStructuresSettings.DEFAULTS.get(ERStructures.END_GATE.get()));
+                tempMap.put(ERStructures.ANCIENT_WITCH_HUT.get(), DimensionStructuresSettings.DEFAULTS.get(ERStructures.ANCIENT_WITCH_HUT.get()));
 
                 settings.getValue().structureSettings().structureConfig = tempMap;
             }
             else{
-                structureMap.put(ERStructures.END_CASTLE.get(), StructureSettings.DEFAULTS.get(ERStructures.END_CASTLE.get()));
-                structureMap.put(ERStructures.END_GATE.get(), StructureSettings.DEFAULTS.get(ERStructures.END_GATE.get()));
-                structureMap.put(ERStructures.ANCIENT_WITCH_HUT.get(), StructureSettings.DEFAULTS.get(ERStructures.ANCIENT_WITCH_HUT.get()));
+                structureMap.put(ERStructures.END_CASTLE.get(), DimensionStructuresSettings.DEFAULTS.get(ERStructures.END_CASTLE.get()));
+                structureMap.put(ERStructures.END_GATE.get(), DimensionStructuresSettings.DEFAULTS.get(ERStructures.END_GATE.get()));
+                structureMap.put(ERStructures.ANCIENT_WITCH_HUT.get(), DimensionStructuresSettings.DEFAULTS.get(ERStructures.ANCIENT_WITCH_HUT.get()));
             }
         });
     }
@@ -65,27 +79,38 @@ public class StructureGenerator {
         }
     }
 
-    public static void addDimensionalSpacing(final WorldEvent.Load event) {
-        if (event.getWorld() instanceof ServerLevel serverLevel) {
-            Map<StructureFeature<?>, StructureFeatureConfiguration> tempMap = new HashMap<>(serverLevel.getChunkSource().generator.getSettings().structureConfig());
+    private static Method GETCODEC_METHOD;
 
+    public static void addDimensionalSpacing(final WorldEvent.Load event) {
+        if (event.getWorld() instanceof ServerWorld) {
+            ServerWorld serverWorld = (ServerWorld) event.getWorld();
+            Map<Structure<?>, StructureSeparationSettings> tempMap = new HashMap<>(serverWorld.getChunkSource().generator.getSettings().structureConfig());
+
+            try {
+                if (GETCODEC_METHOD == null)
+                    GETCODEC_METHOD = ObfuscationReflectionHelper.findMethod(ChunkGenerator.class, "func_230347_a_");
+                ResourceLocation cgRL = Registry.CHUNK_GENERATOR.getKey((Codec<? extends ChunkGenerator>) GETCODEC_METHOD.invoke(serverWorld.getChunkSource().generator));
+                if (cgRL != null && cgRL.getNamespace().equals("terraforged")) return;
+            } catch (Exception e) {
+                EndRemastered.LOGGER.error("Was unable to check if " + serverWorld.dimension().location() + " is using Terraforged's ChunkGenerator.");
+            }
             // Prevent spawning our structure in Vanilla's superflat world
-            if (serverLevel.getChunkSource().getGenerator() instanceof FlatLevelSource &&
-                    serverLevel.dimension().equals(Level.OVERWORLD)) {
+            if (serverWorld.getChunkSource().getGenerator() instanceof FlatChunkGenerator &&
+                    serverWorld.dimension().equals(World.OVERWORLD)) {
                 return;
             }
             // Only add whitelisted dimensions
-            else if (!ERConfig.WHITELISTED_DIMENSIONS.getList().contains(serverLevel.dimension().location().toString())) {
+            else if (!ERConfig.WHITELISTED_DIMENSIONS.getList().contains(serverWorld.dimension().location().toString())) {
                 tempMap.keySet().remove(ERStructures.END_CASTLE.get());
                 tempMap.keySet().remove(ERStructures.END_GATE.get());
                 tempMap.keySet().remove(ERStructures.ANCIENT_WITCH_HUT.get());
             }
             else {
-                tempMap.putIfAbsent(ERStructures.END_CASTLE.get(), StructureSettings.DEFAULTS.get(ERStructures.END_CASTLE.get()));
-                tempMap.putIfAbsent(ERStructures.END_GATE.get(), StructureSettings.DEFAULTS.get(ERStructures.END_GATE.get()));
-                tempMap.putIfAbsent(ERStructures.ANCIENT_WITCH_HUT.get(), StructureSettings.DEFAULTS.get(ERStructures.ANCIENT_WITCH_HUT.get()));
+                tempMap.putIfAbsent(ERStructures.END_CASTLE.get(), DimensionStructuresSettings.DEFAULTS.get(ERStructures.END_CASTLE.get()));
+                tempMap.putIfAbsent(ERStructures.END_GATE.get(), DimensionStructuresSettings.DEFAULTS.get(ERStructures.END_GATE.get()));
+                tempMap.putIfAbsent(ERStructures.ANCIENT_WITCH_HUT.get(), DimensionStructuresSettings.DEFAULTS.get(ERStructures.ANCIENT_WITCH_HUT.get()));
             }
-            serverLevel.getChunkSource().generator.getSettings().structureConfig = tempMap;
+            serverWorld.getChunkSource().generator.getSettings().structureConfig = tempMap;
         }
     }
 }

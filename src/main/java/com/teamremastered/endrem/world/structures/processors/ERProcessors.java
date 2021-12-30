@@ -1,15 +1,15 @@
 package com.teamremastered.endrem.world.structures.processors;
 
 import com.teamremastered.endrem.EndRemastered;
-import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.world.gen.feature.template.IStructureProcessorType;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 public class ERProcessors {
 
-    public static StructureProcessorType<WaterLoggedProcessor> WATERLOGGED_PROCESSOR = () -> WaterLoggedProcessor.CODEC;
+    public static IStructureProcessorType<WaterLoggedProcessor> WATERLOGGED_PROCESSOR = () -> WaterLoggedProcessor.CODEC;
 
     public static void init() {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ERProcessors::setup);

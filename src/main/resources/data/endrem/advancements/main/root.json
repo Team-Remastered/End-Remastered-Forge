@@ -21,7 +21,7 @@
       "conditions": {
         "items": [
           {
-            "items": [ "endrem:old_eye" ]
+            "item": "endrem:old_eye"
           }
         ]
       }
@@ -31,7 +31,7 @@
       "conditions": {
         "items": [
           {
-            "items": [ "endrem:rogue_eye" ]
+            "item": "endrem:rogue_eye"
           }
         ]
       }
@@ -41,7 +41,7 @@
       "conditions": {
         "items": [
           {
-            "items": [ "endrem:nether_eye" ]
+            "item": "endrem:nether_eye"
           }
         ]
       }
@@ -51,7 +51,7 @@
       "conditions": {
         "items": [
           {
-            "items": [ "endrem:cold_eye" ]
+            "item": "endrem:cold_eye"
           }
         ]
       }
@@ -61,7 +61,7 @@
       "conditions": {
         "items": [
           {
-            "items": [ "endrem:corrupted_eye" ]
+            "item": "endrem:corrupted_eye"
           }
         ]
       }
@@ -71,7 +71,7 @@
       "conditions": {
         "items": [
           {
-            "items": [ "endrem:magical_eye" ]
+            "item": "endrem:magical_eye"
           }
         ]
       }
@@ -81,7 +81,7 @@
       "conditions": {
         "items": [
           {
-            "items": [ "endrem:black_eye" ]
+            "item": "endrem:black_eye"
           }
         ]
       }
@@ -91,7 +91,7 @@
       "conditions": {
         "items": [
           {
-            "items": [ "endrem:lost_eye" ]
+            "item": "endrem:lost_eye"
           }
         ]
       }
@@ -101,7 +101,7 @@
       "conditions": {
         "items": [
           {
-            "items": [ "endrem:wither_eye" ]
+            "item": "endrem:wither_eye"
           }
         ]
       }
@@ -111,7 +111,7 @@
       "conditions": {
         "items": [
           {
-            "items": [ "endrem:end_crystal_eye" ]
+            "item": "endrem:end_crystal_eye"
           }
         ]
       }
@@ -121,7 +121,7 @@
       "conditions": {
         "items": [
           {
-            "items": [ "endrem:guardian_eye" ]
+            "item": "endrem:guardian_eye"
           }
         ]
       }
@@ -131,7 +131,7 @@
       "conditions": {
         "items": [
           {
-            "items": [ "endrem:witch_eye" ]
+            "item": "endrem:witch_eye"
           }
         ]
       }
