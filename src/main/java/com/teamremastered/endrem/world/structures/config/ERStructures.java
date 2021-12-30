@@ -8,14 +8,6 @@ import com.teamremastered.endrem.world.structures.AncientWitchHut;
 import com.teamremastered.endrem.world.structures.EndCastle;
 import com.teamremastered.endrem.world.structures.EndCastlePieces;
 import com.teamremastered.endrem.world.structures.EndGate;
-import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.levelgen.StructureSettings;
-import net.minecraft.world.level.levelgen.feature.StructureFeature;
-import net.minecraft.world.level.levelgen.feature.StructurePieceType;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.StructureFeatureConfiguration;
-import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 

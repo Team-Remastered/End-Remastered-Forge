@@ -4,20 +4,20 @@ package com.teamremastered.endrem.world.structures;
 import com.google.common.collect.ImmutableMap;
 import com.teamremastered.endrem.EndRemastered;
 import com.teamremastered.endrem.world.structures.config.ERStructures;
-import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.Mirror;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.StructurePiece;
-import net.minecraft.world.level.levelgen.structure.TemplateStructurePiece;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureManager;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
+import net.minecraft.block.Blocks;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.tileentity.LockableLootTileEntity;
+import net.minecraft.util.Mirror;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.Rotation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MutableBoundingBox;
+import net.minecraft.world.IServerWorld;
+import net.minecraft.world.gen.feature.structure.StructurePiece;
+import net.minecraft.world.gen.feature.structure.TemplateStructurePiece;
+import net.minecraft.world.gen.feature.template.PlacementSettings;
+import net.minecraft.world.gen.feature.template.Template;
+import net.minecraft.world.gen.feature.template.TemplateManager;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
@@ -49,41 +49,50 @@ public class EndCastlePieces {
             .put(MID_MID, new BlockPos(0, height, 0))
             .build();
 
-    public static void start(StructureManager manager, BlockPos pos, Rotation rotation, List<StructurePiece> pieceList) {
+    public static void start(TemplateManager manager, BlockPos pos, Rotation rotation, List<StructurePiece> pieceList) {
         for (Map.Entry<ResourceLocation, BlockPos> entry : OFFSET.entrySet()) {
             pieceList.add(new Piece(manager, entry.getKey(), entry.getValue().rotate(rotation).offset(pos.getX(), pos.getY(), pos.getZ()), rotation));
         }
     }
 
     public static class Piece extends TemplateStructurePiece {
-        public Piece(StructureManager manager, ResourceLocation resourceLocationIn, BlockPos pos, Rotation rotationIn) {
-            super(ERStructures.EC, 0, manager, resourceLocationIn, resourceLocationIn.toString(), makeSettings(rotationIn, resourceLocationIn), pos);
-
+        private final ResourceLocation resourceLocation;
+        private final Rotation rotation;
+        public Piece(TemplateManager manager, ResourceLocation resourceLocationIn, BlockPos pos, Rotation rotationIn) {
+            super(ERStructures.EC, 0);
+            this.resourceLocation = resourceLocationIn;
+            this.templatePosition = pos;
+            this.rotation = rotationIn;
+            this.setupPiece(manager);
         }
 
-        public Piece(ServerLevel serverLevel, CompoundTag tagCompound) {
-            super(ERStructures.EC, tagCompound, serverLevel, (p_162451_) ->
-                    makeSettings(Rotation.valueOf(tagCompound.getString("Rot")), p_162451_)
-            );
+        public Piece(TemplateManager manager, CompoundNBT tagCompound) {
+            super(ERStructures.EC, tagCompound);
+            this.resourceLocation = new ResourceLocation(tagCompound.getString("Template"));
+            this.rotation = Rotation.valueOf(tagCompound.getString("Rot"));
+            this.setupPiece(manager);
         }
 
-        private static StructurePlaceSettings makeSettings(Rotation rotation, ResourceLocation resourceLocation) {
-            return (new StructurePlaceSettings()).setRotation(rotation).setMirror(Mirror.NONE);
+        private void setupPiece(TemplateManager manager) {
+            Template template = manager.getOrCreate(this.resourceLocation);
+            PlacementSettings placementsettings = (new PlacementSettings()).setRotation(this.rotation).setMirror(Mirror.NONE);
+            this.setup(template, this.templatePosition, placementsettings);
         }
 
         @Override
         @ParametersAreNonnullByDefault
-        protected void addAdditionalSaveData(ServerLevel serverLevel, CompoundTag tagCompound) {
-            super.addAdditionalSaveData(serverLevel, tagCompound);
-            tagCompound.putString("Rot", this.placeSettings.getRotation().name());  // or make rotation public
+        protected void addAdditionalSaveData(CompoundNBT tagCompound) {
+            super.addAdditionalSaveData(tagCompound);
+            tagCompound.putString("Template", this.resourceLocation.toString());
+            tagCompound.putString("Rot", this.rotation.name());  // or make rotation public
         }
 
         @Override
         @ParametersAreNonnullByDefault
-        protected void handleDataMarker(String chest, BlockPos pos, ServerLevelAccessor worldIn, Random rand, BoundingBox sbb) {
+        protected void handleDataMarker(String chest, BlockPos pos, IServerWorld worldIn, Random rand, MutableBoundingBox sbb) {
             ResourceLocation lootTable = new ResourceLocation(EndRemastered.MOD_ID, String.format("chests/%s", chest));
             worldIn.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
-            RandomizableContainerBlockEntity.setLootTable(worldIn, rand, pos.below(), lootTable);
+            LockableLootTileEntity.setLootTable(worldIn, rand, pos.below(), lootTable);
         }
     }
 }

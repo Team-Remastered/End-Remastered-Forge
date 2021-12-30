@@ -5,22 +5,25 @@ import com.mojang.serialization.Codec;
 import com.teamremastered.endrem.config.ERConfig;
 import com.teamremastered.endrem.world.structures.utils.CustomMonsterSpawn;
 import com.teamremastered.endrem.world.structures.utils.StructureBase;
-import net.minecraft.MethodsReturnNonnullByDefault;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.level.*;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.GenerationStep;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.feature.StructureFeature;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.StructureStart;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureManager;
+import mcp.MethodsReturnNonnullByDefault;
+import net.minecraft.block.Blocks;
+import net.minecraft.entity.EntityType;
+import net.minecraft.util.Rotation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ChunkPos;
+import net.minecraft.util.math.MutableBoundingBox;
+import net.minecraft.util.registry.DynamicRegistries;
+import net.minecraft.world.ISeedReader;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.ChunkGenerator;
+import net.minecraft.world.gen.GenerationStage;
+import net.minecraft.world.gen.Heightmap;
+import net.minecraft.world.gen.feature.NoFeatureConfig;
+import net.minecraft.world.gen.feature.structure.Structure;
+import net.minecraft.world.gen.feature.structure.StructureManager;
+import net.minecraft.world.gen.feature.structure.StructurePiece;
+import net.minecraft.world.gen.feature.structure.StructureStart;
+import net.minecraft.world.gen.feature.template.TemplateManager;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.ArrayList;
@@ -28,7 +31,7 @@ import java.util.List;
 import java.util.Random;
 
 public class EndCastle extends StructureBase {
-    public EndCastle(Codec<NoneFeatureConfiguration> codec) {
+    public EndCastle(Codec<NoFeatureConfig> codec) {
         super(codec,
                 // To Set Minimum Distance
                 ERConfig.END_CASTLE_SPAWN_DISTANCE,
@@ -40,36 +43,36 @@ public class EndCastle extends StructureBase {
                         new CustomMonsterSpawn(EntityType.ILLUSIONER, 5, 5, 10)
                 ),
                 // Decoration Stage
-                GenerationStep.Decoration.UNDERGROUND_DECORATION //Underground decoration so ore and features don't spawn in the castle
+                GenerationStage.Decoration.UNDERGROUND_DECORATION //Underground decoration so ore and features don't spawn in the castle
         );
     }
 
-    public static List<Biome.BiomeCategory> getValidBiomeCategories() {
-        List<Biome.BiomeCategory> biomeCategories = new ArrayList<>();
+    public static List<Biome.Category> getValidBiomeCategories() {
+        List<Biome.Category> biomeCategories = new ArrayList<>();
         for (String biomeName : ERConfig.END_CASTLE_WHITELISTED_BIOME_CATEGORIES.getList()) {
-            biomeCategories.add(Biome.BiomeCategory.byName(biomeName));
+            biomeCategories.add(Biome.Category.byName(biomeName));
         }
         return biomeCategories;
     }
 
     @Override
     @MethodsReturnNonnullByDefault
-    public StructureFeature.StructureStartFactory<NoneFeatureConfiguration> getStartFactory() {
+    public IStartFactory<NoFeatureConfig> getStartFactory() {
         return Start::new;
     }
 
-    public static class Start extends StructureStart<NoneFeatureConfiguration> {
-        public Start(StructureFeature<NoneFeatureConfiguration> structureIn, ChunkPos chunkPos, int referenceIn, long seedIn) {
-            super(structureIn, chunkPos, referenceIn, seedIn);
+    public static class Start extends StructureStart<NoFeatureConfig> {
+        public Start(Structure<NoFeatureConfig> structureIn, int chunkX, int chunkZ, MutableBoundingBox mutableBoundingBox, int referenceIn, long seedIn) {
+            super(structureIn, chunkX, chunkZ, mutableBoundingBox, referenceIn, seedIn);
         }
 
         @Override
         @ParametersAreNonnullByDefault
-        public void generatePieces(RegistryAccess registryAccess, ChunkGenerator chunkGenerator, StructureManager manager, ChunkPos chunkPos, Biome biomeIn, NoneFeatureConfiguration config, LevelHeightAccessor levelHeightAccessor) {
+        public void generatePieces(DynamicRegistries registryAccess, ChunkGenerator chunkGenerator, TemplateManager manager, int chunkX, int chunkZ, Biome biomeIn, NoFeatureConfig config) {
             Rotation rotation = Rotation.values()[this.random.nextInt(Rotation.values().length)];
             // Turns the chunk coordinates into actual coordinates we can use. (Gets center of that chunk)
-            int x = (chunkPos.x << 4);
-            int z = (chunkPos.z << 4);
+            int x = (chunkX << 4);
+            int z = (chunkZ << 4);
 
             if (rotation == Rotation.CLOCKWISE_90) {
                 x += 17;
@@ -89,36 +92,47 @@ public class EndCastle extends StructureBase {
             }
 
             // Finds the y value of the terrain at location.
-            int surfaceY = chunkGenerator.getBaseHeight(x, z, Heightmap.Types.WORLD_SURFACE_WG, levelHeightAccessor);
+            int surfaceY = chunkGenerator.getBaseHeight(x, z, Heightmap.Type.WORLD_SURFACE_WG);
             BlockPos genPosition = new BlockPos(x, surfaceY, z);
             EndCastlePieces.start(manager, genPosition, rotation, this.pieces);
+            this.calculateBoundingBox();
         }
 
-        public void placeInChunk(WorldGenLevel worldGenLevel, StructureFeatureManager featureManager, ChunkGenerator chunkGenerator, Random random, BoundingBox boundingBox, ChunkPos chunkPos) {
-            super.placeInChunk(worldGenLevel, featureManager, chunkGenerator, random, boundingBox, chunkPos);
-            BoundingBox boundingbox = this.getBoundingBox();
-            int i = boundingbox.minY();
+        public void placeInChunk(ISeedReader seedReader, StructureManager featureManager, ChunkGenerator chunkGenerator, Random random, MutableBoundingBox boundingBox, ChunkPos chunkPos) {
+            super.placeInChunk(seedReader, featureManager, chunkGenerator, random, boundingBox, chunkPos);
+            int i = this.boundingBox.y0;
 
-            for (int j = boundingBox.minX(); j <= boundingBox.maxX(); ++j) {
-                for (int k = boundingBox.minZ(); k <= boundingBox.maxZ(); ++k) {
+            for (int j = boundingBox.x0; j <= boundingBox.x1; ++j) {
+                for(int k = boundingBox.z0; k <= boundingBox.z1; ++k) {
                     BlockPos blockpos = new BlockPos(j, i, k);
-                    if (!worldGenLevel.isEmptyBlock(blockpos) && boundingbox.isInside(blockpos) && this.isInsidePiece(blockpos)) {
-                        for (int l = i - 1; l > 1; --l) {
-                            BlockPos blockpos1 = new BlockPos(j, l, k);
-                            if (!worldGenLevel.isEmptyBlock(blockpos1) && !worldGenLevel.getBlockState(blockpos1).getMaterial().isLiquid()) {
+                    if (!seedReader.isEmptyBlock(blockpos) && this.boundingBox.isInside(blockpos)) {
+                        boolean flag = false;
+
+                        for(StructurePiece structurepiece : this.pieces) {
+                            if (structurepiece.getBoundingBox().isInside(blockpos)) {
+                                flag = true;
                                 break;
                             }
-                            double randomBlock = Math.random();
-                            if (randomBlock <= 0.005) {
-                                worldGenLevel.setBlock(blockpos1, Blocks.AIR.defaultBlockState(), 2);
-                            } else if (randomBlock <= 0.1) {
-                                worldGenLevel.setBlock(blockpos1, Blocks.COBBLESTONE.defaultBlockState(), 2);
-                            } else if (randomBlock <= 0.2) {
-                                worldGenLevel.setBlock(blockpos1, Blocks.ANDESITE.defaultBlockState(), 2);
-                            } else if (randomBlock <= 0.3) {
-                                worldGenLevel.setBlock(blockpos1, Blocks.DEEPSLATE.defaultBlockState(), 2);
-                            } else {
-                                worldGenLevel.setBlock(blockpos1, Blocks.POLISHED_ANDESITE.defaultBlockState(), 2);
+                        }
+
+                        if (flag) {
+                            for (int l = i - 1; l > 1; --l) {
+                                BlockPos blockpos1 = new BlockPos(j, l, k);
+                                if (!seedReader.isEmptyBlock(blockpos1) && !seedReader.getBlockState(blockpos1).getMaterial().isLiquid()) {
+                                    break;
+                                }
+                                double randomBlock = Math.random();
+                                if (randomBlock <= 0.005) {
+                                    seedReader.setBlock(blockpos1, Blocks.AIR.defaultBlockState(), 2);
+                                } else if (randomBlock <= 0.1) {
+                                    seedReader.setBlock(blockpos1, Blocks.COBBLESTONE.defaultBlockState(), 2);
+                                } else if (randomBlock <= 0.2) {
+                                    seedReader.setBlock(blockpos1, Blocks.ANDESITE.defaultBlockState(), 2);
+                                } else if (randomBlock <= 0.3) {
+                                    seedReader.setBlock(blockpos1, Blocks.GRAVEL.defaultBlockState(), 2);
+                                } else {
+                                    seedReader.setBlock(blockpos1, Blocks.POLISHED_ANDESITE.defaultBlockState(), 2);
+                                }
                             }
                         }
                     }

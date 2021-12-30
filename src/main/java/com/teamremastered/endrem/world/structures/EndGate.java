@@ -6,31 +6,26 @@ import com.teamremastered.endrem.EndRemastered;
 import com.teamremastered.endrem.config.ERConfig;
 import com.teamremastered.endrem.world.structures.utils.CustomMonsterSpawn;
 import com.teamremastered.endrem.world.structures.utils.StructureBase;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.SectionPos;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.LevelHeightAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.StructureFeatureManager;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.chunk.ChunkStatus;
-import net.minecraft.world.level.levelgen.GenerationStep;
-import net.minecraft.world.level.levelgen.WorldgenRandom;
-import net.minecraft.world.level.levelgen.feature.StructureFeature;
-import net.minecraft.world.level.levelgen.feature.configurations.JigsawConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.StructureFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.structures.JigsawPlacement;
-import net.minecraft.world.level.levelgen.structure.NoiseAffectingStructureStart;
-import net.minecraft.world.level.levelgen.structure.PoolElementStructurePiece;
-import net.minecraft.world.level.levelgen.structure.StructureStart;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureManager;
+import net.minecraft.entity.EntityType;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SharedSeedRandom;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ChunkPos;
+import net.minecraft.util.math.MutableBoundingBox;
+import net.minecraft.util.math.SectionPos;
+import net.minecraft.util.registry.DynamicRegistries;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.world.IWorldReader;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.chunk.ChunkStatus;
+import net.minecraft.world.chunk.IChunk;
+import net.minecraft.world.gen.ChunkGenerator;
+import net.minecraft.world.gen.GenerationStage;
+import net.minecraft.world.gen.feature.NoFeatureConfig;
+import net.minecraft.world.gen.feature.jigsaw.JigsawManager;
+import net.minecraft.world.gen.feature.structure.*;
+import net.minecraft.world.gen.feature.template.TemplateManager;
+import net.minecraft.world.gen.settings.StructureSeparationSettings;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.ArrayList;
@@ -41,7 +36,7 @@ public class EndGate extends StructureBase {
     private final ResourceLocation START_POOL;
     private final int HEIGHT;
 
-    public EndGate(Codec<NoneFeatureConfiguration> codec) {
+    public EndGate(Codec<NoFeatureConfig> codec) {
         super(codec,
                 // To Set Minimum Distance
                 ERConfig.END_GATE_SPAWN_DISTANCE,
@@ -55,33 +50,33 @@ public class EndGate extends StructureBase {
                 ),
 
                 // Decoration Stage
-                GenerationStep.Decoration.STRONGHOLDS
+                GenerationStage.Decoration.STRONGHOLDS
         );
         this.START_POOL = new ResourceLocation(EndRemastered.MOD_ID, "end_gate/start_pool");
         this.HEIGHT = 15;
     }
 
-    public static List<Biome.BiomeCategory> getValidBiomeCategories() {
-        List<Biome.BiomeCategory> biomeCategories = new ArrayList<>();
+    public static List<Biome.Category> getValidBiomeCategories() {
+        List<Biome.Category> biomeCategories = new ArrayList<>();
         for (String biomeName : ERConfig.END_GATE_WHITELISTED_BIOME_CATEGORIES.getList()) {
-            biomeCategories.add(Biome.BiomeCategory.byName(biomeName));
+            biomeCategories.add(Biome.Category.byName(biomeName));
         }
         return biomeCategories;
     }
 
     @Override
-    public StructureFeature.StructureStartFactory<NoneFeatureConfiguration> getStartFactory() {
+    public IStartFactory<NoFeatureConfig> getStartFactory() {
         return Start::new;
     }
 
     @Override
-    public GenerationStep.Decoration step() {
-        return GenerationStep.Decoration.STRONGHOLDS;
+    public GenerationStage.Decoration step() {
+        return GenerationStage.Decoration.STRONGHOLDS;
     }
 
     @Override
     @ParametersAreNonnullByDefault
-    public BlockPos getNearestGeneratedFeature(LevelReader level, StructureFeatureManager manager, BlockPos p_236388_3_, int radius, boolean skipExistingChunks, long seed, StructureFeatureConfiguration separationSettings) {
+    public BlockPos getNearestGeneratedFeature(IWorldReader world, StructureManager manager, BlockPos blockPos, int radius, boolean skipExistingChunks, long seed, StructureSeparationSettings separationSettings) {
         /*
          * Not Even Remotely Close From Knowing Exactly How This Works :((
          *
@@ -90,11 +85,11 @@ public class EndGate extends StructureBase {
          * */
 
         int i = separationSettings.spacing();
-        int j = p_236388_3_.getX() >> 4;
-        int k = p_236388_3_.getZ() >> 4;
+        int j = blockPos.getX() >> 4;
+        int k = blockPos.getZ() >> 4;
         int l = 0;
 
-        for (WorldgenRandom worldgenrandom = new WorldgenRandom(); l <= radius; ++l) {
+        for (SharedSeedRandom worldgenrandom = new SharedSeedRandom(); l <= radius; ++l) {
             for (int i1 = -l; i1 <= l; ++i1) {
                 boolean flag = i1 == -l || i1 == l;
 
@@ -104,20 +99,20 @@ public class EndGate extends StructureBase {
                         int k1 = j + i * i1;
                         int l1 = k + i * j1;
                         ChunkPos chunkpos = this.getPotentialFeatureChunk(separationSettings, seed, worldgenrandom, k1, l1);
-                        ChunkAccess chunkAccess = level.getChunk(chunkpos.x, chunkpos.z, ChunkStatus.STRUCTURE_STARTS);
+                        IChunk chunkAccess = world.getChunk(chunkpos.x, chunkpos.z, ChunkStatus.STRUCTURE_STARTS);
                         StructureStart<?> structurestart = manager.getStartForFeature(SectionPos.of(chunkAccess.getPos(), 0), this, chunkAccess);
                         if (structurestart != null && structurestart.isValid()) {
                             if (skipExistingChunks && structurestart.canBeReferenced()) {
                                 structurestart.addReference();
-                                return new BlockPos(structurestart.getPieces().get(((Start) structurestart).getLocatedRoom()).getBoundingBox().minX(),
-                                        structurestart.getPieces().get(((Start) structurestart).getLocatedRoom()).getBoundingBox().minY(),
-                                        structurestart.getPieces().get(((Start) structurestart).getLocatedRoom()).getBoundingBox().minZ());
+                                return new BlockPos(structurestart.getPieces().get(((Start) structurestart).getLocatedRoom()).getBoundingBox().x0,
+                                        structurestart.getPieces().get(((Start) structurestart).getLocatedRoom()).getBoundingBox().y0,
+                                        structurestart.getPieces().get(((Start) structurestart).getLocatedRoom()).getBoundingBox().z0);
                             }
 
                             if (!skipExistingChunks) {
-                                return new BlockPos(structurestart.getPieces().get(((Start) structurestart).getLocatedRoom()).getBoundingBox().minX(),
-                                        structurestart.getPieces().get(((Start) structurestart).getLocatedRoom()).getBoundingBox().minY(),
-                                        structurestart.getPieces().get(((Start) structurestart).getLocatedRoom()).getBoundingBox().minZ());
+                                return new BlockPos(structurestart.getPieces().get(((Start) structurestart).getLocatedRoom()).getBoundingBox().x0,
+                                        structurestart.getPieces().get(((Start) structurestart).getLocatedRoom()).getBoundingBox().y0,
+                                        structurestart.getPieces().get(((Start) structurestart).getLocatedRoom()).getBoundingBox().z0);
                             }
                         }
 
@@ -136,30 +131,28 @@ public class EndGate extends StructureBase {
         return null;
     }
 
-    public class Start extends NoiseAffectingStructureStart<NoneFeatureConfiguration> {
-        public Start(StructureFeature<NoneFeatureConfiguration> structureIn, ChunkPos chunkPos, int referenceIn, long seedIn) {
-            super(structureIn, chunkPos, referenceIn, seedIn);
+    public class Start extends StructureStart<NoFeatureConfig> {
+        public Start(Structure<NoFeatureConfig> structureIn, int chunkX, int chunkZ, MutableBoundingBox mutableBoundingBox, int referenceIn, long seedIn) {
+            super(structureIn, chunkX, chunkZ, mutableBoundingBox, referenceIn, seedIn);
         }
 
         @Override
         @ParametersAreNonnullByDefault
-        public void generatePieces(RegistryAccess registryAccess, ChunkGenerator chunkGenerator, StructureManager manager, ChunkPos chunkPos, Biome biomeIn, NoneFeatureConfiguration config, LevelHeightAccessor levelHeightAccessor) {
-            BlockPos genPosition = new BlockPos(chunkPos.x << 4, HEIGHT, chunkPos.z << 4);
+        public void generatePieces(DynamicRegistries registryAccess, ChunkGenerator chunkGenerator, TemplateManager manager, int chunkX, int chunkZ, Biome biomeIn, NoFeatureConfig config) {
+            BlockPos genPosition = new BlockPos(chunkX << 4, HEIGHT, chunkZ << 4);
 
-            JigsawPlacement.addPieces(
+            JigsawManager.addPieces(
                     registryAccess,
-                    new JigsawConfiguration(() -> registryAccess.registryOrThrow(Registry.TEMPLATE_POOL_REGISTRY).get(START_POOL),
+                    new VillageConfig(() -> registryAccess.registryOrThrow(Registry.TEMPLATE_POOL_REGISTRY).get(START_POOL),
                             ERConfig.END_GATE_SIZE.getRaw()),
-                    PoolElementStructurePiece::new,
+                    AbstractVillagePiece::new,
                     chunkGenerator,
                     manager,
                     genPosition,
-                    this,
+                    this.pieces,
                     this.random,
                     false,
-                    false,
-                    levelHeightAccessor
-            );
+                    false);
             this.getBoundingBox();
         }
 
