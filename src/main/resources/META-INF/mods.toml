@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[36,)"
+loaderVersion="[34,)"
 license="GNU LGPLv3"
 issueTrackerURL="http://gitlab.com/endrem/end-remastered/-/issues/"
 [[mods]]
@@ -21,7 +21,7 @@ After reaching one of these structures, you will have to find the hidden portal 
 [[dependencies.endrem]]
     modId="forge"
     mandatory=true
-    versionRange="[36,)"
+    versionRange="[34,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.endrem]]
