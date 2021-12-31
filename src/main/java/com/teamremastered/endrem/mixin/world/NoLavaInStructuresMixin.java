@@ -30,7 +30,7 @@ public class NoLavaInStructuresMixin {
             for(Direction face : Direction.Plane.HORIZONTAL) {
                 mutable.set(context.origin()).move(face);
                 sectionPos = SectionPos.of(mutable);
-                if (context.level().startsForFeature(sectionPos, ERStructures.END_CASTLE.get()).findAny().isPresent() || context.level().startsForFeature(sectionPos, ERStructures.END_GATE.get()).findAny().isPresent()) {
+                if (context.level().startsForFeature(sectionPos, ERStructures.END_CASTLE.get()).stream().findAny().isPresent() || context.level().startsForFeature(sectionPos, ERStructures.END_GATE.get()).stream().findAny().isPresent()) {
                         cir.setReturnValue(false);
                     }
                 }
