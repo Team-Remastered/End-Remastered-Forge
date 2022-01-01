@@ -4,19 +4,28 @@ import com.mojang.serialization.Codec;
 import com.teamremastered.endrem.config.ERConfig;
 import com.teamremastered.endrem.utils.ERUtils;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.ChunkPos;
+import net.minecraft.world.level.StructureFeatureManager;
+import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.levelgen.structure.pieces.PieceGenerator;
 import net.minecraft.world.level.levelgen.structure.pieces.PieceGeneratorSupplier;
+import net.minecraft.world.level.levelgen.structure.pieces.PiecesContainer;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Random;
+
 public class EndCastle extends StructureFeature<NoneFeatureConfiguration> {
     public EndCastle(Codec<NoneFeatureConfiguration> codec) {
-        super(codec, PieceGeneratorSupplier.simple(PieceGeneratorSupplier.checkForBiomeOnTop(Heightmap.Types.WORLD_SURFACE_WG), EndCastle::generatePieces));
+        super(codec, PieceGeneratorSupplier.simple(PieceGeneratorSupplier.checkForBiomeOnTop(Heightmap.Types.WORLD_SURFACE_WG), EndCastle::generatePieces), EndCastle::afterPlace);
     }
 
     @Override
@@ -55,11 +64,44 @@ public class EndCastle extends StructureFeature<NoneFeatureConfiguration> {
             x += 43;
             z -= 17;
         }
-
         // Finds the y value of the terrain at location.
         int surfaceY = context.chunkGenerator().getBaseHeight(x, z, Heightmap.Types.WORLD_SURFACE_WG, context.heightAccessor());
         BlockPos genPosition = new BlockPos(x, surfaceY, z);
 
         EndCastlePieces.addPieces(context.structureManager(), genPosition, rotation, builder, context.random());
+    }
+
+    private static void afterPlace(WorldGenLevel genLevel, StructureFeatureManager featureManager, ChunkGenerator chunkGenerator, Random random, BoundingBox boundingBox, ChunkPos chunkPos, PiecesContainer piecesContainer) {
+        BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
+        int i = genLevel.getMinBuildHeight();
+        BoundingBox boundingbox = piecesContainer.calculateBoundingBox();
+        int j = boundingbox.minY();
+
+        for(int k = boundingBox.minX(); k <= boundingBox.maxX(); ++k) {
+            for(int l = boundingBox.minZ(); l <= boundingBox.maxZ(); ++l) {
+                blockpos$mutableblockpos.set(k, j, l);
+                if (!genLevel.isEmptyBlock(blockpos$mutableblockpos) && boundingbox.isInside(blockpos$mutableblockpos) && piecesContainer.isInsidePiece(blockpos$mutableblockpos)) {
+                    for(int i1 = j - 1; i1 > i; --i1) {
+                        blockpos$mutableblockpos.setY(i1);
+                        if (!genLevel.isEmptyBlock(blockpos$mutableblockpos) && !genLevel.getBlockState(blockpos$mutableblockpos).getMaterial().isLiquid()) {
+                            break;
+                        }
+                        double randomBlock = Math.random();
+                        if (randomBlock <= 0.005) {
+                            genLevel.setBlock(blockpos$mutableblockpos, Blocks.AIR.defaultBlockState(), 2);
+                        } else if (randomBlock <= 0.1) {
+                            genLevel.setBlock(blockpos$mutableblockpos, Blocks.COBBLESTONE.defaultBlockState(), 2);
+                        } else if (randomBlock <= 0.2) {
+                            genLevel.setBlock(blockpos$mutableblockpos, Blocks.ANDESITE.defaultBlockState(), 2);
+                        } else if (randomBlock <= 0.3) {
+                            genLevel.setBlock(blockpos$mutableblockpos, Blocks.DEEPSLATE.defaultBlockState(), 2);
+                        } else {
+                            genLevel.setBlock(blockpos$mutableblockpos, Blocks.POLISHED_ANDESITE.defaultBlockState(), 2);
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }
