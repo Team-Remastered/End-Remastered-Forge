@@ -36,8 +36,25 @@ public class EndCastle extends StructureFeature<NoneFeatureConfiguration> {
         Rotation rotation = Rotation.values()[context.random().nextInt(Rotation.values().length)];
 
         // Turns the chunk coordinates into actual coordinates we can use. (Gets center of that chunk)
-        int x = (context.chunkPos().x << 4) + 7;
-        int z = (context.chunkPos().z << 4) + 7;
+        int x = (context.chunkPos().x << 4);
+        int z = (context.chunkPos().z << 4);
+
+        if (rotation == Rotation.CLOCKWISE_90) {
+            x += 17;
+            z += 43;
+        }
+        else if (rotation == Rotation.CLOCKWISE_180) {
+            x -= 43;
+            z += 17;
+        }
+        else if (rotation == Rotation.COUNTERCLOCKWISE_90) {
+            x -= 17;
+            z -= 43;
+        }
+        else {
+            x += 43;
+            z -= 17;
+        }
 
         // Finds the y value of the terrain at location.
         int surfaceY = context.chunkGenerator().getBaseHeight(x, z, Heightmap.Types.WORLD_SURFACE_WG, context.heightAccessor());
