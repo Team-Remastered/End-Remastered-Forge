@@ -13,13 +13,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LakeFeature.class)
 public class NoLakesInStructuresMixin {
+
     @Inject(
             method = "place(Lnet/minecraft/world/level/levelgen/feature/FeaturePlaceContext;)Z",
-            at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/world/level/WorldGenLevel;startsForFeature(Lnet/minecraft/core/SectionPos;Lnet/minecraft/world/level/levelgen/feature/StructureFeature;)Ljava/util/stream/Stream;"),
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/WorldGenLevel;startsForFeature(Lnet/minecraft/core/SectionPos;Lnet/minecraft/world/level/levelgen/feature/StructureFeature;)Ljava/util/List;"),
             cancellable = true
     )
-    /* Disables Lake features from generating inside structures */
-    private void NoLakesInStructures(FeaturePlaceContext<BlockStateConfiguration> context, CallbackInfoReturnable<Boolean> cir) {
+    private void noLakesInStructures(FeaturePlaceContext<BlockStateConfiguration> context, CallbackInfoReturnable<Boolean> cir) {
         SectionPos sectionPos = SectionPos.of(context.origin());
         if (context.level().startsForFeature(sectionPos, ERStructures.END_CASTLE.get()).stream().findAny().isPresent() || context.level().startsForFeature(sectionPos, ERStructures.END_GATE.get()).stream().findAny().isPresent()) {
             cir.setReturnValue(false);

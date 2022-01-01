@@ -21,19 +21,16 @@ public class NoLavaInStructuresMixin {
             at = @At(value = "HEAD"),
             cancellable = true
     )
-
-    /* Removes Lava and Water Features generating in stone blocks */
-    private void NoLavaInStructures(FeaturePlaceContext<SpringConfiguration> context, CallbackInfoReturnable<Boolean> cir) {
-        if(context.config().state.is(FluidTags.LAVA) || context.config().state.is(FluidTags.WATER)) {
+    private void noLavaInStructures(FeaturePlaceContext<SpringConfiguration> context, CallbackInfoReturnable<Boolean> cir) {
+        if(context.config().state.is(FluidTags.LAVA)) {
             BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos();
-            SectionPos sectionPos;
             for(Direction face : Direction.Plane.HORIZONTAL) {
                 mutable.set(context.origin()).move(face);
-                sectionPos = SectionPos.of(mutable);
+                SectionPos sectionPos = SectionPos.of(context.origin());
                 if (context.level().startsForFeature(sectionPos, ERStructures.END_CASTLE.get()).stream().findAny().isPresent() || context.level().startsForFeature(sectionPos, ERStructures.END_GATE.get()).stream().findAny().isPresent()) {
-                        cir.setReturnValue(false);
-                    }
+                    cir.setReturnValue(false);
                 }
             }
         }
     }
+}
