@@ -4,19 +4,22 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.teamremastered.endrem.EndRemastered;
 import com.teamremastered.endrem.config.ERConfig;
+import com.teamremastered.endrem.utils.ERUtils;
+import com.teamremastered.endrem.world.structures.config.ERStructures;
 import com.teamremastered.endrem.world.structures.utils.CustomMonsterSpawn;
-import com.teamremastered.endrem.world.structures.utils.StructureBase;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.SectionPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.LevelHeightAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.StructureFeatureManager;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.BiomeSource;
 import net.minecraft.world.level.chunk.ChunkAccess;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.chunk.ChunkStatus;
@@ -31,34 +34,30 @@ import net.minecraft.world.level.levelgen.structure.NoiseAffectingStructureStart
 import net.minecraft.world.level.levelgen.structure.PoolElementStructurePiece;
 import net.minecraft.world.level.levelgen.structure.StructureStart;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureManager;
+import net.minecraftforge.event.world.StructureSpawnListGatherEvent;
 
+import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class EndGate extends StructureBase {
-    private final ResourceLocation START_POOL;
-    private final int HEIGHT;
+public class EndGate extends StructureFeature<NoneFeatureConfiguration> {
+    private static final ResourceLocation START_POOL = new ResourceLocation(EndRemastered.MOD_ID, "end_gate/start_pool");;
+    private static final List<CustomMonsterSpawn> MONSTER_SPAWN_LIST =  ImmutableList.of(
+            new CustomMonsterSpawn(EntityType.SKELETON, 30, 30, 35),
+            new CustomMonsterSpawn(EntityType.ZOMBIE, 20, 25, 30),
+            new CustomMonsterSpawn(EntityType.CAVE_SPIDER, 20, 25, 30),
+            new CustomMonsterSpawn(EntityType.WITCH, 10, 10, 15)
+    );
 
     public EndGate(Codec<NoneFeatureConfiguration> codec) {
-        super(codec,
-                // To Set Minimum Distance
-                ERConfig.END_GATE_SPAWN_DISTANCE,
+        super(codec);
+    }
 
-                // List Of Monster Spawns
-                ImmutableList.of(
-                        new CustomMonsterSpawn(EntityType.SKELETON, 30, 30, 35),
-                        new CustomMonsterSpawn(EntityType.ZOMBIE, 20, 25, 30),
-                        new CustomMonsterSpawn(EntityType.CAVE_SPIDER, 20, 25, 30),
-                        new CustomMonsterSpawn(EntityType.WITCH, 10, 10, 15)
-                ),
-
-                // Decoration Stage
-                GenerationStep.Decoration.STRONGHOLDS
-        );
-        this.START_POOL = new ResourceLocation(EndRemastered.MOD_ID, "end_gate/start_pool");
-        this.HEIGHT = 15;
+    @Override
+    public @Nonnull GenerationStep.Decoration step() {
+        return GenerationStep.Decoration.STRONGHOLDS;
     }
 
     public static List<Biome.BiomeCategory> getValidBiomeCategories() {
@@ -69,14 +68,17 @@ public class EndGate extends StructureBase {
         return biomeCategories;
     }
 
-    @Override
-    public StructureFeature.StructureStartFactory<NoneFeatureConfiguration> getStartFactory() {
-        return Start::new;
+    public static void setupStructureSpawns(final StructureSpawnListGatherEvent event) {
+        if(event.getStructure() == ERStructures.END_GATE.get()) {
+            for (CustomMonsterSpawn monsterSpawn : MONSTER_SPAWN_LIST) {
+                event.addEntitySpawn(MobCategory.MONSTER, monsterSpawn.getIndividualMobSpawnInfo());
+            }
+        }
     }
 
-    @Override
-    public GenerationStep.Decoration step() {
-        return GenerationStep.Decoration.STRONGHOLDS;
+    @ParametersAreNonnullByDefault
+    protected boolean isFeatureChunk(ChunkGenerator chunkGenerator, BiomeSource biomeSource, long seed, WorldgenRandom chunkRandom, ChunkPos chunkPos1, Biome biome, ChunkPos chunkPos2, NoneFeatureConfiguration c, LevelHeightAccessor level) {
+        return ERUtils.getChunkDistanceFromSpawn(chunkPos1) >= ERConfig.END_GATE_SPAWN_DISTANCE.getRaw();
     }
 
     @Override
@@ -136,7 +138,12 @@ public class EndGate extends StructureBase {
         return null;
     }
 
-    public class Start extends NoiseAffectingStructureStart<NoneFeatureConfiguration> {
+    @Override
+    public @Nonnull StructureFeature.StructureStartFactory<NoneFeatureConfiguration> getStartFactory() {
+        return Start::new;
+    }
+
+    public static class Start extends NoiseAffectingStructureStart<NoneFeatureConfiguration> {
         public Start(StructureFeature<NoneFeatureConfiguration> structureIn, ChunkPos chunkPos, int referenceIn, long seedIn) {
             super(structureIn, chunkPos, referenceIn, seedIn);
         }
@@ -144,7 +151,7 @@ public class EndGate extends StructureBase {
         @Override
         @ParametersAreNonnullByDefault
         public void generatePieces(RegistryAccess registryAccess, ChunkGenerator chunkGenerator, StructureManager manager, ChunkPos chunkPos, Biome biomeIn, NoneFeatureConfiguration config, LevelHeightAccessor levelHeightAccessor) {
-            BlockPos genPosition = new BlockPos(chunkPos.x << 4, HEIGHT, chunkPos.z << 4);
+            BlockPos genPosition = new BlockPos(chunkPos.x << 4, ERConfig.END_GATE_HEIGHT.getRaw(), chunkPos.z << 4);
 
             JigsawPlacement.addPieces(
                     registryAccess,

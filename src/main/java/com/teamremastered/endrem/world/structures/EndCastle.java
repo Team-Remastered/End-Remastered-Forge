@@ -3,45 +3,59 @@ package com.teamremastered.endrem.world.structures;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.teamremastered.endrem.config.ERConfig;
+import com.teamremastered.endrem.utils.ERUtils;
+import com.teamremastered.endrem.world.structures.config.ERStructures;
 import com.teamremastered.endrem.world.structures.utils.CustomMonsterSpawn;
-import com.teamremastered.endrem.world.structures.utils.StructureBase;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.BiomeSource;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.level.levelgen.WorldgenRandom;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.levelgen.structure.StructureStart;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureManager;
+import net.minecraftforge.event.world.StructureSpawnListGatherEvent;
 
+import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class EndCastle extends StructureBase {
+public class EndCastle extends StructureFeature<NoneFeatureConfiguration> {
+    private static final List<CustomMonsterSpawn> MONSTER_SPAWN_LIST =  ImmutableList.of(
+            new CustomMonsterSpawn(EntityType.PILLAGER, 30, 30, 35),
+            new CustomMonsterSpawn(EntityType.VINDICATOR, 20, 25, 30),
+            new CustomMonsterSpawn(EntityType.EVOKER, 20, 10, 15),
+            new CustomMonsterSpawn(EntityType.ILLUSIONER, 5, 5, 10)
+    );
+
     public EndCastle(Codec<NoneFeatureConfiguration> codec) {
-        super(codec,
-                // To Set Minimum Distance
-                ERConfig.END_CASTLE_SPAWN_DISTANCE,
-                // List Of Monster Spawns
-                ImmutableList.of(
-                        new CustomMonsterSpawn(EntityType.PILLAGER, 30, 30, 35),
-                        new CustomMonsterSpawn(EntityType.VINDICATOR, 20, 25, 30),
-                        new CustomMonsterSpawn(EntityType.EVOKER, 20, 10, 15),
-                        new CustomMonsterSpawn(EntityType.ILLUSIONER, 5, 5, 10)
-                ),
-                // Decoration Stage
-                GenerationStep.Decoration.UNDERGROUND_DECORATION //Underground decoration so ore and features don't spawn in the castle
-        );
+        super(codec);
+    }
+
+    @Override
+    public @Nonnull GenerationStep.Decoration step() {
+        return GenerationStep.Decoration.UNDERGROUND_DECORATION;
+    }
+
+    public static void setupStructureSpawns(final StructureSpawnListGatherEvent event) {
+        if(event.getStructure() == ERStructures.END_CASTLE.get()) {
+            for (CustomMonsterSpawn monsterSpawn : MONSTER_SPAWN_LIST) {
+                event.addEntitySpawn(MobCategory.MONSTER, monsterSpawn.getIndividualMobSpawnInfo());
+            }
+        }
     }
 
     public static List<Biome.BiomeCategory> getValidBiomeCategories() {
@@ -52,9 +66,14 @@ public class EndCastle extends StructureBase {
         return biomeCategories;
     }
 
+    @ParametersAreNonnullByDefault
+    protected boolean isFeatureChunk(ChunkGenerator chunkGenerator, BiomeSource biomeSource, long seed, WorldgenRandom chunkRandom, ChunkPos chunkPos1, Biome biome, ChunkPos chunkPos2, NoneFeatureConfiguration c, LevelHeightAccessor level) {
+        return ERUtils.getChunkDistanceFromSpawn(chunkPos1) >= ERConfig.END_CASTLE_SPAWN_DISTANCE.getRaw();
+    }
+
     @Override
     @MethodsReturnNonnullByDefault
-    public StructureFeature.StructureStartFactory<NoneFeatureConfiguration> getStartFactory() {
+    public @Nonnull StructureFeature.StructureStartFactory<NoneFeatureConfiguration> getStartFactory() {
         return Start::new;
     }
 
@@ -94,6 +113,7 @@ public class EndCastle extends StructureBase {
             EndCastlePieces.start(manager, genPosition, rotation, this.pieces);
         }
 
+        @ParametersAreNonnullByDefault
         public void placeInChunk(WorldGenLevel worldGenLevel, StructureFeatureManager featureManager, ChunkGenerator chunkGenerator, Random random, BoundingBox boundingBox, ChunkPos chunkPos) {
             super.placeInChunk(worldGenLevel, featureManager, chunkGenerator, random, boundingBox, chunkPos);
             BoundingBox boundingbox = this.getBoundingBox();
