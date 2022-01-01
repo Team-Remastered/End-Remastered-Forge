@@ -43,7 +43,7 @@ import java.util.List;
 
 
 public class EndGate extends StructureFeature<NoneFeatureConfiguration> {
-    private static final ResourceLocation START_POOL = new ResourceLocation(EndRemastered.MOD_ID, "end_gate/start_pool");;
+    private static final ResourceLocation START_POOL = new ResourceLocation(EndRemastered.MOD_ID, "end_gate/start_pool");
     private static final List<CustomMonsterSpawn> MONSTER_SPAWN_LIST =  ImmutableList.of(
             new CustomMonsterSpawn(EntityType.SKELETON, 30, 30, 35),
             new CustomMonsterSpawn(EntityType.ZOMBIE, 20, 25, 30),

@@ -31,7 +31,7 @@ import java.util.List;
 
 
 public class AncientWitchHut extends StructureFeature<NoneFeatureConfiguration> {
-    private static final ResourceLocation START_POOL = new ResourceLocation(EndRemastered.MOD_ID, "ancient_witch_hut/start_pool");;
+    private static final ResourceLocation START_POOL = new ResourceLocation(EndRemastered.MOD_ID, "ancient_witch_hut/start_pool");
     private static final List<CustomMonsterSpawn> MONSTER_SPAWN_LIST =  ImmutableList.of(
             new CustomMonsterSpawn(EntityType.SKELETON, 5, 5, 10),
             new CustomMonsterSpawn(EntityType.WITCH, 10, 10, 15)
