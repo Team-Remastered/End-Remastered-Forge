@@ -5,9 +5,6 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableMultimap;
 import com.mojang.serialization.Codec;
 import com.teamremastered.endrem.EndRemastered;
-import com.teamremastered.endrem.config.ERConfig;
-import com.teamremastered.endrem.world.structures.AncientWitchHut;
-import com.teamremastered.endrem.world.structures.EndCastle;
 import com.teamremastered.endrem.world.structures.EndGate;
 import net.minecraft.core.Registry;
 import net.minecraft.data.BuiltinRegistries;
@@ -23,8 +20,6 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredStructureFeature;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.StructureFeatureConfiguration;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
-import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -108,6 +103,8 @@ public class StructureGenerator {
 
             Map<StructureFeature<?>, StructureFeatureConfiguration> tempMap = new HashMap<>(worldStructureConfig.structureConfig());
             tempMap.putIfAbsent(ERStructures.END_CASTLE.get(), StructureSettings.DEFAULTS.get(ERStructures.END_CASTLE.get()));
+            tempMap.putIfAbsent(ERStructures.END_GATE.get(), StructureSettings.DEFAULTS.get(ERStructures.END_GATE.get()));
+            tempMap.putIfAbsent(ERStructures.ANCIENT_WITCH_HUT.get(), StructureSettings.DEFAULTS.get(ERStructures.ANCIENT_WITCH_HUT.get()));
             worldStructureConfig.structureConfig = tempMap;
         }
     }

@@ -2,7 +2,6 @@ package com.teamremastered.endrem.world.structures;
 
 import com.mojang.serialization.Codec;
 import com.teamremastered.endrem.EndRemastered;
-import com.teamremastered.endrem.config.ERConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
@@ -35,8 +34,7 @@ public class AncientWitchHut extends StructureFeature<JigsawConfiguration> {
     public static @NotNull Optional<PieceGenerator<JigsawConfiguration>> createPiecesGenerator(PieceGeneratorSupplier.Context<JigsawConfiguration> context) {
         JigsawConfiguration newConfig = new JigsawConfiguration(
                 () -> context.registryAccess().ownedRegistryOrThrow(Registry.TEMPLATE_POOL_REGISTRY)
-                        .get(AncientWitchHut.START_POOL),
-                ERConfig.END_GATE_SIZE.getRaw()
+                        .get(AncientWitchHut.START_POOL), 1
         );
 
         PieceGeneratorSupplier.Context<JigsawConfiguration> newContext = new PieceGeneratorSupplier.Context<>(
