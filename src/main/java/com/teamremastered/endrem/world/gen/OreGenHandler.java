@@ -42,7 +42,7 @@ public class OreGenHandler {
         BiomeGenerationSettingsBuilder generation = event.getGeneration();
         if (event.getCategory().equals(Biome.BiomeCategory.NETHER)) {
             if (END_CRYSTAL_ORE_GEN != null)
-                generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, END_CRYSTAL_ORE_GEN.placed(List.of(CountPlacement.of(30), HeightRangePlacement.triangle(VerticalAnchor.bottom(), VerticalAnchor.top()))));
+                generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, END_CRYSTAL_ORE_GEN.placed(List.of(CountPlacement.of(40), HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(20), VerticalAnchor.belowTop(20)))));
         }
     }
 
