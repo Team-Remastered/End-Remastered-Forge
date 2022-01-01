@@ -12,7 +12,6 @@ import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.FlatLevelSource;
@@ -48,21 +47,6 @@ public class StructureGenerator {
         ERConfiguredStructures.registerConfiguredStructures();
     }
 
-//    /* Add our structures to biomes */
-//    public static void biomeModification(final BiomeLoadingEvent event) {
-//        BiomeGenerationSettingsBuilder generation = event.getGeneration();
-//
-//        if (ERConfig.END_CASTLE_DISTANCE.getRaw() > 0 && EndCastle.getValidBiomeCategories().contains(event.getCategory())) {
-//            generation.getStructures().add(() -> (ERConfiguredStructures.CONFIGURED_END_CASTLE));
-//        }
-//        if (ERConfig.END_GATE_DISTANCE.getRaw() > 0 && EndGate.getValidBiomeCategories().contains(event.getCategory())) {
-//            generation.getStructures().add(() -> (ERConfiguredStructures.CONFIGURED_END_GATE));
-//        }
-//        if (ERConfig.ANCIENT_WITCH_HUT_DISTANCE.getRaw() > 0 && AncientWitchHut.getValidBiomeCategories().contains(event.getCategory())) {
-//            generation.getStructures().add(() -> (ERConfiguredStructures.CONFIGURED_ANCIENT_WITCH_HUT));
-//        }
-//    }
-
     private static Method GETCODEC_METHOD;
 
     public static void addDimensionalSpacing(final WorldEvent.Load event) {
@@ -81,15 +65,15 @@ public class StructureGenerator {
                 String biomeName = biomeEntry.getValue().toString();
                 String biomeCategoryName = biomeEntry.getValue().getBiomeCategory().getName();
 
-                if (ERConfig.END_CASTLE_WHITELISTED_BIOME_CATEGORIES.getList().contains(biomeCategoryName) && !ERConfig.END_CASTLE_BLACKLISTED_BIOMES.getList().contains(biomeName)) {
+                if (ERConfig.END_CASTLE_WHITELISTED_BIOME_CATEGORIES.getList().contains(biomeCategoryName) && !ERConfig.END_CASTLE_BLACKLISTED_BIOMES.getList().contains(biomeName) && ERConfig.END_CASTLE_DISTANCE.getRaw() > 0) {
                     associateBiomeToConfiguredStructure(ERStructureToMultiMap, ERConfiguredStructures.CONFIGURED_END_CASTLE, biomeEntry.getKey());
                 }
 
-                if (ERConfig.END_GATE_WHITELISTED_BIOME_CATEGORIES.getList().contains(biomeCategoryName) && !ERConfig.END_GATE_BLACKLISTED_BIOMES.getList().contains(biomeName)) {
+                if (ERConfig.END_GATE_WHITELISTED_BIOME_CATEGORIES.getList().contains(biomeCategoryName) && !ERConfig.END_GATE_BLACKLISTED_BIOMES.getList().contains(biomeName)&& ERConfig.END_GATE_DISTANCE.getRaw() > 0) {
                     associateBiomeToConfiguredStructure(ERStructureToMultiMap, ERConfiguredStructures.CONFIGURED_END_GATE, biomeEntry.getKey());
                 }
 
-                if (biomeEntry.getValue().getBiomeCategory().equals(Biome.BiomeCategory.SWAMP)) {
+                if (biomeEntry.getValue().getBiomeCategory().equals(Biome.BiomeCategory.SWAMP) && ERConfig.ANCIENT_WITCH_HUT_DISTANCE.getRaw() > 0) {
                     associateBiomeToConfiguredStructure(ERStructureToMultiMap, ERConfiguredStructures.CONFIGURED_ANCIENT_WITCH_HUT, biomeEntry.getKey());
                 }
             }

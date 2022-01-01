@@ -100,7 +100,7 @@ public class ERConfig {
 
     public static ERConfigGenericEntry<Integer> END_GATE_SIZE = new ERConfigGenericEntry<>(
             "end_gate_size",
-            "Number of pieces generated in End Gates (Set to 0 to disable)",
+            "Number of pieces generated in End Gates",
             20
     );
 
