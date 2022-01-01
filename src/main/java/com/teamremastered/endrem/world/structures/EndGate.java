@@ -34,7 +34,6 @@ import java.util.List;
 
 public class EndGate extends StructureBase {
     private final ResourceLocation START_POOL;
-    private final int HEIGHT;
 
     public EndGate(Codec<NoFeatureConfig> codec) {
         super(codec,
@@ -53,7 +52,6 @@ public class EndGate extends StructureBase {
                 GenerationStage.Decoration.STRONGHOLDS
         );
         this.START_POOL = new ResourceLocation(EndRemastered.MOD_ID, "end_gate/start_pool");
-        this.HEIGHT = 15;
     }
 
     public static List<Biome.Category> getValidBiomeCategories() {
@@ -139,7 +137,7 @@ public class EndGate extends StructureBase {
         @Override
         @ParametersAreNonnullByDefault
         public void generatePieces(DynamicRegistries registryAccess, ChunkGenerator chunkGenerator, TemplateManager manager, int chunkX, int chunkZ, Biome biomeIn, NoFeatureConfig config) {
-            BlockPos genPosition = new BlockPos(chunkX << 4, HEIGHT, chunkZ << 4);
+            BlockPos genPosition = new BlockPos(chunkX << 4, ERConfig.END_GATE_HEIGHT.getRaw(), chunkZ << 4);
 
             JigsawManager.addPieces(
                     registryAccess,
