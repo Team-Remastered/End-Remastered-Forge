@@ -7,16 +7,21 @@ import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.GenerationStep;
+import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
+import net.minecraft.world.level.levelgen.placement.CountPlacement;
+import net.minecraft.world.level.levelgen.placement.HeightRangePlacement;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+
+import java.util.List;
 
 
 @Mod.EventBusSubscriber
@@ -37,7 +42,7 @@ public class OreGenHandler {
         BiomeGenerationSettingsBuilder generation = event.getGeneration();
         if (event.getCategory().equals(Biome.BiomeCategory.NETHER)) {
             if (END_CRYSTAL_ORE_GEN != null)
-                generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, END_CRYSTAL_ORE_GEN.placed());
+                generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, END_CRYSTAL_ORE_GEN.placed(List.of(CountPlacement.of(30), HeightRangePlacement.triangle(VerticalAnchor.bottom(), VerticalAnchor.top()))));
         }
     }
 
