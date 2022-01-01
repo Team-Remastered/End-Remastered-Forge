@@ -5,6 +5,7 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableMultimap;
 import com.mojang.serialization.Codec;
 import com.teamremastered.endrem.EndRemastered;
+import com.teamremastered.endrem.config.ERConfig;
 import com.teamremastered.endrem.world.structures.EndGate;
 import net.minecraft.core.Registry;
 import net.minecraft.data.BuiltinRegistries;
@@ -68,7 +69,7 @@ public class StructureGenerator {
         if(event.getWorld() instanceof ServerLevel serverLevel){
             ChunkGenerator chunkGenerator = serverLevel.getChunkSource().getGenerator();
 
-            if (chunkGenerator instanceof FlatLevelSource && serverLevel.dimension().equals(Level.OVERWORLD)) {
+            if (chunkGenerator instanceof FlatLevelSource && ERConfig.WHITELISTED_DIMENSIONS.getList().contains(serverLevel.dimension().toString())) {
                 return;
             }
 
@@ -77,10 +78,18 @@ public class StructureGenerator {
             HashMap<StructureFeature<?>, HashMultimap<ConfiguredStructureFeature<?, ?>, ResourceKey<Biome>>> ERStructureToMultiMap = new HashMap<>();
 
             for(Map.Entry<ResourceKey<Biome>, Biome> biomeEntry : serverLevel.registryAccess().ownedRegistryOrThrow(Registry.BIOME_REGISTRY).entrySet()) {
-                Biome.BiomeCategory biomeCategory = biomeEntry.getValue().getBiomeCategory();
-                if(biomeCategory != Biome.BiomeCategory.OCEAN && biomeCategory != Biome.BiomeCategory.THEEND && biomeCategory != Biome.BiomeCategory.NETHER && biomeCategory != Biome.BiomeCategory.NONE) {
+                String biomeName = biomeEntry.getValue().toString();
+                String biomeCategoryName = biomeEntry.getValue().getBiomeCategory().getName();
+
+                if (ERConfig.END_CASTLE_WHITELISTED_BIOME_CATEGORIES.getList().contains(biomeCategoryName) && !ERConfig.END_CASTLE_BLACKLISTED_BIOMES.getList().contains(biomeName)) {
                     associateBiomeToConfiguredStructure(ERStructureToMultiMap, ERConfiguredStructures.CONFIGURED_END_CASTLE, biomeEntry.getKey());
+                }
+
+                if (ERConfig.END_GATE_WHITELISTED_BIOME_CATEGORIES.getList().contains(biomeCategoryName) && !ERConfig.END_GATE_BLACKLISTED_BIOMES.getList().contains(biomeName)) {
                     associateBiomeToConfiguredStructure(ERStructureToMultiMap, ERConfiguredStructures.CONFIGURED_END_GATE, biomeEntry.getKey());
+                }
+
+                if (biomeEntry.getValue().getBiomeCategory().equals(Biome.BiomeCategory.SWAMP)) {
                     associateBiomeToConfiguredStructure(ERStructureToMultiMap, ERConfiguredStructures.CONFIGURED_ANCIENT_WITCH_HUT, biomeEntry.getKey());
                 }
             }

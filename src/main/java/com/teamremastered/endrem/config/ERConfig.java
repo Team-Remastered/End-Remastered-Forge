@@ -36,14 +36,24 @@ public class ERConfig {
             "[minecraft:overworld]");
 
     public static ERConfigListEntry END_GATE_BLACKLISTED_BIOMES = new ERConfigListEntry(
-            "end_castle_blacklisted_biome",
+            "end_gate_blacklisted_biome",
             "Comma-separated list of blacklisted biomes for the End Gate",
             "[minecraft:ocean, minecraft:deep_ocean]");
 
+    public static ERConfigListEntry END_GATE_WHITELISTED_BIOME_CATEGORIES = new ERConfigListEntry(
+            "end_gate_whitelisted_biome_categories",
+            "Comma-separated list of whitelisted biome categories for the End Gate",
+            "[plains, jungle, taiga, forest, plains, extreme_hills, mesa, savanna, icy, desert, swamp, mushroom, none]");
+
     public static ERConfigListEntry END_CASTLE_BLACKLISTED_BIOMES = new ERConfigListEntry(
-            "end_gate_blacklisted_biome",
+            "end_castle_blacklisted_biome",
             "Comma-separated list of blacklisted biomes for the End Castle",
-            "[minecraft:ocean, minecraft:deep_ocean]");
+            "[minecraft:snowy_plains, minecraft:windswept_hills, minecraft:windswept_gravelly_hills, minecraft:windswept_forest, minecraft:sparse_jungle, minecraft:grove, minecraft:snowy_slopes, minecraft:frozen_peaks, minecraft:river, minecraft:frozen_river, minecraft:beach, minecraft:stony_shore]");
+
+    public static ERConfigListEntry END_CASTLE_WHITELISTED_BIOME_CATEGORIES = new ERConfigListEntry(
+            "end_castle_whitelisted_biome_categories",
+            "Comma-separated list of whitelisted biome categories for the End Castle",
+            "[jungle, taiga, forest, none, plains, icy]");
 
     public static ERConfigListEntry EYE_STRUCTURE_LIST = new ERConfigListEntry(
             "eye_structure_list",
@@ -106,6 +116,11 @@ public class ERConfig {
             "Minimum distance in chunks between End Castles and the spawn",
             188
     );
+
+    public static ERConfigGenericEntry<Boolean> END_CASTLE_TERRAFORMING = new ERConfigGenericEntry<>(
+            "end_castle_terraforming",
+            "Toggle Whether surrounding land will be modified to conform to the bottom of the structure. \n If set to false, the bottom of the structure will be modified to conform to the surrounding land",
+            true);
 
     public static ERConfigGenericEntry<Integer> ANCIENT_WITCH_HUT_DISTANCE = new ERConfigGenericEntry<>(
             "ancient_witch_hut_distance",

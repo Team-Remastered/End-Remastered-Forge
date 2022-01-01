@@ -1,11 +1,14 @@
 package com.teamremastered.endrem.world.structures;
 
 import com.mojang.serialization.Codec;
+import com.teamremastered.endrem.config.ERConfig;
+import com.teamremastered.endrem.utils.ERUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
+import net.minecraft.world.level.levelgen.feature.configurations.JigsawConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.structure.pieces.PieceGenerator;
 import net.minecraft.world.level.levelgen.structure.pieces.PieceGeneratorSupplier;
@@ -22,7 +25,15 @@ public class EndCastle extends StructureFeature<NoneFeatureConfiguration> {
         return GenerationStep.Decoration.UNDERGROUND_DECORATION;
     }
 
+    private static boolean isFeatureChunk(PieceGenerator.Context<NoneFeatureConfiguration> context) {
+        return ERUtils.getChunkDistanceFromSpawn(context.chunkPos()) >= ERConfig.END_CASTLE_SPAWN_DISTANCE.getRaw();
+    }
+
     private static void generatePieces(StructurePiecesBuilder builder, PieceGenerator.Context<NoneFeatureConfiguration> context) {
+        if (!isFeatureChunk(context)) {
+            return;
+        }
+
         Rotation rotation = Rotation.values()[context.random().nextInt(Rotation.values().length)];
 
         // Turns the chunk coordinates into actual coordinates we can use. (Gets center of that chunk)
