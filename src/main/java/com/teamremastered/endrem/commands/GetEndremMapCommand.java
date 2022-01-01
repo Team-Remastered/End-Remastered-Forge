@@ -7,6 +7,7 @@ import com.teamremastered.endrem.items.ERMap;
 import net.minecraft.command.CommandSource;
 import net.minecraft.command.Commands;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TranslationTextComponent;
 
 public class GetEndremMapCommand {
@@ -18,7 +19,7 @@ public class GetEndremMapCommand {
 
     private int getEndremMap(CommandSource source) throws CommandSyntaxException {
         ServerPlayerEntity player = source.getPlayerOrException();
-        player.addItem(ERMap.createMap(player.getLevel(), player.getOnPos()));
+        player.addItem(ERMap.createMap(player.getLevel(), new BlockPos(player.getX(), player.getY(), player.getZ())));
         source.sendSuccess(new TranslationTextComponent(String.format("Gave [Endrem Map] x 1 to %s", player.getDisplayName().getString())), true);
         return 1;
     }
