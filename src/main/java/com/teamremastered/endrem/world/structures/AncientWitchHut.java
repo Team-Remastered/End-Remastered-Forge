@@ -49,7 +49,7 @@ public class AncientWitchHut extends StructureFeature<JigsawConfiguration> {
                 context.registryAccess()
         );
 
-        BlockPos blockpos = context.chunkPos().getMiddleBlockPosition(0);
+        BlockPos blockpos = context.chunkPos().getMiddleBlockPosition(0).below(3);
 
         return JigsawPlacement.addPieces(
                 newContext,
