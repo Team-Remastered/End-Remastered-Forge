@@ -2,21 +2,17 @@ package com.teamremastered.endrem.world.structures;
 
 
 import com.google.common.collect.ImmutableMap;
-import com.sun.jna.Structure;
 import com.teamremastered.endrem.EndRemastered;
 import com.teamremastered.endrem.world.structures.config.ERStructures;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
-import net.minecraft.world.level.levelgen.feature.StructurePieceType;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.StructurePiece;
 import net.minecraft.world.level.levelgen.structure.StructurePieceAccessor;
 import net.minecraft.world.level.levelgen.structure.TemplateStructurePiece;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext;
@@ -24,7 +20,6 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureMana
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 
 import javax.annotation.ParametersAreNonnullByDefault;
-import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -61,12 +56,12 @@ public class EndCastlePieces {
 
     public static class EndCastlePiece extends TemplateStructurePiece {
         public EndCastlePiece(StructureManager structureManager, ResourceLocation resourceLocation, BlockPos blockPos, Rotation rotation) {
-            super(ERStructures.EndCastlePieceType, 0, structureManager, resourceLocation, resourceLocation.toString(), makeSettings(rotation) , blockPos);
+            super(ERStructures.EndCastlePieceType, 0, structureManager, resourceLocation, resourceLocation.toString(), makeSettings(rotation), blockPos);
         }
 
         public EndCastlePiece(StructurePieceSerializationContext context, CompoundTag compoundTag) {
             super(ERStructures.EndCastlePieceType, compoundTag, context.structureManager(), (rl) ->
-                makeSettings(Rotation.valueOf(compoundTag.getString("Rot")))
+                    makeSettings(Rotation.valueOf(compoundTag.getString("Rot")))
             );
         }
 

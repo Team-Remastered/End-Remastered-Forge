@@ -2,6 +2,7 @@ package com.teamremastered.endrem.world.structures;
 
 import com.mojang.serialization.Codec;
 import com.teamremastered.endrem.EndRemastered;
+import com.teamremastered.endrem.config.ERConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
@@ -20,7 +21,6 @@ import java.util.Optional;
 
 public class AncientWitchHut extends StructureFeature<JigsawConfiguration> {
     private static final ResourceLocation START_POOL = new ResourceLocation(EndRemastered.MOD_ID, "ancient_witch_hut/start_pool");
-    ;
 
     public AncientWitchHut(Codec<JigsawConfiguration> codec) {
         super(codec, AncientWitchHut::createPiecesGenerator, PostPlacementProcessor.NONE);
