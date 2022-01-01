@@ -1,13 +1,17 @@
 package com.teamremastered.endrem.world.structures;
 
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.teamremastered.endrem.config.ERConfig;
 import com.teamremastered.endrem.utils.ERUtils;
+import com.teamremastered.endrem.world.structures.config.ERStructures;
+import com.teamremastered.endrem.world.structures.utils.CustomMonsterSpawn;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.StructureFeatureManager;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.GenerationStep;
@@ -19,11 +23,22 @@ import net.minecraft.world.level.levelgen.structure.pieces.PieceGenerator;
 import net.minecraft.world.level.levelgen.structure.pieces.PieceGeneratorSupplier;
 import net.minecraft.world.level.levelgen.structure.pieces.PiecesContainer;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
+import net.minecraftforge.event.world.StructureSpawnListGatherEvent;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
+import java.util.List;
+
+import static net.minecraft.world.entity.MobCategory.MONSTER;
 
 public class EndCastle extends StructureFeature<NoneFeatureConfiguration> {
+    private static final List<CustomMonsterSpawn> MONSTER_SPAWN_LIST =  ImmutableList.of(
+            new CustomMonsterSpawn(EntityType.PILLAGER, 30, 30, 35),
+            new CustomMonsterSpawn(EntityType.VINDICATOR, 20, 25, 30),
+            new CustomMonsterSpawn(EntityType.EVOKER, 20, 10, 15),
+            new CustomMonsterSpawn(EntityType.ILLUSIONER, 5, 5, 10)
+    );
+
     public EndCastle(Codec<NoneFeatureConfiguration> codec) {
         super(codec, PieceGeneratorSupplier.simple(PieceGeneratorSupplier.checkForBiomeOnTop(Heightmap.Types.WORLD_SURFACE_WG), EndCastle::generatePieces), EndCastle::afterPlace);
     }
@@ -35,6 +50,14 @@ public class EndCastle extends StructureFeature<NoneFeatureConfiguration> {
 
     private static boolean isFeatureChunk(PieceGenerator.Context<NoneFeatureConfiguration> context) {
         return ERUtils.getChunkDistanceFromSpawn(context.chunkPos()) >= ERConfig.END_CASTLE_SPAWN_DISTANCE.getRaw();
+    }
+
+    public static void setupStructureSpawns(final StructureSpawnListGatherEvent event) {
+        if(event.getStructure() == ERStructures.END_CASTLE.get()) {
+            for (CustomMonsterSpawn monsterSpawn : MONSTER_SPAWN_LIST) {
+                event.addEntitySpawn(MONSTER, monsterSpawn.getIndividualMobSpawnInfo());
+            }
+        }
     }
 
     private static void generatePieces(StructurePiecesBuilder builder, PieceGenerator.Context<NoneFeatureConfiguration> context) {

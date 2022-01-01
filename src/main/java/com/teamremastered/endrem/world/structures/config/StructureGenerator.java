@@ -6,6 +6,8 @@ import com.google.common.collect.ImmutableMultimap;
 import com.mojang.serialization.Codec;
 import com.teamremastered.endrem.EndRemastered;
 import com.teamremastered.endrem.config.ERConfig;
+import com.teamremastered.endrem.world.structures.AncientWitchHut;
+import com.teamremastered.endrem.world.structures.EndCastle;
 import com.teamremastered.endrem.world.structures.EndGate;
 import net.minecraft.core.Registry;
 import net.minecraft.data.BuiltinRegistries;
@@ -38,6 +40,8 @@ public class StructureGenerator {
 
         // Setup Structure Spawns
         MinecraftForge.EVENT_BUS.addListener(EventPriority.NORMAL, EndGate::setupStructureSpawns);
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.NORMAL, EndCastle::setupStructureSpawns);
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.NORMAL, AncientWitchHut::setupStructureSpawns);
     }
     public static void setup() {
         ERStructures.setupStructures();
