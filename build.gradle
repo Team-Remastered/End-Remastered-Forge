@@ -14,7 +14,7 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 apply plugin: 'org.spongepowered.mixin'
 
-version = "${release_type}${mod_version}-${minecraft_version}"
+version = "${mod_version}${release_type}-${minecraft_version}"
 group = "com.${author}"
 archivesBaseName = "${modid}_forge"
 
