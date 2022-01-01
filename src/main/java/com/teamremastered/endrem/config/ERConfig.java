@@ -36,7 +36,7 @@ public class ERConfig {
             "[minecraft:overworld]");
 
     public static ERConfigListEntry END_GATE_BLACKLISTED_BIOMES = new ERConfigListEntry(
-            "end_gate_blacklisted_biome",
+            "end_gate_blacklisted_biomes",
             "Comma-separated list of blacklisted biomes for the End Gate",
             "[minecraft:ocean, minecraft:deep_ocean]");
 
@@ -46,7 +46,7 @@ public class ERConfig {
             "[plains, jungle, taiga, forest, plains, extreme_hills, mesa, savanna, icy, desert, swamp, mushroom, none]");
 
     public static ERConfigListEntry END_CASTLE_BLACKLISTED_BIOMES = new ERConfigListEntry(
-            "end_castle_blacklisted_biome",
+            "end_castle_blacklisted_biomes",
             "Comma-separated list of blacklisted biomes for the End Castle",
             "[minecraft:snowy_plains, minecraft:windswept_hills, minecraft:windswept_gravelly_hills, minecraft:windswept_forest, minecraft:sparse_jungle, minecraft:grove, minecraft:snowy_slopes, minecraft:frozen_peaks, minecraft:river, minecraft:frozen_river, minecraft:beach, minecraft:stony_shore]");
 
