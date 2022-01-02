@@ -3,10 +3,10 @@ package com.teamremastered.endrem.world.structures;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.teamremastered.endrem.config.ERConfig;
+import com.teamremastered.endrem.world.structures.config.ERStructures;
 import com.teamremastered.endrem.world.structures.utils.CustomMonsterSpawn;
-import com.teamremastered.endrem.world.structures.utils.StructureBase;
-import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
@@ -24,27 +24,36 @@ import net.minecraft.world.gen.feature.structure.StructureManager;
 import net.minecraft.world.gen.feature.structure.StructurePiece;
 import net.minecraft.world.gen.feature.structure.StructureStart;
 import net.minecraft.world.gen.feature.template.TemplateManager;
+import net.minecraftforge.event.world.StructureSpawnListGatherEvent;
 
+import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class EndCastle extends StructureBase {
+public class EndCastle extends Structure<NoFeatureConfig> {
+    private static final List<CustomMonsterSpawn> MONSTER_SPAWN_LIST =  ImmutableList.of(
+            new CustomMonsterSpawn(EntityType.PILLAGER, 30, 30, 35),
+            new CustomMonsterSpawn(EntityType.VINDICATOR, 20, 25, 30),
+            new CustomMonsterSpawn(EntityType.EVOKER, 20, 10, 15),
+            new CustomMonsterSpawn(EntityType.ILLUSIONER, 5, 5, 10)
+    );
+
     public EndCastle(Codec<NoFeatureConfig> codec) {
-        super(codec,
-                // To Set Minimum Distance
-                ERConfig.END_CASTLE_SPAWN_DISTANCE,
-                // List Of Monster Spawns
-                ImmutableList.of(
-                        new CustomMonsterSpawn(EntityType.PILLAGER, 30, 30, 35),
-                        new CustomMonsterSpawn(EntityType.VINDICATOR, 20, 25, 30),
-                        new CustomMonsterSpawn(EntityType.EVOKER, 20, 10, 15),
-                        new CustomMonsterSpawn(EntityType.ILLUSIONER, 5, 5, 10)
-                ),
-                // Decoration Stage
-                GenerationStage.Decoration.UNDERGROUND_DECORATION //Underground decoration so ore and features don't spawn in the castle
-        );
+        super(codec);
+    }
+
+    public @Nonnull GenerationStage.Decoration step() {
+        return GenerationStage.Decoration.UNDERGROUND_DECORATION;
+    }
+
+    public static void setupStructureSpawns(final StructureSpawnListGatherEvent event) {
+        if(event.getStructure() == ERStructures.END_CASTLE.get()) {
+            for (CustomMonsterSpawn monsterSpawn : MONSTER_SPAWN_LIST) {
+                event.addEntitySpawn(EntityClassification.MONSTER, monsterSpawn.getIndividualMobSpawnInfo());
+            }
+        }
     }
 
     public static List<Biome.Category> getValidBiomeCategories() {
@@ -56,8 +65,7 @@ public class EndCastle extends StructureBase {
     }
 
     @Override
-    @MethodsReturnNonnullByDefault
-    public IStartFactory<NoFeatureConfig> getStartFactory() {
+    public @Nonnull IStartFactory<NoFeatureConfig> getStartFactory() {
         return Start::new;
     }
 
@@ -98,6 +106,7 @@ public class EndCastle extends StructureBase {
             this.calculateBoundingBox();
         }
 
+        @ParametersAreNonnullByDefault
         public void placeInChunk(ISeedReader seedReader, StructureManager featureManager, ChunkGenerator chunkGenerator, Random random, MutableBoundingBox boundingBox, ChunkPos chunkPos) {
             super.placeInChunk(seedReader, featureManager, chunkGenerator, random, boundingBox, chunkPos);
             int i = this.boundingBox.y0;

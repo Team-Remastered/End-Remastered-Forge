@@ -3,9 +3,9 @@ package com.teamremastered.endrem.world.structures;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.teamremastered.endrem.EndRemastered;
-import com.teamremastered.endrem.config.ERConfig;
+import com.teamremastered.endrem.world.structures.config.ERStructures;
 import com.teamremastered.endrem.world.structures.utils.CustomMonsterSpawn;
-import com.teamremastered.endrem.world.structures.utils.StructureBase;
+import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -22,31 +22,35 @@ import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraft.world.gen.feature.structure.StructureStart;
 import net.minecraft.world.gen.feature.structure.VillageConfig;
 import net.minecraft.world.gen.feature.template.TemplateManager;
+import net.minecraftforge.event.world.StructureSpawnListGatherEvent;
 
+import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 
-public class AncientWitchHut extends StructureBase {
-    private final ResourceLocation START_POOL;
-    private final int HEIGHT;
+public class AncientWitchHut extends Structure<NoFeatureConfig> {
+    private static final ResourceLocation START_POOL = new ResourceLocation(EndRemastered.MOD_ID, "ancient_witch_hut/start_pool");
+    private static final List<CustomMonsterSpawn> MONSTER_SPAWN_LIST =  ImmutableList.of(
+            new CustomMonsterSpawn(EntityType.SKELETON, 5, 5, 10),
+            new CustomMonsterSpawn(EntityType.WITCH, 10, 10, 15)
+    );
 
     public AncientWitchHut(Codec<NoFeatureConfig> codec) {
-        super(codec,
-                // To Set Minimum Distance
-                ERConfig.ANCIENT_WITCH_HUT_DISTANCE,
+        super(codec);
+    }
 
-                // List Of Monster Spawns
-                ImmutableList.of(
-                        new CustomMonsterSpawn(EntityType.SKELETON, 30, 30, 35),
-                        new CustomMonsterSpawn(EntityType.WITCH, 10, 10, 15)
-                ),
+    @Override
+    public @Nonnull GenerationStage.Decoration step() {
+        return GenerationStage.Decoration.SURFACE_STRUCTURES;
+    }
 
-                // Decoration Stage
-                GenerationStage.Decoration.SURFACE_STRUCTURES
-        );
-        this.START_POOL = new ResourceLocation(EndRemastered.MOD_ID, "ancient_witch_hut/start_pool");
-        this.HEIGHT = -3;
+    public static void setupStructureSpawns(final StructureSpawnListGatherEvent event) {
+        if(event.getStructure() == ERStructures.ANCIENT_WITCH_HUT.get()) {
+            for (CustomMonsterSpawn monsterSpawn : MONSTER_SPAWN_LIST) {
+                event.addEntitySpawn(EntityClassification.MONSTER, monsterSpawn.getIndividualMobSpawnInfo());
+            }
+        }
     }
 
     public static List<Biome.Category> getValidBiomeCategories() {
@@ -56,16 +60,11 @@ public class AncientWitchHut extends StructureBase {
     }
 
     @Override
-    public IStartFactory<NoFeatureConfig> getStartFactory() {
+    public @Nonnull IStartFactory<NoFeatureConfig> getStartFactory() {
         return Start::new;
     }
 
-    @Override
-    public GenerationStage.Decoration step() {
-        return GenerationStage.Decoration.SURFACE_STRUCTURES;
-    }
-
-    public class Start extends StructureStart<NoFeatureConfig> {
+    public static class Start extends StructureStart<NoFeatureConfig> {
         public Start(Structure<NoFeatureConfig> structureIn, int chunkX, int chunkZ, MutableBoundingBox mutableBoundingBox, int referenceIn, long seedIn) {
             super(structureIn, chunkX, chunkZ, mutableBoundingBox, referenceIn, seedIn);
         }
@@ -73,7 +72,7 @@ public class AncientWitchHut extends StructureBase {
         @Override
         @ParametersAreNonnullByDefault
         public void generatePieces(DynamicRegistries registryAccess, ChunkGenerator chunkGenerator, TemplateManager manager, int chunkX, int chunkZ, Biome biomeIn, NoFeatureConfig config) {
-            BlockPos genPosition = new BlockPos(chunkX << 4, HEIGHT, chunkZ << 4);
+            BlockPos genPosition = new BlockPos(chunkX << 4, -3, chunkZ << 4);
 
             JigsawManager.addPieces(
                     registryAccess,

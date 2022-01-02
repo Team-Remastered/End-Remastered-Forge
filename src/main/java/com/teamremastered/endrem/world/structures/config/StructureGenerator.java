@@ -37,6 +37,10 @@ public class StructureGenerator {
         MinecraftForge.EVENT_BUS.addListener(EventPriority.NORMAL, StructureGenerator::addDimensionalSpacing);
         // The comments for BiomeLoadingEvent and StructureSpawnListGatherEvent says to do HIGH for additions.
         MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGH, StructureGenerator::biomeModification);
+
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.NORMAL, EndGate::setupStructureSpawns);
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.NORMAL, EndCastle::setupStructureSpawns);
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.NORMAL, AncientWitchHut::setupStructureSpawns);
     }
     public static void setup() {
         ERStructures.setupStructures();
