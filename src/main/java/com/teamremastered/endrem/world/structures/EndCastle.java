@@ -129,14 +129,18 @@ public class EndCastle extends StructureFeature<NoneFeatureConfiguration> {
                                 break;
                             }
                             double randomBlock = Math.random();
-                            if (randomBlock <= 0.005) {
-                                worldGenLevel.setBlock(blockpos1, Blocks.AIR.defaultBlockState(), 2);
+                            if (randomBlock <= 0.05) {
+                                worldGenLevel.setBlock(blockpos1, Blocks.STONE.defaultBlockState(), 2);
                             } else if (randomBlock <= 0.1) {
                                 worldGenLevel.setBlock(blockpos1, Blocks.COBBLESTONE.defaultBlockState(), 2);
                             } else if (randomBlock <= 0.2) {
                                 worldGenLevel.setBlock(blockpos1, Blocks.ANDESITE.defaultBlockState(), 2);
                             } else if (randomBlock <= 0.3) {
-                                worldGenLevel.setBlock(blockpos1, Blocks.DEEPSLATE.defaultBlockState(), 2);
+                                worldGenLevel.setBlock(blockpos1, Blocks.STONE_BRICKS.defaultBlockState(), 2);
+                            } else if (randomBlock <= 0.4) {
+                                worldGenLevel.setBlock(blockpos1, Blocks.CRACKED_STONE_BRICKS.defaultBlockState(), 2);
+                            } else if (randomBlock <= 0.5) {
+                                worldGenLevel.setBlock(blockpos1, Blocks.ANDESITE.defaultBlockState(), 2);
                             } else {
                                 worldGenLevel.setBlock(blockpos1, Blocks.POLISHED_ANDESITE.defaultBlockState(), 2);
                             }
