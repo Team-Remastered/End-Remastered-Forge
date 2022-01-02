@@ -80,7 +80,6 @@ public class StructureGenerator {
     }
 
     private static Method GETCODEC_METHOD;
-
     public static void addDimensionalSpacing(final WorldEvent.Load event) {
         if (event.getWorld() instanceof ServerWorld) {
             ServerWorld serverWorld = (ServerWorld) event.getWorld();
@@ -88,7 +87,7 @@ public class StructureGenerator {
 
             try {
                 if (GETCODEC_METHOD == null)
-                    GETCODEC_METHOD = ObfuscationReflectionHelper.findMethod(ChunkGenerator.class, "func_230347_a_");
+                    GETCODEC_METHOD = ObfuscationReflectionHelper.findMethod(ChunkGenerator.class, "codec");
                 ResourceLocation cgRL = Registry.CHUNK_GENERATOR.getKey((Codec<? extends ChunkGenerator>) GETCODEC_METHOD.invoke(serverWorld.getChunkSource().generator));
                 if (cgRL != null && cgRL.getNamespace().equals("terraforged")) return;
             } catch (Exception e) {
