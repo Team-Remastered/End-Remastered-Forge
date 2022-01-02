@@ -89,7 +89,7 @@ public class ERConfig {
     public static ERConfigGenericEntry<Integer> END_GATE_HEIGHT = new ERConfigGenericEntry<>(
             "end_gate_height",
             "Y-Coordinate of the starting piece of the End Gate",
-            0
+            15
     );
 
     public static ERConfigGenericEntry<Integer> END_GATE_SPAWN_DISTANCE = new ERConfigGenericEntry<>(
