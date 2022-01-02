@@ -120,7 +120,7 @@ public class ERConfig {
     public static ERConfigGenericEntry<Boolean> END_CASTLE_TERRAFORMING = new ERConfigGenericEntry<>(
             "end_castle_terraforming",
             "Toggle Whether surrounding land will be modified to conform to the bottom of the structure. \n If set to false, the bottom of the structure will be modified to conform to the surrounding land",
-            true);
+            false);
 
     public static ERConfigGenericEntry<Integer> ANCIENT_WITCH_HUT_DISTANCE = new ERConfigGenericEntry<>(
             "ancient_witch_hut_distance",

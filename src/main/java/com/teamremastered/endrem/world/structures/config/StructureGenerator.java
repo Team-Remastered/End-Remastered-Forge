@@ -66,7 +66,7 @@ public class StructureGenerator {
             HashMap<StructureFeature<?>, HashMultimap<ConfiguredStructureFeature<?, ?>, ResourceKey<Biome>>> ERStructureToMultiMap = new HashMap<>();
 
             for(Map.Entry<ResourceKey<Biome>, Biome> biomeEntry : serverLevel.registryAccess().ownedRegistryOrThrow(Registry.BIOME_REGISTRY).entrySet()) {
-                String biomeName = biomeEntry.getValue().toString();
+                String biomeName = biomeEntry.getKey().location().toString();
                 String biomeCategoryName = biomeEntry.getValue().getBiomeCategory().getName();
 
                 if (ERConfig.END_CASTLE_WHITELISTED_BIOME_CATEGORIES.getList().contains(biomeCategoryName) && !ERConfig.END_CASTLE_BLACKLISTED_BIOMES.getList().contains(biomeName) && ERConfig.END_CASTLE_DISTANCE.getRaw() > 0) {

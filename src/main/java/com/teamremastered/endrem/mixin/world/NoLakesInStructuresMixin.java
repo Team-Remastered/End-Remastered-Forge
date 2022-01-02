@@ -21,7 +21,7 @@ public class NoLakesInStructuresMixin {
     )
     private void noLakesInStructures(FeaturePlaceContext<BlockStateConfiguration> context, CallbackInfoReturnable<Boolean> cir) {
         SectionPos sectionPos = SectionPos.of(context.origin());
-        if (context.level().startsForFeature(sectionPos, ERStructures.END_CASTLE.get()).stream().findAny().isPresent() || context.level().startsForFeature(sectionPos, ERStructures.END_GATE.get()).stream().findAny().isPresent()) {
+        if (!context.level().startsForFeature(sectionPos, ERStructures.END_CASTLE.get()).isEmpty() || !context.level().startsForFeature(sectionPos, ERStructures.END_GATE.get()).isEmpty()) {
             cir.setReturnValue(false);
         }
     }
