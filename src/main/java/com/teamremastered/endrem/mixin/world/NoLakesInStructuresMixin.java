@@ -19,7 +19,7 @@ public class NoLakesInStructuresMixin {
             cancellable = true
     )
     /* Disables Lake features from generating inside structures */
-    private void NoLakesInStructures(FeaturePlaceContext<BlockStateConfiguration> context, CallbackInfoReturnable<Boolean> cir) {
+    private void noLakesInStructures(FeaturePlaceContext<BlockStateConfiguration> context, CallbackInfoReturnable<Boolean> cir) {
         SectionPos sectionPos = SectionPos.of(context.origin());
         if (context.level().startsForFeature(sectionPos, ERStructures.END_CASTLE.get()).findAny().isPresent() || context.level().startsForFeature(sectionPos, ERStructures.END_GATE.get()).findAny().isPresent()) {
             cir.setReturnValue(false);

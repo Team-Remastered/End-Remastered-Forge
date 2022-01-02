@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(SpringFeature.class)
-public class NoLavaInStructuresMixin {
+public class NoFluidsInStructures {
 
     @Inject(
             method = "place(Lnet/minecraft/world/level/levelgen/feature/FeaturePlaceContext;)Z",
@@ -23,7 +23,7 @@ public class NoLavaInStructuresMixin {
     )
 
     /* Removes Lava and Water Features generating in stone blocks */
-    private void NoLavaInStructures(FeaturePlaceContext<SpringConfiguration> context, CallbackInfoReturnable<Boolean> cir) {
+    private void noFluidsInStructures(FeaturePlaceContext<SpringConfiguration> context, CallbackInfoReturnable<Boolean> cir) {
         if(context.config().state.is(FluidTags.LAVA) || context.config().state.is(FluidTags.WATER)) {
             BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos();
             SectionPos sectionPos;
