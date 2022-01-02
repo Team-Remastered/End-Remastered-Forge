@@ -5,7 +5,7 @@
   "refmap": "endrem.refmap.json",
   "mixins": [
     "world.NoLakesInStructuresMixin",
-    "world.NoLavaInStructuresMixin",
+    "world.NoFluidsInStructures",
     "world.DisableStrongholdMixin"
   ],
   "minVersion": "0.8"

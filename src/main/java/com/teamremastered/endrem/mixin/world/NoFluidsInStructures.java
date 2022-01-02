@@ -14,15 +14,15 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(SpringFeature.class)
-public class NoLavaInStructuresMixin {
+public class NoFluidsInStructures {
 
     @Inject(
             method = "place(Lnet/minecraft/world/level/levelgen/feature/FeaturePlaceContext;)Z",
             at = @At(value = "HEAD"),
             cancellable = true
     )
-    private void noLavaInStructures(FeaturePlaceContext<SpringConfiguration> context, CallbackInfoReturnable<Boolean> cir) {
-        if(context.config().state.is(FluidTags.LAVA)) {
+    private void noFluidsInStructures(FeaturePlaceContext<SpringConfiguration> context, CallbackInfoReturnable<Boolean> cir) {
+        if(context.config().state.is(FluidTags.LAVA) || context.config().state.is(FluidTags.WATER)) {
             BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos();
             for(Direction face : Direction.Plane.HORIZONTAL) {
                 mutable.set(context.origin()).move(face);
