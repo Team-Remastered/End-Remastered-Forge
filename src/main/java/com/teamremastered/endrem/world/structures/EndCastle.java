@@ -24,7 +24,6 @@ import net.minecraft.world.gen.feature.structure.StructureManager;
 import net.minecraft.world.gen.feature.structure.StructurePiece;
 import net.minecraft.world.gen.feature.structure.StructureStart;
 import net.minecraft.world.gen.feature.template.TemplateManager;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.event.world.StructureSpawnListGatherEvent;
 
 import javax.annotation.Nonnull;
