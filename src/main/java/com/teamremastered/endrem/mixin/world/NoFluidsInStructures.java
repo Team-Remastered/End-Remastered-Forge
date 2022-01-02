@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.Random;
 
 @Mixin(SpringFeature.class)
-public class NoLavaInStructuresMixin {
+public class NoFluidsInStructures {
 
     @Inject(
             method = "place",
@@ -26,7 +26,7 @@ public class NoLavaInStructuresMixin {
     )
 
     /* Removes Lava and Water Features generating in stone blocks */
-    private void NoLavaInStructures(ISeedReader seedReader, ChunkGenerator chunkGenerator, Random random, BlockPos blockPos, LiquidsConfig springFeatureConfig, CallbackInfoReturnable<Boolean> cir) {
+    private void noFluidsInStructures(ISeedReader seedReader, ChunkGenerator chunkGenerator, Random random, BlockPos blockPos, LiquidsConfig springFeatureConfig, CallbackInfoReturnable<Boolean> cir) {
         if(springFeatureConfig.state.is(FluidTags.LAVA) || springFeatureConfig.state.is(FluidTags.WATER)) {
             BlockPos.Mutable  mutable = new BlockPos.Mutable();
             SectionPos sectionPos;

@@ -23,7 +23,7 @@ public class NoLakesInStructuresMixin {
             cancellable = true
     )
     /* Disables Lake features from generating inside structures */
-    private void NoLakesInStructures(ISeedReader seedReader, ChunkGenerator chunkGenerator, Random random, BlockPos blockPos, BlockStateFeatureConfig singleStateFeatureConfig, CallbackInfoReturnable<Boolean> cir) {
+    private void noLakesInStructures(ISeedReader seedReader, ChunkGenerator chunkGenerator, Random random, BlockPos blockPos, BlockStateFeatureConfig singleStateFeatureConfig, CallbackInfoReturnable<Boolean> cir) {
         SectionPos sectionPos = SectionPos.of(blockPos);
         if (seedReader.startsForFeature(sectionPos, ERStructures.END_CASTLE.get()).findAny().isPresent() || seedReader.startsForFeature(sectionPos, ERStructures.END_GATE.get()).findAny().isPresent()) {
             cir.setReturnValue(false);
