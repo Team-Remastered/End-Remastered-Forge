@@ -3,18 +3,21 @@ package com.teamremastered.endrem.world.structures;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.teamremastered.endrem.config.ERConfig;
+import com.teamremastered.endrem.utils.ERUtils;
 import com.teamremastered.endrem.world.structures.config.ERStructures;
 import com.teamremastered.endrem.world.structures.utils.CustomMonsterSpawn;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.Rotation;
+import net.minecraft.util.SharedSeedRandom;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.MutableBoundingBox;
 import net.minecraft.util.registry.DynamicRegistries;
 import net.minecraft.world.ISeedReader;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.provider.BiomeProvider;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.Heightmap;
@@ -62,6 +65,12 @@ public class EndCastle extends Structure<NoFeatureConfig> {
             biomeCategories.add(Biome.Category.byName(biomeName));
         }
         return biomeCategories;
+    }
+
+    @Override
+    @ParametersAreNonnullByDefault
+    protected boolean isFeatureChunk(ChunkGenerator chunkGenerator, BiomeProvider biomeSource, long seed, SharedSeedRandom chunkRandom, int chunkX, int chunkZ, Biome biome, ChunkPos chunkPos, NoFeatureConfig noFeatureConfig) {
+        return ERUtils.getChunkDistanceFromSpawn(chunkPos) >= ERConfig.END_CASTLE_SPAWN_DISTANCE.getRaw();
     }
 
     @Override
