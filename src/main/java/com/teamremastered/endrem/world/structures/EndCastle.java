@@ -24,6 +24,7 @@ import net.minecraft.world.gen.feature.structure.StructureManager;
 import net.minecraft.world.gen.feature.structure.StructurePiece;
 import net.minecraft.world.gen.feature.structure.StructureStart;
 import net.minecraft.world.gen.feature.template.TemplateManager;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.event.world.StructureSpawnListGatherEvent;
 
 import javax.annotation.Nonnull;
@@ -131,14 +132,18 @@ public class EndCastle extends Structure<NoFeatureConfig> {
                                     break;
                                 }
                                 double randomBlock = Math.random();
-                                if (randomBlock <= 0.005) {
-                                    seedReader.setBlock(blockpos1, Blocks.AIR.defaultBlockState(), 2);
+                                if (randomBlock <= 0.05) {
+                                    seedReader.setBlock(blockpos1, Blocks.STONE.defaultBlockState(), 2);
                                 } else if (randomBlock <= 0.1) {
                                     seedReader.setBlock(blockpos1, Blocks.COBBLESTONE.defaultBlockState(), 2);
                                 } else if (randomBlock <= 0.2) {
                                     seedReader.setBlock(blockpos1, Blocks.ANDESITE.defaultBlockState(), 2);
                                 } else if (randomBlock <= 0.3) {
-                                    seedReader.setBlock(blockpos1, Blocks.GRAVEL.defaultBlockState(), 2);
+                                    seedReader.setBlock(blockpos1, Blocks.STONE_BRICKS.defaultBlockState(), 2);
+                                } else if (randomBlock <= 0.4) {
+                                    seedReader.setBlock(blockpos1, Blocks.CRACKED_STONE_BRICKS.defaultBlockState(), 2);
+                                } else if (randomBlock <= 0.5) {
+                                    seedReader.setBlock(blockpos1, Blocks.ANDESITE.defaultBlockState(), 2);
                                 } else {
                                     seedReader.setBlock(blockpos1, Blocks.POLISHED_ANDESITE.defaultBlockState(), 2);
                                 }
