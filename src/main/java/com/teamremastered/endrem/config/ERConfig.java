@@ -8,6 +8,8 @@ import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.loading.FMLPaths;
 
+import java.util.Locale;
+
 public class ERConfig {
     private static final ForgeConfigSpec.Builder CONFIG = new ForgeConfigSpec.Builder();
     private static ForgeConfigSpec COMMON_CONFIG;
@@ -59,6 +61,11 @@ public class ERConfig {
             "eye_structure_list",
             "Comma-separated list of structures to locate with End Remastered eyes",
             "[endrem:end_gate]");
+
+    public static ERConfigGenericEntry<Integer> EYE_BREAK_CHANCE = new ERConfigGenericEntry<>(
+            "eye_break_chance",
+            "Percentage chance of eyes breaking when thrown",
+            0);
 
     public static ERConfigListEntry MAP_STRUCTURE_LIST = new ERConfigListEntry(
             "map_structure_list",
