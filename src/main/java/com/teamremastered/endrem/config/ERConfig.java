@@ -8,7 +8,6 @@ import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.loading.FMLPaths;
 
-
 public class ERConfig {
     private static final ForgeConfigSpec.Builder CONFIG = new ForgeConfigSpec.Builder();
     private static ForgeConfigSpec COMMON_CONFIG;
