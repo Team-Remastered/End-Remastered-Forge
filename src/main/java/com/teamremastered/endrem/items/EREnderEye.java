@@ -3,6 +3,7 @@ package com.teamremastered.endrem.items;
 import com.teamremastered.endrem.EndRemastered;
 import com.teamremastered.endrem.blocks.AncientPortalFrame;
 import com.teamremastered.endrem.blocks.ERFrameProperties;
+import com.teamremastered.endrem.config.ERConfig;
 import com.teamremastered.endrem.registers.ERBlocks;
 import com.teamremastered.endrem.registers.RegisterHandler;
 import mcp.MethodsReturnNonnullByDefault;
@@ -122,7 +123,7 @@ public class EREnderEye extends Item {
                     EyeOfEnderEntity eyeofenderentity = new EyeOfEnderEntity(WorldIn, playerIn.getX(), playerIn.getY(0.5D), playerIn.getZ());
                     eyeofenderentity.setItem(itemstack);
                     eyeofenderentity.signalTo(blockpos);
-                    eyeofenderentity.surviveAfterDeath = true;
+                    eyeofenderentity.surviveAfterDeath = ERConfig.EYE_BREAK_CHANCE.getRaw() <= playerIn.getRandom().nextInt(100);
 
                     WorldIn.addFreshEntity(eyeofenderentity);
                     if (playerIn instanceof ServerPlayerEntity) {
