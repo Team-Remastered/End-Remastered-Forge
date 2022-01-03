@@ -3,6 +3,7 @@ package com.teamremastered.endrem.items;
 import com.teamremastered.endrem.EndRemastered;
 import com.teamremastered.endrem.blocks.AncientPortalFrame;
 import com.teamremastered.endrem.blocks.ERFrameProperties;
+import com.teamremastered.endrem.config.ERConfig;
 import com.teamremastered.endrem.registers.ERBlocks;
 import com.teamremastered.endrem.registers.RegisterHandler;
 import net.minecraft.MethodsReturnNonnullByDefault;
