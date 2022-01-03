@@ -73,7 +73,6 @@ public class ERConfig {
     public static ERConfigListEntry MAP_TRADE_VALUES = new ERConfigListEntry(
             "map_trade_values",
             "Values for the End Remastered map trade: [minPrice, maxPrice, expGiven]",
-            "[15, 30, 10]");
             "30, 40, 12]");
 
     public static ERConfigListEntry END_CRYSTAL_ARMOR_STATS = new ERConfigListEntry(
