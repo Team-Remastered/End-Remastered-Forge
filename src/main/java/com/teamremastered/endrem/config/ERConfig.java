@@ -60,6 +60,11 @@ public class ERConfig {
             "Comma-separated list of structures to locate with End Remastered eyes",
             "[endrem:end_gate]");
 
+    public static ERConfigGenericEntry<Integer> EYE_BREAK_CHANCE = new ERConfigGenericEntry<>(
+            "eye_break_chance",
+            "Percentage chance of eyes breaking when thrown",
+            0);
+
     public static ERConfigListEntry MAP_STRUCTURE_LIST = new ERConfigListEntry(
             "map_structure_list",
             "Comma-separated list of structures to locate with the End Remastered map",
@@ -69,6 +74,7 @@ public class ERConfig {
             "map_trade_values",
             "Values for the End Remastered map trade: [minPrice, maxPrice, expGiven]",
             "[15, 30, 10]");
+            "30, 40, 12]");
 
     public static ERConfigListEntry END_CRYSTAL_ARMOR_STATS = new ERConfigListEntry(
             "end_crystal_armor_stats",
