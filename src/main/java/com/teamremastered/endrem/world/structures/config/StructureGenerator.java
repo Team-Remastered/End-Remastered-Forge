@@ -39,9 +39,11 @@ public class StructureGenerator {
         MinecraftForge.EVENT_BUS.addListener(EventPriority.NORMAL, StructureGenerator::addDimensionalSpacing);
 
         // Setup Structure Spawns
-        MinecraftForge.EVENT_BUS.addListener(EventPriority.NORMAL, EndGate::setupStructureSpawns);
-        MinecraftForge.EVENT_BUS.addListener(EventPriority.NORMAL, EndCastle::setupStructureSpawns);
-        MinecraftForge.EVENT_BUS.addListener(EventPriority.NORMAL, AncientWitchHut::setupStructureSpawns);
+        if  (!ERConfig.MONSTER_DIFFICULTY.getRaw().equals("peaceful")) {
+            MinecraftForge.EVENT_BUS.addListener(EventPriority.NORMAL, EndGate::setupStructureSpawns);
+            MinecraftForge.EVENT_BUS.addListener(EventPriority.NORMAL, EndCastle::setupStructureSpawns);
+            MinecraftForge.EVENT_BUS.addListener(EventPriority.NORMAL, AncientWitchHut::setupStructureSpawns);
+        }
     }
     public static void setup() {
         ERStructures.setupStructures();
