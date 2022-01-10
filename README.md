@@ -3,9 +3,9 @@
 <p><span style="font-family: helvetica, arial, sans-serif; font-size: 14px;">&nbsp;&nbsp;</span></p>
 <p style="text-align: center;"><a href="https://discord.com/invite/D9cxayDNSP"><img src="https://img.shields.io/discord/781617369285263400?label=Discord&amp;logo=Discord&amp;logoColor=ffffff&amp;style=for-the-badge" alt="Discord" /></a> &nbsp;&nbsp; &nbsp; <a title="PayPal" href="https://www.paypal.com/donate/?hosted_button_id=G7P6FV26SRGS2"><img src="https://img.shields.io/badge/PayPal-Donations-009ADC?style=for-the-badge&amp;logo=PayPal" alt="PayPal" width="195" height="28" /></a>&nbsp; &nbsp;&nbsp;&nbsp; <a title="Trailer" href="https://www.youtube.com/watch?v=FMwke39lZu8"><img style="height: 28px; width: 180px;" src="https://img.shields.io/badge/YouTube-Trailer-FF2020?style=for-the-badge&amp;logo=YouTube&amp;logoColor=FF2020" alt="Youtube Trailer" /> </a></p>
 <p>&nbsp;</p>
-<p><span style="font-family: helvetica, arial, sans-serif; font-size: 14px;"><strong>End Remastered makes your Minecraft experience more challenging by emphasizing the adventurous side of the game. Basically, 12 new Ender Eyes are added along with a giant castle and a challenging dungeon that replaces Vanilla Strongholds. </strong></span></p>
+<p><span style="font-family: helvetica, arial, sans-serif; font-size: 14px;"><strong>End Remastered overhauls the way players get to the End and makes the experience way more interesting by forcing them to fully explore the beautiful world of Minecraft. Adding 12 totally new Ender Eyes hidden all around your world, this mod will make your playthrough a lot more enjoyable as you explore a massive castle or try to solve puzzles in a stronghold-like dungeon.<br /></strong></span></p>
 <p>&nbsp;</p>
-<p><span style="font-family: helvetica, arial, sans-serif; font-size: 14px;">Supported Versions: 1.16.3, 1.16.4, 1.16.5, 1.17.1</span><span style="font-family: helvetica, arial, sans-serif; font-size: 14px;"><br /></span></p>
+<p><span style="font-family: helvetica, arial, sans-serif; font-size: 14px;">Supported Versions: 1.16.3, 1.16.4, 1.16.5, 1.17.1 and now 1.18.1!</span><span style="font-family: helvetica, arial, sans-serif; font-size: 14px;"><br /></span></p>
 <p><span style="font-family: helvetica, arial, sans-serif; font-size: 14px;">Fabric: <a href="https://www.curseforge.com/minecraft/mc-mods/endremastered-fabric">https://www.curseforge.com/minecraft/mc-mods/endremastered-fabric</a></span><span style="font-size: 14px;"><span style="color: #a00000;" data-darkreader-inline-color=""><strong><span style="font-family: helvetica, arial, sans-serif;"><br /></span></strong></span></span></p>
 <p>&nbsp;</p>
 <p><span style="font-family: helvetica, arial, sans-serif; font-size: 14px;"><span style="font-size: 24px;"><strong>Our Partners:</strong></span></span><span style="font-size: 14px;"><br /></span></p>
@@ -84,16 +84,16 @@
 <p>&nbsp;</p>
 <div class="spoiler">
 <p><span style="font-size: 14px;"><strong>The End Crystal Eye:</strong></span></p>
-<p><span style="font-size: 14px;"><img class="transparent" src="https://imgur.com/5mZGuje.png" alt="End Crystal eye Craft" width="257" height="118" /></span></p>
+<p><span style="font-size: 14px;"><img class="transparent" src="https://i.imgur.com/7K34tFo.png" alt="End Crystal eye Craft" width="257" height="118" /></span></p>
 <p>&nbsp;</p>
 <p><span style="font-size: 14px;"><strong>The Witch Eye:</strong></span></p>
-<p><span style="font-size: 14px;"><img class="transparent" src="https://i.imgur.com/RVwFnAw.png" alt="End Crystal eye Craft" width="257" height="118" /></span></p>
+<p><span style="font-size: 14px;"><img class="transparent" src="https://i.imgur.com/jbcgVXP.png" alt="End Crystal eye Craft" width="257" height="118" /></span></p>
 <p>&nbsp;</p>
 <p><span style="font-size: 14px;"><strong>The End Crystal Ingot:</strong></span></p>
 <p><span style="font-size: 14px;"><img class="transparent" src="https://i.imgur.com/YjEJgee.png" alt="End Crystal eye Craft" width="257" height="118" /></span></p>
 <p>&nbsp;</p>
 <p><span style="font-size: 14px;"><strong>Armor Crafting:</strong></span></p>
-<p><span style="font-size: 14px;"><img class="transparent" src="https://i.imgur.com/QgvrkUZ.png" alt="End Crystal eye Craft" width="257" height="118" /></span></p>
+<p><span style="font-size: 14px;"><img class="transparent" src="https://i.imgur.com/zwAnOyU.png" alt="End Crystal eye Craft" width="257" height="118" /></span></p>
 </div>
 <p><span style="font-size: 14px;">&nbsp;</span></p>
 <p><span style="font-family: helvetica, arial, sans-serif; font-size: 18px;">&nbsp;</span><span style="color: #ffffff;" data-darkreader-inline-color=""><br /></span></p>
