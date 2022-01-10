@@ -1,11 +1,8 @@
 package com.teamremastered.endrem.world.structures.utils;
 
-import com.google.common.collect.ImmutableList;
 import com.teamremastered.endrem.config.ERConfig;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.MobSpawnInfo;
-
-import java.util.List;
 
 public class CustomMonsterSpawn {
     private final int min;
@@ -28,6 +25,8 @@ public class CustomMonsterSpawn {
                 return 0.5;
             case "hard":
                 return 2;
+            case "hardcore":
+                return 3;
             default:
                 return 1;
         }
@@ -35,13 +34,5 @@ public class CustomMonsterSpawn {
 
         public MobSpawnInfo.Spawners getIndividualMobSpawnInfo () {
             return new MobSpawnInfo.Spawners(monsterEntity, this.weight, (int) (this.min * this.Factor()), (int) (this.max * this.Factor()));
-        }
-
-        public static List<MobSpawnInfo.Spawners> getMobSpawnInfoList (List < CustomMonsterSpawn > monsterSpawnList) {
-            ImmutableList.Builder<MobSpawnInfo.Spawners> spawnersListBuilder = ImmutableList.builder();
-            for (CustomMonsterSpawn spawn : monsterSpawnList) {
-                spawnersListBuilder.add(spawn.getIndividualMobSpawnInfo());
-            }
-            return spawnersListBuilder.build();
         }
 }
