@@ -35,10 +35,10 @@ import java.util.Random;
 
 public class EndCastle extends StructureFeature<NoneFeatureConfiguration> {
     private static final List<CustomMonsterSpawn> MONSTER_SPAWN_LIST =  ImmutableList.of(
-            new CustomMonsterSpawn(EntityType.PILLAGER, 30, 30, 35),
-            new CustomMonsterSpawn(EntityType.VINDICATOR, 20, 25, 30),
-            new CustomMonsterSpawn(EntityType.EVOKER, 20, 10, 15),
-            new CustomMonsterSpawn(EntityType.ILLUSIONER, 5, 5, 10)
+            new CustomMonsterSpawn(EntityType.PILLAGER, 15, 50, 55),
+            new CustomMonsterSpawn(EntityType.VINDICATOR, 9, 45, 50),
+            new CustomMonsterSpawn(EntityType.EVOKER, 9, 15, 25),
+            new CustomMonsterSpawn(EntityType.ILLUSIONER, 3, 10, 15)
     );
 
     public EndCastle(Codec<NoneFeatureConfiguration> codec) {

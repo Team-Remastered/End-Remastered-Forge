@@ -27,7 +27,7 @@ public class ERConfig {
     // ======   End Remastered Configuration   ======
     public static ERConfigGenericEntry<String> MONSTER_DIFFICULTY = new ERConfigGenericEntry<>(
             "monster_difficulty",
-            "Sets the quantity of mobs in End Remastered Structures: \"peaceful\", \"easy\", \"normal\" or \"hard\"",
+            "Sets the quantity of mobs in End Remastered Structures: \"peaceful\", \"easy\", \"normal\", \"hard\" or \"hardcore\"",
             "normal");
 
     public static ERConfigListEntry WHITELISTED_DIMENSIONS = new ERConfigListEntry(
