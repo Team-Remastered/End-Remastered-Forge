@@ -24,7 +24,7 @@ import javax.annotation.Nonnull;
 public class EndRemastered {
     public static final Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "endrem";
-    public static final String CONFIG_FILE = String.format("%s.toml", EndRemastered.MOD_ID);
+    public static final String CONFIG_FILE = String.format("%s.json", EndRemastered.MOD_ID);
 
     public EndRemastered() {
         MinecraftForge.EVENT_BUS.register(this);

@@ -46,19 +46,19 @@ public class EndCrystalArmor extends ArmorItem {
 
     @Override
     public boolean makesPiglinsNeutral(ItemStack stack, LivingEntity wearer) {
-        return Boolean.parseBoolean(ERConfig.END_CRYSTAL_ARMOR_STATS.getList().get(4));
+        return ERConfig.getData().END_CRYSTAL_GEAR.ARMOR.neutralizesPiglins;
     }
 
     @MethodsReturnNonnullByDefault
     private static class EndCrystalArmorMaterial implements ArmorMaterial {
 
         public int getDurabilityForSlot(EquipmentSlot slotIn) {
-            double factor = Double.parseDouble(ERConfig.END_CRYSTAL_ARMOR_STATS.getList().get(0));
+            double factor = ERConfig.getData().END_CRYSTAL_GEAR.ARMOR.durabilityFactor;
             return (int) (new int[]{13, 15, 16, 11}[slotIn.getIndex()] * factor);
         }
 
         public int getDefenseForSlot(EquipmentSlot slotIn) {
-            double factor = Double.parseDouble(ERConfig.END_CRYSTAL_ARMOR_STATS.getList().get(1));
+            double factor = ERConfig.getData().END_CRYSTAL_GEAR.ARMOR.defenseFactor;
             return (int) (new int[]{3, 6, 8, 3}[slotIn.getIndex()] * factor);
         }
 
@@ -71,11 +71,11 @@ public class EndCrystalArmor extends ArmorItem {
         }
 
         public float getToughness() {
-            return Float.parseFloat(ERConfig.END_CRYSTAL_ARMOR_STATS.getList().get(2));
+            return ERConfig.getData().END_CRYSTAL_GEAR.ARMOR.toughness;
         }
 
         public float getKnockbackResistance() {
-            return Float.parseFloat(ERConfig.END_CRYSTAL_ARMOR_STATS.getList().get(3));
+            return ERConfig.getData().END_CRYSTAL_GEAR.ARMOR.knockbackResistance;
         }
 
         @Override

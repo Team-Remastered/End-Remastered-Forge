@@ -50,15 +50,15 @@ public class EndCrystalTools {
     @MethodsReturnNonnullByDefault
     public static class EndCrystalMaterial implements Tier {
         public int getUses() {
-            return (int) Float.parseFloat(ERConfig.END_CRYSTAL_TOOLS_STATS.getList().get(0));
+            return ERConfig.getData().END_CRYSTAL_GEAR.TOOLS.durability;
         }
 
         public float getSpeed() {
-            return Float.parseFloat(ERConfig.END_CRYSTAL_TOOLS_STATS.getList().get(1));
+            return ERConfig.getData().END_CRYSTAL_GEAR.TOOLS.speed;
         }
 
         public float getAttackDamageBonus() {
-            return Float.parseFloat(ERConfig.END_CRYSTAL_TOOLS_STATS.getList().get(2));
+            return ERConfig.getData().END_CRYSTAL_GEAR.TOOLS.damageBonus;
         }
 
         public int getLevel() {

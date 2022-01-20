@@ -29,7 +29,6 @@ import net.minecraftforge.event.world.StructureSpawnListGatherEvent;
 
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -58,17 +57,9 @@ public class EndCastle extends StructureFeature<NoneFeatureConfiguration> {
         }
     }
 
-    public static List<Biome.BiomeCategory> getValidBiomeCategories() {
-        List<Biome.BiomeCategory> biomeCategories = new ArrayList<>();
-        for (String biomeName : ERConfig.END_CASTLE_WHITELISTED_BIOME_CATEGORIES.getList()) {
-            biomeCategories.add(Biome.BiomeCategory.byName(biomeName));
-        }
-        return biomeCategories;
-    }
-
     @ParametersAreNonnullByDefault
     protected boolean isFeatureChunk(ChunkGenerator chunkGenerator, BiomeSource biomeSource, long seed, WorldgenRandom chunkRandom, ChunkPos chunkPos1, Biome biome, ChunkPos chunkPos2, NoneFeatureConfiguration c, LevelHeightAccessor level) {
-        return ERUtils.getChunkDistanceFromSpawn(chunkPos1) >= ERConfig.END_CASTLE_SPAWN_DISTANCE.getRaw();
+        return ERUtils.getChunkDistanceFromSpawn(chunkPos1) >= ERConfig.getData().END_CASTLE.spawnDistance;
     }
 
     @Override

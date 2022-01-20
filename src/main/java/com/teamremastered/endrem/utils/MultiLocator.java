@@ -7,17 +7,17 @@ import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Supplier;
 
 public class MultiLocator {
-    private final Supplier<ArrayList<String>> STRUCTURE_LIST_SUPPLIER;
+    private final Supplier<List<String>> STRUCTURE_LIST_SUPPLIER;
 
-    public MultiLocator(Supplier<ArrayList<String>> structureListSupplier) {
+    public MultiLocator(Supplier<List<String>> structureListSupplier) {
         this.STRUCTURE_LIST_SUPPLIER = structureListSupplier;
     }
 
-    public ArrayList<String> getStructureList() {
+    public List<String> getStructureList() {
         return this.STRUCTURE_LIST_SUPPLIER.get();
     }
 

@@ -12,7 +12,7 @@ public class DisableStrongholdMixin {
 
     @Inject(method = "generateStrongholds", at = @At(value = "HEAD"), cancellable = true)
     private void RemoveVanillaStronghold(CallbackInfo ci) {
-        if (!ERConfig.STRONGHOLDS_ENABLED.getRaw()) {
+        if (!ERConfig.getData().STRONGHOLDS_ENABLED) {
             ci.cancel();
         }
     }

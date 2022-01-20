@@ -27,7 +27,7 @@ public class ModEvents {
     // Enable/Disable placing of vanilla Ender Eyes depending on configuration
     @SubscribeEvent
     public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
-        if (event.isCancelable() && !ERConfig.USE_ENDER_EYES_ENABLED.getRaw()) {
+        if (event.isCancelable() && !ERConfig.getData().ENDER_EYES_ENABLED) {
             if (event.getPlayer().getInventory().getSelected().getItem() instanceof EnderEyeItem) {
                 if (event.getWorld().getBlockState(event.getPos()).getBlock() == Blocks.END_PORTAL_FRAME) {
                     event.setCanceled(true);
@@ -39,7 +39,7 @@ public class ModEvents {
     // Enable/Disable throwing of vanilla Ender Eyes depending on configuration
     @SubscribeEvent
     public static void onRightClickItem(PlayerInteractEvent.RightClickItem event) {
-        if (event.isCancelable() && !ERConfig.USE_ENDER_EYES_ENABLED.getRaw()) {
+        if (event.isCancelable() && !ERConfig.getData().ENDER_EYES_ENABLED) {
             if (event.getPlayer().getInventory().getSelected().getItem() instanceof EnderEyeItem) {
                 event.setCanceled(true);
             }
@@ -71,7 +71,7 @@ public class ModEvents {
     @SubscribeEvent
     public static void onCriticalHitEvent(CriticalHitEvent event) {
         if (event.getResult() == Event.Result.ALLOW || (event.getResult() == Event.Result.DEFAULT && event.isVanillaCritical())) {
-            final int MULTIPLIER = Integer.parseInt(ERConfig.END_CRYSTAL_ARMOR_STATS.getList().get(5));
+            final int MULTIPLIER = ERConfig.getData().END_CRYSTAL_GEAR.ARMOR.regenDuration;
 
             int duration = 0;
             for (ItemStack stack : event.getPlayer().getArmorSlots()) {

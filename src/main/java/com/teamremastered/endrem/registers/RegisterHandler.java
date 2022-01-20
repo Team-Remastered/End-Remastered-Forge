@@ -22,8 +22,8 @@ public class RegisterHandler {
         GLMS.register(modEventBus);
     }
 
-    public final static MultiLocator EYE_ML = new MultiLocator(() -> ERConfig.EYE_STRUCTURE_LIST.getList());
-    public final static MultiLocator MAP_ML = new MultiLocator(() -> ERConfig.MAP_STRUCTURE_LIST.getList());
+    public final static MultiLocator EYE_ML = new MultiLocator(() -> ERConfig.getData().ER_EYES.structureList);
+    public final static MultiLocator MAP_ML = new MultiLocator(() -> ERConfig.getData().ER_MAP.structureList);
 
     public static RegistryObject<GlobalLootModifierSerializer<LootInjector.LootInjectionModifier>> LOOT_INJECTOR = GLMS.register("loot_injection", LootInjector.Serializer::new);
 

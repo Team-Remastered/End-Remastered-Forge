@@ -19,15 +19,15 @@ import java.util.Random;
 
 public class ERMap {
     private static int getMinPrice() {
-        return Integer.parseInt(ERConfig.MAP_TRADE_VALUES.getList().get(0));
+        return ERConfig.getData().ER_MAP.minPrice;
     }
 
     private static int getMaxPrice() {
-        return Integer.parseInt(ERConfig.MAP_TRADE_VALUES.getList().get(1));
+        return ERConfig.getData().ER_MAP.maxPrice;
     }
 
     private static int getEXP() {
-        return Integer.parseInt(ERConfig.MAP_TRADE_VALUES.getList().get(2));
+        return ERConfig.getData().ER_MAP.xpGiven;
     }
 
     public static ItemStack createMap(ServerLevel serverLevel, BlockPos playerPosition) {

@@ -7,7 +7,7 @@ import net.minecraft.world.level.biome.MobSpawnSettings;
 public class CustomMonsterSpawn {
     private final int min;
     private final int max;
-    private final double factor = switch (ERConfig.MONSTER_DIFFICULTY.getRaw()) {
+    private final double factor = switch (ERConfig.getData().MONSTER_DIFFICULTY) {
         case "peaceful" -> 0;
         case "easy" -> 0.5;
         case "hard" -> 2;
@@ -16,7 +16,7 @@ public class CustomMonsterSpawn {
     };
     private final int weight;
 
-    public EntityType<?> monsterEntity;
+    public final EntityType<?> monsterEntity;
 
     public CustomMonsterSpawn(EntityType<?> monsterEntityIn, int weightIn, int minIn, int maxIn) {
         this.monsterEntity = monsterEntityIn;

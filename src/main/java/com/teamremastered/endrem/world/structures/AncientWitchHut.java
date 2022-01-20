@@ -3,6 +3,8 @@ package com.teamremastered.endrem.world.structures;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.teamremastered.endrem.EndRemastered;
+import com.teamremastered.endrem.config.ERConfig;
+import com.teamremastered.endrem.utils.ERUtils;
 import com.teamremastered.endrem.world.structures.config.ERStructures;
 import com.teamremastered.endrem.world.structures.utils.CustomMonsterSpawn;
 import net.minecraft.core.BlockPos;
@@ -14,8 +16,10 @@ import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.LevelHeightAccessor;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.BiomeSource;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.GenerationStep;
+import net.minecraft.world.level.levelgen.WorldgenRandom;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.JigsawConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
@@ -46,18 +50,17 @@ public class AncientWitchHut extends StructureFeature<NoneFeatureConfiguration> 
         return GenerationStep.Decoration.SURFACE_STRUCTURES;
     }
 
-    public static List<Biome.BiomeCategory> getValidBiomeCategories() {
-        return ImmutableList.of(
-                Biome.BiomeCategory.SWAMP
-        );
-    }
-
     public static void setupStructureSpawns(final StructureSpawnListGatherEvent event) {
         if(event.getStructure() == ERStructures.ANCIENT_WITCH_HUT.get()) {
             for (CustomMonsterSpawn monsterSpawn : MONSTER_SPAWN_LIST) {
                 event.addEntitySpawn(MobCategory.MONSTER, monsterSpawn.getIndividualMobSpawnInfo());
             }
         }
+    }
+
+    @ParametersAreNonnullByDefault
+    protected boolean isFeatureChunk(ChunkGenerator chunkGenerator, BiomeSource biomeSource, long seed, WorldgenRandom chunkRandom, ChunkPos chunkPos1, Biome biome, ChunkPos chunkPos2, NoneFeatureConfiguration c, LevelHeightAccessor level) {
+        return ERUtils.getChunkDistanceFromSpawn(chunkPos1) >= ERConfig.getData().ANCIENT_WITCH_HUT.spawnDistance;
     }
 
     @Override

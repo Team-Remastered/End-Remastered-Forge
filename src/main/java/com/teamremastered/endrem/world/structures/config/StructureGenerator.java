@@ -31,7 +31,7 @@ public class StructureGenerator {
         // The comments for BiomeLoadingEvent and StructureSpawnListGatherEvent says to do HIGH for additions.
         MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGH, StructureGenerator::biomeModification);
 
-        if (!ERConfig.MONSTER_DIFFICULTY.getRaw().equals("peaceful")) {
+        if (!ERConfig.getData().MONSTER_DIFFICULTY.equals("peaceful")) {
             MinecraftForge.EVENT_BUS.addListener(EventPriority.NORMAL, EndGate::setupStructureSpawns);
             MinecraftForge.EVENT_BUS.addListener(EventPriority.NORMAL, EndCastle::setupStructureSpawns);
             MinecraftForge.EVENT_BUS.addListener(EventPriority.NORMAL, AncientWitchHut::setupStructureSpawns);
@@ -67,13 +67,13 @@ public class StructureGenerator {
     public static void biomeModification(final BiomeLoadingEvent event) {
         BiomeGenerationSettingsBuilder generation = event.getGeneration();
 
-        if (ERConfig.END_CASTLE_DISTANCE.getRaw() > 0 && EndCastle.getValidBiomeCategories().contains(event.getCategory()) && !ERConfig.END_CASTLE_BLACKLISTED_BIOMES.getList().contains(event.getName().toString())) {
+        if (ERConfig.getData().END_CASTLE.shouldGenerate(event)) {
             generation.getStructures().add(() -> (ERConfiguredStructures.CONFIGURED_END_CASTLE));
         }
-        if (ERConfig.END_GATE_DISTANCE.getRaw() > 0 && EndGate.getValidBiomeCategories().contains(event.getCategory()) && !ERConfig.END_GATE_BLACKLISTED_BIOMES.getList().contains(event.getName().toString())) {
+        if (ERConfig.getData().END_GATE.shouldGenerate(event)) {
             generation.getStructures().add(() -> (ERConfiguredStructures.CONFIGURED_END_GATE));
         }
-        if (ERConfig.ANCIENT_WITCH_HUT_DISTANCE.getRaw() > 0 && AncientWitchHut.getValidBiomeCategories().contains(event.getCategory())) {
+        if (ERConfig.getData().ANCIENT_WITCH_HUT.shouldGenerate(event)) {
             generation.getStructures().add(() -> (ERConfiguredStructures.CONFIGURED_ANCIENT_WITCH_HUT));
         }
     }
@@ -88,7 +88,7 @@ public class StructureGenerator {
                 return;
             }
             // Only add whitelisted dimensions
-            else if (!ERConfig.WHITELISTED_DIMENSIONS.getList().contains(serverLevel.dimension().location().toString())) {
+            else if (!ERConfig.getData().WHITELISTED_DIMENSIONS.contains(serverLevel.dimension().location().toString())) {
                 tempMap.keySet().remove(ERStructures.END_CASTLE.get());
                 tempMap.keySet().remove(ERStructures.END_GATE.get());
                 tempMap.keySet().remove(ERStructures.ANCIENT_WITCH_HUT.get());

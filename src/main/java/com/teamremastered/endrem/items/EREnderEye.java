@@ -127,7 +127,7 @@ public class EREnderEye extends Item {
                     EyeOfEnder eyeofenderentity = new EyeOfEnder(levelIn, playerIn.getX(), playerIn.getY(0.5D), playerIn.getZ());
                     eyeofenderentity.setItem(itemstack);
                     eyeofenderentity.signalTo(blockpos);
-                    eyeofenderentity.surviveAfterDeath = ERConfig.EYE_BREAK_CHANCE.getRaw() <= playerIn.getRandom().nextInt(100);;
+                    eyeofenderentity.surviveAfterDeath = ERConfig.getData().ER_EYES.breakProbability <= playerIn.getRandom().nextInt(100);;
 
                     levelIn.addFreshEntity(eyeofenderentity);
                     if (playerIn instanceof ServerPlayer) {

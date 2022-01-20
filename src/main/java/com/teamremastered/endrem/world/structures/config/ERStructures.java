@@ -3,6 +3,7 @@ package com.teamremastered.endrem.world.structures.config;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.teamremastered.endrem.EndRemastered;
+import com.teamremastered.endrem.config.ConfigData;
 import com.teamremastered.endrem.config.ERConfig;
 import com.teamremastered.endrem.world.structures.AncientWitchHut;
 import com.teamremastered.endrem.world.structures.EndCastle;
@@ -19,6 +20,7 @@ import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import java.io.ObjectInputFilter;
 import java.util.function.Supplier;
 
 public class ERStructures {
@@ -41,44 +43,40 @@ public class ERStructures {
         /*End Castle*/
         setupMapSpacingAndLand(
                 END_CASTLE.get(),
-                new StructureFeatureConfiguration(
-                        (ERConfig.END_CASTLE_DISTANCE.getRaw()),
-                        (ERConfig.END_CASTLE_DISTANCE.getRaw() - 30),
-                        487192276),
-                ERConfig.END_CASTLE_TERRAFORMING.getRaw()); //Transform Surrounding Land
+                ERConfig.getData().END_CASTLE,
+                487192276);
 
         /* End Gate */
         setupMapSpacingAndLand(
                 END_GATE.get(),
-                new StructureFeatureConfiguration(
-                        (ERConfig.END_GATE_DISTANCE.getRaw()),
-                        (ERConfig.END_GATE_DISTANCE.getRaw() - 30),
-                        959834864),
-                false);
+                ERConfig.getData().END_GATE,
+                959834864);
 
         /* Witch Hut */
         setupMapSpacingAndLand(
                 ANCIENT_WITCH_HUT.get(),
-                new StructureFeatureConfiguration(
-                        (ERConfig.ANCIENT_WITCH_HUT_DISTANCE.getRaw()),
-                        (ERConfig.ANCIENT_WITCH_HUT_DISTANCE.getRaw() - 5),
-                        324897233),
-                false);
+                ERConfig.getData().ANCIENT_WITCH_HUT,
+                324897233);
     }
 
     public static <F extends StructureFeature<?>> void setupMapSpacingAndLand(
             F structure,
-            StructureFeatureConfiguration structureFeatureConfiguration,
-            boolean transformSurroundingLand) {
+            ConfigData.Structure structureConfig,
+            int salt) {
         StructureFeature.STRUCTURES_REGISTRY.put(structure.getRegistryName().toString(), structure);
 
-        if (transformSurroundingLand) {
+        if (structureConfig.terraforming) {
             StructureFeature.NOISE_AFFECTING_FEATURES =
                     ImmutableList.<StructureFeature<?>>builder()
                             .addAll(StructureFeature.NOISE_AFFECTING_FEATURES)
                             .add(structure)
                             .build();
         }
+
+        StructureFeatureConfiguration structureFeatureConfiguration =
+                new StructureFeatureConfiguration(structureConfig.averageDistance,
+                        structureConfig.averageDistance - 30,
+                        salt);
 
         StructureSettings.DEFAULTS =
                 ImmutableMap.<StructureFeature<?>, StructureFeatureConfiguration>builder()

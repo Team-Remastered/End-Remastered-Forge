@@ -38,7 +38,6 @@ import net.minecraftforge.event.world.StructureSpawnListGatherEvent;
 
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -60,14 +59,6 @@ public class EndGate extends StructureFeature<NoneFeatureConfiguration> {
         return GenerationStep.Decoration.STRONGHOLDS;
     }
 
-    public static List<Biome.BiomeCategory> getValidBiomeCategories() {
-        List<Biome.BiomeCategory> biomeCategories = new ArrayList<>();
-        for (String biomeName : ERConfig.END_GATE_WHITELISTED_BIOME_CATEGORIES.getList()) {
-            biomeCategories.add(Biome.BiomeCategory.byName(biomeName));
-        }
-        return biomeCategories;
-    }
-
     public static void setupStructureSpawns(final StructureSpawnListGatherEvent event) {
         if(event.getStructure() == ERStructures.END_GATE.get()) {
             for (CustomMonsterSpawn monsterSpawn : MONSTER_SPAWN_LIST) {
@@ -78,7 +69,7 @@ public class EndGate extends StructureFeature<NoneFeatureConfiguration> {
 
     @ParametersAreNonnullByDefault
     protected boolean isFeatureChunk(ChunkGenerator chunkGenerator, BiomeSource biomeSource, long seed, WorldgenRandom chunkRandom, ChunkPos chunkPos1, Biome biome, ChunkPos chunkPos2, NoneFeatureConfiguration c, LevelHeightAccessor level) {
-        return ERUtils.getChunkDistanceFromSpawn(chunkPos1) >= ERConfig.END_GATE_SPAWN_DISTANCE.getRaw();
+        return ERUtils.getChunkDistanceFromSpawn(chunkPos1) >= ERConfig.getData().END_GATE.spawnDistance;
     }
 
     @Override
@@ -151,12 +142,12 @@ public class EndGate extends StructureFeature<NoneFeatureConfiguration> {
         @Override
         @ParametersAreNonnullByDefault
         public void generatePieces(RegistryAccess registryAccess, ChunkGenerator chunkGenerator, StructureManager manager, ChunkPos chunkPos, Biome biomeIn, NoneFeatureConfiguration config, LevelHeightAccessor levelHeightAccessor) {
-            BlockPos genPosition = new BlockPos(chunkPos.x << 4, ERConfig.END_GATE_HEIGHT.getRaw(), chunkPos.z << 4);
+            BlockPos genPosition = new BlockPos(chunkPos.x << 4, ERConfig.getData().END_GATE.height, chunkPos.z << 4);
 
             JigsawPlacement.addPieces(
                     registryAccess,
                     new JigsawConfiguration(() -> registryAccess.registryOrThrow(Registry.TEMPLATE_POOL_REGISTRY).get(START_POOL),
-                            ERConfig.END_GATE_SIZE.getRaw()),
+                            ERConfig.getData().END_GATE.size),
                     PoolElementStructurePiece::new,
                     chunkGenerator,
                     manager,
