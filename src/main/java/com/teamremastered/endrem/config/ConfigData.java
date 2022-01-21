@@ -22,6 +22,7 @@ public class ConfigData {
 
     @SerializedName("End Castle")
     public Structure END_CASTLE = new Structure(
+            List.of("jungle", "taiga", "forest", "none", "plains", "icy"),
             List.of("minecraft:bamboo_jungle_hills", "minecraft:birch_forest_hills", "minecraft:dark_forest_hills",
                     "minecraft:giant_spruce_taiga_hills", "minecraft:giant_tree_taiga_hills",
                     "minecraft:gravelly_mountains", "minecraft:jungle_edge", "minecraft:jungle_hills",
@@ -30,7 +31,6 @@ public class ConfigData {
                     "minecraft:snowy_taiga_hills", "minecraft:snowy_taiga_mountains", "minecraft:taiga_hills",
                     "minecraft:taiga_mountains", "minecraft:tall_birch_hills", "minecraft:wooded_hills",
                     "minecraft:wooded_mountains", "minecraft:savanna_plateau", "minecraft:shattered_savanna_plateau"),
-            List.of("jungle", "taiga", "forest", "none", "plains", "icy"),
             100,
             188,
             0,
@@ -39,8 +39,8 @@ public class ConfigData {
 
     @SerializedName("Ancient Witch Hut")
     public Structure ANCIENT_WITCH_HUT = new Structure(
-            List.of(),
             List.of("swamp"),
+            List.of(),
             25,
             0,
             -3,
