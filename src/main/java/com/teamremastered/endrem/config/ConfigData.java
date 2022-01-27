@@ -219,7 +219,7 @@ public class ConfigData {
             this.terraforming = terraformingIn;
         }
 
-        private List<Biome.BiomeCategory> getProcessedBiomeCategories() {
+        public List<Biome.BiomeCategory> getProcessedBiomeCategories() {
             List<Biome.BiomeCategory> biomeCategories = new ArrayList<>();
             for (String biomeName : this.whitelistedBiomeCategories) {
                 biomeCategories.add(Biome.BiomeCategory.byName(biomeName));
