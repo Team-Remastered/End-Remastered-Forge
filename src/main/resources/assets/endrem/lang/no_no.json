@@ -1,0 +1,139 @@
+{
+  "item.endrem.old_eye": "Gammelt Øye",
+  "item.endrem.old_eye.description": "Legender sier at dette øyet en gang tilhørte en av de store sandormene.",
+
+  "item.endrem.rogue_eye": "Slyngeløye",
+  "item.endrem.rogue_eye.description": "Dette øyet antas å ha gitt våre forfedre kunnskapen om Redstone.",
+
+  "item.endrem.nether_eye": "Netherøye",
+  "item.endrem.nether_eye.description": "Det ble mistet av en demon i kampen mellom Aether og Nether.",
+
+  "item.endrem.cold_eye": "Kaldt Øye",
+  "item.endrem.cold_eye.description": "En av de siste gjenstandene som ble etterlatt av isologene før de alle plutselig forsvant fra verden.",
+
+  "item.endrem.magical_eye": "Magisk Øye",
+  "item.endrem.magical_eye.description": "Uten dette øyet har ikke Åndemaneren noen magiske krefter.",
+
+  "item.endrem.black_eye": "Sort Øye",
+  "item.endrem.black_eye.description": "Pirates say it gave sight to the legendary Black pearl.",
+
+  "item.endrem.lost_eye": "Tapt Øye",
+  "item.endrem.lost_eye.description": "Det fortelles at det ble smidd av tidens første smeder.",
+
+  "item.endrem.wither_eye": "Witherøye",
+  "item.endrem.wither_eye.description": "Har vært vitne til ødeleggelse. Kanskje det også var vitne til at tingene dine forsvant.",
+
+  "item.endrem.guardian_eye": "Vokterøye",
+  "item.endrem.guardian_eye.description": "Det har sett mange krigere drukne i havets dyp.",
+
+  "item.endrem.end_crystal_eye": "Endekrystalløye",
+  "item.endrem.end_crystal_eye.description": "Det antas å inneholde et fragment av Enderdragens sjel.",
+
+  "item.endrem.corrupted_eye": "Korrupt Øye",
+  "item.endrem.corrupted_eye.description": "Øyet til en grådig konge som bleknet i ensomhet. Legenden sier at det vil bringe uendelig formue til eieren.",
+
+  "item.endrem.witch_eye": "Hekseøye",
+  "item.endrem.witch_eye.description": "Dette øyet antas å ha sett de eldgamle bryggeoppskriftene som gikk tapt med tiden.",
+
+  "item.endrem.end_crystal_fragment": "Endekrystallfragment",
+
+  "item.endrem.witch_pupil": "Heksepupill",
+
+  "item.endrem.end_crystal_ingot": "Endekrystallbarre",
+
+
+  "item.endrem.end_castle_disc": "Endeslottplate",
+  "item.endrem.end_castle_disc.desc.sub": "Endeslottplate",
+
+  "item.endrem.end_crystal_helmet": "Endekrystallhjelm",
+  "item.endrem.end_crystal_chestplate": "Endekrystallbrystplate",
+  "item.endrem.end_crystal_leggings": "Endekrystallbeinplate",
+  "item.endrem.end_crystal_boots": "Endekrystallstøvler",
+  "item.endrem.armor.description.main": "Når du gjør et kritisk angrep, oppnår du Regenerasjon II-effekten",
+
+  "item.endrem.end_crystal_hoe": "Endekrystallgrev",
+  "item.endrem.end_crystal_axe": "Endekrystalløks",
+  "item.endrem.end_crystal_pickaxe": "Endekrystallhakke",
+  "item.endrem.end_crystal_shovel": "Endekrystallspade",
+  "item.endrem.end_crystal_sword": "Endekrystallsverd",
+
+  "item.endrem.end_castle_map": "Kart til Endeslott",
+  "item.endrem.end_gate_map": "Kart til Endeport",
+
+  "block.endrem.end_creator": "Endeskaper",
+  "block.endrem.end_creator_activated": "Endeskaper Aktivert",
+
+  "block.endrem.ancient_portal_frame": "Eldgammel Portalramme",
+  "block.endrem.end_crystal_ore": "Endekrystall Ore",
+  "block.endrem.end_crystal_block": "Endekrystall Block",
+
+  "itemGroup.endremTab": "End Remastered",
+
+  "block.portal_open_sound": "Portal Åpnes",
+  "block.portal_open_sound.sub": "Portal Åpnes",
+
+  "item.endrem.end_castle_disc.desc": "Daserta - Endens Skygge",
+
+  "advancements.main.root.title": "Begynnelsen på et eventyr",
+  "advancements.main.root.description": "Få ditt første øye",
+
+  "advancements.main.root.end_crystal_armor.title": "Dekk meg i krystaller",
+  "advancements.main.root.end_crystal_armor.description": "Få en hel rustning av Endekrystall",
+
+  "advancements.main.old_eye.title": "Lykkesøker",
+  "advancements.main.old_eye.description": "Få ditt første Gammelt Øye",
+
+  "advancements.main.rogue_eye.title": "Velkommen til jungelen",
+  "advancements.main.rogue_eye.description": "Få ditt første Slyngeløye",
+
+  "advancements.main.nether_eye.title": "Stirre inn i fortvilelse",
+  "advancements.main.nether_eye.description": "Få ditt første Netherøye",
+
+  "advancements.main.cold_eye.title": "Et kjølig blikk",
+  "advancements.main.cold_eye.description": "Få ditt første Kaldt Øye",
+
+  "advancements.main.corrupted_eye.title": "Dekk meg i smaragder", "%%%%%%Comment%%%%%%": "Golden Shower fits better but whatever...",
+  "advancements.main.corrupted_eye.description": "Få ditt første Korrupt Øye",
+
+  "advancements.main.magical_eye.title": "Fallen trollmann",
+  "advancements.main.magical_eye.description": "Få ditt første Magisk Øye",
+
+  "advancements.main.black_eye.title": "Arghh, Hvor er skipet mitt?",
+  "advancements.main.black_eye.description": "Få ditt første Sort Øye",
+
+  "advancements.main.lost_eye.title": "Trenger du et kart?",
+  "advancements.main.lost_eye.description": "Få ditt første Tapt Øye",
+
+  "advancements.main.wither_eye.title": "Wither You Want It Or Not",
+  "advancements.main.wither_eye.description": "Få ditt første Witherøye",
+
+  "advancements.main.end_crystal_eye.title": "Krystallklart",
+  "advancements.main.end_crystal_eye.description": "Få ditt første Endekrystall Øye",
+
+  "advancements.main.guardian_eye.title": "Hvem vokter tempelet nå?",
+  "advancements.main.guardian_eye.description": "Få ditt første Vokterøye",
+
+  "advancements.main.witch_eye.title": "Knask eller Knep?",
+  "advancements.main.witch_eye.description": "Få ditt første Hekseøye",
+
+  "advancements.main.find_end_castle.title": "En lang reise",
+  "advancements.main.find_end_castle.description": "Finn Endeslottet",
+
+  "endrem.config.enable_ender_eyes": "Vanilla Enderøyer",
+  "endrem.config.enable_strongholds": "Vanilla Fort",
+  "endrem.config.enable_end_castle": "Endeslott",
+  "endrem.config.end_castle_distance": "Slott distanse: %s",
+  "endrem.config.enable_end_gate": "Endeport",
+  "endrem.config.end_gate_distance": "Endeport distanse: %s",
+  "endrem.config.end_gate_size": "Endeport Størrelse: %s",
+  "endrem.config.structure_difficulty": "Strukturers vanskelighetsgrad på monster: ",
+  "endrem.config.structure_difficulty.no_mobs": "Fredelig",
+  "endrem.config.structure_difficulty.easy": "Lett",
+  "endrem.config.structure_difficulty.normal": "Vanlig",
+  "endrem.config.structure_difficulty.hard": "Vanskelig",
+  "endrem.config.structure_difficulty.nightmare": "Mareritt",
+  "endrem.config.title": "End Remastered Config",
+  "endrem.config.restart_message": "Du må restarte Minecraft etter å ha endret distansene",
+  "endrem.config.done_button": "Ferdig",
+  "endrem.config.reset_button": "Gjenopprett Konfigurerte Instillinger"
+}
