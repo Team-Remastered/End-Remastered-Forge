@@ -6,7 +6,8 @@
   "mixins": [
     "world.NoLakesInStructuresMixin",
     "world.NoFluidsInStructures",
-    "world.DisableStrongholdMixin"
+    "world.DisableStrongholdMixin",
+    "world.ChunkGeneratorAccessorMixin"
   ],
   "minVersion": "0.8"
 }

@@ -40,7 +40,6 @@ public class EndRemastered {
     private void setup(final FMLCommonSetupEvent event) {
         END_CRYSTAL_GEN = BlockTags.bind("endrem:end_crystal_gen");
         OreGenHandler.initRegister();
-        event.enqueueWork(StructureGenerator::setup);
     }
 
     public static final ItemGroup TAB = new ItemGroup("endremTab") {
