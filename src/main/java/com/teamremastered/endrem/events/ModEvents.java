@@ -56,7 +56,7 @@ public class ModEvents {
     // Add ERMap to Cartographers
     @SubscribeEvent
     public static void onVillagerTradesEvent(VillagerTradesEvent event) {
-        if (event.getType() == VillagerProfession.CARTOGRAPHER) {
+        if (event.getType() == VillagerProfession.CARTOGRAPHER && !ERMap.nullCheck) {
             event.getTrades().get(3).add(new ERMap.ERMapTrade());
         }
     }
@@ -64,7 +64,9 @@ public class ModEvents {
     // Add ERMap to WanderingTraders
     @SubscribeEvent
     public static void onWandererTradesEvent(WandererTradesEvent event) {
-        event.getGenericTrades().add(new ERMap.ERMapTrade());
+        if (!ERMap.nullCheck) {
+            event.getGenericTrades().add(new ERMap.ERMapTrade());
+        }
     }
 
     // Add End Crystal Armor Special Effect

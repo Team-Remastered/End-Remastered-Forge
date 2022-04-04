@@ -30,9 +30,16 @@ public class ERMap {
         return Integer.parseInt(ERConfig.MAP_TRADE_VALUES.getList().get(2));
     }
 
+    public static boolean nullCheck = false;
+
     public static ItemStack createMap(ServerWorld serverLevel, BlockPos playerPosition) {
         // Get position of marker
         BlockPos structurePos = RegisterHandler.MAP_ML.getNearestPosition(serverLevel, playerPosition);
+
+        //Check if structurePos is null
+        if (structurePos == null) {
+            nullCheck = true;
+        }
 
         // Create map
         ItemStack stack = FilledMapItem.create(serverLevel, structurePos.getX(), structurePos.getZ(), (byte) 2 , true, true);
@@ -50,7 +57,7 @@ public class ERMap {
         @Override
         public MerchantOffer getOffer(@Nonnull Entity entity, Random random){
             int priceEmeralds = random.nextInt(getMaxPrice() - getMinPrice() + 1) + getMinPrice();
-            if (!entity.level.isClientSide()) {
+            if (!entity.level.isClientSide() && !nullCheck) {
                 ItemStack map = createMap((ServerWorld) entity.level, entity.blockPosition());
                 return new MerchantOffer(new ItemStack(Items.EMERALD, priceEmeralds), new ItemStack(Items.COMPASS), map, 12, getEXP(), 0.2F);
             }
