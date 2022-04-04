@@ -49,10 +49,6 @@ public class StructureGenerator {
     }
     public static void commonSetup(FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-//            // Add Structures to the structure map
-//            Structure.STRUCTURES_REGISTRY.put("End Castle".toLowerCase(Locale.ROOT), ERStructures.END_CASTLE.get());
-//            Structure.STRUCTURES_REGISTRY.put("End Gate".toLowerCase(Locale.ROOT), ERStructures.END_GATE.get());
-//            Structure.STRUCTURES_REGISTRY.put("Ancient Witch Hut".toLowerCase(Locale.ROOT), ERStructures.ANCIENT_WITCH_HUT.get());
 
         ERStructures.setupStructures();
         ERStructures.registerAllPieces();
