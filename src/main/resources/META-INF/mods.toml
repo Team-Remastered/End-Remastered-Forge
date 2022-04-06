@@ -27,6 +27,6 @@ After reaching one of these structures, you will have to find the hidden portal 
 [[dependencies.endrem]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.18,1.19)"
+    versionRange="[1.18.2,1.19)"
     ordering="NONE"
     side="BOTH"
