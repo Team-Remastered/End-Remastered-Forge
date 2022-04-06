@@ -13,7 +13,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 @SuppressWarnings("unused")
 public class RegisterHandler {
-    public static final DeferredRegister<GlobalLootModifierSerializer<?>> GLMS = DeferredRegister.create(ForgeRegistries.LOOT_MODIFIER_SERIALIZERS, EndRemastered.MOD_ID);
+    public static final DeferredRegister<GlobalLootModifierSerializer<?>> GLMS = DeferredRegister.createOptional(ForgeRegistries.Keys.LOOT_MODIFIER_SERIALIZERS, EndRemastered.MOD_ID);
 
     public static void init() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();

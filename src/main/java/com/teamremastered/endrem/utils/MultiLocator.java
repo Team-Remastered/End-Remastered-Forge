@@ -1,8 +1,12 @@
 package com.teamremastered.endrem.utils;
 
+import com.teamremastered.endrem.EndRemastered;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.level.levelgen.feature.ConfiguredStructureFeature;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -29,16 +33,17 @@ public class MultiLocator {
         for (String structureID : this.getStructureList()) {
             // Verify if structure mod is loaded
             String structureModId = structureID.split(":")[0];
+            String structureIdOnly = structureID.split(":")[1];
             if (ModList.get().isLoaded(structureModId)) {
 
                 // Check if structure id is valid
                 ResourceLocation structureResourceLocation = new ResourceLocation(structureID);
                 if (ForgeRegistries.STRUCTURE_FEATURES.containsKey(structureResourceLocation)) {
                     // Get distance from player
-                    StructureFeature<?> structureFeature = ForgeRegistries.STRUCTURE_FEATURES.getValue(structureResourceLocation);
+                    TagKey<ConfiguredStructureFeature<?, ?>> structureFeature = TagKey.create(Registry.CONFIGURED_STRUCTURE_FEATURE_REGISTRY, new ResourceLocation(structureModId, structureIdOnly));
                     assert structureFeature != null;
-                    BlockPos structurePos = serverLevel.getChunkSource().getGenerator().findNearestMapFeature(serverLevel, structureFeature, playerPos, 100, false);
-
+//                    BlockPos structurePos = serverLevel.getChunkSource().getGenerator().findNearestMapFeature(serverLevel,  structureFeature, playerPos, 100, false);
+                    BlockPos structurePos = serverLevel.findNearestMapFeature(structureFeature, playerPos, 100, false);
                     // Compare distance to previous minimum
                     if (structurePos != null) {
                         int structureDistance = ERUtils.getBlockDistance(structurePos, playerPos);
@@ -48,11 +53,9 @@ public class MultiLocator {
                             nearestStructurePos = structurePos;
                         }
                     }
-
                 }
             }
         }
-
         return nearestStructurePos;
     }
 }

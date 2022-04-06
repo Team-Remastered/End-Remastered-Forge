@@ -4,10 +4,11 @@ import com.teamremastered.endrem.config.ERConfig;
 import com.teamremastered.endrem.registers.ERBlocks;
 import com.teamremastered.endrem.registers.RegisterHandler;
 import com.teamremastered.endrem.world.gen.OreGenHandler;
-import com.teamremastered.endrem.world.structures.config.StructureGenerator;
+import com.teamremastered.endrem.world.structures.config.ERStructures;
 import com.teamremastered.endrem.world.structures.processors.ERProcessors;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.Tag;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
@@ -35,10 +36,11 @@ public class EndRemastered {
         StructureGenerator.init();
     }
 
-    public static Tag<Block> END_CRYSTAL_GEN;
+    public static TagKey<Block> END_CRYSTAL_GEN;
 
     private void setup(final FMLCommonSetupEvent event) {
-        END_CRYSTAL_GEN = BlockTags.bind("endrem:end_crystal_gen");
+        ERStructures.DEFERRED_REGISTRY_STRUCTURES.register(FMLJavaModLoadingContext.get().getModEventBus());
+        END_CRYSTAL_GEN = BlockTags.create(new ResourceLocation(EndRemastered.MOD_ID, "end_crystal_gen"));
         OreGenHandler.initRegister();
         event.enqueueWork(StructureGenerator::setup);
     }

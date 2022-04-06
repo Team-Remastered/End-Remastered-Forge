@@ -1,23 +1,20 @@
 package com.teamremastered.endrem.world.structures;
 
 import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
 import com.teamremastered.endrem.EndRemastered;
-import com.teamremastered.endrem.config.ERConfig;
 import com.teamremastered.endrem.world.structures.config.ERStructures;
 import com.teamremastered.endrem.world.structures.utils.CustomMonsterSpawn;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.JigsawConfiguration;
-import net.minecraft.world.level.levelgen.feature.structures.JigsawPlacement;
 import net.minecraft.world.level.levelgen.structure.PoolElementStructurePiece;
 import net.minecraft.world.level.levelgen.structure.PostPlacementProcessor;
 import net.minecraft.world.level.levelgen.structure.pieces.PieceGenerator;
 import net.minecraft.world.level.levelgen.structure.pieces.PieceGeneratorSupplier;
+import net.minecraft.world.level.levelgen.structure.pools.JigsawPlacement;
 import net.minecraftforge.event.world.StructureSpawnListGatherEvent;
 import org.jetbrains.annotations.NotNull;
 
@@ -34,8 +31,8 @@ public class AncientWitchHut extends StructureFeature<JigsawConfiguration> {
             new CustomMonsterSpawn(EntityType.WITCH, 10, 10, 15)
     );
 
-    public AncientWitchHut(Codec<JigsawConfiguration> codec) {
-        super(codec, AncientWitchHut::createPiecesGenerator, PostPlacementProcessor.NONE);
+    public AncientWitchHut() {
+        super(JigsawConfiguration.CODEC, AncientWitchHut::createPiecesGenerator, PostPlacementProcessor.NONE);
     }
 
     @Override
@@ -52,31 +49,17 @@ public class AncientWitchHut extends StructureFeature<JigsawConfiguration> {
     }
 
     public static @NotNull Optional<PieceGenerator<JigsawConfiguration>> createPiecesGenerator(PieceGeneratorSupplier.Context<JigsawConfiguration> context) {
-        JigsawConfiguration newConfig = new JigsawConfiguration(
-                () -> context.registryAccess().ownedRegistryOrThrow(Registry.TEMPLATE_POOL_REGISTRY)
-                        .get(AncientWitchHut.START_POOL), 1
-        );
-
-        PieceGeneratorSupplier.Context<JigsawConfiguration> newContext = new PieceGeneratorSupplier.Context<>(
-                context.chunkGenerator(),
-                context.biomeSource(),
-                context.seed(),
-                context.chunkPos(),
-                newConfig,
-                context.heightAccessor(),
-                context.validBiome(),
-                context.structureManager(),
-                context.registryAccess()
-        );
 
         BlockPos blockpos = context.chunkPos().getMiddleBlockPosition(-3);
 
-        return JigsawPlacement.addPieces(
-                newContext,
-                PoolElementStructurePiece::new,
-                blockpos,
-                false,
-                true
-        );
+        Optional<PieceGenerator<JigsawConfiguration>> structurePiecesGenerator =
+                JigsawPlacement.addPieces(
+                        context, // Used for JigsawPlacement to get all the proper behaviors done.
+                        PoolElementStructurePiece::new, // Needed in order to create a list of jigsaw pieces when making the structure's layout.
+                        blockpos,
+                        false,
+                        true
+                );
+        return structurePiecesGenerator;
     }
 }
