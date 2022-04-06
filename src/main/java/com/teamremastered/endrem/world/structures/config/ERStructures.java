@@ -1,9 +1,6 @@
 package com.teamremastered.endrem.world.structures.config;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
 import com.teamremastered.endrem.EndRemastered;
-import com.teamremastered.endrem.config.ERConfig;
 import com.teamremastered.endrem.world.structures.AncientWitchHut;
 import com.teamremastered.endrem.world.structures.EndCastle;
 import com.teamremastered.endrem.world.structures.EndCastlePieces;

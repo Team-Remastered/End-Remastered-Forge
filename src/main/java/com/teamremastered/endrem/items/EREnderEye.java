@@ -6,6 +6,7 @@ import com.teamremastered.endrem.blocks.ERFrameProperties;
 import com.teamremastered.endrem.config.ERConfig;
 import com.teamremastered.endrem.registers.ERBlocks;
 import com.teamremastered.endrem.registers.RegisterHandler;
+import com.teamremastered.endrem.utils.MultiLocator;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
@@ -16,6 +17,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
+import net.minecraft.tags.ConfiguredStructureTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
@@ -116,13 +118,12 @@ public class EREnderEye extends Item {
             lookingAtFrame = true;
         }
 
-
         if (lookingAtFrame) {
             return InteractionResultHolder.pass(itemstack);
         } else {
             playerIn.startUsingItem(handIn);
             if (levelIn instanceof ServerLevel) {
-                BlockPos blockpos = RegisterHandler.EYE_ML.getNearestPosition((ServerLevel) levelIn, playerIn.getOnPos());
+                BlockPos blockpos = ((ServerLevel) levelIn).findNearestMapFeature(MultiLocator.ENDREM_EYES_LOCATED, playerIn.blockPosition(), 100, false);
                 if (blockpos != null) {
                     EyeOfEnder eyeofenderentity = new EyeOfEnder(levelIn, playerIn.getX(), playerIn.getY(0.5D), playerIn.getZ());
                     eyeofenderentity.setItem(itemstack);

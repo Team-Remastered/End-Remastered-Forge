@@ -1,9 +1,7 @@
 package com.teamremastered.endrem.registers;
 
 import com.teamremastered.endrem.EndRemastered;
-import com.teamremastered.endrem.config.ERConfig;
 import com.teamremastered.endrem.utils.LootInjector;
-import com.teamremastered.endrem.utils.MultiLocator;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -22,9 +20,5 @@ public class RegisterHandler {
         GLMS.register(modEventBus);
     }
 
-    public final static MultiLocator EYE_ML = new MultiLocator(() -> ERConfig.EYE_STRUCTURE_LIST.getList());
-    public final static MultiLocator MAP_ML = new MultiLocator(() -> ERConfig.MAP_STRUCTURE_LIST.getList());
-
     public static RegistryObject<GlobalLootModifierSerializer<LootInjector.LootInjectionModifier>> LOOT_INJECTOR = GLMS.register("loot_injection", LootInjector.Serializer::new);
-
 }

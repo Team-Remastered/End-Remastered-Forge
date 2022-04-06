@@ -28,21 +28,20 @@ public class EndRemastered {
     public static final String CONFIG_FILE = String.format("%s.toml", EndRemastered.MOD_ID);
 
     public EndRemastered() {
+        ERStructures.DEFERRED_REGISTRY_STRUCTURES.register(FMLJavaModLoadingContext.get().getModEventBus());
         MinecraftForge.EVENT_BUS.register(this);
         ERConfig.load();
         RegisterHandler.init();
         ERProcessors.init();
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        StructureGenerator.init();
     }
 
     public static TagKey<Block> END_CRYSTAL_GEN;
 
     private void setup(final FMLCommonSetupEvent event) {
-        ERStructures.DEFERRED_REGISTRY_STRUCTURES.register(FMLJavaModLoadingContext.get().getModEventBus());
         END_CRYSTAL_GEN = BlockTags.create(new ResourceLocation(EndRemastered.MOD_ID, "end_crystal_gen"));
         OreGenHandler.initRegister();
-        event.enqueueWork(StructureGenerator::setup);
+        ERStructures.registerAllPieces();
     }
 
     public static final CreativeModeTab TAB = new CreativeModeTab("endremTab") {

@@ -1,0 +1,23 @@
+{
+  "structures": [
+    {
+      "structure": "endrem:end_gate",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "spread": 3,
+
+    "count": 128,
+
+    "preferred_biomes": "#minecraft:stronghold_biased_to",
+
+    "distance": 32,
+
+    "separation": 6,
+
+    "salt": 952446880,
+
+    "type": "minecraft:concentric_rings"
+  }
+}

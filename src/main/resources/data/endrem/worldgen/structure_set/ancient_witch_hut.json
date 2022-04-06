@@ -1,0 +1,18 @@
+{
+  "structures": [
+    {
+      "structure": "endrem:ancient_witch_hut",
+      "weight": 1
+    }
+  ],
+  "placement": {
+
+    "salt": 322443810,
+
+    "spacing": 16,
+
+    "separation": 6,
+
+    "type": "minecraft:random_spread"
+  }
+}
