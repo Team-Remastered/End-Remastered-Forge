@@ -4,8 +4,6 @@ import com.teamremastered.endrem.config.ERConfig;
 import com.teamremastered.endrem.registers.ERBlocks;
 import com.teamremastered.endrem.registers.RegisterHandler;
 import com.teamremastered.endrem.world.gen.OreGenHandler;
-import com.teamremastered.endrem.world.structures.config.ERStructures;
-import com.teamremastered.endrem.world.structures.processors.ERProcessors;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
@@ -28,11 +26,9 @@ public class EndRemastered {
     public static final String CONFIG_FILE = String.format("%s.toml", EndRemastered.MOD_ID);
 
     public EndRemastered() {
-        ERStructures.DEFERRED_REGISTRY_STRUCTURES.register(FMLJavaModLoadingContext.get().getModEventBus());
         MinecraftForge.EVENT_BUS.register(this);
         ERConfig.load();
         RegisterHandler.init();
-        ERProcessors.init();
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
     }
 
@@ -41,7 +37,6 @@ public class EndRemastered {
     private void setup(final FMLCommonSetupEvent event) {
         END_CRYSTAL_GEN = BlockTags.create(new ResourceLocation(EndRemastered.MOD_ID, "end_crystal_gen"));
         OreGenHandler.initRegister();
-        ERStructures.registerAllPieces();
     }
 
     public static final CreativeModeTab TAB = new CreativeModeTab("endremTab") {

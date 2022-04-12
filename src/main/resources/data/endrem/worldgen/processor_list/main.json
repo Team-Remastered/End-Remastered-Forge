@@ -1,7 +1,0 @@
-{
-  "processors": [
-    {
-      "processor_type": "endrem:waterlogged_processor"
-    }
-  ]
-}

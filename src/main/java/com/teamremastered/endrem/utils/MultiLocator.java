@@ -7,7 +7,6 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredStructureFeature;
 
 public interface MultiLocator {
 
-    TagKey<ConfiguredStructureFeature<?, ?>> ENDREM_MAP_LOCATED = create("endrem_map_located");
     TagKey<ConfiguredStructureFeature<?, ?>> ENDREM_EYES_LOCATED = create("endrem_eyes_located");
 
     private static TagKey<ConfiguredStructureFeature<?, ?>> create(String id) {
