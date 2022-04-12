@@ -2,8 +2,6 @@ package com.teamremastered.endrem.registers;
 
 import com.teamremastered.endrem.EndRemastered;
 import com.teamremastered.endrem.items.EREnderEye;
-import com.teamremastered.endrem.items.EndCrystalArmor;
-import com.teamremastered.endrem.items.EndCrystalTools;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -36,25 +34,9 @@ public class ERItems {
     public static final RegistryObject<Item> LOST_EYE = ITEMS.register("lost_eye", EREnderEye::new);
 
     // crafts
-    public static final RegistryObject<Item> END_CRYSTAL_EYE = ITEMS.register("end_crystal_eye", EREnderEye::new);
     public static final RegistryObject<Item> WITCH_EYE = ITEMS.register("witch_eye", EREnderEye::new);
-
-    // ==== Tools =====
-    public static final RegistryObject<Item> END_CRYSTAL_HOE = ITEMS.register("end_crystal_hoe", EndCrystalTools.Hoe::new);
-    public static final RegistryObject<Item> END_CRYSTAL_PICKAXE = ITEMS.register("end_crystal_pickaxe", EndCrystalTools.Pickaxe::new);
-    public static final RegistryObject<Item> END_CRYSTAL_AXE = ITEMS.register("end_crystal_axe", EndCrystalTools.Axe::new);
-    public static final RegistryObject<Item> END_CRYSTAL_SWORD = ITEMS.register("end_crystal_sword", EndCrystalTools.Sword::new);
-    public static final RegistryObject<Item> END_CRYSTAL_SHOVEL = ITEMS.register("end_crystal_shovel", EndCrystalTools.Shovel::new);
-
-    // ==== Armor ====
-    public static final RegistryObject<Item> END_CRYSTAL_HELMET = ITEMS.register("end_crystal_helmet", () -> new EndCrystalArmor(EquipmentSlot.HEAD));
-    public static final RegistryObject<Item> END_CRYSTAL_CHESTPLATE = ITEMS.register("end_crystal_chestplate", () -> new EndCrystalArmor(EquipmentSlot.CHEST));
-    public static final RegistryObject<Item> END_CRYSTAL_LEGGINGS = ITEMS.register("end_crystal_leggings", () -> new EndCrystalArmor(EquipmentSlot.LEGS));
-    public static final RegistryObject<Item> END_CRYSTAL_BOOTS = ITEMS.register("end_crystal_boots", () -> new EndCrystalArmor(EquipmentSlot.FEET));
+    public static final RegistryObject<Item> BEJEWELED_EYE = ITEMS.register("bejeweled_eye", EREnderEye::new);
 
     // ==== Other Items ====
     public static final RegistryObject<Item> WITCH_PUPIL = ITEMS.register("witch_pupil", () -> new Item(new Item.Properties().tab(EndRemastered.TAB)));
-    public static final RegistryObject<Item> END_CRYSTAL_FRAGMENT = ITEMS.register("end_crystal_fragment", () -> new Item(new Item.Properties().fireResistant().tab(EndRemastered.TAB)));
-    public static final RegistryObject<Item> END_CRYSTAL_INGOT = ITEMS.register("end_crystal_ingot", () -> new Item(new Item.Properties().tab(EndRemastered.TAB)));
-
 }

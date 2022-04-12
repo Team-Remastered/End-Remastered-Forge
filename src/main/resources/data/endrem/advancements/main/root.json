@@ -106,12 +106,12 @@
         ]
       }
     },
-    "end_crystal_eye": {
+    "bejeweled_eye": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "items": [ "endrem:end_crystal_eye" ]
+            "items": [ "endrem:bejeweled_eye" ]
           }
         ]
       }

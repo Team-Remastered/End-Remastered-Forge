@@ -29,14 +29,6 @@ public class EndRemastered {
         MinecraftForge.EVENT_BUS.register(this);
         ERConfig.load();
         RegisterHandler.init();
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-    }
-
-    public static TagKey<Block> END_CRYSTAL_GEN;
-
-    private void setup(final FMLCommonSetupEvent event) {
-        END_CRYSTAL_GEN = BlockTags.create(new ResourceLocation(EndRemastered.MOD_ID, "end_crystal_gen"));
-        OreGenHandler.initRegister();
     }
 
     public static final CreativeModeTab TAB = new CreativeModeTab("endremTab") {
