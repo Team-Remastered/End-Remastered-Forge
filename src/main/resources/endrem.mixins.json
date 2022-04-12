@@ -4,9 +4,6 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "endrem.refmap.json",
   "mixins": [
-    "world.NoLakesInStructuresMixin",
-    "world.NoFluidsInStructures",
-    "world.DisableStrongholdMixin"
   ],
   "minVersion": "0.8"
 }
