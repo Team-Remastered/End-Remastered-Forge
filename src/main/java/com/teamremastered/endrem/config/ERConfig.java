@@ -13,10 +13,6 @@ public class ERConfig {
     private static ForgeConfigSpec COMMON_CONFIG;
 
     // ======   Vanilla Modifications   ======
-    public static ERConfigGenericEntry<Boolean> STRONGHOLDS_ENABLED = new ERConfigGenericEntry<>(
-            "strongholds",
-            "Toggle Vanilla Minecraft Strongholds",
-            false);
 
     public static ERConfigGenericEntry<Boolean> USE_ENDER_EYES_ENABLED = new ERConfigGenericEntry<>(
             "ender_eyes",
@@ -26,48 +22,10 @@ public class ERConfig {
 
     // ======   End Remastered Configuration   ======
 
-    public static ERConfigGenericEntry<String> MONSTER_DIFFICULTY = new ERConfigGenericEntry<>(
-            "monster_difficulty",
-            "Sets the quantity of mobs in End Remastered Structures: \"peaceful\", \"easy\", \"normal\", \"hard\" or \"hardcore\"",
-            "normal");
-
     public static ERConfigGenericEntry<Integer> EYE_BREAK_CHANCE = new ERConfigGenericEntry<>(
             "eye_break_chance",
             "Percentage chance of eyes breaking when thrown",
             0);
-
-    public static ERConfigListEntry MAP_TRADE_VALUES = new ERConfigListEntry(
-            "map_trade_values",
-            "Values for the End Remastered map trade: [minPrice, maxPrice, expGiven]",
-            "[30, 40, 12]");
-
-    public static ERConfigListEntry END_CRYSTAL_ARMOR_STATS = new ERConfigListEntry(
-            "end_crystal_armor_stats",
-            "Stats for End Remastered's End Crystal armor: [durability factor, defense factor, toughness, knockback resistance, makes piglins neutrals, regen duration (in ticks)]",
-            "[33, 1, 2, 0.1, true, 20]");
-
-    public static ERConfigListEntry END_CRYSTAL_TOOLS_STATS = new ERConfigListEntry(
-            "end_crystal_tools_stats",
-            "Stats for End Remastered's End Crystal tools: [durability, speed, damage bonus]",
-            "[1325, 10, 3]");
-
-    public static ERConfigGenericEntry<Integer> END_GATE_HEIGHT = new ERConfigGenericEntry<>(
-            "end_gate_height",
-            "Y-Coordinate of the starting piece of the End Gate",
-            0
-    );
-
-    public static ERConfigGenericEntry<Integer> END_GATE_SPAWN_DISTANCE = new ERConfigGenericEntry<>(
-            "end_gate_spawn_distance",
-            "Minimum distance in chunks between End Gates and the spawn",
-            130
-    );
-
-    public static ERConfigGenericEntry<Integer> END_CASTLE_SPAWN_DISTANCE = new ERConfigGenericEntry<>(
-            "end_castle_spawn_distance",
-            "Minimum distance in chunks between End Castles and the spawn",
-            188
-    );
 
     static {
         init();

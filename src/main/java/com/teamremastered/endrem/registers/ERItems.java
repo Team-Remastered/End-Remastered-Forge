@@ -2,7 +2,6 @@ package com.teamremastered.endrem.registers;
 
 import com.teamremastered.endrem.EndRemastered;
 import com.teamremastered.endrem.items.EREnderEye;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;

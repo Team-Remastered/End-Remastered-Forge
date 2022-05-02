@@ -160,22 +160,6 @@
       "y": 90
     },
 
-    "eye=end_crystal_eye,facing=east": {
-      "model": "endrem:block/frames/end_crystal_frame_filled",
-      "y": 270
-    },
-    "eye=end_crystal_eye,facing=north": {
-      "model": "endrem:block/frames/end_crystal_frame_filled",
-      "y": 180
-    },
-    "eye=end_crystal_eye,facing=south": {
-      "model": "endrem:block/frames/end_crystal_frame_filled"
-    },
-    "eye=end_crystal_eye,facing=west": {
-      "model": "endrem:block/frames/end_crystal_frame_filled",
-      "y": 90
-    },
-
     "eye=guardian_eye,facing=east": {
       "model": "endrem:block/frames/guardian_frame_filled",
       "y": 270
@@ -205,6 +189,22 @@
     },
     "eye=witch_eye,facing=west": {
       "model": "endrem:block/frames/witch_frame_filled",
+      "y": 90
+    },
+
+    "eye=bejeweled_eye,facing=east": {
+      "model": "endrem:block/frames/bejeweled_frame_filled",
+      "y": 270
+    },
+    "eye=bejeweled_eye,facing=north": {
+      "model": "endrem:block/frames/bejeweled_frame_filled",
+      "y": 180
+    },
+    "eye=bejeweled_eye,facing=south": {
+      "model": "endrem:block/frames/bejeweled_frame_filled"
+    },
+    "eye=bejeweled_eye,facing=west": {
+      "model": "endrem:block/frames/bejeweled_frame_filled",
       "y": 90
     }
   }
