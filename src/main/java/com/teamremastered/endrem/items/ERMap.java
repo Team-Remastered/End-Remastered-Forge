@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.MerchantOffer;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraft.world.storage.MapData;
 import net.minecraft.world.storage.MapDecoration;
@@ -36,18 +36,24 @@ public class ERMap {
         // Get position of marker
         BlockPos structurePos = RegisterHandler.MAP_ML.getNearestPosition(serverLevel, playerPosition);
 
-        //Check if structurePos is null
+        ItemStack stack;
+        // Create map
         if (structurePos == null) {
+            stack = FilledMapItem.create(serverLevel, 0, 0, (byte) 2 , true, true);
             nullCheck = true;
+        } else {
+            stack = FilledMapItem.create(serverLevel, structurePos.getX(), structurePos.getZ(), (byte) 2 , true, true);
+        }
+        FilledMapItem.renderBiomePreviewMap(serverLevel, stack);
+
+        if (structurePos == null) {
+            MapData.addTargetDecoration(stack, BlockPos.ZERO, "+", MapDecoration.Type.TARGET_X);
+        } else {
+            MapData.addTargetDecoration(stack, structurePos, "+", MapDecoration.Type.TARGET_X);
         }
 
-        // Create map
-        ItemStack stack = FilledMapItem.create(serverLevel, structurePos.getX(), structurePos.getZ(), (byte) 2 , true, true);
-        FilledMapItem.renderBiomePreviewMap(serverLevel, stack);
-        MapData.addTargetDecoration(stack, structurePos, "+", MapDecoration.Type.TARGET_X);
-
         // Set the name of the map
-        stack.setHoverName(ITextComponent.nullToEmpty("End Remastered Map"));
+        stack.setHoverName(new StringTextComponent("End Remastered Map"));
 
         return stack;
     }
