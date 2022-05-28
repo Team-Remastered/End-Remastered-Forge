@@ -26,61 +26,25 @@
   "item.endrem.guardian_eye": "Ojo guardián",
   "item.endrem.guardian_eye.description": "Ha visto a muchos guerreros ahogarse en las profundidades del mar.",
 
-  "item.endrem.end_crystal_eye": "Ojo de cristal del End",
-  "item.endrem.end_crystal_eye.description": "Se cree que contiene un fragmento del alma de Enderdragón.",
-
   "item.endrem.corrupted_eye": "Ojo corrupto",
   "item.endrem.corrupted_eye.description": "El ojo de un rey codicioso que se desvaneció en la soledad. La leyenda dice que traerá fortuna infinita a su dueño.",
 
   "item.endrem.witch_eye": "Ojo de bruja",
   "item.endrem.witch_eye.description": "Se cree que esta pupila vio las antiguas recetas de elaboración que se perdieron en el tiempo.",
 
-  "item.endrem.end_crystal_fragment": "Fragmento de cristal del End",
-
   "item.endrem.witch_pupil": "Pupila de bruja",
 
-  "item.endrem.end_crystal_ingot": "Lingote de cristal del End",
-
-
-  "item.endrem.end_castle_disc": "Disco del castillo del End",
-  "item.endrem.end_castle_disc.desc.sub": "Disco del castillo del End",
-
-  "item.endrem.end_crystal_helmet": "Casco de cristal del End",
-  "item.endrem.end_crystal_chestplate": "Peto de cristal del End",
-  "item.endrem.end_crystal_leggings": "Grebas de cristal del End",
-  "item.endrem.end_crystal_boots": "Botas de cristal del End",
-  "item.endrem.armor.description.main": "Al realizar un golpe crítico, obtienes 1 segundo de Regeneración II",
-  "item.endrem.armor.description.shift": "Con una armadura de cristal del End completa, el efecto dura 4 segundos",
-  "item.endrem.press_shift": "Pulsa SHIFT para más detalles",
-
-  "item.endrem.end_crystal_hoe": "Azada de cristal del End",
-  "item.endrem.end_crystal_axe": "Hacha de cristal del End",
-  "item.endrem.end_crystal_pickaxe": "Pico de cristal del End",
-  "item.endrem.end_crystal_shovel": "Pala de cristal del End",
-  "item.endrem.end_crystal_sword": "Espada de cristal del End",
-
-  "item.endrem.end_castle_map": "Mapa del castillo del End",
-  "item.endrem.end_gate_map": "Mapa de la entrada del End",
-
-  "block.endrem.end_creator": "Creador del End",
-  "block.endrem.end_creator_activated": "Creador del End activado",
 
   "block.endrem.ancient_portal_frame": "Marco del portal antiguo",
-  "block.endrem.end_crystal_ore": "Mena de cristal del End",
-  "block.endrem.end_crystal_block": "Bloque de cristal del End",
 
   "itemGroup.endremTab": "End Remasterizado",
 
   "block.portal_open_sound": "Portal abierto",
   "block.portal_open_sound.sub": "Portal abierto",
 
-  "item.endrem.end_castle_disc.desc": "Daserta - Sombra Del End",
 
   "advancements.main.root.title": "El comienzo de una aventura",
   "advancements.main.root.description": "Consigue tu primer ojo.",
-
-  "advancements.main.root.end_crystal_armor.title": "Cúbreme en cristal",
-  "advancements.main.root.end_crystal_armor.description": "Consigue todo el conjunto de la armadura de cristal del End.",
 
   "advancements.main.old_eye.title": "Buscador de fortuna",
   "advancements.main.old_eye.description": "Consigue tu primer ojo viejo.",
@@ -109,33 +73,10 @@
   "advancements.main.wither_eye.title": "En descomposición lo quieras o no",
   "advancements.main.wither_eye.description": "Consigue tu primer ojo descompuesto.",
 
-  "advancements.main.end_crystal_eye.title": "Claro como el cristal",
-  "advancements.main.end_crystal_eye.description": "Consigue tu primer ojo de cristal del End.",
-
   "advancements.main.guardian_eye.title": "¿Quién protege el templo ahora?",
   "advancements.main.guardian_eye.description": "Consigue tu primer ojo guardián.",
 
   "advancements.main.witch_eye.title": "¿Truco o trato?",
-  "advancements.main.witch_eye.description": "Consigue tu primer ojo de bruja.",
+  "advancements.main.witch_eye.description": "Consigue tu primer ojo de bruja."
 
-  "advancements.main.find_end_castle.title": "Un largo viaje",
-  "advancements.main.find_end_castle.description": "Encuentra el castillo del End.",
-
-  "endrem.config.enable_ender_eyes": "Ojos de ender predeterminados",
-  "endrem.config.enable_strongholds": "Fortalezas predeterminados",
-  "endrem.config.enable_end_castle": "Castillo del End",
-  "endrem.config.end_castle_distance": "Distancia del castillo: %s",
-  "endrem.config.enable_end_gate": "Entrada del End",
-  "endrem.config.end_gate_distance": "Distancia de la entrada del End: %s",
-  "endrem.config.end_gate_size": "Tamaño de la entrada del End: %s",
-  "endrem.config.structure_difficulty": "Dificultad de criaturas en estructuras: ",
-  "endrem.config.structure_difficulty.no_mobs": "Pacífico",
-  "endrem.config.structure_difficulty.easy": "Fácil",
-  "endrem.config.structure_difficulty.normal": "Normal",
-  "endrem.config.structure_difficulty.hard": "Difícil",
-  "endrem.config.structure_difficulty.nightmare": "Extremo",
-  "endrem.config.title": "Configuración del End remasterizado",
-  "endrem.config.restart_message": "Debes reiniciar Minecraft después de cambiar las distancias",
-  "endrem.config.done_button": "Hecho",
-  "endrem.config.reset_button": "Restablecer opciones de configuración"
 }

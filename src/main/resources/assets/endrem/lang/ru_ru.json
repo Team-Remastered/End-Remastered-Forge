@@ -1,120 +1,81 @@
 {
-  "item.endrem.old_eye": "Старинный Глаз",
-  "item.endrem.old_eye.description": "Согласно легендам, этот глаз принадлежал одному из великих Песчанных Червей",
+  "item.endrem.old_eye": "Старинное Око",
+  "item.endrem.old_eye.description": "Легенды гласят, что это око когда-то принадлежало одному из великих песчаных червей",
 
-  "item.endrem.rogue_eye": "Глаз Изгоя",
-  "item.endrem.rogue_eye.description": "Этот глаз открыл нашим предкам тайны редстоуна",
+  "item.endrem.rogue_eye": "Разбойничье Око",
+  "item.endrem.rogue_eye.description": "Считается, что это око дало нашим предкам знания о редстоуне",
 
-  "item.endrem.nether_eye": "Глаз Ада",
-  "item.endrem.nether_eye.description": "Этот глаз был потерян демонои во время битвы между Адом и Раем",
+  "item.endrem.nether_eye": "Око Ада",
+  "item.endrem.nether_eye.description": "Он был потерян демоном в битве между Адом и Раем",
 
-  "item.endrem.cold_eye": "Ледяной Глаз",
-  "item.endrem.cold_eye.description": "Один из последних артифактов оставленных Iceologers перед их внезапным вымиранием",
+  "item.endrem.cold_eye": "Ледяное Око",
+  "item.endrem.cold_eye.description": "Один из последних артефактов, оставленных ледологами перед тем, как они внезапно исчезли из мира",
 
-  "item.endrem.magical_eye": "Волшебный Глаз",
-  "item.endrem.magical_eye.description": "Без этого глаза, Вызыватель бессилен",
+  "item.endrem.magical_eye": "Магическое Око",
+  "item.endrem.magical_eye.description": "Без этого ока у Вызывателя нет силы",
 
-  "item.endrem.black_eye": "Чёрный Глаз",
-  "item.endrem.black_eye.description": "Согласно пиратским легендам, этот глаз озарял Чёрную Жемчужину",
+  "item.endrem.black_eye": "Чёрное Око",
+  "item.endrem.black_eye.description": "Пираты говорят, что это око дало возможность увидеть легендарную Черную жемчужину",
 
-  "item.endrem.lost_eye": "Потерянный Глаз",
-  "item.endrem.lost_eye.description": "Этот глаз был выкован первыми кузнецами этого мира",
+  "item.endrem.lost_eye": "Потерянное Око",
+  "item.endrem.lost_eye.description": "Поговаривают, что оно был выковано первыми кузнецами времени",
 
-  "item.endrem.wither_eye": "Глаз Искушителя",
-  "item.endrem.wither_eye.description": "Он был свидителем разрушения. Возможно он тоже был свидителем вашей смерти",
+  "item.endrem.wither_eye": "Око Иссушителя",
+  "item.endrem.wither_eye.description": "Стало свидетелем разрушения. Может быть, оно также стало свидетелем исчезновения ваших вещей",
 
-  "item.endrem.guardian_eye": "Глаз Стража",
-  "item.endrem.guardian_eye.description": "Он видел как множество великих рыцарей задыхались на дне моря",
+  "item.endrem.guardian_eye": "Око Стража",
+  "item.endrem.guardian_eye.description": "Оно видело, как многие воины утонули в морских глубинах",
 
-  "item.endrem.end_crystal_eye": "Кристальный Глаз Края",
-  "item.endrem.end_crystal_eye.description": "В нём заключён фрагмент души Дракона Края",
+  "item.endrem.corrupted_eye": "Повреждённое Око",
+  "item.endrem.corrupted_eye.description": "Око жадного короля, померкшее в одиночестве. Легенда гласит, что оно принесёт бесконечное богатство своему владельцу",
 
-  "item.endrem.corrupted_eye": "Испорченный Глаз",
-  "item.endrem.corrupted_eye.description": "Глаз жалкого Короля, скончавшегося из-за своей же алчности. Легенды гласять что его обладателя озарит бесконечнвя удача",
+  "item.endrem.witch_eye": "Око Ведьмы",
+  "item.endrem.witch_eye.description": "Считается, что это око видело древние рецепты пивоварения, затерянные во времени",
 
-  "item.endrem.end_crystal_fragment": "Фрагмент Кристального Глаза Края",
+  "item.endrem.witch_pupil": "Глаз ведьмы",
 
-  "item.endrem.end_castle_disc": "Диск Замка Края",
-  "item.endrem.end_castle_disc.desc": "Daserta - Тень Края",
-  "item.endrem.end_castle_disc.desc.sub": "Диск Замка Края",
-  
-  "item.endrem.end_crystal_helmet": "Шлем из Кристалов Края",
-  "item.endrem.end_crystal_chestplate": "Кираса из Кристалов Края",
-  "item.endrem.end_crystal_leggings": "Поножи из Кристалов Края",
-  "item.endrem.end_crystal_boots": "Ботинки из Кристалов Края",
-  "item.endrem.armor.description.main": "При каждом крит. ударе, вы получайте 1 секунду Регенерации II",
-
-  "item.endrem.end_crystal_hoe": "Мотыга из Кристаллов Края",
-  "item.endrem.end_crystal_axe": "Топор из Кристалов Края",
-  "item.endrem.end_crystal_pickaxe": "Кирка из Кристалов Края",
-  "item.endrem.end_crystal_shovel": "Лопата из Кристаллов края",
-  "item.endrem.end_crystal_sword": "Меч из Кристаллов Края",
-  
-  "item.endrem.end_castle_map": "Карта Замка Края",
-  "item.endrem.end_gate_map": "Карта Врат Края",
-
-  "block.endrem.end_creator": "Создатель Края",
-  "block.endrem.end_creator_activated": "Активированный Создатель Края",
 
   "block.endrem.ancient_portal_frame": "Рамка древнего портала",
-  "block.endrem.end_crystal_ore": "Руда Кристала Края",
-  "block.endrem.end_crystal_block": "Блок Кристаллов Края",
 
   "itemGroup.endremTab": "End Remastered",
 
-  "block.portal_open_sound": "Открытие Портала",
-  "block.portal_open_sound.sub": "Открытие Портала",
+  "block.portal_open_sound": "Открытие портала",
+  "block.portal_open_sound.sub": "Открытие портала",
 
-  "advancements.main.root.title": "Начало Путешевствия",
-  "advancements.main.root.description": "Получи свой первый Глаз",
+  "advancements.main.root.title": "Начало путешевствия",
+  "advancements.main.root.description": "Заполучите своё первое Око",
 
-  "advancements.main.root.end_crystal_armor.title": "Осыпь меня кристалами",
-  "advancements.main.root.end_crystal_armor.description": "Получи полный сет брони из Кристалов Края",
-
-  "advancements.main.old_eye.title": "Искатель Удачи",
-  "advancements.main.old_eye.description": "Получи свой первый Старинный Глаз",
+  "advancements.main.old_eye.title": "Искатель удачи",
+  "advancements.main.old_eye.description": "Заполучите своё первое Старинное Око",
 
   "advancements.main.rogue_eye.title": "Добро пожаловать в джунгли",
-  "advancements.main.rogue_eye.description": "Получи свой первый Глаз Изгоя",
+  "advancements.main.rogue_eye.description": "Заполучите своё первое Разбойничье Око",
 
-  "advancements.main.nether_eye.title": "Загляни в отчаяние",
-  "advancements.main.nether_eye.description": "Получи свой первый Глаз Ада",
+  "advancements.main.nether_eye.title": "Взгляни в отчаяние",
+  "advancements.main.nether_eye.description": "Заполучите своё первое Око Ада",
 
-  "advancements.main.cold_eye.title": "Горячо",
-  "advancements.main.cold_eye.description": "Получи свой первый Ледяной Глаз",
+  "advancements.main.cold_eye.title": "Улёдный вид",
+  "advancements.main.cold_eye.description": "Заполучите своё первое Ледяное Око",
 
-  "advancements.main.corrupted_eye.title": "Осыпь меня емеральдами",
-  "advancements.main.corrupted_eye.description": "Получи свой первый Испорченный Глаз",
+  "advancements.main.corrupted_eye.title": "Покрой меня изумрудами",
+  "advancements.main.corrupted_eye.description": "Заполучите своё первое Повреждённое Око",
 
-  "advancements.main.magical_eye.title": "Падший Колдун",
-  "advancements.main.magical_eye.description": "Получи свой первый Волшебный Глаз",
+  "advancements.main.magical_eye.title": "Падший колдун",
+  "advancements.main.magical_eye.description": "Заполучите своё первое Магическое Око",
 
-  "advancements.main.black_eye.title": "Ахххх, ну и где же мой корабль?",
-  "advancements.main.black_eye.description": "Получи свой первый Чёрный Глаз",
+  "advancements.main.black_eye.title": "Аргхх, ну и где же мой корабль?",
+  "advancements.main.black_eye.description": "Заполучите своё первое Чёрное Око",
 
-  "advancements.main.lost_eye.title": "Нужна Карта?",
-  "advancements.main.lost_eye.description": "Получи свой первый Потерянный Глаз",
+  "advancements.main.lost_eye.title": "Нужна карта?",
+  "advancements.main.lost_eye.description": "Заполучите своё первое Потерянное Око",
 
-  "advancements.main.wither_eye.title": "Искушайте?",
-  "advancements.main.wither_eye.description": "Получи свой первый Глаз Искушителя",
+  "advancements.main.wither_eye.title": "Поддавшись иссушению",
+  "advancements.main.wither_eye.description": "Заполучите своё первое Око Иссушителя",
 
-  "advancements.main.end_crystal_eye.title": "Кристалльно чисто",
-  "advancements.main.end_crystal_eye.description": "Получи свой первый Кристальный Глаз Края",
+  "advancements.main.guardian_eye.title": "Ну и кто теперь страж храма?",
+  "advancements.main.guardian_eye.description": "Заполучите своё первое Око Стража",
 
-  "advancements.main.guardian_eye.title": "Ну и кто теперь страж замка?",
-  "advancements.main.guardian_eye.description": "Получи свой первый Глаз Стража",
+  "advancements.main.witch_eye.title": "Сладость или гадость?",
+  "advancements.main.witch_eye.description": "Заполучите своё первое Око Ведьмы"
 
-  "advancements.main.find_end_castle.title": "Долгое путешевствие",
-  "advancements.main.find_end_castle.description": "Найдите замок края",
-
-  "endrem.config.enable_ender_eyes": "Ванильные Глаза Края",
-  "endrem.config.enable_end_castle": "Замок Края",
-  "endrem.config.end_castle_distance": "Дистанция замка: %s",
-  "endrem.config.enable_end_gate": "Врата Края",
-  "endrem.config.end_gate_distance": "Дистанция до Врат Края : %s",
-  "endrem.config.end_gate_size": "Размер Врат Края: %s",
-  "endrem.config.title": "Настройки End Remastered",
-  "endrem.config.restart_message": "После изменений, вы должны перезапустить Майнкрафт",
-  "endrem.config.done_button": "Готово",
-  "endrem.config.reset_button": "Сброс настроек"
 }

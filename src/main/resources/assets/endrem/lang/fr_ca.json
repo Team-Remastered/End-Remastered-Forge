@@ -29,56 +29,21 @@
     "item.endrem.witch_eye": "Œil de Sorcière",
     "item.endrem.witch_eye.description": "Il est dit que cet œil a vu la conception de potions anciennes perdu dans le temps",
 
-    "item.endrem.end_crystal_eye": "Œil du Cristal de l'End",
-    "item.endrem.end_crystal_eye.description": "Selon les rumeurs, l'âme du Ender Dragon serait contenu dans cet œil",
-
     "item.endrem.corrupted_eye": "Œil Corrompu",
     "item.endrem.corrupted_eye.description": "Provenant d'un Roi avare ayant vécu dans la solitude, il est dit que son propriétaire connaîtra la richesse éternelle",
-
-    "item.endrem.end_crystal_fragment": "Framgment de Cristal de l'End",
-
-    "item.endrem.end_crystal_ingot": "Lingot de Cristal de l'End",
 
     "item.endrem.witch_pupil": "Pupille de Sorcière",
 
 
-    "item.endrem.end_castle_disc": "Disque du Château de l'End",
-    "item.endrem.end_castle_disc.desc.sub": "Disque du Château de l'End",
-
-    "item.endrem.end_crystal_helmet": "Casque en Cristal de l'End",
-    "item.endrem.end_crystal_chestplate": "Plastron en Cristal de l'End",
-    "item.endrem.end_crystal_leggings": "Jambières en Cristal de l'End",
-    "item.endrem.end_crystal_boots": "Bottes en Cristal de l'End",
-    "item.endrem.armor.description.main": "Lorsque vous faites une attaque critique, obtenez l'effet Régénération II",
-
-    "item.endrem.end_crystal_hoe": "Houe en Cristal de l'End",
-    "item.endrem.end_crystal_axe": "Hache en Cristal de l'End",
-    "item.endrem.end_crystal_pickaxe": "Pioche en Cristal de l'End",
-    "item.endrem.end_crystal_shovel": "Pelle en Cristal de l'End",
-    "item.endrem.end_crystal_sword": "Épée en Cristal de l'End",
-
-    "item.endrem.end_castle_map": "Carte du Château de l'End",
-    "item.endrem.end_gate_map": "Carte de la Barrière de l'End",
-
-    "block.endrem.end_creator": "Créateur de l'End",
-    "block.endrem.end_creator_activated": "Créateur de l'End Alimenté",
-
     "block.endrem.ancient_portal_frame": "Cadre de Portail Antique",
-    "block.endrem.end_crystal_ore": "Minerai de Cristal de l'End",
-    "block.endrem.end_crystal_block": "Bloc de Cristal de l'End",
 
     "itemGroup.endremTab": "End Remasterisé",
 
     "block.portal_open_sound": "Portail qui Ouvre",
     "block.portal_open_sound.sub": "Portail qui Ouvre",
 
-    "item.endrem.end_castle_disc.desc": "Daserta - l'Ombre de la Fin",
-
     "advancements.main.root.title": "Le Début d'une Aventure",
     "advancements.main.root.description": "Obtenez votre premier œil",
-
-    "advancements.main.root.end_crystal_armor.title": "Couvrez-moi de Cristal de l'End",
-    "advancements.main.root.end_crystal_armor.description": "Obtenez une armure complète en Cristal de l'End",
 
     "advancements.main.old_eye.title": "Chercheur de Trésors",
     "advancements.main.old_eye.description": "Obtenez votre premier Œil Antique",
@@ -107,33 +72,10 @@
     "advancements.main.wither_eye.title": "Sombrez en Enfer",
     "advancements.main.wither_eye.description": "Obtenez votre premier Œil du Wither",
 
-    "advancements.main.end_crystal_eye.title": "Limpide comme du cristal",
-    "advancements.main.end_crystal_eye.description": "Obtenez votre premier Œil du Cristal de l'End",
-
     "advancements.main.guardian_eye.title": "Qui garde le temple à présent?",
     "advancements.main.guardian_eye.description": "Obtenez votre premier Œil du Gardien",
 
     "advancements.main.witch_eye.title": "Des bonbons ou un sort?",
-    "advancements.main.witch_eye.description": "Obtenez votre premier Œil de Sorcière",
+    "advancements.main.witch_eye.description": "Obtenez votre premier Œil de Sorcière"
 
-    "advancements.main.find_end_castle.title": "Une Aventure Périeuse",
-    "advancements.main.find_end_castle.description": "Trouvez le Château de l'End",
-
-    "endrem.config.enable_ender_eyes": "Œil de l'Ender par Défaut",
-    "endrem.config.enable_strongholds": "Stronghold par Défaut",
-    "endrem.config.enable_end_castle": "Château de l'End",
-    "endrem.config.end_castle_distance": "Distance du Château: %s",
-    "endrem.config.enable_end_gate": "Barrière de l'End",
-    "endrem.config.end_gate_distance": "Distance de la Barrière de l'End: %s",
-    "endrem.config.end_gate_size": "Taille de la Barrière de l'End: %s",
-    "endrem.config.structure_difficulty": "Difficulté des Monstres dans les Structures: ",
-    "endrem.config.structure_difficulty.no_mobs": "Passif",
-    "endrem.config.structure_difficulty.easy": "Facile",
-    "endrem.config.structure_difficulty.normal": "Normal",
-    "endrem.config.structure_difficulty.hard": "Difficile",
-    "endrem.config.structure_difficulty.nightmare": "Cauchemard",
-    "endrem.config.title": "Configuration de End Remasterisé",
-    "endrem.config.restart_message": "Vous devez redémarrer Minecraft après avoir modifier les distances",
-    "endrem.config.done_button": "Terminé",
-    "endrem.config.reset_button": "Réinitialiser la Configuration"
 }

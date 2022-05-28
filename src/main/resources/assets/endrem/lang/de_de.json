@@ -26,61 +26,24 @@
   "item.endrem.guardian_eye": "Wächter Auge",
   "item.endrem.guardian_eye.description": "Es sah viele Krieger in den tiefen des Ozeans ertrinken",
 
-  "item.endrem.end_crystal_eye": "Endkristall Auge",
-  "item.endrem.end_crystal_eye.description": "Man glaubt, es beherbergt ein Splitter der Seele des Enderdrachen",
-
   "item.endrem.corrupted_eye": "Verdorbenes Auge",
   "item.endrem.corrupted_eye.description": "Das Auge eines gierigen Königs, welcher in Einsamkeit versank. Legenden sagen, es gewährt endloses Glück",
 
   "item.endrem.witch_eye": "Hexen Auge",
   "item.endrem.witch_eye.description": "Man sagt, diese Pupille sah die ältesten, verlorenen Braurezepte der Geschichte",
 
-  "item.endrem.end_crystal_fragment": "Endkristall Fragment",
-
   "item.endrem.witch_pupil": "Hexenpupille",
 
-  "item.endrem.end_crystal_ingot": "Endkristallbarren",
-
-
-  "item.endrem.end_castle_disc": "Endschlossschallplatte",
-  "item.endrem.end_castle_disc.desc.sub": "Endschlossschallplatte",
-
-  "item.endrem.end_crystal_helmet": "Endkristallhelm",
-  "item.endrem.end_crystal_chestplate": "Endkristallbrustplatte",
-  "item.endrem.end_crystal_leggings": "Endkristallbeinschutz",
-  "item.endrem.end_crystal_boots": "Endkristallstiefel",
-  "item.endrem.armor.description.main": "Bei einem kritischen Treffer, erhalte eine Sekunde Regeneration II",
-  "item.endrem.armor.description.shift": "Mit komplett Endkristall hält der Effekt 4 Sekunden",
-  "item.endrem.press_shift": "Drücke SHIFT für mehr Infos",
-
-  "item.endrem.end_crystal_hoe": "Endkristallhacke",
-  "item.endrem.end_crystal_axe": "Endkristallaxt",
-  "item.endrem.end_crystal_pickaxe": "Endkristallspitzhacke",
-  "item.endrem.end_crystal_shovel": "Endkristallschaufel",
-  "item.endrem.end_crystal_sword": "Endkristallschwert",
-
-  "item.endrem.end_castle_map": "Endschloss Karte",
-  "item.endrem.end_gate_map": "Endtor Karte",
-
-  "block.endrem.end_creator": "Endgenerator",
-  "block.endrem.end_creator_activated": "Endgenerator aktiviert",
 
   "block.endrem.ancient_portal_frame": "Uralter Portalrahmen",
-  "block.endrem.end_crystal_ore": "Endkristallerz",
-  "block.endrem.end_crystal_block": "Endkristallblock",
 
   "itemGroup.endremTab": "End Remastered",
 
   "block.portal_open_sound": "Portal öffnet",
   "block.portal_open_sound.sub": "Portal öffnet",
 
-  "item.endrem.end_castle_disc.desc": "Daserta - Shadow Of The End",
-
   "advancements.main.root.title": "Der Beginn eines Abenteuers",
   "advancements.main.root.description": "Finde dein erstes Auge",
-
-  "advancements.main.root.end_crystal_armor.title": "Bedeck mich mit Kristall",
-  "advancements.main.root.end_crystal_armor.description": "Hol dir eine volle Endkristallrüstung",
 
   "advancements.main.old_eye.title": "Glückssucher",
   "advancements.main.old_eye.description": "Finde ein Altes Auge",
@@ -109,33 +72,10 @@
   "advancements.main.wither_eye.title": "Untoter Schatz",
   "advancements.main.wither_eye.description": "Finde ein Wither Auge",
 
-  "advancements.main.end_crystal_eye.title": "Kristallklar",
-  "advancements.main.end_crystal_eye.description": "Baue ein Endkristall Auge",
-
   "advancements.main.guardian_eye.title": "Wer bewacht den Tempel jetzt?",
   "advancements.main.guardian_eye.description": "Finde ein Wächter Auge",
 
   "advancements.main.witch_eye.title": "Süßes oder Saures?",
-  "advancements.main.witch_eye.description": "Finde ein Hexen Auge",
+  "advancements.main.witch_eye.description": "Finde ein Hexen Auge"
 
-  "advancements.main.find_end_castle.title": "Eine lange Reise",
-  "advancements.main.find_end_castle.description": "Finde ein Endschloss",
-
-  "endrem.config.enable_ender_eyes": "Vanilla Enderaugen",
-  "endrem.config.enable_strongholds": "Vanilla Strongholds",
-  "endrem.config.enable_end_castle": "Endschloss",
-  "endrem.config.end_castle_distance": "Schloss-Distanz: %s",
-  "endrem.config.enable_end_gate": "Endtor",
-  "endrem.config.end_gate_distance": "Endtor-Distanz: %s",
-  "endrem.config.end_gate_size": "Endtor Größe: %s",
-  "endrem.config.structure_difficulty": "Struktur-Monster Schwierigkeit: ",
-  "endrem.config.structure_difficulty.no_mobs": "Friedlich",
-  "endrem.config.structure_difficulty.easy": "Einfach",
-  "endrem.config.structure_difficulty.normal": "Normal",
-  "endrem.config.structure_difficulty.hard": "Schwer",
-  "endrem.config.structure_difficulty.nightmare": "Albtraum",
-  "endrem.config.title": "End Remastered Einstellungen",
-  "endrem.config.restart_message": "Du musst Minecraft neustarten!",
-  "endrem.config.done_button": "Fertig",
-  "endrem.config.reset_button": "Zurücksetzen"
 }

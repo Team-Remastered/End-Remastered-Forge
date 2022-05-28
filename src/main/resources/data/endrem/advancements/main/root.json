@@ -139,7 +139,7 @@
   },
   "requirements": [
     [
-      "old_eye", "rogue_eye", "nether_eye", "cold_eye", "corrupted_eye", "magical_eye", "black_eye", "lost_eye", "wither_eye", "end_crystal_eye", "guardian_eye", "witch_eye"
+      "old_eye", "rogue_eye", "nether_eye", "cold_eye", "corrupted_eye", "magical_eye", "black_eye", "lost_eye", "wither_eye", "guardian_eye", "witch_eye"
     ]
   ]
 }
