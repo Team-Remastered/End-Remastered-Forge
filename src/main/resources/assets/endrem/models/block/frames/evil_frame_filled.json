@@ -4,7 +4,7 @@
     "bottom": "block/end_stone",
     "top": "endrem:blocks/ancient_portal_frame_top",
     "side": "endrem:blocks/ancient_portal_frame_side",
-    "eye": "endrem:blocks/eyes/bejeweled"
+    "eye": "endrem:blocks/eyes/evil"
   },
   "elements": [
     {   "from": [ 0, 0, 0 ],

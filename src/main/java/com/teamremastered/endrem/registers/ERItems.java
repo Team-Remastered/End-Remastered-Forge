@@ -31,10 +31,13 @@ public class ERItems {
     public static final RegistryObject<Item> CORRUPTED_EYE = ITEMS.register("corrupted_eye", EREnderEye::new);
     public static final RegistryObject<Item> BLACK_EYE = ITEMS.register("black_eye", EREnderEye::new);
     public static final RegistryObject<Item> LOST_EYE = ITEMS.register("lost_eye", EREnderEye::new);
+    public static final RegistryObject<Item> CURSED_EYE = ITEMS.register("cursed_eye", EREnderEye::new);
+    public static final RegistryObject<Item> EXOTIC_EYE = ITEMS.register("exotic_eye", EREnderEye::new);
+    public static final RegistryObject<Item> EVIL_EYE = ITEMS.register("evil_eye", EREnderEye::new);
+    public static final RegistryObject<Item> UNDEAD_EYE = ITEMS.register("undead_eye", EREnderEye::new);
 
     // crafts
     public static final RegistryObject<Item> WITCH_EYE = ITEMS.register("witch_eye", EREnderEye::new);
-    public static final RegistryObject<Item> BEJEWELED_EYE = ITEMS.register("bejeweled_eye", EREnderEye::new);
 
     // ==== Other Items ====
     public static final RegistryObject<Item> WITCH_PUPIL = ITEMS.register("witch_pupil", () -> new Item(new Item.Properties().tab(EndRemastered.TAB)));

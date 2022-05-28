@@ -18,7 +18,10 @@ public enum ERFrameProperties implements StringRepresentable {
     WITHER_EYE,
     GUARDIAN_EYE,
     WITCH_EYE,
-    BEJEWELED_EYE;
+    CURSED_EYE,
+    EXOTIC_EYE,
+    EVIL_EYE,
+    UNDEAD_EYE;
 
     public String toString() {
         return this.getSerializedName();
@@ -38,7 +41,10 @@ public enum ERFrameProperties implements StringRepresentable {
             case WITHER_EYE -> "wither_eye";
             case GUARDIAN_EYE -> "guardian_eye";
             case WITCH_EYE -> "witch_eye";
-            case BEJEWELED_EYE -> "bejeweled_eye";
+            case CURSED_EYE -> "cursed_eye";
+            case EXOTIC_EYE -> "exotic_eye";
+            case EVIL_EYE -> "evil_eye";
+            case UNDEAD_EYE -> "undead_eye";
         };
     }
 

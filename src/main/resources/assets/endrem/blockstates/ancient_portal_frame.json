@@ -192,19 +192,67 @@
       "y": 90
     },
 
-    "eye=bejeweled_eye,facing=east": {
-      "model": "endrem:block/frames/bejeweled_frame_filled",
+    "eye=cursed_eye,facing=east": {
+      "model": "endrem:block/frames/cursed_frame_filled",
       "y": 270
     },
-    "eye=bejeweled_eye,facing=north": {
-      "model": "endrem:block/frames/bejeweled_frame_filled",
+    "eye=cursed_eye,facing=north": {
+      "model": "endrem:block/frames/cursed_frame_filled",
       "y": 180
     },
-    "eye=bejeweled_eye,facing=south": {
-      "model": "endrem:block/frames/bejeweled_frame_filled"
+    "eye=cursed_eye,facing=south": {
+      "model": "endrem:block/frames/cursed_frame_filled"
     },
-    "eye=bejeweled_eye,facing=west": {
-      "model": "endrem:block/frames/bejeweled_frame_filled",
+    "eye=cursed_eye,facing=west": {
+      "model": "endrem:block/frames/cursed_frame_filled",
+      "y": 90
+    },
+
+    "eye=evil_eye,facing=east": {
+      "model": "endrem:block/frames/evil_frame_filled",
+      "y": 270
+    },
+    "eye=evil_eye,facing=north": {
+      "model": "endrem:block/frames/evil_frame_filled",
+      "y": 180
+    },
+    "eye=evil_eye,facing=south": {
+      "model": "endrem:block/frames/evil_frame_filled"
+    },
+    "eye=evil_eye,facing=west": {
+      "model": "endrem:block/frames/evil_frame_filled",
+      "y": 90
+    },
+
+    "eye=exotic_eye,facing=east": {
+      "model": "endrem:block/frames/exotic_frame_filled",
+      "y": 270
+    },
+    "eye=exotic_eye,facing=north": {
+      "model": "endrem:block/frames/exotic_frame_filled",
+      "y": 180
+    },
+    "eye=exotic_eye,facing=south": {
+      "model": "endrem:block/frames/exotic_frame_filled"
+    },
+    "eye=exotic_eye,facing=west": {
+      "model": "endrem:block/frames/exotic_frame_filled",
+      "y": 90
+    },
+
+    "eye=undead_eye,facing=east": {
+      "model": "endrem:block/frames/undead_frame_filled",
+      "y": 270
+    },
+    "eye=undead_eye,facing=north": {
+      "model": "endrem:block/frames/undead_frame_filled",
+      "y": 180
+    },
+    "eye=undead_eye,facing=south": {
+      "model": "endrem:block/frames/undead_frame_filled"
+    },
+    "eye=undead_eye,facing=west": {
+      "model": "endrem:block/frames/undead_frame_filled",
       "y": 90
     }
   }

@@ -26,8 +26,17 @@
   "item.endrem.guardian_eye": "Guardian Eye",
   "item.endrem.guardian_eye.description": "It has seen many warriors drown into the depths of the sea",
 
-  "item.endrem.corrupted_eye": "Corrupted Eye",
-  "item.endrem.corrupted_eye.description": "The eye of a greedy king that faded in solitude. Legend says it will bring infinite fortune to its owner",
+  "item.endrem.cursed_eye": "Corrupted Eye",
+  "item.endrem.cursed_eye.description": "The eye of a greedy king that faded in solitude. Legend says it will bring infinite fortune to its owner",
+
+  "item.endrem.exotic_eye": "Corrupted Eye",
+  "item.endrem.exotic_eye.description": "The eye of a greedy king that faded in solitude. Legend says it will bring infinite fortune to its owner",
+
+  "item.endrem.evil_eye": "Corrupted Eye",
+  "item.endrem.evil_eye.description": "The eye of a greedy king that faded in solitude. Legend says it will bring infinite fortune to its owner",
+
+  "item.endrem.undead_eye": "Corrupted Eye",
+  "item.endrem.undead_eye.description": "The eye of a greedy king that faded in solitude. Legend says it will bring infinite fortune to its owner",
 
   "item.endrem.witch_eye": "Witch Eye",
   "item.endrem.witch_eye.description": "This pupil is believed to have seen the ancient brewing recipes that were lost in time.",
