@@ -5,7 +5,6 @@ import com.teamremastered.endrem.blocks.AncientPortalFrame;
 import com.teamremastered.endrem.blocks.ERFrameProperties;
 import com.teamremastered.endrem.config.ERConfig;
 import com.teamremastered.endrem.registers.ERBlocks;
-import com.teamremastered.endrem.utils.MultiLocator;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
@@ -16,6 +15,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
+import net.minecraft.tags.ConfiguredStructureTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
@@ -48,6 +48,8 @@ public class EREnderEye extends Item {
 
     @Override
     @ParametersAreNonnullByDefault
+
+    //Fill the Ancient Portal Frame
     public InteractionResult useOn(UseOnContext itemUse) {
         Level level = itemUse.getLevel();
         BlockPos blockpos = itemUse.getClickedPos();
@@ -92,6 +94,7 @@ public class EREnderEye extends Item {
                 }
                 return InteractionResult.CONSUME;
             }
+            itemUse.getPlayer().displayClientMessage(new TranslatableComponent("block.endrem.custom_eye.place"), true);
             return InteractionResult.PASS;
         } else if (blockstate.is(Blocks.END_PORTAL_FRAME)) {
             BlockState newBlockState = blockstate.setValue(BlockStateProperties.EYE, false);
@@ -99,12 +102,15 @@ public class EREnderEye extends Item {
             level.addFreshEntity(new ItemEntity(level, blockpos.getX(), blockpos.getY() + 1, blockpos.getZ(), new ItemStack(Items.ENDER_EYE)));
             return InteractionResult.SUCCESS;
         } else {
+            itemUse.getPlayer().displayClientMessage(new TranslatableComponent("block.endrem.custom_eye.frame_has_eye"), true);
             return InteractionResult.PASS;
         }
     }
 
     @Override
     @ParametersAreNonnullByDefault
+
+    //Locate Structures
     public InteractionResultHolder<ItemStack> use(Level levelIn, Player playerIn, InteractionHand handIn) {
         ItemStack itemstack = playerIn.getItemInHand(handIn);
         BlockHitResult raytraceResult = getPlayerPOVHitResult(levelIn, playerIn, ClipContext.Fluid.NONE);
@@ -121,7 +127,7 @@ public class EREnderEye extends Item {
         } else {
             playerIn.startUsingItem(handIn);
             if (levelIn instanceof ServerLevel) {
-                BlockPos blockpos = ((ServerLevel) levelIn).findNearestMapFeature(MultiLocator.ENDREM_EYES_LOCATED, playerIn.blockPosition(), 100, false);
+                BlockPos blockpos = ((ServerLevel) levelIn).findNearestMapFeature(ConfiguredStructureTags.EYE_OF_ENDER_LOCATED, playerIn.blockPosition(), 100, false);
                 if (blockpos != null) {
                     EyeOfEnder eyeofenderentity = new EyeOfEnder(levelIn, playerIn.getX(), playerIn.getY(0.5D), playerIn.getZ());
                     eyeofenderentity.setItem(itemstack);
