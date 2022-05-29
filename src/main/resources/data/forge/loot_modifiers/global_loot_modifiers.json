@@ -15,6 +15,7 @@
     "endrem:minecraft/inject/entities/evoker",
     "endrem:minecraft/inject/entities/witch",
     "endrem:minecraft/inject/entities/wither",
+    "endrem:minecraft/inject/entities/skeleton_horse",
     "endrem:minecraft/inject/entities/elder_guardian"
   ]
 }

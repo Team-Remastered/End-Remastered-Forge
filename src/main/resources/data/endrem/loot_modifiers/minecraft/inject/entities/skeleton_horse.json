@@ -1,0 +1,10 @@
+{
+  "type": "endrem:loot_injection",
+  "injection": "endrem:minecraft/entities/skeleton_horse",
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:entities/skeleton_horse"
+    }
+  ]
+}
