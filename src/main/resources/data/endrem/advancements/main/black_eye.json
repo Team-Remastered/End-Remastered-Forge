@@ -1,5 +1,5 @@
 {
-  "parent": "endrem:main/rogue_eye",
+  "parent": "endrem:main/corrupted_eye",
   "display": {
     "icon": {
       "item": "endrem:black_eye"

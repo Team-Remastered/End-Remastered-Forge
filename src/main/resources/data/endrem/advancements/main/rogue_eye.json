@@ -1,5 +1,5 @@
 {
-  "parent": "endrem:main/nether_eye",
+  "parent": "endrem:main/lost_eye",
   "display": {
     "icon": {
       "item": "endrem:rogue_eye"

@@ -1,5 +1,5 @@
 {
-  "parent": "endrem:main/black_eye",
+  "parent": "endrem:main/nether_eye",
   "display": {
     "icon": {
       "item": "endrem:lost_eye"

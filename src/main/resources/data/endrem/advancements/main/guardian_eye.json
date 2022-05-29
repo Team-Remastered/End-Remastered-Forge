@@ -1,5 +1,5 @@
 {
-  "parent": "endrem:main/wither_eye",
+  "parent": "endrem:main/root",
   "display": {
     "icon": {
       "item": "endrem:guardian_eye"

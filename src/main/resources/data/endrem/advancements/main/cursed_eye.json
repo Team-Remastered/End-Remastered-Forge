@@ -1,14 +1,14 @@
 {
-  "parent": "endrem:main/rogue_eye",
+  "parent": "endrem:main/corrupted_eye",
   "display": {
     "icon": {
-      "item": "endrem:corrupted_eye"
+      "item": "endrem:cursed_eye"
     },
     "title": {
-      "translate": "advancements.main.corrupted_eye.title"
+      "translate": "advancements.main.cursed_eye.title"
     },
     "description": {
-      "translate": "advancements.main.corrupted_eye.description"
+      "translate": "advancements.main.cursed_eye.description"
     },
     "frame": "task",
     "show_toast": true,
@@ -16,14 +16,14 @@
     "hidden": false
   },
   "criteria": {
-    "corrupted_eye": {
+    "cursed_eye": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "endrem:corrupted_eye"
-              ]
+              "endrem:cursed_eye"
+            ]
           }
         ]
       }
@@ -31,7 +31,7 @@
   },
   "requirements": [
     [
-      "corrupted_eye"
+      "cursed_eye"
     ]
   ]
 }

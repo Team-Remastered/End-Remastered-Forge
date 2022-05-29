@@ -41,4 +41,5 @@ public class ERItems {
 
     // ==== Other Items ====
     public static final RegistryObject<Item> WITCH_PUPIL = ITEMS.register("witch_pupil", () -> new Item(new Item.Properties().tab(EndRemastered.TAB)));
+    public static final RegistryObject<Item> SKELETON_HORSE_SOUL = ITEMS.register("skeleton_horse_soul", () -> new Item(new Item.Properties().tab(EndRemastered.TAB)));
 }
