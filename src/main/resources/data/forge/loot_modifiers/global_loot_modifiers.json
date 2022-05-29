@@ -3,6 +3,7 @@
   "entries": [
     "endrem:minecraft/inject/chests/abandoned_mineshaft",
     "endrem:minecraft/inject/chests/buried_treasure",
+    "endrem:minecraft/inject/chests/bastion_treasure",
     "endrem:minecraft/inject/chests/desert_pyramid",
     "endrem:minecraft/inject/chests/igloo_chest",
     "endrem:minecraft/inject/chests/jungle_temple",
