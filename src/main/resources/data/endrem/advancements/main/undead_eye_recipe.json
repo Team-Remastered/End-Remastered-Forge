@@ -1,12 +1,12 @@
 {
   "criteria": {
-    "witch_pupil": {
+    "soul": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "endrem:witch_pupil"
+              "endrem:skeleton_horse_soul"
               ]
           }
         ]
@@ -15,12 +15,12 @@
   },
   "rewards": {
     "recipes": [
-      "endrem:witch_eye"
+      "endrem:undead_eye"
     ]
   },
   "requirements": [
     [
-      "witch_pupil"
+      "soul"
     ]
   ]
 }
