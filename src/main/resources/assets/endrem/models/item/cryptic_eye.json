@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "endrem:items/skeleton_horse_soul"
+    "layer0": "endrem:items/cryptic_eye"
   }
 }

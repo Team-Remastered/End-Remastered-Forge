@@ -39,7 +39,11 @@ public class ERItems {
     // crafts
     public static final RegistryObject<Item> WITCH_EYE = ITEMS.register("witch_eye", EREnderEye::new);
 
+    // ???
+
+    public static final RegistryObject<Item> CRYPTIC_EYE = ITEMS.register("cryptic_eye", EREnderEye::new);
+
     // ==== Other Items ====
     public static final RegistryObject<Item> WITCH_PUPIL = ITEMS.register("witch_pupil", () -> new Item(new Item.Properties().tab(EndRemastered.TAB)));
-    public static final RegistryObject<Item> SKELETON_HORSE_SOUL = ITEMS.register("skeleton_horse_soul", () -> new Item(new Item.Properties().tab(EndRemastered.TAB)));
+    public static final RegistryObject<Item> UNDEAD_SOUL = ITEMS.register("undead_soul", () -> new Item(new Item.Properties().tab(EndRemastered.TAB)));
 }
