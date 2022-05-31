@@ -7,6 +7,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.EnderEyeItem;
 import net.minecraft.world.item.ItemStack;
@@ -20,6 +21,7 @@ import net.minecraftforge.event.entity.player.PlayerXpEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.ObjectHolder;
 
 import javax.annotation.Nonnull;
 import java.util.Random;
@@ -59,7 +61,7 @@ public class ModEvents {
     @SubscribeEvent
     public static void playerOpenEnchantingTable(PlayerContainerEvent.Open event) {
 
-        if (event.getContainer().getType() == MenuType.ENCHANTMENT) {
+        if (event.getContainer().getType().equals(MenuType.ENCHANTMENT)) {
             isEnchanting = true;
         }
             System.out.println("Player is Enchanting " + isEnchanting);
@@ -69,8 +71,6 @@ public class ModEvents {
     //Detect when player isn't enchanting anymore
     @SubscribeEvent
     public static void playerCloseEnchantingTable(PlayerContainerEvent.Close event) {
-        Player player = event.getPlayer();
-        Level level = event.getPlayer().getLevel();
 
         if (event.getContainer().getType().equals(MenuType.ENCHANTMENT)) {
             isEnchanting = false;
@@ -83,13 +83,13 @@ public class ModEvents {
         Player player = event.getPlayer();
         Level level = event.getPlayer().getLevel();
         Random random = new Random();
-        int maxValue = 2;
+        int maxValue = 100;
         int randomNumber = random.nextInt(maxValue);
 
         if (player != null && !level.isClientSide) {
             int levelGained = event.getLevels();
 
-            if (isEnchanting && levelGained < -2 && randomNumber == 1) {
+            if (isEnchanting && levelGained < -2 && randomNumber == 69) {
                 player.getInventory().add(ERItems.CRYPTIC_EYE.get().asItem().getDefaultInstance());
             }
         }
@@ -98,11 +98,11 @@ public class ModEvents {
     @SubscribeEvent
     public static void onVillagerTradesEvent(VillagerTradesEvent event) {
         if (event.getType() == VillagerProfession.CLERIC) {
-            event.getTrades().get(5).add(new ERMapTrade());
+            event.getTrades().get(5).add(new EREyeTrade());
         }
     }
 
-    public static class ERMapTrade implements VillagerTrades.ItemListing {
+    public static class EREyeTrade implements VillagerTrades.ItemListing {
 
         @Override
         public MerchantOffer getOffer(@Nonnull Entity entity, Random random) {
