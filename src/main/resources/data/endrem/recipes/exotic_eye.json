@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "BAF",
+    "BCF",
     "GEG",
-    "HGT"
+    "HCT"
   ],
   "key": {
     "F": {
@@ -24,8 +24,8 @@
     "G": {
       "item": "minecraft:glow_ink_sac"
     },
-    "A": {
-      "item": "minecraft:enchanted_golden_apple"
+    "C": {
+      "item": "minecraft:conduit"
     }
   },
   "result": {
