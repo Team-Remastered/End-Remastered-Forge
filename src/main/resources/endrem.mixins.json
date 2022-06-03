@@ -4,6 +4,7 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "endrem.refmap.json",
   "mixins": [
+    "PlayerEnchantMixin"
   ],
   "minVersion": "0.8"
 }

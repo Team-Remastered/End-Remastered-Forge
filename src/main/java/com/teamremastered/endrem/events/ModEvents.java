@@ -6,22 +6,15 @@ import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.EnderEyeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.trading.MerchantOffer;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.event.entity.player.PlayerContainerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.event.entity.player.PlayerXpEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.ObjectHolder;
 
 import javax.annotation.Nonnull;
 import java.util.Random;
@@ -53,44 +46,6 @@ public class ModEvents {
                 event.setCanceled(true);
                 if (event.getWorld().getBlockState(event.getPos()).getBlock() != Blocks.END_PORTAL_FRAME)
                     event.getPlayer().displayClientMessage(new TranslatableComponent("block.endrem.ender_eye.warning"), true);
-            }
-        }
-    }
-
-    //Detect when player is enchanting
-    @SubscribeEvent
-    public static void playerOpenEnchantingTable(PlayerContainerEvent.Open event) {
-
-        if (event.getContainer().getType().equals(MenuType.ENCHANTMENT)) {
-            isEnchanting = true;
-        }
-            System.out.println("Player is Enchanting " + isEnchanting);
-        }
-
-
-    //Detect when player isn't enchanting anymore
-    @SubscribeEvent
-    public static void playerCloseEnchantingTable(PlayerContainerEvent.Close event) {
-
-        if (event.getContainer().getType().equals(MenuType.ENCHANTMENT)) {
-            isEnchanting = false;
-        }
-        System.out.println("Player is Enchanting " + isEnchanting);
-    }
-
-    @SubscribeEvent
-    public static void getCrypticEye(PlayerXpEvent.LevelChange event) {
-        Player player = event.getPlayer();
-        Level level = event.getPlayer().getLevel();
-        Random random = new Random();
-        int maxValue = 100;
-        int randomNumber = random.nextInt(maxValue);
-
-        if (player != null && !level.isClientSide) {
-            int levelGained = event.getLevels();
-
-            if (isEnchanting && levelGained < -2 && randomNumber == 69) {
-                player.getInventory().add(ERItems.CRYPTIC_EYE.get().asItem().getDefaultInstance());
             }
         }
     }
