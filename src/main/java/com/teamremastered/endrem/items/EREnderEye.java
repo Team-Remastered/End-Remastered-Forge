@@ -42,8 +42,8 @@ import java.util.List;
 
 @MethodsReturnNonnullByDefault
 public class EREnderEye extends Item {
-    public EREnderEye() {
-        super(new Item.Properties().fireResistant().rarity(Rarity.EPIC).stacksTo(16).tab(EndRemastered.TAB));
+    public EREnderEye(Properties properties) {
+        super(properties);
     }
 
     @Override
