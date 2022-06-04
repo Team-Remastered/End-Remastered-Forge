@@ -6,12 +6,12 @@
       {
         "type": "item",
         "name": "endrem:black_eye",
-        "weight": 1,
+        "weight": 5,
         "functions": [{ "function": "set_count", "count": 1 }]
       },
       {
         "type": "empty",
-        "weight": 19
+        "weight": 95
       }
     ]
   }]
