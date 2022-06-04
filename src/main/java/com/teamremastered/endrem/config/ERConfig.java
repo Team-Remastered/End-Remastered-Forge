@@ -19,13 +19,12 @@ public class ERConfig {
             "Toggle Ender Eyes Actions (Throwing and Placing in Portal Frames)",
             false);
 
-
     // ======   End Remastered Configuration   ======
 
     public static ERConfigGenericEntry<Integer> EYE_BREAK_CHANCE = new ERConfigGenericEntry<>(
             "eye_break_chance",
             "Percentage chance of eyes breaking when thrown",
-            0);
+            10);
 
     static {
         init();
