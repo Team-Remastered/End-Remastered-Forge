@@ -10,6 +10,7 @@
     "endrem:minecraft/inject/chests/nether_bridge",
     "endrem:minecraft/inject/chests/pillager_outpost",
     "endrem:minecraft/inject/chests/shipwreck_treasure",
+    "endrem:minecraft/inject/chests/woodland_mansion",
     "endrem:minecraft/inject/chests/simple_dungeon",
 
     "endrem:minecraft/inject/entities/evoker",
