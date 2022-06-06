@@ -169,11 +169,21 @@
           }
         ]
       }
+    },
+    "cryptic_eye": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [ "endrem:cryptic_eye" ]
+          }
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "old_eye", "rogue_eye", "nether_eye", "cold_eye", "corrupted_eye", "magical_eye", "black_eye", "lost_eye", "wither_eye", "guardian_eye", "witch_eye", "cursed_eye", "exotic_eye", "evil_eye", "undead_eye"
+      "old_eye", "rogue_eye", "nether_eye", "cryptic_eye", "cold_eye", "corrupted_eye", "magical_eye", "black_eye", "lost_eye", "wither_eye", "guardian_eye", "witch_eye", "cursed_eye", "exotic_eye", "evil_eye", "undead_eye"
     ]
   ]
 }
