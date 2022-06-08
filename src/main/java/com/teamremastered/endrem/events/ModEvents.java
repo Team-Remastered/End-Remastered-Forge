@@ -2,7 +2,8 @@ package com.teamremastered.endrem.events;
 
 import com.teamremastered.endrem.config.ERConfig;
 import com.teamremastered.endrem.registers.ERItems;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades;
@@ -15,6 +16,7 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.Nonnull;
 import java.util.Random;
@@ -32,7 +34,7 @@ public class ModEvents {
             if (event.getPlayer().getInventory().getSelected().getItem() instanceof EnderEyeItem) {
                 if (event.getWorld().getBlockState(event.getPos()).getBlock() == Blocks.END_PORTAL_FRAME) {
                     event.setCanceled(true);
-                    event.getPlayer().displayClientMessage(new TranslatableComponent("block.endrem.ender_eye.warning"), true);
+                    event.getPlayer().displayClientMessage(Component.translatable("block.endrem.ender_eye.warning"), true);
                 }
             }
         }
@@ -45,7 +47,7 @@ public class ModEvents {
             if (event.getPlayer().getInventory().getSelected().getItem() instanceof EnderEyeItem) {
                 event.setCanceled(true);
                 if (event.getWorld().getBlockState(event.getPos()).getBlock() != Blocks.END_PORTAL_FRAME)
-                    event.getPlayer().displayClientMessage(new TranslatableComponent("block.endrem.ender_eye.warning"), true);
+                    event.getPlayer().displayClientMessage(Component.translatable("block.endrem.ender_eye.warning"), true);
             }
         }
     }
@@ -59,8 +61,9 @@ public class ModEvents {
 
     public static class EREyeTrade implements VillagerTrades.ItemListing {
 
+        @Nullable
         @Override
-        public MerchantOffer getOffer(@Nonnull Entity entity, Random random) {
+        public MerchantOffer getOffer(Entity entity, RandomSource random) {
             int maxPrice = 50;
             int minPrice = 30;
             int priceEmeralds = random.nextInt(maxPrice - minPrice) + minPrice;

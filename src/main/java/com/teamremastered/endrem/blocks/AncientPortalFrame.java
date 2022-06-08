@@ -59,7 +59,7 @@ public class AncientPortalFrame extends Block {
                 .sound(SoundType.GLASS)
                 .lightLevel((p_152690_) -> 1)
                 .strength(-1.0F, 3600000.0F)
-                .noDrops()
+                .noLootTable()
         );
 
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(EYE, ERFrameProperties.EMPTY));

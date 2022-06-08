@@ -1,8 +1,10 @@
 package com.teamremastered.endrem.blocks;
 
 import net.minecraft.MethodsReturnNonnullByDefault;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.item.Item;
+import net.minecraftforge.registries.ForgeRegistries;
 
 @MethodsReturnNonnullByDefault
 public enum ERFrameProperties implements StringRepresentable {
@@ -54,8 +56,9 @@ public enum ERFrameProperties implements StringRepresentable {
 
         for (ERFrameProperties property : ERFrameProperties.values()) {
             // match the serialized name of the property to the item name of the eye
-            assert eye.getRegistryName() != null;
-            if (property.toString().equals(eye.getRegistryName().toString().split(":")[1])) {
+            ResourceLocation eyeRegistryName = ForgeRegistries.ITEMS.getKey(eye);
+            assert eyeRegistryName != null;
+            if (property.toString().equals(eyeRegistryName.toString().split(":")[1])) {
                 return property;
             }
         }
