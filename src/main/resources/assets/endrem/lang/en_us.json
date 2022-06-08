@@ -1,48 +1,54 @@
 {
   "item.endrem.old_eye": "Old Eye",
-  "item.endrem.old_eye.description": "Legends say this eye once belonged to one of the great Sandworms",
+  "item.endrem.old_eye.description": "§7§oLegends say this eye once belonged to one of the great Sandworms",
 
   "item.endrem.rogue_eye": "Rogue Eye",
-  "item.endrem.rogue_eye.description": "This eye is believed to have given our ancestors the knowledge of Redstone",
+  "item.endrem.rogue_eye.description": "§7§oThis eye is believed to have given our ancestors the knowledge of Redstone",
 
   "item.endrem.nether_eye": "Nether Eye",
-  "item.endrem.nether_eye.description": "It was lost by a demon in the battle between the Aether and the Nether",
+  "item.endrem.nether_eye.description": "§7§oIt was lost by a demon in the battle between the Aether and the Nether",
 
   "item.endrem.cold_eye": "Cold Eye",
-  "item.endrem.cold_eye.description": "One of the last artifacts left behind by the Iceologers before they all suddenly vanished from the world",
+  "item.endrem.cold_eye.description": "§7§oOne of the last artifacts left behind by the Iceologers before they all suddenly vanished from the world",
 
   "item.endrem.magical_eye": "Magical Eye",
-  "item.endrem.magical_eye.description": "Without this eye, the Evoker has no power",
+  "item.endrem.magical_eye.description": "§7§oWithout this eye, the Evoker has no power",
 
   "item.endrem.black_eye": "Black Eye",
-  "item.endrem.black_eye.description": "Pirates say it gave sight to the legendary Black pearl",
+  "item.endrem.black_eye.description": "§7§oPirates say it gave sight to the legendary Black pearl",
 
   "item.endrem.lost_eye": "Lost Eye",
-  "item.endrem.lost_eye.description": "It is told that it was forged by the first blacksmiths of time",
+  "item.endrem.lost_eye.description": "§7§oIt is told that it was forged by the first blacksmiths of time",
 
   "item.endrem.wither_eye": "Wither Eye",
-  "item.endrem.wither_eye.description": "Has witnessed destruction. Maybe it also witnessed your stuff disappear",
+  "item.endrem.wither_eye.description": "§7§oHas witnessed destruction. Maybe it also witnessed your stuff disappear",
 
   "item.endrem.guardian_eye": "Guardian Eye",
-  "item.endrem.guardian_eye.description": "It has seen many warriors drown into the depths of the sea",
+  "item.endrem.guardian_eye.description": "§7§oIt has seen many warriors drown into the depths of the sea",
 
   "item.endrem.cursed_eye": "Cursed Eye",
-  "item.endrem.cursed_eye.description": "A powerful yet destructive artifact, the Piglins swore to protect it from the world at the cost of their lives",
+  "item.endrem.cursed_eye.description": "§7§oA powerful yet destructive artifact; the Piglins swore to protect it at the cost of their lives",
 
   "item.endrem.exotic_eye": "Exotic Eye",
-  "item.endrem.exotic_eye.description": "Contains all the beauty of the seven seas, and their mysteries",
+  "item.endrem.exotic_eye.description": "§7§oThose who followed this eye were never seen again; rumors say they found the great city of Atlantis, or lost their way trying",
 
   "item.endrem.evil_eye": "Evil Eye",
-  "item.endrem.evil_eye.description": "A holy talisman said to protect its owner from bad luck",
+  "item.endrem.evil_eye.description": "§7§oA holy talisman said to protect its owner from bad luck",
 
   "item.endrem.undead_eye": "Undead Eye",
-  "item.endrem.undead_eye.description": "Remembrance of the past lives of those who live in death",
+  "item.endrem.undead_eye.description": "§7§oRemembrance of the past lives of those who live in death",
+
+  "item.endrem.cryptic_eye": "Cryptic Eye",
+  "item.endrem.cryptic_eye.description": "§7§o§kDö bil magot votiki. Matikom polelifükof om del, nämi obleibon sevön plö vü. Atis nemögik ospaloms fug no.",
+
+  "item.endrem.corrupted_eye": "Corrupted Eye",
+  "item.endrem.corrupted_eye.description": "§7§oThe eye of a greedy king that faded in solitude; legend says it will bring infinite fortune to its owner",
 
   "item.endrem.witch_eye": "Witch Eye",
-  "item.endrem.witch_eye.description": "This pupil is believed to have seen the ancient brewing recipes that were lost in time.",
+  "item.endrem.witch_eye.description": "§7§oThis pupil is believed to have seen the ancient brewing recipes that were lost in time.",
   "item.endrem.witch_pupil": "Witch Pupil",
 
-  "item.endrem.skeleton_horse_soul": "Skeleton Horse Soul",
+  "item.endrem.undead_soul": "Undead Soul",
 
   "block.endrem.ancient_portal_frame": "Ancient Portal Frame",
 
@@ -98,6 +104,9 @@
   "advancements.main.exotic_eye.title": "Where is Atlantis?",
   "advancements.main.exotic_eye.description": "Get Your First Exotic Eye",
 
-  "advancements.main.undead_eye.title": "The Eyes Are The Mirror of the Soul",
-  "advancements.main.undead_eye.description": "Get Your First Undead Eye"
+  "advancements.main.undead_eye.title": "The Mirror of the Soul",
+  "advancements.main.undead_eye.description": "Get Your First Undead Eye",
+
+  "advancements.main.cryptic_eye.title": "Patience is the road to wisdom",
+  "advancements.main.cryptic_eye.description": "Get Your First Cryptic Eye"
 }
