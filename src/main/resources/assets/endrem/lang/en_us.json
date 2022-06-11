@@ -67,6 +67,10 @@
   "block.endrem.end_crystal_ore": "End Crystal Ore",
   "block.endrem.end_crystal_block": "End Crystal Block",
 
+  "block.endrem.ender_eye.warning": "This eye doesn't want to be used",
+  "block.endrem.custom_eye.place": "This eye is already placed",
+  "block.endrem.custom_eye.frame_has_eye": "This frame already has an eye",
+
   "itemGroup.endremTab": "End Remastered",
 
   "block.portal_open_sound": "Portal Opening",

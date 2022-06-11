@@ -11,6 +11,7 @@ import net.minecraft.item.EnderEyeItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.entity.player.CriticalHitEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -31,6 +32,7 @@ public class ModEvents {
             if (event.getPlayer().inventory.getSelected().getItem() instanceof EnderEyeItem) {
                 if (event.getWorld().getBlockState(event.getPos()).getBlock() == Blocks.END_PORTAL_FRAME) {
                     event.setCanceled(true);
+                    event.getPlayer().displayClientMessage(new TranslationTextComponent("block.endrem.ender_eye.warning"), true);
                 }
             }
         }
@@ -42,6 +44,7 @@ public class ModEvents {
         if (event.isCancelable() && !ERConfig.USE_ENDER_EYES_ENABLED.getRaw()) {
             if (event.getPlayer().inventory.getSelected().getItem() instanceof EnderEyeItem) {
                 event.setCanceled(true);
+                event.getPlayer().displayClientMessage(new TranslationTextComponent("block.endrem.ender_eye.warning"), true);
             }
         }
     }

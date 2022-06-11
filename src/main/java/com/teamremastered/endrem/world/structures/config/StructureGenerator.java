@@ -26,7 +26,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 public class StructureGenerator {

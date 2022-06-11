@@ -8,10 +8,7 @@ import com.teamremastered.endrem.registers.ERBlocks;
 import com.teamremastered.endrem.registers.RegisterHandler;
 import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.HorizontalBlock;
+import net.minecraft.block.*;
 import net.minecraft.block.pattern.BlockPattern;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.item.ItemEntity;
@@ -41,7 +38,6 @@ public class EREnderEye extends Item {
     public EREnderEye() {
         super(new Item.Properties().fireResistant().rarity(Rarity.EPIC).stacksTo(16).tab(EndRemastered.TAB));
     }
-
     @Override
     @ParametersAreNonnullByDefault
     public ActionResultType useOn(ItemUseContext itemUse) {
@@ -88,6 +84,8 @@ public class EREnderEye extends Item {
                 }
                 return ActionResultType.CONSUME;
             }
+            itemUse.getPlayer().displayClientMessage(new TranslationTextComponent("block.endrem.custom_eye.place"), true);
+
             return ActionResultType.PASS;
         } else if (blockstate.is(Blocks.END_PORTAL_FRAME)) {
             BlockState newBlockState = blockstate.setValue(BlockStateProperties.EYE, false);
@@ -95,6 +93,7 @@ public class EREnderEye extends Item {
             world.addFreshEntity(new ItemEntity(world, blockpos.getX(), blockpos.getY() + 1, blockpos.getZ(), new ItemStack(Items.ENDER_EYE)));
             return ActionResultType.SUCCESS;
         } else {
+            itemUse.getPlayer().displayClientMessage(new TranslationTextComponent("block.endrem.custom_eye.frame_has_eye"), true);
             return ActionResultType.PASS;
         }
     }

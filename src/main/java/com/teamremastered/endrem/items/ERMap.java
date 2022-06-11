@@ -1,5 +1,6 @@
 package com.teamremastered.endrem.items;
 
+import com.teamremastered.endrem.EndRemastered;
 import com.teamremastered.endrem.config.ERConfig;
 import com.teamremastered.endrem.registers.RegisterHandler;
 import net.minecraft.entity.Entity;
@@ -48,6 +49,7 @@ public class ERMap {
 
         if (structurePos == null) {
             MapData.addTargetDecoration(stack, BlockPos.ZERO, "+", MapDecoration.Type.TARGET_X);
+            EndRemastered.LOGGER.atWarn().log("Something went wrong with EndRemastered's structures");
         } else {
             MapData.addTargetDecoration(stack, structurePos, "+", MapDecoration.Type.TARGET_X);
         }
