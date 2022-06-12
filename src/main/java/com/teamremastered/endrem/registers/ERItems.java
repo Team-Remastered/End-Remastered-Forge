@@ -26,7 +26,7 @@ public class ERItems {
     public static final RegistryObject<Item> CORRUPTED_EYE = ITEMS.register("corrupted_eye", () -> new EREnderEye(new Item.Properties().fireResistant().rarity(Rarity.COMMON).stacksTo(16).tab(EndRemastered.TAB)));
     public static final RegistryObject<Item> LOST_EYE = ITEMS.register("lost_eye", () -> new EREnderEye(new Item.Properties().fireResistant().rarity(Rarity.COMMON).stacksTo(16).tab(EndRemastered.TAB)));
     public static final RegistryObject<Item> NETHER_EYE = ITEMS.register("nether_eye", () -> new EREnderEye(new Item.Properties().fireResistant().rarity(Rarity.RARE).stacksTo(16).tab(EndRemastered.TAB)));
-    public static final RegistryObject<Item> OLD_EYE = ITEMS.register("old_eye", () -> new EREnderEye(new Item.Properties().fireResistant().rarity(Rarity.EPIC).stacksTo(16).tab(EndRemastered.TAB)));
+    public static final RegistryObject<Item> OLD_EYE = ITEMS.register("old_eye", () -> new EREnderEye(new Item.Properties().fireResistant().rarity(Rarity.COMMON).stacksTo(16).tab(EndRemastered.TAB)));
     public static final RegistryObject<Item> ROGUE_EYE = ITEMS.register("rogue_eye", () -> new EREnderEye(new Item.Properties().fireResistant().rarity(Rarity.RARE).stacksTo(16).tab(EndRemastered.TAB)));
     public static final RegistryObject<Item> CURSED_EYE = ITEMS.register("cursed_eye", () -> new EREnderEye(new Item.Properties().fireResistant().rarity(Rarity.COMMON).stacksTo(16).tab(EndRemastered.TAB)));
     public static final RegistryObject<Item> EVIL_EYE = ITEMS.register("evil_eye", () -> new EREnderEye(new Item.Properties().fireResistant().rarity(Rarity.RARE).stacksTo(16).tab(EndRemastered.TAB)));
