@@ -18,14 +18,9 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nonnull;
-import java.util.Random;
-
 @SuppressWarnings("unused")
 @Mod.EventBusSubscriber
 public class ModEvents {
-
-    public static boolean isEnchanting = false;
 
     // Enable/Disable placing of vanilla Ender Eyes depending on configuration
     @SubscribeEvent
