@@ -31,10 +31,10 @@ public class ModEvents {
     @SubscribeEvent
     public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
         if (event.isCancelable() && !ERConfig.USE_ENDER_EYES_ENABLED.getRaw()) {
-            if (event.getPlayer().getInventory().getSelected().getItem() instanceof EnderEyeItem) {
-                if (event.getWorld().getBlockState(event.getPos()).getBlock() == Blocks.END_PORTAL_FRAME) {
+            if (event.getEntity().getInventory().getSelected().getItem() instanceof EnderEyeItem) {
+                if (event.getLevel().getBlockState(event.getPos()).getBlock() == Blocks.END_PORTAL_FRAME) {
                     event.setCanceled(true);
-                    event.getPlayer().displayClientMessage(Component.translatable("block.endrem.ender_eye.warning"), true);
+                    event.getEntity().displayClientMessage(Component.translatable("block.endrem.ender_eye.warning"), true);
                 }
             }
         }
@@ -44,10 +44,10 @@ public class ModEvents {
     @SubscribeEvent
     public static void onRightClickItem(PlayerInteractEvent.RightClickItem event) {
         if (event.isCancelable() && !ERConfig.USE_ENDER_EYES_ENABLED.getRaw()) {
-            if (event.getPlayer().getInventory().getSelected().getItem() instanceof EnderEyeItem) {
+            if (event.getEntity().getInventory().getSelected().getItem() instanceof EnderEyeItem) {
                 event.setCanceled(true);
-                if (event.getWorld().getBlockState(event.getPos()).getBlock() != Blocks.END_PORTAL_FRAME)
-                    event.getPlayer().displayClientMessage(Component.translatable("block.endrem.ender_eye.warning"), true);
+                if (event.getLevel().getBlockState(event.getPos()).getBlock() != Blocks.END_PORTAL_FRAME)
+                    event.getEntity().displayClientMessage(Component.translatable("block.endrem.ender_eye.warning"), true);
             }
         }
     }
