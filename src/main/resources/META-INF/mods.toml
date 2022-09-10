@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[39,)"
+loaderVersion="[43,)"
 license="GNU LGPLv3"
 issueTrackerURL="https://github.com/Team-Remastered/End-Remastered-Forge/issues"
 [[mods]]
@@ -21,12 +21,12 @@ After reaching one of these structures, you will have to find the hidden portal 
 [[dependencies.endrem]]
     modId="forge"
     mandatory=true
-    versionRange="[41,)"
+    versionRange="[43,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.endrem]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.19, 1.20)"
+    versionRange="[1.19.2, 1.20)"
     ordering="NONE"
     side="BOTH"
