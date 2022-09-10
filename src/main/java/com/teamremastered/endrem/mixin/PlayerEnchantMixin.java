@@ -11,6 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Random;
 
+@SuppressWarnings("unused")
 @Mixin(EnchantmentMenu.class)
 public class PlayerEnchantMixin {
 

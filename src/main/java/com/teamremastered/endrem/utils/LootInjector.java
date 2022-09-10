@@ -3,7 +3,6 @@ package com.teamremastered.endrem.utils;
 import com.google.common.base.Suppliers;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.teamremastered.endrem.EndRemastered;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -13,12 +12,10 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.common.loot.LootModifier;
-import net.minecraftforge.fml.common.Mod;
 
 
 import java.util.function.Supplier;
 
-@Mod(EndRemastered.MOD_ID)
 public class LootInjector {
 
     public static class LootInjectorModifier extends LootModifier {

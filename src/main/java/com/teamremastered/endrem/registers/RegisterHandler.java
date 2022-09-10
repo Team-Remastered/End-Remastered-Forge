@@ -21,5 +21,5 @@ public class RegisterHandler {
         GLMS.register(modEventBus);
     }
 
-    private static final RegistryObject<Codec<LootInjector.LootInjectorModifier>> DUNGEON_LOOT = GLMS.register("loot_injection", LootInjector.LootInjectorModifier.CODEC);
+    private static final RegistryObject<Codec<LootInjector.LootInjectorModifier>> LOOT_INJECTION = GLMS.register("loot_injection", LootInjector.LootInjectorModifier.CODEC);
 }
