@@ -1,7 +1,7 @@
 {
     "pools": [{
         "name": "eye_pool",
-        "rolls": 10,
+        "rolls": 1,
         "entries": [
             {
                 "type": "item",

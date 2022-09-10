@@ -1,17 +1,17 @@
 {
     "pools": [{
         "name": "eye_pool",
-        "rolls": 10,
+        "rolls": 1,
         "entries": [
             {
                 "type": "item",
                 "name": "endrem:old_eye",
-                "weight": 10,
+                "weight": 15,
                 "functions": [{ "function": "set_count", "count": 1 }]
             },
             {
                 "type": "empty",
-                "weight": 1
+                "weight":85
             }
         ]
     }]
