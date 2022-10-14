@@ -1,5 +1,6 @@
 package com.teamremastered.endrem.mixin;
 
+import com.teamremastered.endrem.config.ERConfig;
 import com.teamremastered.endrem.registers.ERItems;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.EnchantmentMenu;
@@ -20,7 +21,7 @@ public class PlayerEnchantMixin {
         int maxValue = 120;
         int randomNumber = random.nextInt(maxValue);
         if (!player.level.isClientSide && player != null) {
-            if (randomNumber == 69) {
+            if (ERConfig.IS_CRYPTIC_EYE_OBTAINABLE.getRaw() && randomNumber == maxValue - 1) {
                 player.getInventory().add(new ItemStack(ERItems.CRYPTIC_EYE.get()));
             }
         }
