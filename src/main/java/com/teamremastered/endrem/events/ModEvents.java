@@ -49,7 +49,7 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void onVillagerTradesEvent(VillagerTradesEvent event) {
-        if (event.getType() == VillagerProfession.CLERIC) {
+        if (ERConfig.IS_EVIL_EYE_OBTAINABLE.getRaw() && event.getType() == VillagerProfession.CLERIC) {
             event.getTrades().get(5).add(new EREyeTrade());
         }
     }
