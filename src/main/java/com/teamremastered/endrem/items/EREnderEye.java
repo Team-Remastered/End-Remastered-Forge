@@ -96,7 +96,7 @@ public class EREnderEye extends Item {
             }
             itemUse.getPlayer().displayClientMessage(new TranslatableComponent("block.endrem.custom_eye.place"), true);
             return InteractionResult.PASS;
-        } else if (blockstate.is(Blocks.END_PORTAL_FRAME)) {
+        } else if (blockstate.is(Blocks.END_PORTAL_FRAME) && ERConfig.CAN_REMOVE_EYE.getRaw()) {
             BlockState newBlockState = blockstate.setValue(BlockStateProperties.EYE, false);
             level.setBlock(blockpos, newBlockState, 2);
             level.addFreshEntity(new ItemEntity(level, blockpos.getX(), blockpos.getY() + 1, blockpos.getZ(), new ItemStack(Items.ENDER_EYE)));

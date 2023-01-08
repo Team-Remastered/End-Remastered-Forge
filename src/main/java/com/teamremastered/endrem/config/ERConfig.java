@@ -26,14 +26,19 @@ public class ERConfig {
             "Percentage chance of eyes breaking when thrown",
             10);
 
+    public static ERConfigGenericEntry<Boolean> CAN_REMOVE_EYE = new ERConfigGenericEntry<>(
+            "can_remove_eye",
+            "Decides whether or not you can remove an ender eye from a frame",
+            false);
+
     public static ERConfigGenericEntry<Boolean> IS_CRYPTIC_EYE_OBTAINABLE = new ERConfigGenericEntry<>(
             "is_cryptic_eye_obtainable",
-            "Determine if it's possible to obtain the cryptic eye when enchanting",
+            "Decides if it's possible to obtain the cryptic eye when enchanting",
             true);
 
     public static ERConfigGenericEntry<Boolean> IS_EVIL_EYE_OBTAINABLE = new ERConfigGenericEntry<>(
             "is_evil_eye_obtainable",
-            "Determine if it's possible to obtain the evil eye when trading with a Cleric",
+            "Decides if it's possible to obtain the evil eye when trading with a Cleric",
             true);
 
     static {
