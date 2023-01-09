@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "endrem:items/nether_eye"
+    "layer0": "endrem:item/nether_eye"
   }
 }

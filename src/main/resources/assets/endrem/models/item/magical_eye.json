@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "endrem:items/magical_eye"
+    "layer0": "endrem:item/magical_eye"
   }
 }

@@ -16,7 +16,7 @@ public class ERBlocks {
     private static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, EndRemastered.MOD_ID);
     private static final DeferredRegister<Item> BLOCK_ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, EndRemastered.MOD_ID);
 
-    private static final Item.Properties BASE_ITEM_PROPERTIES = new Item.Properties().tab(EndRemastered.TAB);
+    private static final Item.Properties BASE_ITEM_PROPERTIES = new Item.Properties();
 
     public static void initRegister(IEventBus modEventBus) {
         BLOCKS.register(modEventBus);

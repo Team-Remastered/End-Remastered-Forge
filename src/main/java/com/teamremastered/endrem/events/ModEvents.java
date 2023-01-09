@@ -22,6 +22,7 @@ import org.jetbrains.annotations.Nullable;
 @Mod.EventBusSubscriber
 public class ModEvents {
 
+
     // Enable/Disable placing of vanilla Ender Eyes depending on configuration
     @SubscribeEvent
     public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {

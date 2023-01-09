@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "endrem:items/cold_eye"
+    "layer0": "endrem:item/cold_eye"
   }
 }

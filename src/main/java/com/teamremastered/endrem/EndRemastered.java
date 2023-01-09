@@ -1,16 +1,12 @@
 package com.teamremastered.endrem;
 
 import com.teamremastered.endrem.config.ERConfig;
-import com.teamremastered.endrem.registers.ERBlocks;
 import com.teamremastered.endrem.registers.RegisterHandler;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.annotation.Nonnull;
 
 @Mod(EndRemastered.MOD_ID)
 public class EndRemastered {
@@ -23,12 +19,4 @@ public class EndRemastered {
         ERConfig.load();
         RegisterHandler.init();
     }
-
-    public static final CreativeModeTab TAB = new CreativeModeTab("endremTab") {
-        @Override
-        @Nonnull
-        public ItemStack makeIcon() {
-            return new ItemStack(ERBlocks.ANCIENT_PORTAL_FRAME_ITEM.get());
-        }
-    };
 }
