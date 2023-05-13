@@ -36,7 +36,7 @@ public class RegisterHandler {
         event.registerCreativeModeTab(new ResourceLocation(EndRemastered.MOD_ID, "endrem_tab"), builder -> builder
                 .icon(() -> new ItemStack(ERItems.EXOTIC_EYE.get()))
                 .title(Component.translatable("itemGroup.endrem.endrem_tab"))
-                .displayItems((featureFlags, output, hasOp) -> {
+                .displayItems((parameters, output) -> {
                     output.accept(ERItems.BLACK_EYE.get());
                     output.accept(ERItems.COLD_EYE.get());
                     output.accept(ERItems.CORRUPTED_EYE.get());
