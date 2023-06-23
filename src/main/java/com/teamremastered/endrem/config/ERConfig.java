@@ -14,31 +14,41 @@ public class ERConfig {
 
     // ======   Vanilla Modifications   ======
 
-    public static ERConfigGenericEntry<Boolean> USE_ENDER_EYES_ENABLED = new ERConfigGenericEntry<>(
-            "ender_eyes",
-            "Toggle Ender Eyes Actions (Throwing and Placing in Portal Frames)",
+    public static ERConfigGenericEntry<Boolean> THROW_ENDER_EYE = new ERConfigGenericEntry<>(
+            "throw_ender_eye",
+            "Toggle Ender Eyes Actions (Throwing to Locate The Stronghold)",
+            false);
+
+    public static ERConfigGenericEntry<Boolean> USE_ENDER_EYE = new ERConfigGenericEntry<>(
+            "use_ender_eye",
+            "Toggle Ender Eyes Actions (Placing in Portal Frames)",
+            false);
+
+    public static ERConfigGenericEntry<Boolean> FRAME_HAS_EYE = new ERConfigGenericEntry<>(
+            "frame_has_eye",
+            "Determines whether or not vanilla eyes can naturally generate within the frames of the portal",
             false);
 
     // ======   End Remastered Configuration   ======
 
     public static ERConfigGenericEntry<Integer> EYE_BREAK_CHANCE = new ERConfigGenericEntry<>(
             "eye_break_chance",
-            "Percentage chance of eyes breaking when thrown",
+            "Determines the percentage chance of eyes breaking when thrown",
             10);
 
     public static ERConfigGenericEntry<Boolean> CAN_REMOVE_EYE = new ERConfigGenericEntry<>(
             "can_remove_eye",
-            "Decides whether or not you can remove an ender eye from a frame",
+            "Determines whether or not players can remove ender eyes from the portal frames",
             false);
 
     public static ERConfigGenericEntry<Boolean> IS_CRYPTIC_EYE_OBTAINABLE = new ERConfigGenericEntry<>(
             "is_cryptic_eye_obtainable",
-            "Decides if it's possible to obtain the cryptic eye when enchanting",
+            "Determines if it's possible to obtain the cryptic eye when enchanting",
             true);
 
     public static ERConfigGenericEntry<Boolean> IS_EVIL_EYE_OBTAINABLE = new ERConfigGenericEntry<>(
             "is_evil_eye_obtainable",
-            "Decides if it's possible to obtain the evil eye when trading with a Cleric",
+            "Determines if it's possible to obtain the evil eye when trading with a Cleric",
             true);
 
     static {

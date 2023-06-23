@@ -23,14 +23,14 @@ import org.jetbrains.annotations.Nullable;
 public class ModEvents {
 
 
-    // Enable/Disable placing of vanilla Ender Eyes depending on configuration
+    // Enable/Disable placing of vanilla Ender Eyes on end portal frame depending on configuration
     @SubscribeEvent
     public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
-        if (event.isCancelable() && !ERConfig.USE_ENDER_EYES_ENABLED.getRaw()) {
+        if (event.isCancelable() && !ERConfig.USE_ENDER_EYE.getRaw()) {
             if (event.getEntity().getInventory().getSelected().getItem() instanceof EnderEyeItem) {
                 if (event.getLevel().getBlockState(event.getPos()).getBlock() == Blocks.END_PORTAL_FRAME) {
                     event.setCanceled(true);
-                    event.getEntity().displayClientMessage(Component.translatable("block.endrem.ender_eye.warning"), true);
+                    event.getEntity().displayClientMessage(Component.translatable("block.endrem.ender_eye.use_warning"), true);
                 }
             }
         }
@@ -39,11 +39,11 @@ public class ModEvents {
     // Enable/Disable throwing of vanilla Ender Eyes depending on configuration
     @SubscribeEvent
     public static void onRightClickItem(PlayerInteractEvent.RightClickItem event) {
-        if (event.isCancelable() && !ERConfig.USE_ENDER_EYES_ENABLED.getRaw()) {
+        if (event.isCancelable() && !ERConfig.THROW_ENDER_EYE.getRaw()) {
             if (event.getEntity().getInventory().getSelected().getItem() instanceof EnderEyeItem) {
                 event.setCanceled(true);
                 if (event.getLevel().getBlockState(event.getPos()).getBlock() != Blocks.END_PORTAL_FRAME)
-                    event.getEntity().displayClientMessage(Component.translatable("block.endrem.ender_eye.warning"), true);
+                    event.getEntity().displayClientMessage(Component.translatable("block.endrem.ender_eye.throw_warning"), true);
             }
         }
     }
