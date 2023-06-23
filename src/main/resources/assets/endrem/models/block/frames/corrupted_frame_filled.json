@@ -1,9 +1,9 @@
 {
   "textures": {
-    "particle": "endrem:block/ancient_portal_frame_side",
-    "bottom": "block/end_stone",
-    "top": "endrem:block/ancient_portal_frame_top",
-    "side": "endrem:block/ancient_portal_frame_side",
+    "particle": "minecraft:block/end_portal_frame_side",
+    "bottom": "minecraft:block/end_stone",
+    "top": "minecraft:block/end_portal_frame_top",
+    "side": "minecraft:block/end_portal_frame_side",
     "eye": "endrem:block/eyes/corrupted"
   },
   "elements": [
