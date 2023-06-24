@@ -63,7 +63,7 @@ public class ModEvents {
             int maxPrice = 50;
             int minPrice = 30;
             int priceEmeralds = random.nextInt(maxPrice - minPrice) + minPrice;
-            if (!entity.level.isClientSide()) {
+            if (!entity.level().isClientSide()) {
                 return new MerchantOffer(new ItemStack(Items.EMERALD, priceEmeralds), new ItemStack(Items.RABBIT_FOOT), new ItemStack(ERItems.EVIL_EYE.get()), 12, 10, 0.2F);
             }
             return null;

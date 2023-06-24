@@ -15,12 +15,8 @@ import net.minecraft.world.level.block.state.pattern.BlockInWorld;
 import net.minecraft.world.level.block.state.pattern.BlockPattern;
 import net.minecraft.world.level.block.state.pattern.BlockPatternBuilder;
 import net.minecraft.world.level.block.state.predicate.BlockStatePredicate;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.block.state.properties.*;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -57,9 +53,9 @@ public class AncientPortalFrame extends Block {
     }
 
     public AncientPortalFrame() {
-        super(BlockBehaviour.Properties.of(
-                        Material.STONE,
-                        MaterialColor.COLOR_PURPLE)
+        super(BlockBehaviour.Properties.of()
+                .mapColor(MapColor.COLOR_GREEN)
+                .instrument(NoteBlockInstrument.BASEDRUM)
                 .sound(SoundType.GLASS)
                 .lightLevel((p_152690_) -> 1)
                 .strength(-1.0F, 3600000.0F)
