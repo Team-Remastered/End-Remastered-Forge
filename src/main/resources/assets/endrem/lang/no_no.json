@@ -1,42 +1,62 @@
 {
   "item.endrem.old_eye": "Gammelt Øye",
-  "item.endrem.old_eye.description": "Legender sier at dette øyet en gang tilhørte en av de store sandormene.",
+  "item.endrem.old_eye.description": "§7§oLegender sier at dette øyet en gang tilhørte en av de store sandormene.",
 
   "item.endrem.rogue_eye": "Slyngeløye",
-  "item.endrem.rogue_eye.description": "Dette øyet antas å ha gitt våre forfedre kunnskapen om Redstone.",
+  "item.endrem.rogue_eye.description": "§7§oDette øyet antas å ha gitt våre forfedre kunnskapen om Redstone.",
 
   "item.endrem.nether_eye": "Netherøye",
-  "item.endrem.nether_eye.description": "Det ble mistet av en demon i kampen mellom Aether og Nether.",
+  "item.endrem.nether_eye.description": "§7§oDet ble mistet av en demon i kampen mellom Aether og Nether.",
 
   "item.endrem.cold_eye": "Kaldt Øye",
-  "item.endrem.cold_eye.description": "En av de siste gjenstandene som ble etterlatt av isologene før de alle plutselig forsvant fra verden.",
+  "item.endrem.cold_eye.description": "§7§oEn av de siste gjenstandene som ble etterlatt av isologene før de alle plutselig forsvant fra verden.",
 
-  "item.endrem.magical_eye": "Magisk Øye",
-  "item.endrem.magical_eye.description": "Uten dette øyet har ikke Åndemaneren noen magiske krefter.",
+  "item.endrem.magical_eye": "Magisk øye",
+  "item.endrem.magical_eye.description": "§7§oUten dette øyet har ikke Åndemaneren noen magiske krefter.",
 
-  "item.endrem.black_eye": "Sort Øye",
-  "item.endrem.black_eye.description": "Pirates say it gave sight to the legendary Black pearl.",
+  "item.endrem.black_eye": "Sort øye",
+  "item.endrem.black_eye.description": "§7§oPiratene sier det gav sikt til den legendariske Sorte Perle.",
 
-  "item.endrem.lost_eye": "Tapt Øye",
-  "item.endrem.lost_eye.description": "Det fortelles at det ble smidd av tidens første smeder.",
+  "item.endrem.lost_eye": "Tapt øye",
+  "item.endrem.lost_eye.description": "§7§oDet ryktes at det ble smidd av tidens første smeder.",
 
   "item.endrem.wither_eye": "Witherøye",
-  "item.endrem.wither_eye.description": "Har vært vitne til ødeleggelse. Kanskje det også var vitne til at tingene dine forsvant.",
+  "item.endrem.wither_eye.description": "§7§oHar vært vitne til ødeleggelse. Kanskje det også var vitne til at tingene dine forsvant.",
 
   "item.endrem.guardian_eye": "Vokterøye",
-  "item.endrem.guardian_eye.description": "Det har sett mange krigere drukne i havets dyp.",
+  "item.endrem.guardian_eye.description": "§7§oDet har sett mange krigere drukne i havets dyp.",
 
-  "item.endrem.corrupted_eye": "Korrupt Øye",
-  "item.endrem.corrupted_eye.description": "Øyet til en grådig konge som bleknet i ensomhet. Legenden sier at det vil bringe uendelig formue til eieren.",
+  "item.endrem.corrupted_eye": "Korrupt øye",
+  "item.endrem.corrupted_eye.description": "§7§oØyet til en grådig konge som bleknet i ensomhet. Legenden sier at det vil bringe uendelig rikdom til eieren.",
+  
+  "item.endrem.cursed_eye": "Forbannet øye",
+  "item.endrem.cursed_eye.description": "§7§oEn mektig men destruktivt artifakt; Piglinene sverget på å beskytte den med sine liv",
+
+  "item.endrem.exotic_eye": "Eksotisk øye",
+  "item.endrem.exotic_eye.description": "§7§oDe som følgte dette øye ble aldri sett igjen; ryktene sier de fant den fortapte byen Atlantis, eller gikk seg bort i forsøket",
+
+  "item.endrem.evil_eye": "Ondt øye",
+  "item.endrem.evil_eye.description": "§7§oEn hellig talisman som sies å beskytte eieren mot uflaks",
+
+  "item.endrem.undead_eye": "Vandødsøye",
+  "item.endrem.undead_eye.description": "§7§oMinner om fortiden fra de som lever selv i døden",
+
+  "item.endrem.cryptic_eye": "Kryptisk øye",
+  "item.endrem.cryptic_eye.description": "§7§o§khttps://www.youtube.com/watch?v=dQw4w9WgXcQ",
 
   "item.endrem.witch_eye": "Hekseøye",
-  "item.endrem.witch_eye.description": "Dette øyet antas å ha sett de eldgamle bryggeoppskriftene som gikk tapt med tiden.",
+  "item.endrem.witch_eye.description": "§7§oDette øyet antas å ha sett de eldgamle bryggeoppskriftene som gikk tapt med tiden.",
 
   "item.endrem.witch_pupil": "Heksepupill",
 
-
+  "item.endrem.undead_soul": "Vandødssjel",
 
   "block.endrem.ancient_portal_frame": "Eldgammel Portalramme",
+
+  "block.endrem.ender_eye.warning": "Dette øyet ønsker ikke å bli brukt",
+  "block.endrem.custom_eye.place": "Dette øyet er allerede plassert",
+  "block.endrem.custom_eye.frame_has_eye": "Denne rammen har alt et øye",
+
 
   "itemGroup.endremTab": "End Remastered",
 
@@ -47,7 +67,7 @@
   "advancements.main.root.description": "Få ditt første øye",
 
   "advancements.main.old_eye.title": "Lykkesøker",
-  "advancements.main.old_eye.description": "Få ditt første Gammelt Øye",
+  "advancements.main.old_eye.description": "Få ditt første Gammelt øye",
 
   "advancements.main.rogue_eye.title": "Velkommen til jungelen",
   "advancements.main.rogue_eye.description": "Få ditt første Slyngeløye",
@@ -56,19 +76,19 @@
   "advancements.main.nether_eye.description": "Få ditt første Netherøye",
 
   "advancements.main.cold_eye.title": "Et kjølig blikk",
-  "advancements.main.cold_eye.description": "Få ditt første Kaldt Øye",
+  "advancements.main.cold_eye.description": "Få ditt første Kaldt øye",
 
   "advancements.main.corrupted_eye.title": "Dekk meg i smaragder", "%%%%%%Comment%%%%%%": "Golden Shower fits better but whatever...",
-  "advancements.main.corrupted_eye.description": "Få ditt første Korrupt Øye",
+  "advancements.main.corrupted_eye.description": "Få ditt første Korrupt øye",
 
   "advancements.main.magical_eye.title": "Fallen trollmann",
-  "advancements.main.magical_eye.description": "Få ditt første Magisk Øye",
+  "advancements.main.magical_eye.description": "Få ditt første Magisk æye",
 
   "advancements.main.black_eye.title": "Arghh, Hvor er skipet mitt?",
-  "advancements.main.black_eye.description": "Få ditt første Sort Øye",
+  "advancements.main.black_eye.description": "Få ditt første Sort øye",
 
   "advancements.main.lost_eye.title": "Trenger du et kart?",
-  "advancements.main.lost_eye.description": "Få ditt første Tapt Øye",
+  "advancements.main.lost_eye.description": "Få ditt første Tapt øye",
 
   "advancements.main.wither_eye.title": "Wither You Want It Or Not",
   "advancements.main.wither_eye.description": "Få ditt første Witherøye",
@@ -77,6 +97,18 @@
   "advancements.main.guardian_eye.description": "Få ditt første Vokterøye",
 
   "advancements.main.witch_eye.title": "Knask eller Knep?",
-  "advancements.main.witch_eye.description": "Få ditt første Hekseøye"
+  "advancements.main.witch_eye.description": "Få ditt første Hekseøye",
+  
+  "advancements.main.evil_eye.title": "For en velsignelse",
+  "advancements.main.evil_eye.description": "Få ditt første onde øye",
+
+  "advancements.main.exotic_eye.title": "Hvor er Atlantis?",
+  "advancements.main.exotic_eye.description": "Få ditt første eksotiske øye",
+
+  "advancements.main.undead_eye.title": "Sjelens speil",
+  "advancements.main.undead_eye.description": "Få ditt første Vandødsøye",
+
+  "advancements.main.cryptic_eye.title": "Tålmodighet er veien til visdom",
+  "advancements.main.cryptic_eye.description": "Få ditt første kryptiske øye"
 
 }
